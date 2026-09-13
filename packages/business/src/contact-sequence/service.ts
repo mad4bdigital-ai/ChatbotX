@@ -225,14 +225,12 @@ class ContactSequenceService extends BaseService {
     }
   }
   /**
-   * The flow-step `addContactTag`/`addContactSequence`-equivalent single-
-   * contact enrollment: unlike `enrollContacts` (bulk, no per-enrollment
-   * event), this emits `sequenceSubscribed` for the flow-step UI to react to,
-   * matching the worker's original hand-rolled `nextRunAt` calculation
-   * (`delayDays`/`delayMinutes` only — `delayUnit`/`specificDateTime` are
-   * NOT honored here, carried over verbatim from the pre-existing worker
-   * logic; unifying with `calculateNextRunAtFromStep`, which does honor
-   * them, is a separate follow-up).
+   * The flow-step `addContactSequence` single-contact enrollment: unlike
+   * `enrollContacts` (bulk, no per-enrollment event), this emits
+   * `sequenceSubscribed` for the flow-step UI to react to. Its initial run
+   * time must use the same canonical delay/specific-time semantics as the
+   * bulk and advance paths; hand-rolled day/minute arithmetic drifts whenever
+   * a step uses `delayUnit=specificTime`.
    */
   async enrollFromFlow(props: {
     workspaceId: string
@@ -254,15 +252,17 @@ class ContactSequenceService extends BaseService {
 
     const firstStep = await db.query.sequenceStepModel.findFirst({
       where: { sequenceId, order: 0, isActive: true },
-      columns: { id: true, delayDays: true, delayMinutes: true },
+      columns: {
+        id: true,
+        delayDays: true,
+        delayMinutes: true,
+        delayUnit: true,
+        specificDateTime: true,
+      },
     })
 
     const nextRunAt = firstStep
-      ? new Date(
-          now.getTime() +
-            firstStep.delayDays * 24 * 60 * 60 * 1000 +
-            firstStep.delayMinutes * 60 * 1000,
-        )
+      ? calculateNextRunAtFromStep(firstStep, now)
       : now
 
     await enrollContactInSequence({
