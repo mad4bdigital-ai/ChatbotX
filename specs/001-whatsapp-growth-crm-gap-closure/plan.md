@@ -1,93 +1,117 @@
-# Implementation Plan
+# Implementation Plan v2 — Root-Cause Order
 
-## Technical context
+## Rule
 
-- Node.js 24, TypeScript 5, pnpm 10, Turborepo.
-- Next.js/React builder, worker services, PostgreSQL/Drizzle, Redis/BullMQ.
-- Primary areas: `packages/database`, `packages/business`, `packages/flow-config`, `packages/sequence-scheduler`, `apps/worker`, `apps/builder`, `integrations/whatsapp`, public API/docs.
+No greenfield replacement of a native subsystem is permitted until characterization proves the existing seam cannot satisfy the requirement.
 
-## Constitution checks
+## Gate 0 — Characterize before mutation
 
-- Official Cloud API only: PASS by design.
-- Channel/purpose consent: new centralized model/gate required.
-- Attribution provenance: extend existing CTWA/CAPI implementation, do not replace.
-- Durable automation: use persisted state + existing queues.
-- Tenant isolation: workspace-scoped schema/tests mandatory.
-- Enterprise boundary: no changes under `apps/builder/src/enterprise` for feature completion.
+1. Reproduce manual WhatsApp webhook acceptance with valid/invalid signatures on base SHA.
+2. Reproduce sequence execution for a contact with at least two ContactInboxes; count dispatches, flow runs and message-producing sends.
+3. Trace all sequence removal callers and confirm inbound reply is not wired.
+4. Trace all MARKETING template/broadcast/sequence send entry points.
+5. Freeze current CAPI and Custom Audience behavior with characterization tests.
 
-## Phase 0 — Baseline contracts and characterization tests
+## Patch A — P0 webhook authenticity
 
-1. Freeze exact upstream behavior around sequence enrollment/unsubscribe, broadcast subscription, WhatsApp template sending, CTWA ingestion and CAPI delivery.
-2. Add characterization tests before modifying behavior.
-3. Map all current send entry points to ensure the future consent gate cannot be bypassed.
+Primary seams:
+- `apps/builder/src/app/integrations/whatsapp/webhook/[integrationId]/route.ts`
+- `integrations/whatsapp/src/handlers/webhook.ts`
 
-## Phase 1 — Consent registry and send-policy gate (P0)
+Actions:
+- bounded body preflight/read;
+- authenticated HMAC over exact bytes using configured app/client secret;
+- configure middleware/verification in secure mode or equivalent explicit verifier;
+- enqueue only after verified;
+- regression tests for valid/invalid/missing/malformed/oversized requests and Meta redelivery.
 
-- Add DB migration/models/services.
-- Add immutable consent event log.
-- Add API + flow actions + agent UI controls.
-- Add configurable WhatsApp opt-out/opt-in keyword recognition.
-- Introduce policy service and route marketing broadcast/sequence sends through it.
-- Compatibility bridge for `broadcastSubscribedAt` with explicit migration state.
+## Patch B — P0 sequence routing correctness
 
-## Phase 2 — Sequence lifecycle hardening (P0)
+Primary seams:
+- `packages/sequence-scheduler/src/enroll-contact.ts`
+- `packages/sequence-scheduler/src/advance-enrollment.ts`
+- `apps/worker/src/integration/handlers/sequence-flow.ts`
+- `apps/worker/src/integration/handlers/send-flow-direct.ts`
 
-- Extend enrollment state machine.
-- Atomic stop-on-reply and stop-on-conversion.
-- Quiet hours/timezone scheduling.
-- Re-entry policy and max-entry controls.
-- Re-check policy at execution time, not only enrollment time.
-- Add restart/retry/duplicate-job tests and 90-day virtual-time tests.
+Actions:
+- make sequence direct execution accept exact `contactInboxId`;
+- validate that inbox belongs to workspace/contact/conversation;
+- execute `runFlowNode` exactly once for that dispatch target;
+- retain one dispatch per intended inbox only;
+- add multi-inbox + retry regression tests.
 
-## Phase 3 — Attribution evidence + enrichment (P0)
+## Patch C — P0 sequence policy/stop-on-reply
 
-- Persist raw referral payload immediately.
-- Normalize to `AttributionTouch`.
-- Back-reference existing `ctwaClid`/conversion code to touch ID.
-- Add optional Marketing API enrichment worker with retry and explicit provenance.
-- Add attribution UI/API views.
+Reuse `contactSequenceService.removeContactSequencesForContact(s)` and existing dispatch cancellation/scheduler cleanup.
 
-## Phase 4 — Conversion delivery ledger/replay (P0)
+Actions:
+- define per-sequence stop-on-reply policy;
+- wire genuine inbound customer message after durable persistence;
+- add execution-time policy guard before message-producing sequence flow;
+- suppress send if enrollment disappeared/stopped, contact is blocked, consent revoked, reply stop fired, or CRM terminal state applies;
+- preserve under-delivery preference in cancellation races.
 
-- Extend current Meta conversion delivery with deterministic business event IDs.
-- Add attempt ledger and error taxonomy.
-- Add retry/dead-letter/replay service.
-- Add admin/API delivery diagnostics.
+## Patch D — P0 consent evidence and category-aware send authorization
 
-## Phase 5 — WordPress/FluentCRM/WooCommerce contract (P1)
+Reuse:
+- `broadcastSubscribedAt` compatibility state;
+- WhatsApp template category metadata;
+- existing 24h broadcast policy seam.
 
-- Add HMAC-signed `crm.*` outbound events.
-- Add inbound idempotent upsert endpoints.
-- Add mapping config and conflict rules.
-- Publish reference WordPress adapter contract and sample plugin skeleton (separate package/example, no core dependency).
-- Map WooCommerce paid/refund lifecycle to Deal and conversion events.
+Actions:
+- add MessagingConsent + append-only event history;
+- add flow/API/agent grant/revoke surfaces;
+- category-aware marketing authorization;
+- integrate at native broadcast/sequence/direct-automation execution seams;
+- migration/report for legacy subscription state without asserting nonexistent evidence.
 
-## Phase 6 — Native sales pipeline (P1)
+## Patch E — P0 scheduler timing consistency
 
-- Add Pipeline/Stage/Deal/Activity models and services.
-- Add event-bus events and flow triggers.
-- Add Kanban/list UI + inbox summary.
-- Wire won/lost outcomes into conversion rules.
+Reuse native delay/specific-date/send-day/window scheduler.
 
-## Phase 7 — Meta audience sync (P2)
+Actions:
+- canonical next-run calculation shared by all enrollment paths;
+- explicit IANA timezone source/snapshot;
+- DST-safe valid-window search;
+- replace fallback-to-base-time with explicit no-valid-window outcome;
+- 60/90-day virtual-clock tests.
 
-- Separate `ads_audience` permission model.
-- Provider-neutral audience sync domain.
-- Meta adapter, incremental jobs, add/remove reconciliation.
-- Privacy and hashing tests.
+## Patch F — P1 attribution history
 
-## Phase 8 — Ops, load, recovery, docs (P1)
+- Add AttributionTouch append-only history.
+- Hook only on attributable provider touch, not every tracking update.
+- Keep `ContactInbox.referral` untouched as materialized latest/current state.
+- Optional Meta lookup enrichment stored as derived/versioned fields.
 
-- Metrics/dashboards, audit trail, replay UX.
-- Failure injection: Redis restart, worker restart, provider 429/5xx, duplicate webhook, delayed WP endpoint.
-- Load target >= 10,000 leads/month equivalent and >= 40,000 scheduled WhatsApp nurture sends/month.
-- Backup/recovery and upgrade runbooks.
+## Patch G — P1 conversion operator recovery
 
-## Rollout
+- Preserve both existing conversion pipelines.
+- Add attempt/replay metadata only at their current send seams.
+- Add privileged failed-event replay and unified diagnostics; no new provider delivery engine.
 
-1. Ship schema + shadow consent policy in observe-only mode.
-2. Compare policy decisions vs current sends.
-3. Enforce for new workspaces/campaigns.
-4. Provide migration wizard/report for existing workspaces.
-5. Enable pipeline and WordPress adapter independently behind workspace feature flags.
-6. Keep audience sync disabled by default until explicitly configured.
+## Patch H — P1 CRM integration and sales pipeline
+
+- Contract-first WordPress/FluentCRM/WooCommerce adapter.
+- Minimal Pipeline/Stage/Deal/Activity domain.
+- Deal outcome events connect to sequence policy and existing conversion-event rules.
+
+## Patch I — P1 audience governance/reconciliation
+
+Reuse `facebookCustomAudience` and `sync-retarget-audience`.
+
+- independent audience-use permission;
+- desired/provider membership state or reconciliation cursor;
+- add/remove diff processing;
+- revoke/exclusion removal;
+- failure/reconciliation diagnostics.
+
+## Release gates
+
+P0 merges require:
+- exact-base characterization evidence;
+- security/correctness regression tests;
+- tenant-isolation tests;
+- build/type/lint/current repository checks;
+- no modifications to enterprise-only code required for feature completeness.
+
+P1 activation remains feature-flagged until P0 is green end-to-end.

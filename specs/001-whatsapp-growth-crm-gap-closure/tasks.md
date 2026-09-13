@@ -1,130 +1,134 @@
-# Tasks
+# Tasks v2 — Evidence-Driven Work Map
 
-## Phase 0 — Baseline and characterization
+## Gate 0 — characterization (must land before behavior changes)
 
-- [ ] T001 Record exact base SHA and repository version metadata in CI artifact.
-- [ ] T002 Enumerate every WhatsApp/broadcast/sequence send entry point.
-- [ ] T003 Add characterization tests for current `broadcastSubscribedAt` behavior.
-- [ ] T004 Add characterization tests for sequence subscribe/unsubscribe actions.
-- [ ] T005 Add characterization tests for inbound WhatsApp referral/`ctwaClid` parsing.
-- [ ] T006 Add characterization tests for current Meta CAPI skip/send behavior.
-- [ ] T007 Document current public API/webhook authentication paths.
+- [ ] T001 Add valid/invalid/missing WhatsApp HMAC characterization tests around manual webhook route + integration handler.
+- [ ] T002 Add oversized WhatsApp webhook characterization test and record current side effects.
+- [ ] T003 Build a contact fixture with two ContactInboxes and one sequence; assert current dispatch count and flow-run count.
+- [ ] T004 Add regression test around `sendFlowDirect` proving whether one dispatch fans over all inboxes on base SHA.
+- [ ] T005 Enumerate exact callers of sequence removal; freeze current manual/flow unsubscribe behavior.
+- [ ] T006 Add inbound-reply test proving no automatic sequence stop exists on base SHA.
+- [ ] T007 Characterize flow enrollment delay/specificDate behavior against normal enrollment path.
+- [ ] T008 Characterize send-window behavior with timezone/DST boundary and no-valid-slot case.
+- [ ] T009 Enumerate every WhatsApp MARKETING template/broadcast/sequence/direct-automation send seam.
+- [ ] T010 Freeze current AdsConversionEvent retry/status behavior.
+- [ ] T011 Freeze current `sendMetaCapiEvent` behavior separately.
+- [ ] T012 Freeze per-contact Custom Audience add/remove and bulk retarget add behavior.
 
-## Phase 1 — Consent registry and policy gate
+## Patch A — P0 WhatsApp webhook authenticity
 
-- [ ] T010 Add `MessagingConsent` schema/migration with workspace-scoped unique key.
-- [ ] T011 Add append-only `MessagingConsentEvent` schema/migration.
-- [ ] T012 Implement consent domain service with idempotent grant/revoke.
-- [ ] T013 Implement consent query/filter service.
-- [ ] T014 Implement compatibility bridge for legacy broadcast subscription state.
-- [ ] T015 Add centralized marketing-send policy service.
-- [ ] T016 Wire broadcast sends through policy service.
-- [ ] T017 Wire sequence sends through policy service at execution time.
-- [ ] T018 Add flow step schema/handler: grant messaging consent.
-- [ ] T019 Add flow step schema/handler: revoke messaging consent.
-- [ ] T020 Add builder editor/viewer for both consent steps.
-- [ ] T021 Add configurable WhatsApp opt-out keyword handling.
-- [ ] T022 Add configurable WhatsApp re-opt-in keyword/structured response handling.
-- [ ] T023 Add contact UI consent summary + history drawer.
-- [ ] T024 Add public/admin consent API.
-- [ ] T025 Add tenancy/idempotency/race tests for consent changes.
-- [ ] T026 Add tests proving queued marketing messages are suppressed after revocation.
+- [ ] T020 Enforce bounded body size before full untrusted-body processing.
+- [ ] T021 Verify `x-hub-signature-256` over exact raw bytes with configured Meta app/client secret.
+- [ ] T022 Remove/replace `secure:false` behavior for authenticated POST processing.
+- [ ] T023 Ensure invalid signature creates zero queue/database side effects.
+- [ ] T024 Preserve Meta handshake behavior independently from POST HMAC verification.
+- [ ] T025 Add tests for valid, invalid, malformed, missing signature and oversized body.
+- [ ] T026 Add duplicate valid webhook/idempotency regression tests.
+- [ ] T027 Review diagnostic logging order so untrusted body is not fully processed before authentication.
 
-## Phase 2 — Sequence lifecycle hardening
+## Patch B — P0 sequence per-inbox correctness
 
-- [ ] T030 Audit existing sequence scheduler state model and reuse compatible fields.
-- [ ] T031 Add/extend explicit enrollment status/stop reason model.
-- [ ] T032 Implement atomic stop-on-inbound-reply.
-- [ ] T033 Implement stop-on-deal status/stage hook.
-- [ ] T034 Implement stop-on-goal event hook.
-- [ ] T035 Implement re-entry policy and entry counter.
-- [ ] T036 Implement cooldown/max-entry enforcement.
-- [ ] T037 Implement quiet hours using contact/workspace timezone.
-- [ ] T038 Add send-occurrence idempotency keys.
-- [ ] T039 Ensure scheduler persists next action instead of process sleeps.
-- [ ] T040 Add worker-restart/retry tests.
-- [ ] T041 Add duplicate-job tests.
-- [ ] T042 Add virtual-time test covering a 90-day sequence.
-- [ ] T043 Add UI controls for stop/re-entry/quiet-hour policies.
+- [ ] T030 Change sequence direct executor contract to require the dispatch `contactInboxId`.
+- [ ] T031 Validate ContactInbox belongs to the dispatch workspace/contact and active conversation context.
+- [ ] T032 Execute `runFlowNode` only for that exact ContactInbox.
+- [ ] T033 Keep enrollment/advance one-dispatch-per-intended-inbox semantics.
+- [ ] T034 Add two-inbox regression proving one dispatch → one inbox flow execution.
+- [ ] T035 Add retry regression proving no duplicate message-producing work.
+- [ ] T036 Add removed/stale ContactInbox behavior: cancel/skip with explicit reason rather than fan out.
 
-## Phase 3 — Attribution evidence and enrichment
+## Patch C — P0 stop-on-reply + execution-time policy
 
-- [ ] T050 Add `AttributionTouch` schema/migration.
-- [ ] T051 Persist raw WhatsApp referral payload before normalization.
-- [ ] T052 Normalize CTWA fields without overwriting raw evidence.
-- [ ] T053 Link contact/conversation/contactInbox to attribution touch.
-- [ ] T054 Back-reference existing conversion logic to normalized touch where possible.
-- [ ] T055 Add optional Meta Marketing API enrichment job.
-- [ ] T056 Add enrichment retry/error taxonomy.
-- [ ] T057 Add first-touch/last-touch/conversion-touch queries.
-- [ ] T058 Add attribution detail UI/API.
-- [ ] T059 Add tests for missing/partial referral payloads and lookup failure.
+- [ ] T040 Add sequence configuration/policy for stop-on-reply.
+- [ ] T041 After durable genuine inbound customer message, invoke existing sequence cancellation primitives for eligible active enrollments.
+- [ ] T042 Ensure cancellation uses DB-first state transition/removal and scheduler cleanup already provided by contactSequenceService.
+- [ ] T043 Add execution-time guard before sequence flow message production.
+- [ ] T044 Guard on enrollment still-active/current dispatch relationship.
+- [ ] T045 Guard on contact/channel blocked state.
+- [ ] T046 Guard on consent/template/window policy.
+- [ ] T047 Add reply-vs-running-dispatch race test; prefer no send after stop condition.
+- [ ] T048 Add manual unsubscribe/stop compatibility tests.
 
-## Phase 4 — Meta conversion delivery ledger
+## Patch D — P0 auditable WhatsApp consent
 
-- [ ] T060 Define deterministic business-event ID rules for Lead/Qualified/Won/Purchase.
-- [ ] T061 Add/extend conversion delivery-attempt persistence.
-- [ ] T062 Implement response/error classification.
-- [ ] T063 Implement bounded exponential retry.
-- [ ] T064 Implement dead-letter transition.
-- [ ] T065 Implement privileged replay service preserving original business-event identity.
-- [ ] T066 Add delivery status API.
-- [ ] T067 Add builder/admin delivery diagnostics.
-- [ ] T068 Add provider 429/5xx/permanent-error tests.
-- [ ] T069 Add replay/deduplication tests.
+- [ ] T050 Add MessagingConsent migration/model with workspace/contact/channel/purpose unique key.
+- [ ] T051 Add append-only MessagingConsentEvent model.
+- [ ] T052 Implement idempotent grant/revoke service and immutable event append.
+- [ ] T053 Add flow actions for grant/revoke messaging consent.
+- [ ] T054 Add agent/API surfaces for consent state/history.
+- [ ] T055 Add configurable WhatsApp opt-out/re-opt-in keyword/structured-response integration.
+- [ ] T056 Extend native send policy seam for MARKETING template authorization.
+- [ ] T057 Preserve UTILITY/service policy separately from marketing authorization.
+- [ ] T058 Integrate policy into broadcast, sequence and direct automated MARKETING sends.
+- [ ] T059 Legacy `broadcastSubscribedAt` migration/report: never invent source/text/evidence.
+- [ ] T060 Add queued-send suppression test after consent revoke.
+- [ ] T061 Add cross-workspace/idempotency/race tests.
 
-## Phase 5 — WordPress / FluentCRM / WooCommerce integration
+## Patch E — P0 sequence time semantics
 
-- [ ] T070 Add `ExternalObjectLink` schema/service.
-- [ ] T071 Define `crm.*` event catalog.
-- [ ] T072 Add HMAC timestamped webhook signing.
-- [ ] T073 Add outbound retry/dead-letter policy for CRM webhooks.
-- [ ] T074 Add inbound signed/idempotent CRM event endpoint.
-- [ ] T075 Add configurable field ownership/conflict rules.
-- [ ] T076 Add contact identity normalization for `wa_id`/E.164/email.
-- [ ] T077 Add FluentCRM reference mapping documentation.
-- [ ] T078 Add WooCommerce order paid/refund/cancel mapping documentation.
-- [ ] T079 Add sample WordPress adapter skeleton outside core runtime dependency.
-- [ ] T080 Add sync-loop prevention tests.
-- [ ] T081 Add delayed/unavailable WordPress endpoint recovery tests.
+- [ ] T070 Extract one canonical next-run calculator used by flow/manual/bulk enrollment and advance.
+- [ ] T071 Fix any `enrollFromFlow` delayUnit/specificDateTime drift found by T007.
+- [ ] T072 Add explicit timezone selection/snapshot (contact preferred, workspace fallback per product decision).
+- [ ] T073 Make allowed-day/time-window search DST-safe.
+- [ ] T074 Replace fallback-to-base-time on no valid window with explicit unschedulable/paused result.
+- [ ] T075 Add spring-forward/fall-back tests plus 60/90-day virtual-time sequence test.
+- [ ] T076 Define completed-enrollment re-entry policy and history semantics instead of bypassing current unique key.
 
-## Phase 6 — Native sales pipeline
+## Patch F — P1 immutable attribution history
 
-- [ ] T090 Add Pipeline schema/service.
-- [ ] T091 Add PipelineStage schema/service and ordering.
-- [ ] T092 Add Deal schema/service.
-- [ ] T093 Add DealActivity audit/event schema/service.
-- [ ] T094 Add deal owner/value/currency/expected-close/lost-reason fields.
-- [ ] T095 Add deal event-bus events.
-- [ ] T096 Add flow triggers/actions for stage/status/owner changes.
-- [ ] T097 Add sequence stop conditions based on deal state.
-- [ ] T098 Connect Won/Lost to conversion-rule triggers.
-- [ ] T099 Add Kanban and list UI.
-- [ ] T100 Add inbox/contact sidebar active deal summary.
-- [ ] T101 Add deal API and external CRM mappings.
-- [ ] T102 Add workspace isolation and concurrency tests.
+- [ ] T080 Add AttributionTouch append-only model with workspace/contact/inbox scope.
+- [ ] T081 Define deterministic touch idempotency key/fingerprint.
+- [ ] T082 Append touch when a new attributable provider referral is received.
+- [ ] T083 Keep current `ContactInbox.referral` merge behavior as materialized latest view.
+- [ ] T084 Add optional versioned Meta enrichment without mutating raw touch evidence.
+- [ ] T085 Add first-touch/last-touch/conversion-touch queries and tests.
 
-## Phase 7 — Meta audience sync
+## Patch G — P1 CAPI operator recovery
 
-- [ ] T110 Add `ads_audience` permission/consent purpose.
-- [ ] T111 Add provider-neutral audience sync model/service.
-- [ ] T112 Implement Meta Custom Audience adapter behind feature flag.
-- [ ] T113 Implement incremental membership add/remove jobs.
-- [ ] T114 Implement immediate removal on permission revoke/exclusion.
-- [ ] T115 Add hashing/normalization immediately before provider request.
-- [ ] T116 Add rate-limit/retry/reconciliation tests.
+- [ ] T090 Confirm no existing privileged failed-event replay endpoint across both conversion pipelines.
+- [ ] T091 Define minimal attempt-history extension only where current status/ErrorLog lacks operator evidence.
+- [ ] T092 Add privileged replay for eligible failed AdsConversionEvent preserving sourceEventId/business identity.
+- [ ] T093 Add equivalent recovery only for `sendMetaCapiEvent` if its current semantics need it; do not merge tables.
+- [ ] T094 Add sent-event replay guard and audit trail.
+- [ ] T095 Add unified diagnostic view linking current status, last error, attempts and replay action.
 
-## Phase 8 — Ops, security and release evidence
+## Patch H — P1 WordPress/FluentCRM/WooCommerce
 
-- [ ] T120 Add webhook replay protection and body-size/rate-limit controls.
-- [ ] T121 Verify current Meta signature contract and add tests.
-- [ ] T122 Add PII-redaction rules to logs/traces.
-- [ ] T123 Add metrics for webhook failures, queue lag, sequence lag, CAPI failures, CRM sync failures.
-- [ ] T124 Add audit events for consent, replay, deal and audience mutations.
-- [ ] T125 Add load test at >=10x target monthly lead/message volume.
-- [ ] T126 Add fault-injection tests for Redis/worker/provider/CRM outages.
-- [ ] T127 Write backup/recovery/replay runbook.
-- [ ] T128 Write rolling-upgrade/migration runbook.
-- [ ] T129 Run lint/build/circular/unused checks and all new test suites.
-- [ ] T130 Run full E2E acceptance from CTWA → consent → sequence → deal → CAPI → WordPress sync.
-- [ ] T131 Run Spec Kit analyze/checklist gate and resolve all P0/P1 inconsistencies.
+- [ ] T100 Add ExternalObjectLink identity map.
+- [ ] T101 Define signed `crm.*` outbound event catalog.
+- [ ] T102 Implement HMAC/timestamp/idempotent inbound CRM event endpoint.
+- [ ] T103 Add field-ownership/conflict policy.
+- [ ] T104 Normalize `wa_id`/E.164/email mappings.
+- [ ] T105 Publish FluentCRM reference mapping.
+- [ ] T106 Publish WooCommerce order.created/paid/refunded/cancelled mappings.
+- [ ] T107 Add optional WordPress reference adapter/plugin skeleton outside core dependency.
+- [ ] T108 Add sync-loop and delayed-endpoint recovery tests.
+
+## Patch I — P1 native sales pipeline
+
+- [ ] T110 Add Pipeline and PipelineStage schemas/services.
+- [ ] T111 Add Deal and DealActivity schemas/services.
+- [ ] T112 Add owner/value/currency/expected-close/won-lost/source-attribution fields.
+- [ ] T113 Emit workspace-scoped deal events.
+- [ ] T114 Add flow/sequence stop/action hooks from deal stage/status.
+- [ ] T115 Map Won/Purchase outcomes into existing conversion-rule seams rather than a new CAPI system.
+- [ ] T116 Add bounded Kanban/list/inbox deal UI.
+- [ ] T117 Add tenancy/concurrency tests.
+
+## Patch J — P1 audience governance/reconciliation
+
+- [ ] T120 Reuse current `facebookCustomAudience` and retarget sync integration actions.
+- [ ] T121 Add independent `ads_audience` permission policy.
+- [ ] T122 Add durable desired/provider membership or equivalent reconciliation state.
+- [ ] T123 Extend bulk retarget sync from add-only behavior to add/remove reconciliation.
+- [ ] T124 Remove/exclude audience membership on permission revoke/segment exit.
+- [ ] T125 Add rate-limit/retry/reconciliation status and tests.
+- [ ] T126 Keep unhashed PII out of durable provider-match payload storage where not required.
+
+## Release / evidence
+
+- [ ] T130 Run repository lint/type/build/test checks.
+- [ ] T131 Run tenant-isolation tests for every new table/API/worker path.
+- [ ] T132 Run failure injection for Redis/worker/provider/WordPress outages.
+- [ ] T133 Load-test >=10,000 leads/month equivalent and >=40,000 scheduled nurture sends/month.
+- [ ] T134 E2E: CTWA → authenticated webhook → attribution → consent → sequence exact inbox → reply stop → deal won → existing CAPI → WordPress sync → audience reconciliation.
+- [ ] T135 Run Spec Kit analyze/checklist gate and resolve every P0/P1 contradiction before implementation-ready status.

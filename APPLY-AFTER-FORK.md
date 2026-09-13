@@ -1,9 +1,13 @@
-# Apply after the GitHub fork exists
+# Spec Kit branch status
 
-Target repository: `mad4bdigital-ai/ChatbotX`  
-Base: `3196f01dd2027279016fb180c48764e128669483`  
+Repository: `mad4bdigital-ai/ChatbotX`  
+Audited upstream/base SHA: `3196f01dd2027279016fb180c48764e128669483`  
 Branch: `001-whatsapp-growth-crm-gap-closure`
 
-The ChatGPT GitHub connector used for this task has read access to the upstream repository but exposes no Fork/Create-Repository mutation. Once the fork exists and is visible to the connector, create the branch from the exact base SHA and add the files in this bundle.
+The fork and feature branch now exist. This file is retained as a branch status note; the previous “apply after fork” instruction is no longer applicable.
 
-Do not place required Community Edition implementation under `apps/builder/src/enterprise`.
+Current governance:
+- Spec Kit artifacts live on this branch only until implementation begins.
+- `main` remains unchanged by the Spec Kit commits.
+- Required Community Edition work must not depend on `apps/builder/src/enterprise`.
+- Brownfield audit findings override initial assumptions where the code proves native capability already exists.

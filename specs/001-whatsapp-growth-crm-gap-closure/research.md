@@ -1,42 +1,53 @@
-# Research & Brownfield Delta
+# Research v2 — Brownfield Decisions
 
-## Exact baseline
+Base audited: `3196f01dd2027279016fb180c48764e128669483`.
 
-Repository: `ChatbotXIO/ChatbotX`  
-SHA: `3196f01dd2027279016fb180c48764e128669483`
+## Decision 1 — sequence work is hardening, not a new engine
 
-## Verified existing capabilities
+Existing system already persists enrollments/dispatches, calculates delayed next runs, schedules via Redis, locks dispatches, retries BullMQ jobs, cancels pending dispatches and supports send-day/time windows. The feature must reuse these primitives.
 
-1. `README.md` documents Visual Flow Builder, live inbox, Contact CRM, broadcasting, sequences, webhooks/HTTP and WhatsApp.
-2. `docs/ads-conversion-tracking.md`, `packages/business/src/ads-conversion/*` and worker handlers already implement CTWA/CAPI concepts, including an attribution gate around `ctwaClid`.
-3. `packages/database/src/schema/contact.ts` contains `subscribedAt` and `broadcastSubscribedAt`; this is useful current state but does not by itself preserve channel/purpose/source/text-version consent evidence.
-4. `packages/flow-config/src/steps/unsubscribe-sequence.ts` and `unsubscribe-broadcast.ts` prove sequence/broadcast unsubscribe actions already exist.
-5. WhatsApp Flow, option list and template steps already exist in `packages/flow-config` and `integrations/whatsapp`.
-6. The repository is MIT for Community Edition code except the explicitly commercial `apps/builder/src/enterprise` directory.
+True deltas:
+- exact ContactInbox routing per dispatch;
+- automatic stop-on-reply/terminal conditions;
+- execution-time policy checks;
+- explicit completed-sequence re-entry policy/history;
+- timezone/DST-safe windows;
+- one canonical next-run calculation across enrollment paths.
 
-## Key design decisions
+## Decision 2 — extend native send policy
 
-### D1 — Extend, do not replace, current subscription fields
-Keep `broadcastSubscribedAt` for compatibility and fast legacy filters. Introduce channel/purpose consent models and gradually make policy decisions rely on them. Migration may seed an “unknown legacy basis” record only where explicitly safe; otherwise fail closed for marketing until consent is collected.
+Broadcasts already enforce channel/message-window constraints in backend execution/preview logic. WhatsApp templates already expose MARKETING/UTILITY/AUTHENTICATION categories. Messaging consent must extend this policy seam rather than become a separate parallel sender.
 
-### D2 — Preserve raw CTWA evidence separately from enrichment
-The WhatsApp webhook/referral payload is evidence. Marketing API enrichment is derived data. Store them separately so API lookup outages or changed names never alter historical provenance.
+## Decision 3 — consent evidence is a real new domain
 
-### D3 — Keep sequence scheduler durable and event-driven
-Do not implement long sleeps. Use persisted next-action times + existing queue/scheduler infrastructure. Before each send, evaluate current policy and terminal-state conditions.
+`broadcastSubscribedAt` is an efficient current subscription timestamp, but it cannot prove channel/purpose/source/text-version/evidence. Keep it for compatibility during migration while new policy uses a purpose-specific consent record/event history.
 
-### D4 — WordPress is an external CRM/commerce adapter, not a hard dependency
-Use signed webhooks/API contracts. FluentCRM and WooCommerce are reference adapters. This preserves the upstream product’s framework independence.
+## Decision 4 — attribution history complements ContactInbox.referral
 
-### D5 — Minimal native sales pipeline
-A thin pipeline/deal layer closes the largest Kommo-like gap while avoiding ERP complexity. Activities beyond messaging/tasks can remain external integrations.
+`ContactInbox.referral` already stores ctwaClid, ad/source fields and raw JSON. Its update path merges later referrals into the same JSONB object. Therefore it remains the latest/current view, while a new append-only touch history preserves multi-touch provenance.
 
-### D6 — Audience permission is distinct
-WhatsApp opt-in does not imply consent/eligibility for Meta Custom Audiences. Model `ads_audience` separately and allow workspaces to disable the capability entirely.
+## Decision 5 — preserve both Meta conversion pipelines
 
-## Risks
+The AdsConversionEvent pipeline already has attribution gates, deterministic source-event dedupe, pending/sent/failed/skipped states, retryable error propagation and stranded-pending recovery. `sendMetaCapiEvent` is intentionally independent and supports other event semantics such as QualifiedLead/Purchase.
 
-- Meta API fields and CAPI requirements can change; provider-version behavior must be isolated behind integration adapters.
-- Existing sequence internals may already cover portions of stop/re-entry semantics; implementation must reuse them rather than fork scheduler behavior.
-- Consent migration from generic flags is legally/contextually ambiguous; default to no fabricated evidence.
-- Sales pipeline feature can expand scope quickly; keep v1 limited to pipeline/stage/deal/activity and event hooks.
+Do not merge or replace them. Add only missing operator recovery/attempt evidence and links to new sales outcomes/attribution history.
+
+## Decision 6 — Meta audience provider integration already exists
+
+The codebase already supports per-contact Facebook Custom Audience actions and a bulk CTWA retarget audience worker using hashed PII. Bulk retarget currently uses add batches; durable membership reconciliation and permission governance were not found. Extend the native adapter.
+
+## Decision 7 — webhook HMAC is a P0 security closure
+
+The manual webhook route checks for `x-hub-signature-256`, but the WhatsApp handler constructs `whatsapp-api-js` middleware with `secure: false`. Library semantics define that mode as skipping signature verification. The configured client/app secret is not used in the shown middleware construction. Presence of a signature-shaped header is not authentication.
+
+## Decision 8 — WordPress and sales pipeline are genuine product gaps
+
+No first-class WordPress/FluentCRM/WooCommerce integration and no native CRM Deal/Pipeline schema were found in the audited tree. These remain P1 additions.
+
+## Decision 9 — sequence per-inbox routing is a P0 correctness issue
+
+Enrollment/advance creates one dispatch for each ContactInbox. `sendSequenceFlow` carries a ContactInbox id but calls `sendFlowDirect` without it; `sendFlowDirect` enumerates all ContactInboxes and runs the flow on each. Flow execution keys support asynchronous continuation identity, but no top-level claim was found that converts this fan-out into one targeted inbox execution. Characterization must land first, then the executor should consume the dispatch inbox explicitly.
+
+## Decision 10 — fail closed at race boundaries
+
+For security, consent, reply-stop and terminal-state races, under-delivery is preferable to a prohibited/duplicate send. Execution-time checks are required even when enrollment or audience selection passed an earlier check.

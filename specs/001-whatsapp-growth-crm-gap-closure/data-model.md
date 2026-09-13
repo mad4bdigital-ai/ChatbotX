@@ -1,7 +1,8 @@
-# Data Model
+# Data Model v2
+
+Only new durable entities that close proven gaps are proposed. Existing sequence/CAPI/audience tables remain authoritative for their current responsibilities.
 
 ## MessagingConsent
-
 Current materialized authorization state.
 
 - id
@@ -10,93 +11,73 @@ Current materialized authorization state.
 - channel (`whatsapp`, extensible)
 - purpose (`marketing`, `service`, `ads_audience`)
 - status (`granted`, `revoked`, `unknown`)
-- capturedAt
-- revokedAt
-- source (`ctwa_flow`, `agent`, `api`, `import`, `keyword`, `web_form`, etc.)
+- capturedAt / revokedAt
+- source
 - consentTextVersion
 - actorType / actorId
 - evidence JSONB
 - externalReference
 - createdAt / updatedAt
 
-Unique: `(workspaceId, contactId, channel, purpose)`
+Unique: `(workspaceId, contactId, channel, purpose)`.
 
 ## MessagingConsentEvent
-
-Append-only consent history.
+Append-only history for every state transition/import/correction.
 
 - id, workspaceId, contactId, consentId
-- action (`grant`, `revoke`, `import`, `correct`)
+- action
 - occurredAt
-- source, textVersion, actorType/actorId
-- evidence JSONB
+- source / consentTextVersion
+- actorType / actorId
 - previousStatus / nextStatus
+- evidence JSONB
 
 ## AttributionTouch
+Append-only multi-touch evidence; complements, never replaces, `ContactInbox.referral`.
 
-- id, workspaceId, contactId, contactInboxId/conversationId
+- id, workspaceId, contactId
+- contactInboxId / conversationId
 - channel
-- touchType (`ctwa`, `messenger_ad`, `instagram_ad`, `organic`, `external`)
 - occurredAt
+- touchType
+- providerMessageId or providerEventId where available
 - ctwaClid
 - rawReferral JSONB
-- sourceId/sourceType/sourceUrl
-- headline/body/media metadata
+- sourceId/sourceType/sourceUrl/headline/body/media metadata
 - adId/adName
 - adSetId/adSetName
 - campaignId/campaignName
-- enrichmentSource / enrichmentVersion / enrichedAt
-- enrichmentStatus/errorCode
+- enrichmentSource/enrichmentVersion/enrichedAt/enrichmentStatus
 
-Immutable evidence fields; enrichment fields can be appended/versioned.
-
-## SequenceEnrollment extension
-
-Required logical fields if not already present:
-
-- status
-- nextActionAt
-- lastExecutedStepId
-- entryCount
-- entryPolicy / cooldownUntil
-- stoppedAt / stopReason
-- pauseReason
-- terminalEventId
-- timezoneSnapshot
+Uniqueness/idempotency should use provider identity + workspace/inbox where available, with a deterministic fallback fingerprint for referral payloads lacking a provider event id.
 
 ## Pipeline
-
 - id, workspaceId, name, isDefault, archivedAt
 
 ## PipelineStage
-
-- id, workspaceId, pipelineId, name, position, terminalKind (`none`, `won`, `lost`)
+- id, workspaceId, pipelineId, name, position
+- terminalKind: `none | won | lost`
 
 ## Deal
-
 - id, workspaceId, contactId, pipelineId, stageId
 - ownerUserId
 - title
-- status (`open`, `won`, `lost`)
+- status: `open | won | lost`
 - amount / currency
 - expectedCloseAt
-- sourceAttributionTouchId
+- sourceAttributionTouchId nullable
 - wonAt / lostAt / lostReason
 - externalSystem / externalId / sourceVersion
 - createdAt / updatedAt
 
 ## DealActivity
-
 - id, workspaceId, dealId
-- type (`stage_change`, `owner_change`, `note`, `message_link`, `sync`, `conversion`)
+- type (`stage_change`, `owner_change`, `note`, `sync`, `conversion`)
 - payload JSONB
 - actorType / actorId
 - createdAt
 
 ## ExternalObjectLink
-
-Generic CRM sync identity map.
-
 - id, workspaceId
 - objectType (`contact`, `deal`, `order`)
 - localId
@@ -105,24 +86,41 @@ Generic CRM sync identity map.
 - lastSourceVersion
 - lastSyncAt
 
-Unique: `(workspaceId, externalSystem, objectType, externalId)`
+Unique: `(workspaceId, externalSystem, objectType, externalId)`.
 
-## ConversionDeliveryAttempt
+## ConversionDeliveryAttempt — optional extension
+Add only if current ErrorLog/status cannot provide the acceptance-required operator history.
 
-- id, workspaceId, conversionEventId
-- provider
+- id, workspaceId
+- pipelineType (`ads_conversion_event`, `meta_capi_event`)
+- localEventId
 - attemptNumber
+- provider
+- status
 - requestFingerprint
-- status (`accepted`, `retryable_failed`, `permanent_failed`, `skipped`, `replayed`)
-- providerCode / providerMessageRedacted
-- attemptedAt
-- nextRetryAt
-- responseMetadata JSONB (PII-safe)
+- providerCode / redactedProviderMessage
+- attemptedAt / nextRetryAt
+- replayedBy / replayedAt
 
-## AudienceSync / AudienceMembership
+This table MUST NOT become a third conversion-event source of truth.
 
-AudienceSync:
-- id, workspaceId, provider, externalAudienceId, segmentDefinition, enabled
+## AudienceMembership — reconciliation state
+Reuse existing provider adapter and audience identifiers.
 
-AudienceMembership:
-- workspaceId, audienceSyncId, contactId, desiredState, providerState, lastAttemptAt, lastErrorCode
+- workspaceId
+- provider
+- externalAudienceId
+- contactId
+- desiredState (`present`, `absent`)
+- providerState (`unknown`, `present`, `absent`, `error`)
+- permissionSnapshot/status reference
+- lastAttemptAt / lastSuccessAt / lastErrorCode
+
+Do not persist unnecessary unhashed provider match payloads.
+
+## Existing sequence model policy
+Do NOT replace `ContactsOnSequence` / `SequenceDispatch`. Add fields only if characterization shows existing fields cannot represent:
+- stop reason / stoppedAt;
+- re-entry generation/history pointer;
+- timezone snapshot or schedule-resolution status.
+Prefer separate enrollment-history/event rows over widening the hot scheduler table if that keeps current scheduler paths simpler.

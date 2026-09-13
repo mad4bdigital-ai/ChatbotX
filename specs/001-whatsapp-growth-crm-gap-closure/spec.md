@@ -1,195 +1,138 @@
-# Feature Specification: WhatsApp Growth CRM Gap Closure
+# Feature Specification v2: WhatsApp Growth CRM Brownfield Closure
 
-## Problem Statement
+## Objective
 
-ChatbotX already contains the core building blocks for WhatsApp automation, sequences, CTWA attribution and Meta conversion delivery. The remaining gap for a production WhatsApp-first sales/marketing system is not basic messaging; it is compliant consent evidence, durable lifecycle control, closed-loop attribution/feedback, CRM synchronization, and sales-state governance.
+Close only the gaps proven against base `3196f01dd2027279016fb180c48764e128669483`, while reusing ChatbotX's existing broadcast, sequence, CTWA, CAPI and Meta Audience systems.
 
-## Goals
+## P0 User Stories
 
-- Make WhatsApp marketing consent explicit, auditable, revocable, and enforced centrally.
-- Support safe 14/30/60+ day nurture programs that stop or pause on real customer state changes.
-- Preserve CTWA referral evidence and enrich it without corrupting provenance.
-- Send QualifiedLead/Won/Purchase outcomes back to Meta with traceable delivery semantics.
-- Integrate WordPress/FluentCRM/WooCommerce without making WordPress a hard runtime dependency.
-- Add a minimal first-class sales pipeline/deal model or expose a stable contract for an external CRM owner.
-- Keep all P0/P1 functionality in the Community Edition path and outside enterprise-only directories.
+### US-P0-1 — Authenticated WhatsApp webhooks
+As an operator, I need webhook POSTs to be cryptographically authenticated before any parse/enqueue side effect.
 
-## Non-Goals
+Acceptance:
+- valid Meta HMAC over exact raw body is accepted;
+- missing/malformed/incorrect signature is rejected with zero queue/database side effects;
+- body size is bounded before full diagnostic parsing;
+- genuine duplicate Meta deliveries remain idempotent downstream.
 
-- No unofficial WhatsApp Web/QR automation.
-- No replacement of Meta template approval or billing logic.
-- No requirement that WordPress be installed for ChatbotX to function.
-- No migration of existing enterprise code into Community Edition.
-- No claim that WhatsApp marketing consent equals Meta Ads custom-audience consent; those are separate purposes.
+### US-P0-2 — One sequence dispatch targets one ContactInbox
+As a marketer, I need a sequence step to execute only for the ContactInbox represented by its dispatch.
 
-## User Stories
+Acceptance:
+- contact with two inboxes produces at most one flow execution for each intended dispatch/inbox pair;
+- sequence execution does not call the same flow over all inboxes from each dispatch;
+- retry of the same dispatch does not duplicate message-producing work;
+- workspace/contact/conversation ownership is validated before execution.
 
-### US1 — Auditable WhatsApp marketing consent (P0)
-As a marketing operator, I need to know whether a contact is authorized for WhatsApp marketing, when/how they consented, which wording they accepted, and when they revoked consent, so that campaigns and sequences can fail closed.
+### US-P0-3 — Stop sequence on reply/opt-out/terminal state
+As a sales team, I need pending nurture messages to stop once the customer replies, opts out or reaches a configured terminal state.
 
-**Acceptance:**
-- Consent can be granted/revoked via flow action, API, agent UI, and inbound keyword/structured response.
-- Current status and immutable history are visible.
-- Marketing sends are blocked when no active consent exists.
-- Revocation immediately prevents not-yet-sent queued marketing steps.
+Acceptance:
+- genuine inbound reply invokes sequence policy after durable message persistence;
+- existing DB-first cancellation primitives are reused;
+- queued/running work re-checks terminal state before message execution;
+- race preference is fail-closed/under-delivery after reply or opt-out.
 
-### US2 — Durable long-running sequence lifecycle (P0)
-As a marketer, I need 14/30/60-day nurture sequences that survive deploys and stop when a contact replies, opts out, becomes blocked, converts, or is manually removed.
+### US-P0-4 — Auditable WhatsApp marketing consent
+As a compliance-aware marketer, I need authorization evidence beyond `broadcastSubscribedAt`.
 
-**Acceptance:**
-- Enrollments survive worker restarts.
-- Stop-on-reply is atomic with pending schedule cancellation/suppression.
-- Quiet hours/timezone rules are honored.
-- Every send re-checks consent, template eligibility, block state, and terminal CRM state.
-- Re-entry is controlled by configurable cooldown/max-entry rules.
+Acceptance:
+- current consent state is keyed by workspace/contact/channel/purpose;
+- immutable events retain grant/revoke time, source, text version, actor and evidence;
+- MARKETING template sends require active WhatsApp marketing consent;
+- UTILITY/service policy is evaluated separately;
+- revocation prevents not-yet-sent marketing work;
+- legacy subscription timestamp is not converted into fabricated evidence.
 
-### US3 — Trustworthy CTWA attribution (P0)
-As a performance marketer, I need each eligible WhatsApp lead tied to original CTWA evidence without inventing unavailable identifiers, so downstream conversion reporting is trustworthy.
+### US-P0-5 — Correct sequence time semantics
+As a marketer, I need sequence windows to respect local timezone/DST and never silently send outside the configured window.
 
-**Acceptance:**
-- Raw referral payload is stored immutably with normalized fields.
-- `ctwa_clid` is preserved where supplied.
-- Optional ad/campaign/ad-set enrichment is recorded separately with lookup timestamp/source/version.
-- Enrichment failures remain observable and do not erase original evidence.
+Acceptance:
+- one canonical delay/specific-date/window calculator is used by every enrollment path;
+- IANA timezone is explicit/snapshotted;
+- DST transitions are tested;
+- no valid future slot becomes an explicit paused/failed condition, never fallback to the original disallowed time.
 
-### US4 — Closed-loop Meta conversion feedback (P0)
-As a media buyer, I need QualifiedLead/Won/Purchase outcomes delivered to Meta with deterministic deduplication and visible retry status.
+## P1 User Stories
 
-**Acceptance:**
-- Event IDs are deterministic for the same business event.
-- Delivery attempts are recorded.
-- Transient failures retry with bounded backoff.
-- Permanent failures are dead-lettered and replayable after correction.
-- Skips explain missing identity/attribution/permission prerequisites.
+### US-P1-1 — Immutable multi-touch CTWA attribution
+Keep `ContactInbox.referral` as current state but append an immutable touch when a new attributable referral arrives. Raw provider evidence and derived enrichment must be distinguishable.
 
-### US5 — WordPress / FluentCRM / WooCommerce sync (P1)
-As a site owner, I need WhatsApp leads and sales-state changes synchronized with WordPress while avoiding duplicate contacts and sync loops.
+### US-P1-2 — Recover failed Meta conversion deliveries
+Keep the two existing conversion systems independent. Add diagnostic attempt history where useful and privileged replay for eligible failed events without creating a third conversion pipeline or changing business event identity.
 
-**Acceptance:**
-- Signed outbound event contract and inbound upsert contract exist.
-- `phone_e164` / `wa_id` identity rules are defined.
-- Per-field ownership is configurable.
-- Idempotency and source-version metadata prevent loops.
-- WooCommerce order/paid/refund events can update deal/conversion state through the same contract.
+### US-P1-3 — WordPress CRM/commerce adapter
+Provide signed/idempotent event contracts for WordPress/FluentCRM/WooCommerce, identity mapping and field ownership rules. WordPress must remain optional.
 
-### US6 — Native sales pipeline and deals (P1)
-As a 3-agent sales team, I need leads to progress through a simple pipeline without moving to a separate CRM.
+### US-P1-4 — Minimal native sales pipeline
+Add Pipeline, Stage, Deal and DealActivity with contact/owner/value/source/won-lost fields. Stage/status events can stop sequences and feed existing Meta conversion rules.
 
-**Acceptance:**
-- Workspaces can create pipelines/stages.
-- Deal has owner, contact, stage, status, value/currency, source attribution, expected close date, won/lost timestamps and lost reason.
-- Stage changes can trigger flows/sequences/CAPI rules.
-- Inbox contact sidebar shows active deal summary.
-
-### US7 — Privacy-safe Meta retargeting audience sync (P2)
-As a marketer, I want eligible customer segments synchronized to Meta audiences, with independent consent/policy controls.
-
-**Acceptance:**
-- Audience sync is opt-in per workspace and per segment.
-- Marketing consent and ads-audience permission are modeled separately.
-- Removal is processed when permission is revoked or exclusion criteria apply.
-- Hashing/normalization occurs immediately before provider submission; unhashed export payloads are not persisted unnecessarily.
-
-### US8 — Operations, audit and recovery (P1)
-As an operator, I need to diagnose lost webhooks, stuck sequences, failed CAPI deliveries and sync drift without inspecting production DB rows manually.
-
-**Acceptance:**
-- Health/metrics expose queue lag, webhook failures, sequence lag, CAPI failures, and sync failures.
-- Audit events exist for consent changes, replay actions, manual deal changes, and audience changes.
-- Backup/recovery runbook defines Postgres/Redis/object-storage responsibilities and replay boundaries.
+### US-P1-5 — Audience governance and reconciliation
+Reuse existing Facebook Custom Audience actions/bulk retarget worker. Add separate `ads_audience` permission, durable desired/provider membership or equivalent reconciliation state, removals on revoke/exclusion and observable drift/failures.
 
 ## Functional Requirements
 
-### Consent
-- FR-001: Add a workspace-scoped `MessagingConsent` current-state model keyed by contact/channel/purpose.
-- FR-002: Add append-only `MessagingConsentEvent` history.
-- FR-003: Supported initial purposes: `marketing`, `service`, `ads_audience`.
-- FR-004: Supported channels include `whatsapp`, with schema extensible to other channels.
-- FR-005: Record status, capturedAt, revokedAt, source, textVersion, actorType/actorId, evidence JSON, external reference.
-- FR-006: Add flow steps `grantMessagingConsent` and `revokeMessagingConsent`.
-- FR-007: Add WhatsApp inbound opt-out keyword handling configurable by locale/workspace.
-- FR-008: Add a centralized `assertCanSendMarketingMessage` policy service.
-- FR-009: Broadcast and sequence marketing sends MUST call the policy service immediately before enqueue/send.
-- FR-010: Existing `broadcastSubscribedAt` remains supported as a compatibility signal but cannot be the sole authorization after migration.
+### Webhook security
+- FR-001 Verify WhatsApp `x-hub-signature-256` against exact raw request bytes using the configured Meta app/client secret before queue work.
+- FR-002 Do not run WhatsApp webhook middleware in a mode that disables signature verification for authenticated POSTs.
+- FR-003 Enforce bounded request size before untrusted body logging/parsing.
+- FR-004 Invalid signature/body must create no incomingMessage, automatic-event, coexist, or status jobs.
 
-### Sequence lifecycle
-- FR-011: Store durable enrollment state and next-action timestamp.
-- FR-012: Add enrollment statuses: active, paused, completed, stopped_reply, stopped_optout, stopped_conversion, stopped_manual, failed.
-- FR-013: Implement atomic stop-on-inbound-reply.
-- FR-014: Add configurable stop-on-deal-stage/status rules.
-- FR-015: Add configurable stop-on-goal event.
-- FR-016: Add re-entry policy: never, after_cooldown, always; plus max entries.
-- FR-017: Add workspace/contact timezone quiet-hour calculation.
-- FR-018: Re-evaluate consent/template/block state on every scheduled send.
-- FR-019: Idempotency key = enrollment + step + scheduled occurrence.
-- FR-020: Sequence runtime MUST support at least 90 days without keeping a process or transaction open.
+### Sequence correctness
+- FR-010 Sequence dispatch execution MUST consume its stored `contactInboxId` directly.
+- FR-011 `sendSequenceFlow` MUST NOT fan one dispatch across every ContactInbox for a contact.
+- FR-012 Add a multi-inbox characterization/regression suite.
+- FR-013 Inbound reply policy MUST use existing sequence cancellation service/primitives.
+- FR-014 Before message-producing sequence execution, re-check enrollment active state, reply/terminal policy, blocked state and applicable marketing policy.
+- FR-015 Preserve existing pending/running/completed/canceled/failed dispatch idempotency guards.
+- FR-016 Define re-entry semantics explicitly; normal completed enrollment currently cannot re-enroll because of the unique key.
+- FR-017 Unify `enrollFromFlow` and normal enrollment next-run calculation.
+- FR-018 Make allowed-day/time-window calculation timezone/DST aware and fail closed when no valid slot resolves.
+
+### Consent / send policy
+- FR-020 Add current MessagingConsent state plus append-only MessagingConsentEvent history.
+- FR-021 Initial purposes: `marketing`, `service`, `ads_audience`; initial channel: `whatsapp`.
+- FR-022 Record source, captured/revoked timestamp, text/version, actor and evidence.
+- FR-023 Extend the native broadcast/window/template policy seam instead of bypassing it.
+- FR-024 MARKETING WhatsApp template/broadcast/sequence/direct automation sends require an active marketing authorization decision.
+- FR-025 Existing `broadcastSubscribedAt` stays as a compatibility/materialized signal during migration but not as fabricated consent evidence.
 
 ### Attribution
-- FR-021: Persist raw CTWA/referral payload before normalization.
-- FR-022: Normalize `ctwa_clid`, source type/id/url, headline/body/media metadata when present.
-- FR-023: Represent attribution as immutable touches rather than overwriting a single “last source” field.
-- FR-024: Add optional Marketing API enrichment with explicit source/version/retrievedAt.
-- FR-025: Store campaign/ad-set/ad IDs and names only when returned by a trusted lookup/mapping.
-- FR-026: Expose first-touch, last-touch, and conversion-bound attribution views.
+- FR-030 Keep `ContactInbox.referral` as current/latest compatibility view.
+- FR-031 Append immutable AttributionTouch rows for distinct attributable touches before/alongside current referral merge.
+- FR-032 Keep raw provider evidence immutable; enrichment fields are derived/versioned.
+- FR-033 Expose first/last/conversion touch query semantics.
 
-### Meta conversion delivery
-- FR-027: Extend current conversion event model with deterministic business-event key.
-- FR-028: Store provider request fingerprint, response code/classification, attempt count, first/last attempt timestamps.
-- FR-029: Add retry classification and bounded exponential backoff.
-- FR-030: Add dead-letter state and privileged replay endpoint/UI.
-- FR-031: Replay MUST retain the original business event ID while creating a new delivery attempt.
-- FR-032: Expose conversion delivery status through public/admin API.
+### CAPI recovery
+- FR-040 Preserve AdsConversionEvent and `sendMetaCapiEvent` as separate systems.
+- FR-041 Reuse existing retryable/terminal classification and deterministic IDs.
+- FR-042 Add operator-visible attempt/recovery history only where current status/error log is insufficient.
+- FR-043 Add privileged replay for eligible failed events preserving original source/business identity.
+- FR-044 Never replay `sent` events as a new business conversion without a distinct new business event.
 
-### WordPress/CRM sync
-- FR-033: Add signed outbound webhook topic family `crm.*`.
-- FR-034: Provide HMAC SHA-256 signatures with timestamp and replay window.
-- FR-035: Provide inbound idempotent contact/deal/event upsert API.
-- FR-036: Support `externalSystem`, `externalId`, `sourceVersion`, `idempotencyKey`.
-- FR-037: Define conflict strategy per mapped field: chatbotx_owner, external_owner, newest_version, manual_only.
-- FR-038: Provide reference adapter documentation for WordPress + FluentCRM.
-- FR-039: Provide WooCommerce reference event mappings: order.created, order.paid, order.refunded, order.cancelled.
-- FR-040: Never require a WordPress credential in the frontend bundle.
+### WordPress / CRM
+- FR-050 Signed timestamped outbound `crm.*` events.
+- FR-051 Idempotent signed inbound contact/deal/order event API.
+- FR-052 Stable external-object identity map and configurable field ownership.
+- FR-053 Reference adapters/documentation for FluentCRM and WooCommerce.
 
 ### Sales pipeline
-- FR-041: Add Pipeline, PipelineStage, Deal, DealActivity entities.
-- FR-042: Deal MUST be workspace-scoped and contact-linked.
-- FR-043: Deal stage/status changes emit event-bus events.
-- FR-044: Deal changes are usable as flow triggers and sequence stop conditions.
-- FR-045: Deal source can reference an AttributionTouch.
-- FR-046: Won/Lost changes can trigger existing Meta conversion rules.
-- FR-047: Add Kanban/list views and owner filters.
-- FR-048: Add inbox/contact sidebar deal summary.
+- FR-060 Add workspace-scoped Pipeline, PipelineStage, Deal and DealActivity.
+- FR-061 Deal links contact, owner, stage/status, value/currency and optional AttributionTouch.
+- FR-062 Deal stage/status events are consumable by flow/sequence policy and existing conversion rule layer.
+- FR-063 Add bounded Kanban/list/inbox summary; no ERP/project-accounting scope.
 
-### Audience sync
-- FR-049: Add provider-neutral AudienceSync definition.
-- FR-050: Add Meta Custom Audience adapter behind explicit workspace feature flag.
-- FR-051: Require `ads_audience` permission independent of WhatsApp marketing permission.
-- FR-052: Add incremental add/remove jobs with provider rate-limit handling.
-- FR-053: Store provider membership outcome, not raw unhashed matching payloads.
-
-### Ops/security
-- FR-054: Verify Meta webhook signatures according to current provider contract.
-- FR-055: Add replay protection/idempotency for inbound webhooks.
-- FR-056: Add bounded payload/body size and rate limiting to external endpoints.
-- FR-057: Emit structured metrics for webhook, sequence, CAPI and CRM sync paths.
-- FR-058: PII-sensitive fields MUST be redacted from default logs.
-- FR-059: Admin replay/mutation actions MUST be audited.
-- FR-060: All new queries and unique constraints MUST include workspace scope where applicable.
+### Audience governance
+- FR-070 Reuse native Facebook Ads audience actions and bulk sync.
+- FR-071 Add independent `ads_audience` permission/policy.
+- FR-072 Add remove/reconcile behavior for bulk retarget audience membership.
+- FR-073 Add observable membership/sync state and retry/error diagnostics without persisting unnecessary unhashed match payloads.
 
 ## Non-Functional Requirements
 
-- NFR-001: 1,000 CTWA leads/month and 4 nurture messages/lead MUST run comfortably on a single production worker tier with headroom of at least 10x message volume in load tests.
-- NFR-002: Webhook acknowledgement path p95 < 500ms excluding provider/network latency; heavy work moves to queues.
-- NFR-003: Duplicate provider webhook delivery MUST not create duplicate contacts, consent events, sequence sends, deals, or conversion events.
-- NFR-004: A worker restart at any point MUST not lose scheduled sequence work.
-- NFR-005: No cross-workspace data may be returned or mutated in automated tenancy tests.
-- NFR-006: Database migrations MUST support rolling deployment compatibility for at least one application version window.
-- NFR-007: Security-sensitive and policy gates require unit + integration + E2E tests.
-
-## Success Metrics
-
-- 100% of marketing sends have an explainable consent decision.
-- 0 duplicate WhatsApp nurture sends in retry/failure test suite.
-- 100% CTWA conversion events can be traced from deal/outcome → attribution evidence → CAPI delivery ledger.
-- <1% unexplained sync failures in soak tests; all failures visible and replayable.
-- No unofficial WhatsApp transport used by the official growth profile.
+- NFR-001 Zero cross-workspace access in new paths.
+- NFR-002 Duplicate webhooks/jobs must not duplicate durable business effects.
+- NFR-003 Sequence restart/retry must preserve exact intended inbox routing.
+- NFR-004 PII/tokens/raw provider secrets remain redacted from default logs.
+- NFR-005 P0 changes require characterization + regression + failure-path tests.
+- NFR-006 Target workload: >=10x the intended 1,000 CTWA leads/month and 4 nurture sends/lead without architecture change.
