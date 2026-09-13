@@ -1,7 +1,11 @@
 import { contactSequenceService } from "@chatbotx.io/business/contact-sequence"
 import { sequenceConnections } from "@chatbotx.io/redis"
 import { SchedulerClient } from "@chatbotx.io/scheduler"
-import { advanceEnrollment } from "@chatbotx.io/sequence-scheduler"
+import {
+  advanceEnrollment,
+  failEnrollmentStep,
+  isEnrollmentStepRunnable,
+} from "@chatbotx.io/sequence-scheduler"
 import type { IntegrationJobSendSequenceFlow } from "@chatbotx.io/worker-config"
 import type { Job } from "bullmq"
 import { isFinalAttempt } from "../../lib/job-attempts"
@@ -84,6 +88,26 @@ async function runSendSequenceFlow(
     return
   }
 
+  // Re-check the enrollment at execution time, after the dispatch has been
+  // claimed `running` but before fetching/executing the flow. This makes
+  // queued jobs fail closed after an unsubscribe, terminal sibling failure,
+  // or generation advance instead of sending stale sequence messages.
+  const runnable = await isEnrollmentStepRunnable({
+    workspaceId,
+    enrollmentId: data.enrollmentId,
+    stepId,
+  })
+  if (!runnable) {
+    await markDispatchCanceled(
+      dispatchId,
+      workspaceId,
+      "enrollment_not_runnable",
+    )
+    const scheduler = await getSchedulerClient()
+    await scheduler.removeFromSchedule(bucket, dispatchId)
+    return
+  }
+
   const step = await stepExecutor.fetchStep(stepId)
   const validation = stepExecutor.validateStep(step)
   const scheduler = await getSchedulerClient()
@@ -145,7 +169,7 @@ async function safeTerminalCleanup(
   err: unknown,
   job: Job,
 ): Promise<void> {
-  const { dispatchId, workspaceId, bucket } = data
+  const { dispatchId, workspaceId, bucket, stepId, enrollmentId } = data
   const message = err instanceof Error ? err.message : "Unknown error"
 
   try {
@@ -154,6 +178,30 @@ async function safeTerminalCleanup(
     logger.error(
       { error, dispatchId, jobId: job.id },
       "markDispatchFailed failed in terminal cleanup",
+    )
+  }
+
+  try {
+    const failure = await failEnrollmentStep({
+      workspaceId,
+      enrollmentId,
+      stepId,
+      errorMessage: message,
+    })
+    logger.warn(
+      {
+        dispatchId,
+        enrollmentId,
+        jobId: job.id,
+        enrollmentFailed: failure.failed,
+        canceledSiblingDispatches: failure.canceledDispatches,
+      },
+      "sequence enrollment terminal failure cleanup finished",
+    )
+  } catch (error) {
+    logger.error(
+      { error, dispatchId, enrollmentId, jobId: job.id },
+      "failEnrollmentStep failed in terminal cleanup",
     )
   }
 
