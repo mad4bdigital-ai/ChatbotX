@@ -405,6 +405,89 @@ class ContactSequenceService extends BaseService {
     })
   }
 
+  async stopOnReply(params: {
+  workspaceId: string
+  contactId: string
+}): Promise<{ stoppedEnrollments: number; canceledDispatches: number }> {
+  const { workspaceId, contactId } = params
+  const result = await db.transaction(async (tx) => {
+    const enrollments = await tx.query.contactsOnSequenceModel.findMany({
+      where: {
+        workspaceId,
+        contactId,
+        status: "active",
+      },
+      columns: {
+        id: true,
+      },
+      with: {
+        sequence: {
+          columns: {
+            stopOnReply: true,
+          },
+        },
+      },
+    })
+
+    const dispatchesToRemove: DispatchToRemove[] = []
+    let stoppedEnrollments = 0
+
+    for (const enrollment of enrollments) {
+      if (!enrollment.sequence.stopOnReply) {
+        continue
+      }
+
+      const claimed = await tx
+        .update(contactsOnSequenceModel)
+        .set({
+          status: "stopped_on_reply",
+          nextStepId: null,
+          nextRunAt: null,
+          updatedAt: new Date(),
+        })
+        .where(
+          and(
+            eq(contactsOnSequenceModel.id, enrollment.id),
+            eq(contactsOnSequenceModel.workspaceId, workspaceId),
+            eq(contactsOnSequenceModel.status, "active"),
+          ),
+        )
+        .returning({ id: contactsOnSequenceModel.id })
+
+      if (claimed.length === 0) {
+        continue
+      }
+
+      stoppedEnrollments += 1
+      dispatchesToRemove.push(
+        ...(await cancelPendingDispatches({
+          client: tx,
+          enrollmentId: enrollment.id,
+          workspaceId,
+          reason: "reply_received",
+          removeFromSchedule: false,
+        })),
+      )
+    }
+
+    return { stoppedEnrollments, dispatchesToRemove }
+  })
+
+  try {
+    await removeDispatchesFromSchedule(result.dispatchesToRemove)
+  } catch (err) {
+    logger.warn(
+      { err, dispatchCount: result.dispatchesToRemove.length },
+      "Failed to remove reply-stopped dispatches from schedule after DB commit",
+    )
+  }
+
+  return {
+    stoppedEnrollments: result.stoppedEnrollments,
+    canceledDispatches: result.dispatchesToRemove.length,
+  }
+}
+
   async updateContactSequences(params: UpdateContactSequencesParams) {
     const { workspaceId, contactId, sequenceIds } = params
     const result = await db.transaction(async (tx) => {
