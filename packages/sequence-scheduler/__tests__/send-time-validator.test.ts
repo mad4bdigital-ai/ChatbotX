@@ -27,7 +27,6 @@ describe("calculateNextValidSendTime", () => {
     const { calculateNextValidSendTime } = await import(
       "../src/send-time-validator"
     )
-    // Monday Jan 1 2024 at 10:00
     const baseTime = new Date(2024, 0, 1, 10, 0, 0, 0)
 
     const result = calculateNextValidSendTime(baseTime, {
@@ -37,7 +36,6 @@ describe("calculateNextValidSendTime", () => {
       sendTimeEnd: null,
     })
 
-    // Should land on Tuesday Jan 2 at 00:00
     const expected = new Date(2024, 0, 2, 0, 0, 0, 0)
     expect(result).toEqual(expected)
   })
@@ -46,7 +44,6 @@ describe("calculateNextValidSendTime", () => {
     const { calculateNextValidSendTime } = await import(
       "../src/send-time-validator"
     )
-    // Monday Jan 1 at 07:00 — before 09:00 window
     const baseTime = new Date(2024, 0, 1, 7, 0, 0, 0)
 
     const result = calculateNextValidSendTime(baseTime, {
@@ -56,7 +53,6 @@ describe("calculateNextValidSendTime", () => {
       sendTimeEnd: "17:00",
     })
 
-    // Same day, snapped to 09:00:00.000
     const expected = new Date(2024, 0, 1, 9, 0, 0, 0)
     expect(result).toEqual(expected)
   })
@@ -65,8 +61,6 @@ describe("calculateNextValidSendTime", () => {
     const { calculateNextValidSendTime } = await import(
       "../src/send-time-validator"
     )
-    // Monday at exactly 17:00 — boundary triggers >= endTimeInMin → rolls to next day.
-    // Next day (Tuesday) midnight is BEFORE window start (09:00) → snaps to 09:00.
     const baseTime = new Date(2024, 0, 1, 17, 0, 0, 0)
 
     const result = calculateNextValidSendTime(baseTime, {
@@ -76,7 +70,6 @@ describe("calculateNextValidSendTime", () => {
       sendTimeEnd: "17:00",
     })
 
-    // Lands on Tuesday Jan 2 at window start 09:00
     const expected = new Date(2024, 0, 2, 9, 0, 0, 0)
     expect(result).toEqual(expected)
   })
@@ -85,7 +78,6 @@ describe("calculateNextValidSendTime", () => {
     const { calculateNextValidSendTime } = await import(
       "../src/send-time-validator"
     )
-    // Monday at 20:00 — past window → rolls to Tuesday midnight → snaps to 09:00.
     const baseTime = new Date(2024, 0, 1, 20, 0, 0, 0)
 
     const result = calculateNextValidSendTime(baseTime, {
@@ -103,7 +95,6 @@ describe("calculateNextValidSendTime", () => {
     const { calculateNextValidSendTime } = await import(
       "../src/send-time-validator"
     )
-    // Monday at 12:00 — inside 09:00-17:00
     const baseTime = new Date(2024, 0, 1, 12, 30, 0, 0)
 
     const result = calculateNextValidSendTime(baseTime, {
@@ -132,30 +123,27 @@ describe("calculateNextValidSendTime", () => {
     expect(result).toEqual(baseTime)
   })
 
-  test("falls back to ALL_DAYS when sendDays is invalid JSON", async () => {
+  test("fails closed when sendDays is invalid JSON", async () => {
     const { calculateNextValidSendTime } = await import(
       "../src/send-time-validator"
     )
-    // Monday — present in ALL_DAYS fallback, no time window
     const baseTime = new Date(2024, 0, 1, 10, 0, 0, 0)
 
-    const result = calculateNextValidSendTime(baseTime, {
-      anytime: false,
-      sendDays: "not-valid-json",
-      sendTimeStart: null,
-      sendTimeEnd: null,
-    })
-
-    expect(result).toEqual(baseTime)
+    expect(() =>
+      calculateNextValidSendTime(baseTime, {
+        anytime: false,
+        sendDays: "not-valid-json",
+        sendTimeStart: null,
+        sendTimeEnd: null,
+      }),
+    ).toThrow("sendDays is not valid JSON")
   })
 
   test("allows all days when sendDays is null", async () => {
     const { calculateNextValidSendTime } = await import(
       "../src/send-time-validator"
     )
-    // Saturday — should be allowed since null → ALL_DAYS
-    const baseTime = new Date(2024, 0, 6, 14, 0, 0, 0) // Saturday Jan 6 2024
-    // getDay() for Jan 6 2024 = Saturday = 6 → DAY_NAMES[6] = "saturday"
+    const baseTime = new Date(2024, 0, 6, 14, 0, 0, 0)
 
     const result = calculateNextValidSendTime(baseTime, {
       anytime: false,
@@ -167,29 +155,90 @@ describe("calculateNextValidSendTime", () => {
     expect(result).toEqual(baseTime)
   })
 
-  test("returns original baseTime after MAX_ATTEMPTS when sendDays is empty array", async () => {
+  test("fails closed when sendDays is an empty array", async () => {
     const { calculateNextValidSendTime } = await import(
       "../src/send-time-validator"
     )
-    // Empty sendDays → no day is ever allowed → 14 attempts → returns baseTime
     const baseTime = new Date(2024, 0, 1, 10, 0, 0, 0)
 
-    const result = calculateNextValidSendTime(baseTime, {
-      anytime: false,
-      sendDays: "[]",
-      sendTimeStart: null,
-      sendTimeEnd: null,
-    })
+    expect(() =>
+      calculateNextValidSendTime(baseTime, {
+        anytime: false,
+        sendDays: "[]",
+        sendTimeStart: null,
+        sendTimeEnd: null,
+      }),
+    ).toThrow("sendDays must contain valid weekdays")
+  })
 
-    // MAX_ATTEMPTS exhausted → returns original baseTime reference
-    expect(result).toBe(baseTime)
+  test("fails closed when sendDays contains an unknown weekday", async () => {
+    const { calculateNextValidSendTime } = await import(
+      "../src/send-time-validator"
+    )
+    const baseTime = new Date(2024, 0, 1, 10, 0, 0, 0)
+
+    expect(() =>
+      calculateNextValidSendTime(baseTime, {
+        anytime: false,
+        sendDays: '["monday","funday"]',
+        sendTimeStart: null,
+        sendTimeEnd: null,
+      }),
+    ).toThrow("sendDays must contain valid weekdays")
+  })
+
+  test("fails closed when only one time boundary is configured", async () => {
+    const { calculateNextValidSendTime } = await import(
+      "../src/send-time-validator"
+    )
+    const baseTime = new Date(2024, 0, 1, 10, 0, 0, 0)
+
+    expect(() =>
+      calculateNextValidSendTime(baseTime, {
+        anytime: false,
+        sendDays: '["monday"]',
+        sendTimeStart: "09:00",
+        sendTimeEnd: null,
+      }),
+    ).toThrow("start and end times must be configured together")
+  })
+
+  test("fails closed when a time is not valid 24-hour HH:MM", async () => {
+    const { calculateNextValidSendTime } = await import(
+      "../src/send-time-validator"
+    )
+    const baseTime = new Date(2024, 0, 1, 10, 0, 0, 0)
+
+    expect(() =>
+      calculateNextValidSendTime(baseTime, {
+        anytime: false,
+        sendDays: '["monday"]',
+        sendTimeStart: "25:70",
+        sendTimeEnd: "26:00",
+      }),
+    ).toThrow("time must use 24-hour HH:MM format")
+  })
+
+  test("fails closed when start time is not before end time", async () => {
+    const { calculateNextValidSendTime } = await import(
+      "../src/send-time-validator"
+    )
+    const baseTime = new Date(2024, 0, 1, 10, 0, 0, 0)
+
+    expect(() =>
+      calculateNextValidSendTime(baseTime, {
+        anytime: false,
+        sendDays: '["monday"]',
+        sendTimeStart: "17:00",
+        sendTimeEnd: "09:00",
+      }),
+    ).toThrow("start time must be before end time")
   })
 
   test("skips multiple non-allowed days before landing on an allowed one", async () => {
     const { calculateNextValidSendTime } = await import(
       "../src/send-time-validator"
     )
-    // Monday Jan 1 — only friday is allowed
     const baseTime = new Date(2024, 0, 1, 10, 0, 0, 0)
 
     const result = calculateNextValidSendTime(baseTime, {
@@ -199,7 +248,6 @@ describe("calculateNextValidSendTime", () => {
       sendTimeEnd: null,
     })
 
-    // Friday Jan 5 2024 at 00:00
     const expected = new Date(2024, 0, 5, 0, 0, 0, 0)
     expect(result).toEqual(expected)
   })

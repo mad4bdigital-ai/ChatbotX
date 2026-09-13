@@ -408,9 +408,10 @@ export const webhookHandler = async (
   const { version = DEFAULT_API_VERSION } = props.config
   const middleware = new Middleware({
     token: "",
+    appSecret: props.config.clientSecret as string,
     webhookVerifyToken: props.config.verifyToken as string,
     v: version as string,
-    secure: false,
+    secure: true,
   })
 
   if (props.req.method === "GET") {

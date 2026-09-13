@@ -225,14 +225,12 @@ class ContactSequenceService extends BaseService {
     }
   }
   /**
-   * The flow-step `addContactTag`/`addContactSequence`-equivalent single-
-   * contact enrollment: unlike `enrollContacts` (bulk, no per-enrollment
-   * event), this emits `sequenceSubscribed` for the flow-step UI to react to,
-   * matching the worker's original hand-rolled `nextRunAt` calculation
-   * (`delayDays`/`delayMinutes` only — `delayUnit`/`specificDateTime` are
-   * NOT honored here, carried over verbatim from the pre-existing worker
-   * logic; unifying with `calculateNextRunAtFromStep`, which does honor
-   * them, is a separate follow-up).
+   * The flow-step `addContactSequence` single-contact enrollment: unlike
+   * `enrollContacts` (bulk, no per-enrollment event), this emits
+   * `sequenceSubscribed` for the flow-step UI to react to. Its initial run
+   * time must use the same canonical delay/specific-time semantics as the
+   * bulk and advance paths; hand-rolled day/minute arithmetic drifts whenever
+   * a step uses `delayUnit=specificTime`.
    */
   async enrollFromFlow(props: {
     workspaceId: string
@@ -254,15 +252,17 @@ class ContactSequenceService extends BaseService {
 
     const firstStep = await db.query.sequenceStepModel.findFirst({
       where: { sequenceId, order: 0, isActive: true },
-      columns: { id: true, delayDays: true, delayMinutes: true },
+      columns: {
+        id: true,
+        delayDays: true,
+        delayMinutes: true,
+        delayUnit: true,
+        specificDateTime: true,
+      },
     })
 
     const nextRunAt = firstStep
-      ? new Date(
-          now.getTime() +
-            firstStep.delayDays * 24 * 60 * 60 * 1000 +
-            firstStep.delayMinutes * 60 * 1000,
-        )
+      ? calculateNextRunAtFromStep(firstStep, now)
       : now
 
     await enrollContactInSequence({
@@ -404,6 +404,89 @@ class ContactSequenceService extends BaseService {
       contactInboxId: params.contactInboxId,
     })
   }
+
+  async stopOnReply(params: {
+  workspaceId: string
+  contactId: string
+}): Promise<{ stoppedEnrollments: number; canceledDispatches: number }> {
+  const { workspaceId, contactId } = params
+  const result = await db.transaction(async (tx) => {
+    const enrollments = await tx.query.contactsOnSequenceModel.findMany({
+      where: {
+        workspaceId,
+        contactId,
+        status: "active",
+      },
+      columns: {
+        id: true,
+      },
+      with: {
+        sequence: {
+          columns: {
+            stopOnReply: true,
+          },
+        },
+      },
+    })
+
+    const dispatchesToRemove: DispatchToRemove[] = []
+    let stoppedEnrollments = 0
+
+    for (const enrollment of enrollments) {
+      if (!enrollment.sequence.stopOnReply) {
+        continue
+      }
+
+      const claimed = await tx
+        .update(contactsOnSequenceModel)
+        .set({
+          status: "stopped_on_reply",
+          nextStepId: null,
+          nextRunAt: null,
+          updatedAt: new Date(),
+        })
+        .where(
+          and(
+            eq(contactsOnSequenceModel.id, enrollment.id),
+            eq(contactsOnSequenceModel.workspaceId, workspaceId),
+            eq(contactsOnSequenceModel.status, "active"),
+          ),
+        )
+        .returning({ id: contactsOnSequenceModel.id })
+
+      if (claimed.length === 0) {
+        continue
+      }
+
+      stoppedEnrollments += 1
+      dispatchesToRemove.push(
+        ...(await cancelPendingDispatches({
+          client: tx,
+          enrollmentId: enrollment.id,
+          workspaceId,
+          reason: "reply_received",
+          removeFromSchedule: false,
+        })),
+      )
+    }
+
+    return { stoppedEnrollments, dispatchesToRemove }
+  })
+
+  try {
+    await removeDispatchesFromSchedule(result.dispatchesToRemove)
+  } catch (err) {
+    logger.warn(
+      { err, dispatchCount: result.dispatchesToRemove.length },
+      "Failed to remove reply-stopped dispatches from schedule after DB commit",
+    )
+  }
+
+  return {
+    stoppedEnrollments: result.stoppedEnrollments,
+    canceledDispatches: result.dispatchesToRemove.length,
+  }
+}
 
   async updateContactSequences(params: UpdateContactSequencesParams) {
     const { workspaceId, contactId, sequenceIds } = params
