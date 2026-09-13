@@ -1,0 +1,147 @@
+name: CI repair
+
+on:
+  pull_request:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ci-repair-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  repair:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.head.ref == '001-whatsapp-growth-crm-gap-closure'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 2
+
+      - name: Verify exact parent
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD^)" = "be1fa7c880171699e3e3bb4027b20075d10938dc"
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6.1.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Repair sequence scheduler mocks
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("apps/worker/__tests__/sequence-flow.test.ts")
+          text = path.read_text()
+          old = 'const advanceEnrollmentSpy = vi.fn()\n\nvi.mock("@chatbotx.io/sequence-scheduler", () => ({\n  advanceEnrollment: (...args: unknown[]) => advanceEnrollmentSpy(...args),\n}))'
+          new = 'const advanceEnrollmentSpy = vi.fn()\nconst isEnrollmentStepRunnableSpy = vi.fn()\nconst failEnrollmentStepSpy = vi.fn()\n\nvi.mock("@chatbotx.io/sequence-scheduler", () => ({\n  advanceEnrollment: (...args: unknown[]) => advanceEnrollmentSpy(...args),\n  isEnrollmentStepRunnable: (...args: unknown[]) =>\n    isEnrollmentStepRunnableSpy(...args),\n  failEnrollmentStep: (...args: unknown[]) => failEnrollmentStepSpy(...args),\n}))'
+          if old not in text:
+              raise SystemExit("sequence-flow.test.ts scheduler mock contract not found")
+          text = text.replace(old, new, 1)
+          old = '  removeFromScheduleSpy.mockResolvedValue(undefined)\n  advanceEnrollmentSpy.mockResolvedValue(undefined)'
+          new = '  removeFromScheduleSpy.mockResolvedValue(undefined)\n  advanceEnrollmentSpy.mockResolvedValue(undefined)\n  isEnrollmentStepRunnableSpy.mockResolvedValue(true)\n  failEnrollmentStepSpy.mockResolvedValue({\n    failed: true,\n    canceledDispatches: 0,\n  })'
+          if old not in text:
+              raise SystemExit("sequence-flow.test.ts defaults anchor not found")
+          text = text.replace(old, new, 1)
+          text = text.replace('logger: { error: (...args: unknown[]) => loggerErrorSpy(...args) },', 'logger: {\n    error: (...args: unknown[]) => loggerErrorSpy(...args),\n    warn: vi.fn(),\n  },', 1)
+          path.write_text(text)
+
+          path = Path("apps/worker/__tests__/sequence-flow-routing.test.ts")
+          text = path.read_text()
+          old = '  advanceEnrollment: vi.fn(),\n  removeFromSchedule: vi.fn(),'
+          new = '  advanceEnrollment: vi.fn(),\n  isEnrollmentStepRunnable: vi.fn(),\n  failEnrollmentStep: vi.fn(),\n  removeFromSchedule: vi.fn(),'
+          if old not in text:
+              raise SystemExit("sequence-flow-routing.test.ts hoisted mock anchor not found")
+          text = text.replace(old, new, 1)
+          old = 'vi.mock("@chatbotx.io/sequence-scheduler", () => ({\n  advanceEnrollment: (...args: unknown[]) => mocks.advanceEnrollment(...args),\n}))'
+          new = 'vi.mock("@chatbotx.io/sequence-scheduler", () => ({\n  advanceEnrollment: (...args: unknown[]) => mocks.advanceEnrollment(...args),\n  isEnrollmentStepRunnable: (...args: unknown[]) =>\n    mocks.isEnrollmentStepRunnable(...args),\n  failEnrollmentStep: (...args: unknown[]) => mocks.failEnrollmentStep(...args),\n}))'
+          if old not in text:
+              raise SystemExit("sequence-flow-routing.test.ts scheduler mock contract not found")
+          text = text.replace(old, new, 1)
+          old = '  mocks.markDispatchCompleted.mockResolvedValue(undefined)\n  mocks.advanceEnrollment.mockResolvedValue(undefined)'
+          new = '  mocks.markDispatchCompleted.mockResolvedValue(undefined)\n  mocks.advanceEnrollment.mockResolvedValue(undefined)\n  mocks.isEnrollmentStepRunnable.mockResolvedValue(true)\n  mocks.failEnrollmentStep.mockResolvedValue({\n    failed: true,\n    canceledDispatches: 0,\n  })'
+          if old not in text:
+              raise SystemExit("sequence-flow-routing.test.ts defaults anchor not found")
+          text = text.replace(old, new, 1)
+          path.write_text(text)
+
+      - name: Apply targeted Biome fixes
+        shell: bash
+        run: |
+          pnpm exec biome check --write --unsafe \
+            apps/worker/__tests__/sequence-flow.test.ts \
+            apps/worker/__tests__/sequence-flow-routing.test.ts \
+            apps/worker/__tests__/sequence-flow-lifecycle.test.ts \
+            packages/sequence-scheduler/__tests__/advance-enrollment-state.test.ts \
+            packages/sequence-scheduler/__tests__/advance-enrollment.test.ts \
+            packages/sequence-scheduler/__tests__/dispatch-idempotency-contact-inbox.test.ts \
+            packages/sequence-scheduler/__tests__/sequence-execution-state.test.ts \
+            packages/sequence-scheduler/src/advance-enrollment-state.ts \
+            packages/sequence-scheduler/src/advance-enrollment.ts \
+            packages/sequence-scheduler/src/sequence-execution-state.ts
+
+      - name: Verify repaired worker tests
+        run: >-
+          pnpm --filter worker test --
+          __tests__/sequence-flow.test.ts
+          __tests__/sequence-flow-routing.test.ts
+          __tests__/sequence-flow-lifecycle.test.ts
+
+      - name: Verify targeted Biome scope
+        shell: bash
+        run: |
+          pnpm exec biome check \
+            apps/worker/__tests__/sequence-flow.test.ts \
+            apps/worker/__tests__/sequence-flow-routing.test.ts \
+            apps/worker/__tests__/sequence-flow-lifecycle.test.ts \
+            packages/sequence-scheduler/__tests__/advance-enrollment-state.test.ts \
+            packages/sequence-scheduler/__tests__/advance-enrollment.test.ts \
+            packages/sequence-scheduler/__tests__/dispatch-idempotency-contact-inbox.test.ts \
+            packages/sequence-scheduler/__tests__/sequence-execution-state.test.ts \
+            packages/sequence-scheduler/src/advance-enrollment-state.ts \
+            packages/sequence-scheduler/src/advance-enrollment.ts \
+            packages/sequence-scheduler/src/sequence-execution-state.ts
+
+      - name: Remove temporary diagnostics
+        shell: bash
+        run: |
+          rm -f .github/workflows/test-diagnostics.yml
+          rm -f .github/workflows/ci-repair.yml
+
+      - name: Commit branch-only repair
+        shell: bash
+        run: |
+          git diff --check
+          git status --short
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            apps/worker/__tests__/sequence-flow.test.ts \
+            apps/worker/__tests__/sequence-flow-routing.test.ts \
+            apps/worker/__tests__/sequence-flow-lifecycle.test.ts \
+            packages/sequence-scheduler/__tests__/advance-enrollment-state.test.ts \
+            packages/sequence-scheduler/__tests__/advance-enrollment.test.ts \
+            packages/sequence-scheduler/__tests__/dispatch-idempotency-contact-inbox.test.ts \
+            packages/sequence-scheduler/__tests__/sequence-execution-state.test.ts \
+            packages/sequence-scheduler/src/advance-enrollment-state.ts \
+            packages/sequence-scheduler/src/advance-enrollment.ts \
+            packages/sequence-scheduler/src/sequence-execution-state.ts \
+            .github/workflows/test-diagnostics.yml \
+            .github/workflows/ci-repair.yml
+          git commit -m "fix(ci): resolve sequence test and lint failures"
+          git push origin HEAD:001-whatsapp-growth-crm-gap-closure
