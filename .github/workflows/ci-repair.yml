@@ -27,7 +27,7 @@ jobs:
       - name: Verify exact parent
         shell: bash
         run: |
-          test "$(git rev-parse HEAD^)" = "be1fa7c880171699e3e3bb4027b20075d10938dc"
+          test "$(git rev-parse HEAD^)" = "5fc5ad60a5eab63660dd3fa4d8a192c63c980254"
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v6.1.0
@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Repair sequence scheduler mocks
+      - name: Repair sequence scheduler mocks and useAwait diagnostics
         shell: python
         run: |
           from pathlib import Path
@@ -79,6 +79,24 @@ jobs:
               raise SystemExit("sequence-flow-routing.test.ts defaults anchor not found")
           text = text.replace(old, new, 1)
           path.write_text(text)
+
+          replacements = [
+              (
+                  Path("packages/sequence-scheduler/__tests__/advance-enrollment.test.ts"),
+                  'addToSchedule: vi.fn().mockImplementation(async () => {',
+                  'addToSchedule: vi.fn().mockImplementation(() => {',
+              ),
+              (
+                  Path("packages/sequence-scheduler/__tests__/sequence-execution-state.test.ts"),
+                  'mocks.removeDispatchesFromSchedule.mockImplementationOnce(async () => {',
+                  'mocks.removeDispatchesFromSchedule.mockImplementationOnce(() => {',
+              ),
+          ]
+          for file_path, old, new in replacements:
+              text = file_path.read_text()
+              if old not in text:
+                  raise SystemExit(f"useAwait anchor not found: {file_path}")
+              file_path.write_text(text.replace(old, new, 1))
 
       - name: Apply targeted Biome fixes
         shell: bash
