@@ -1,299 +1,75 @@
-name: Stop-on-reply materialization finalizer
+name: Stop-on-reply format pass
 
 on:
   pull_request:
 
 permissions:
   contents: write
-  actions: read
 
 jobs:
-  materialize-stop-on-reply:
-    name: Materialize canonical stop-on-reply patch
+  format-stop-on-reply:
+    name: Format stop-on-reply patch
     if: github.event_name == 'pull_request' && github.head_ref == '001-whatsapp-growth-crm-gap-closure'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout exact PR head
         uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 4
+          fetch-depth: 2
 
-      - name: Fail closed on exact ancestry
+      - name: Fail closed on exact feature parent
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "f3c661095aa90672b71d5c550148675755bbe0cd"
-          test "$(git rev-parse HEAD^^)" = "87338f4dda2bb0debe27cb9e44d70c09f5cad391"
-          test "$(git rev-parse HEAD^^^)" = "7382f46d0088c39cb622dc7b1a32a0b6b81e1169"
+          test "$(git rev-parse HEAD^)" = "14acd9254ca471897796d76523813c4b4f1a3f03"
 
-      - name: Recover canonical migration artifact
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6.1.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format stop-on-reply TypeScript
         shell: bash
         run: |
           set -euo pipefail
-          curl -fL \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/10324166434/zip" \
-            -o /tmp/stop-on-reply-migration.zip
-          rm -rf /tmp/stop-on-reply-migration
-          mkdir -p /tmp/stop-on-reply-migration
-          unzip -q /tmp/stop-on-reply-migration.zip -d /tmp/stop-on-reply-migration
-          src="/tmp/stop-on-reply-migration/20260913190859_add_sequence_stop_on_reply"
-          test -s "$src/migration.sql"
-          test -s "$src/snapshot.json"
-          echo "e61f3216f8910d422e9890cdeb65c77a71cf34bb3fa46e585b972709d38f360a  $src/migration.sql" | sha256sum -c -
-          echo "ee12041aaa177f4d3129f63a3363e3d306a9d4ec7cdb176fabf9c17e4b5b3bfb  $src/snapshot.json" | sha256sum -c -
-          dest="packages/database/drizzle/20260913190859_add_sequence_stop_on_reply"
-          rm -rf "$dest"
-          mkdir -p "$dest"
-          cp "$src/migration.sql" "$dest/migration.sql"
-          cp "$src/snapshot.json" "$dest/snapshot.json"
+          pnpm exec biome format --write \
+            apps/worker/src/integration/handlers/received-message.ts \
+            apps/worker/src/integration/handlers/sequence-stop-on-reply.ts \
+            apps/worker/__tests__/sequence-stop-on-reply.test.ts \
+            packages/business/src/contact-sequence/service.ts \
+            packages/database/src/schema/sequence.ts
+          pnpm exec biome check \
+            apps/worker/src/integration/handlers/received-message.ts \
+            apps/worker/src/integration/handlers/sequence-stop-on-reply.ts \
+            apps/worker/__tests__/sequence-stop-on-reply.test.ts \
+            packages/business/src/contact-sequence/service.ts \
+            packages/database/src/schema/sequence.ts
+          git diff --check
 
-      - name: Apply bounded implementation patch
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-
-          sequence = Path("packages/database/src/schema/sequence.ts")
-          text = sequence.read_text()
-          anchor = '    active: boolean().notNull().default(true),\n'
-          assert 'stopOnReply' not in text
-          assert text.count(anchor) == 1
-          sequence.write_text(
-              text.replace(
-                  anchor,
-                  anchor + '    stopOnReply: boolean().notNull().default(false),\n',
-                  1,
-              )
-          )
-
-          service = Path("packages/business/src/contact-sequence/service.ts")
-          text = service.read_text()
-          anchor = '  async updateContactSequences(params: UpdateContactSequencesParams) {'
-          assert 'async stopOnReply(' not in text
-          assert text.count(anchor) == 1
-          method = '''  async stopOnReply(params: {
-            workspaceId: string
-            contactId: string
-          }): Promise<{ stoppedEnrollments: number; canceledDispatches: number }> {
-            const { workspaceId, contactId } = params
-            const result = await db.transaction(async (tx) => {
-              const enrollments = await tx.query.contactsOnSequenceModel.findMany({
-                where: {
-                  workspaceId,
-                  contactId,
-                  status: "active",
-                },
-                columns: {
-                  id: true,
-                },
-                with: {
-                  sequence: {
-                    columns: {
-                      stopOnReply: true,
-                    },
-                  },
-                },
-              })
-
-              const dispatchesToRemove: DispatchToRemove[] = []
-              let stoppedEnrollments = 0
-
-              for (const enrollment of enrollments) {
-                if (!enrollment.sequence.stopOnReply) {
-                  continue
-                }
-
-                const claimed = await tx
-                  .update(contactsOnSequenceModel)
-                  .set({
-                    status: "stopped_on_reply",
-                    nextStepId: null,
-                    nextRunAt: null,
-                    updatedAt: new Date(),
-                  })
-                  .where(
-                    and(
-                      eq(contactsOnSequenceModel.id, enrollment.id),
-                      eq(contactsOnSequenceModel.workspaceId, workspaceId),
-                      eq(contactsOnSequenceModel.status, "active"),
-                    ),
-                  )
-                  .returning({ id: contactsOnSequenceModel.id })
-
-                if (claimed.length === 0) {
-                  continue
-                }
-
-                stoppedEnrollments += 1
-                dispatchesToRemove.push(
-                  ...(await cancelPendingDispatches({
-                    client: tx,
-                    enrollmentId: enrollment.id,
-                    workspaceId,
-                    reason: "reply_received",
-                    removeFromSchedule: false,
-                  })),
-                )
-              }
-
-              return { stoppedEnrollments, dispatchesToRemove }
-            })
-
-            try {
-              await removeDispatchesFromSchedule(result.dispatchesToRemove)
-            } catch (err) {
-              logger.warn(
-                { err, dispatchCount: result.dispatchesToRemove.length },
-                "Failed to remove reply-stopped dispatches from schedule after DB commit",
-              )
-            }
-
-            return {
-              stoppedEnrollments: result.stoppedEnrollments,
-              canceledDispatches: result.dispatchesToRemove.length,
-            }
-          }
-
-          '''
-          service.write_text(text.replace(anchor, method + anchor, 1))
-
-          received = Path("apps/worker/src/integration/handlers/received-message.ts")
-          text = received.read_text()
-          import_anchor = 'import { resolvePostbackButtonLabel, sanitizeFlowAction } from "./flow-action"\n'
-          assert './sequence-stop-on-reply' not in text
-          assert text.count(import_anchor) == 1
-          text = text.replace(
-              import_anchor,
-              import_anchor
-              + 'import { stopSequencesOnReplyIfNeeded } from "./sequence-stop-on-reply"\n',
-              1,
-          )
-          call_anchor = '    // Best-effort backfill of a nameless existing contact\'s profile. No\n'
-          assert text.count(call_anchor) == 1
-          call = '''    await stopSequencesOnReplyIfNeeded({
-              workspaceId: inbox.workspaceId,
-              contactId: contactInbox.contactId,
-              isNewMessage,
-              messageType: incomingMessage.messageType,
-            })
-
-          '''
-          received.write_text(text.replace(call_anchor, call + call_anchor, 1))
-          PY
-
-          cat > apps/worker/src/integration/handlers/sequence-stop-on-reply.ts <<'EOF'
-          import { contactSequenceService } from "@chatbotx.io/business"
-
-          export const shouldStopSequenceOnReply = (params: {
-            isNewMessage: boolean
-            messageType: string | null | undefined
-          }): boolean => params.isNewMessage && params.messageType !== "outgoing"
-
-          export async function stopSequencesOnReplyIfNeeded(params: {
-            workspaceId: string
-            contactId: string
-            isNewMessage: boolean
-            messageType: string | null | undefined
-          }): Promise<void> {
-            if (!shouldStopSequenceOnReply(params)) {
-              return
-            }
-
-            await contactSequenceService.stopOnReply({
-              workspaceId: params.workspaceId,
-              contactId: params.contactId,
-            })
-          }
-          EOF
-
-          cat > apps/worker/__tests__/sequence-stop-on-reply.test.ts <<'EOF'
-          import { beforeEach, describe, expect, test, vi } from "vitest"
-
-          const stopOnReply = vi.hoisted(() => vi.fn())
-
-          vi.mock("@chatbotx.io/business", () => ({
-            contactSequenceService: { stopOnReply },
-          }))
-
-          const { shouldStopSequenceOnReply, stopSequencesOnReplyIfNeeded } =
-            await import("../src/integration/handlers/sequence-stop-on-reply")
-
-          beforeEach(() => {
-            vi.clearAllMocks()
-            stopOnReply.mockResolvedValue({
-              stoppedEnrollments: 1,
-              canceledDispatches: 1,
-            })
-          })
-
-          describe("stopSequencesOnReplyIfNeeded", () => {
-            test("stops only after a newly persisted inbound message", async () => {
-              expect(
-                shouldStopSequenceOnReply({
-                  isNewMessage: true,
-                  messageType: "incoming",
-                }),
-              ).toBe(true)
-
-              await stopSequencesOnReplyIfNeeded({
-                workspaceId: "ws-1",
-                contactId: "contact-1",
-                isNewMessage: true,
-                messageType: "incoming",
-              })
-
-              expect(stopOnReply).toHaveBeenCalledOnce()
-              expect(stopOnReply).toHaveBeenCalledWith({
-                workspaceId: "ws-1",
-                contactId: "contact-1",
-              })
-            })
-
-            test("does not stop on a duplicate or replayed inbound message", async () => {
-              await stopSequencesOnReplyIfNeeded({
-                workspaceId: "ws-1",
-                contactId: "contact-1",
-                isNewMessage: false,
-                messageType: "incoming",
-              })
-
-              expect(stopOnReply).not.toHaveBeenCalled()
-            })
-
-            test("does not stop on an outgoing channel echo", async () => {
-              await stopSequencesOnReplyIfNeeded({
-                workspaceId: "ws-1",
-                contactId: "contact-1",
-                isNewMessage: true,
-                messageType: "outgoing",
-              })
-
-              expect(stopOnReply).not.toHaveBeenCalled()
-            })
-          })
-          EOF
-
-      - name: Commit feature files to PR branch
+      - name: Commit formatted source files
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "MAD4B"
           git config user.email "mad4b.digital@gmail.com"
           git add \
-            packages/database/src/schema/sequence.ts \
-            packages/database/drizzle/20260913190859_add_sequence_stop_on_reply \
-            packages/business/src/contact-sequence/service.ts \
             apps/worker/src/integration/handlers/received-message.ts \
             apps/worker/src/integration/handlers/sequence-stop-on-reply.ts \
-            apps/worker/__tests__/sequence-stop-on-reply.test.ts
-          git diff --cached --check
-          git commit -m "feat(growth-crm): stop active sequences on customer reply"
+            apps/worker/__tests__/sequence-stop-on-reply.test.ts \
+            packages/business/src/contact-sequence/service.ts \
+            packages/database/src/schema/sequence.ts
+          if git diff --cached --quiet; then
+            echo "No formatting changes required"
+            exit 0
+          fi
+          git commit -m "style(growth-crm): format stop-on-reply implementation"
           git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
