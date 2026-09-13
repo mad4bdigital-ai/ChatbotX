@@ -10,6 +10,8 @@ const mocks = vi.hoisted(() => ({
   validateStep: vi.fn(),
   sendFlowDirect: vi.fn(),
   advanceEnrollment: vi.fn(),
+  isEnrollmentStepRunnable: vi.fn(),
+  failEnrollmentStep: vi.fn(),
   removeFromSchedule: vi.fn(),
 }))
 
@@ -21,7 +23,8 @@ vi.mock("@chatbotx.io/business/contact-sequence", () => ({
       mocks.markDispatchCompleted(...args),
     markDispatchCanceled: (...args: unknown[]) =>
       mocks.markDispatchCanceled(...args),
-    markDispatchFailed: (...args: unknown[]) => mocks.markDispatchFailed(...args),
+    markDispatchFailed: (...args: unknown[]) =>
+      mocks.markDispatchFailed(...args),
   },
 }))
 
@@ -37,6 +40,9 @@ vi.mock("@chatbotx.io/scheduler", () => ({
 
 vi.mock("@chatbotx.io/sequence-scheduler", () => ({
   advanceEnrollment: (...args: unknown[]) => mocks.advanceEnrollment(...args),
+  isEnrollmentStepRunnable: (...args: unknown[]) =>
+    mocks.isEnrollmentStepRunnable(...args),
+  failEnrollmentStep: (...args: unknown[]) => mocks.failEnrollmentStep(...args),
 }))
 
 vi.mock("../src/sequence-scheduler/services/step-executor.service", () => ({
@@ -76,6 +82,11 @@ beforeEach(() => {
   mocks.sendFlowDirect.mockResolvedValue(new Date())
   mocks.markDispatchCompleted.mockResolvedValue(undefined)
   mocks.advanceEnrollment.mockResolvedValue(undefined)
+  mocks.isEnrollmentStepRunnable.mockResolvedValue(true)
+  mocks.failEnrollmentStep.mockResolvedValue({
+    failed: true,
+    canceledDispatches: 0,
+  })
   mocks.removeFromSchedule.mockResolvedValue(undefined)
 })
 

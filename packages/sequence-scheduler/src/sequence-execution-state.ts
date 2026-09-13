@@ -1,9 +1,4 @@
-import {
-  and,
-  type DatabaseClient,
-  db,
-  eq,
-} from "@chatbotx.io/database/client"
+import { and, type DatabaseClient, db, eq } from "@chatbotx.io/database/client"
 import { contactsOnSequenceModel } from "@chatbotx.io/database/schema"
 import {
   cancelPendingDispatches,

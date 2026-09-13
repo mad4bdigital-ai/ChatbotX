@@ -1,8 +1,5 @@
 import { and, asc, db, eq, gt } from "@chatbotx.io/database/client"
-import {
-  contactsOnSequenceModel,
-  sequenceStepModel,
-} from "@chatbotx.io/database/schema"
+import { sequenceStepModel } from "@chatbotx.io/database/schema"
 import type { SchedulerClient } from "@chatbotx.io/scheduler"
 import {
   claimEnrollmentCompleted,

@@ -165,7 +165,7 @@ describe("failEnrollmentStep", () => {
     mocks.cancelPendingDispatches.mockResolvedValueOnce([
       { id: "dispatch-2", bucket: 8 },
     ])
-    mocks.removeDispatchesFromSchedule.mockImplementationOnce(async () => {
+    mocks.removeDispatchesFromSchedule.mockImplementationOnce(() => {
       order.push("scheduler-cleanup")
     })
 

@@ -5,9 +5,9 @@ describe("sequence dispatch idempotency identity", () => {
   test("keeps the legacy four-argument key stable", () => {
     const runAt = new Date("2026-09-13T12:00:00.000Z")
 
-    expect(
-      generateIdempotencyKey("ws-1", "enroll-1", "step-1", runAt),
-    ).toBe(`ws-1:enroll-1:step-1:${runAt.toISOString()}`)
+    expect(generateIdempotencyKey("ws-1", "enroll-1", "step-1", runAt)).toBe(
+      `ws-1:enroll-1:step-1:${runAt.toISOString()}`,
+    )
   })
 
   test("distinguishes two ContactInboxes for the same enrollment step and run time", () => {

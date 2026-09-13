@@ -28,10 +28,7 @@ export async function hasBlockingSiblingDispatches(params: {
         eq(sequenceDispatchModel.workspaceId, workspaceId),
         eq(sequenceDispatchModel.enrollmentId, enrollmentId),
         eq(sequenceDispatchModel.stepId, stepId),
-        notInArray(
-          sequenceDispatchModel.status,
-          ADVANCEABLE_DISPATCH_STATUSES,
-        ),
+        notInArray(sequenceDispatchModel.status, ADVANCEABLE_DISPATCH_STATUSES),
       ),
     )
     .limit(1)
@@ -82,9 +79,7 @@ export async function claimEnrollmentCompleted(params: {
       nextRunAt: null,
       updatedAt: new Date(),
     })
-    .where(
-      buildAdvanceClaimWhere({ workspaceId, enrollmentId, currentStepId }),
-    )
+    .where(buildAdvanceClaimWhere({ workspaceId, enrollmentId, currentStepId }))
     .returning({ id: contactsOnSequenceModel.id })
 
   return claimed.length > 0
@@ -118,9 +113,7 @@ export async function claimEnrollmentNextStep(params: {
       nextRunAt,
       updatedAt: new Date(),
     })
-    .where(
-      buildAdvanceClaimWhere({ workspaceId, enrollmentId, currentStepId }),
-    )
+    .where(buildAdvanceClaimWhere({ workspaceId, enrollmentId, currentStepId }))
     .returning({ id: contactsOnSequenceModel.id })
 
   return claimed.length > 0

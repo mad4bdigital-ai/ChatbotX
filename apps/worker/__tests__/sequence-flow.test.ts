@@ -20,9 +20,14 @@ vi.mock("@chatbotx.io/redis", () => ({
 
 // ---------- sequence-scheduler spies ----------
 const advanceEnrollmentSpy = vi.fn()
+const isEnrollmentStepRunnableSpy = vi.fn()
+const failEnrollmentStepSpy = vi.fn()
 
 vi.mock("@chatbotx.io/sequence-scheduler", () => ({
   advanceEnrollment: (...args: unknown[]) => advanceEnrollmentSpy(...args),
+  isEnrollmentStepRunnable: (...args: unknown[]) =>
+    isEnrollmentStepRunnableSpy(...args),
+  failEnrollmentStep: (...args: unknown[]) => failEnrollmentStepSpy(...args),
 }))
 
 // ---------- contactSequenceService spies ----------
@@ -70,7 +75,10 @@ vi.mock("../src/integration/handlers/send-flow-direct", () => ({
 const loggerErrorSpy = vi.fn()
 
 vi.mock("../src/lib/logger", () => ({
-  logger: { error: (...args: unknown[]) => loggerErrorSpy(...args) },
+  logger: {
+    error: (...args: unknown[]) => loggerErrorSpy(...args),
+    warn: vi.fn(),
+  },
 }))
 
 import { handleSendSequenceFlow } from "../src/integration/handlers/sequence-flow"
@@ -138,6 +146,11 @@ beforeEach(() => {
   // scheduler defaults
   removeFromScheduleSpy.mockResolvedValue(undefined)
   advanceEnrollmentSpy.mockResolvedValue(undefined)
+  isEnrollmentStepRunnableSpy.mockResolvedValue(true)
+  failEnrollmentStepSpy.mockResolvedValue({
+    failed: true,
+    canceledDispatches: 0,
+  })
 
   // step executor defaults
   const step = makeStep()

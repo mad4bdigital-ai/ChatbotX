@@ -32,8 +32,7 @@ vi.mock("@chatbotx.io/sequence-scheduler", () => ({
   advanceEnrollment: (...args: unknown[]) => mocks.advanceEnrollment(...args),
   isEnrollmentStepRunnable: (...args: unknown[]) =>
     mocks.isEnrollmentStepRunnable(...args),
-  failEnrollmentStep: (...args: unknown[]) =>
-    mocks.failEnrollmentStep(...args),
+  failEnrollmentStep: (...args: unknown[]) => mocks.failEnrollmentStep(...args),
 }))
 
 vi.mock("@chatbotx.io/redis", () => ({

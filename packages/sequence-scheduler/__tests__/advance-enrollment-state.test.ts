@@ -11,7 +11,9 @@ vi.mock("@chatbotx.io/database/client", () => ({
       from: () => ({
         where: (...args: unknown[]) => {
           updateWhereMock(...args)
-          return { limit: (...limitArgs: unknown[]) => selectLimitMock(...limitArgs) }
+          return {
+            limit: (...limitArgs: unknown[]) => selectLimitMock(...limitArgs),
+          }
         },
       }),
     }),

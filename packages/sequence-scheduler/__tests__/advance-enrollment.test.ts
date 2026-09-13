@@ -262,7 +262,7 @@ describe("advanceEnrollment", () => {
       },
     )
     const scheduler = {
-      addToSchedule: vi.fn().mockImplementation(async () => {
+      addToSchedule: vi.fn().mockImplementation(() => {
         order.push("scheduled")
       }),
     }
