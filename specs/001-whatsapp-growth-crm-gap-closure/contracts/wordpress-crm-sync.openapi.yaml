@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: ChatbotX External CRM Sync Contract
+  version: 0.1.0
+paths:
+  /api/v1/crm-sync/events:
+    post:
+      summary: Idempotently apply an external CRM/commerce event
+      parameters:
+        - in: header
+          name: X-ChatbotX-Timestamp
+          required: true
+          schema: { type: string }
+        - in: header
+          name: X-ChatbotX-Signature-256
+          required: true
+          schema: { type: string }
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [eventId, eventType, externalSystem, occurredAt, data]
+              properties:
+                eventId: { type: string }
+                eventType:
+                  type: string
+                  examples: [contact.upserted, deal.updated, order.paid, order.refunded]
+                externalSystem: { type: string, examples: [wordpress, fluentcrm, woocommerce] }
+                occurredAt: { type: string, format: date-time }
+                sourceVersion: { type: [string, integer, 'null'] }
+                data: { type: object, additionalProperties: true }
+      responses:
+        '202': { description: Accepted/idempotently accepted for processing }
+        '401': { description: Signature invalid }
+        '409': { description: Idempotency conflict }
+webhooks:
+  crmEvents:
+    post:
+      summary: HMAC-signed ChatbotX CRM event delivered to configured endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [eventId, eventType, workspaceId, occurredAt, data]
+              properties:
+                eventId: { type: string }
+                eventType: { type: string }
+                workspaceId: { type: string }
+                occurredAt: { type: string, format: date-time }
+                data: { type: object, additionalProperties: true }
+      responses:
+        '2XX': { description: Accepted by external CRM }

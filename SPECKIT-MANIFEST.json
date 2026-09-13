@@ -1,0 +1,23 @@
+{
+  "upstream_repository": "ChatbotXIO/ChatbotX",
+  "fork_target": "mad4bdigital-ai/ChatbotX",
+  "base_sha": "3196f01dd2027279016fb180c48764e128669483",
+  "target_branch": "001-whatsapp-growth-crm-gap-closure",
+  "created_at": "2026-09-13",
+  "scope": "Spec Kit brownfield gap closure for WhatsApp growth CRM",
+  "files": [
+    ".specify/init-options.json",
+    ".specify/memory/constitution.md",
+    "specs/001-whatsapp-growth-crm-gap-closure/README.md",
+    "specs/001-whatsapp-growth-crm-gap-closure/checklists/requirements.md",
+    "specs/001-whatsapp-growth-crm-gap-closure/contracts/consent-api.openapi.yaml",
+    "specs/001-whatsapp-growth-crm-gap-closure/contracts/conversion-delivery.openapi.yaml",
+    "specs/001-whatsapp-growth-crm-gap-closure/contracts/wordpress-crm-sync.openapi.yaml",
+    "specs/001-whatsapp-growth-crm-gap-closure/data-model.md",
+    "specs/001-whatsapp-growth-crm-gap-closure/plan.md",
+    "specs/001-whatsapp-growth-crm-gap-closure/quickstart.md",
+    "specs/001-whatsapp-growth-crm-gap-closure/research.md",
+    "specs/001-whatsapp-growth-crm-gap-closure/spec.md",
+    "specs/001-whatsapp-growth-crm-gap-closure/tasks.md"
+  ]
+}
