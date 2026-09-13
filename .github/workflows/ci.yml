@@ -1,4 +1,4 @@
-name: Stop-on-reply materialization repair
+name: Stop-on-reply materialization finalizer
 
 on:
   pull_request:
@@ -18,14 +18,15 @@ jobs:
         uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 3
+          fetch-depth: 4
 
-      - name: Fail closed on exact parent
+      - name: Fail closed on exact ancestry
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "87338f4dda2bb0debe27cb9e44d70c09f5cad391"
-          test "$(git rev-parse HEAD^^)" = "7382f46d0088c39cb622dc7b1a32a0b6b81e1169"
+          test "$(git rev-parse HEAD^)" = "f3c661095aa90672b71d5c550148675755bbe0cd"
+          test "$(git rev-parse HEAD^^)" = "87338f4dda2bb0debe27cb9e44d70c09f5cad391"
+          test "$(git rev-parse HEAD^^^)" = "7382f46d0088c39cb622dc7b1a32a0b6b81e1169"
 
       - name: Recover canonical migration artifact
         env:
@@ -280,21 +281,13 @@ jobs:
           })
           EOF
 
-      - name: Restore exact pre-bootstrap CI workflow
-        shell: bash
-        run: |
-          set -euo pipefail
-          git show HEAD^^:.github/workflows/ci.yml > .github/workflows/ci.yml
-          test "$(git hash-object .github/workflows/ci.yml)" = "64eab427e6ea8a541a0c7f1c33d7acb95fffedb4"
-
-      - name: Commit exact patch to PR branch
+      - name: Commit feature files to PR branch
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "MAD4B"
           git config user.email "mad4b.digital@gmail.com"
           git add \
-            .github/workflows/ci.yml \
             packages/database/src/schema/sequence.ts \
             packages/database/drizzle/20260913190859_add_sequence_stop_on_reply \
             packages/business/src/contact-sequence/service.ts \
