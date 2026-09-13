@@ -6,6 +6,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   format-stop-on-reply:
     name: Format stop-on-reply patch
@@ -23,7 +27,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "14acd9254ca471897796d76523813c4b4f1a3f03"
+          test "$(git rev-parse HEAD^)" = "ccc3d1f96b62edd49f0ce53dae81a3b6ddf093cf"
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v6.1.0
