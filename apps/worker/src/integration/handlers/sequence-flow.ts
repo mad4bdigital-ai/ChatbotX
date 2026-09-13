@@ -69,8 +69,15 @@ async function runSendSequenceFlow(
   data: SendSequenceFlowData,
   job: Job,
 ): Promise<void> {
-  const { dispatchId, workspaceId, stepId, bucket, contactId, sequenceId } =
-    data
+  const {
+    dispatchId,
+    workspaceId,
+    stepId,
+    bucket,
+    contactId,
+    contactInboxId,
+    sequenceId,
+  } = data
 
   const dispatch = await fetchDispatch(dispatchId, workspaceId)
   if (!dispatch) {
@@ -111,6 +118,7 @@ async function runSendSequenceFlow(
       flowId: validStep.flow.id,
       workspaceId,
       contactId: data.contactId,
+      contactInboxId,
       metadata: data.metadata,
       flowExecutionKey: job.id,
     })
