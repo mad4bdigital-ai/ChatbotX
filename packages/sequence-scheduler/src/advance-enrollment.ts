@@ -1,9 +1,11 @@
 import { and, asc, db, eq, gt } from "@chatbotx.io/database/client"
-import {
-  contactsOnSequenceModel,
-  sequenceStepModel,
-} from "@chatbotx.io/database/schema"
+import { sequenceStepModel } from "@chatbotx.io/database/schema"
 import type { SchedulerClient } from "@chatbotx.io/scheduler"
+import {
+  claimEnrollmentCompleted,
+  claimEnrollmentNextStep,
+  hasBlockingSiblingDispatches,
+} from "./advance-enrollment-state"
 import { calculateNextRunAtFromStep } from "./calculate-next-run-at"
 import { getContactInboxes } from "./contacts-on-sequences"
 import { createDispatch } from "./dispatch-manager"
@@ -82,6 +84,28 @@ export async function advanceEnrollment(
     return
   }
 
+  // `nextStepId` is the state-machine ownership token for the current
+  // generation. A stale or out-of-order dispatch must never advance a newer
+  // enrollment generation even when `lastStepId` has not caught up.
+  if (enrollment.nextStepId !== currentStep.id) {
+    return
+  }
+
+  // A sequence step is dispatched once per ContactInbox. Advancing after the
+  // first sibling finishes can schedule the next step on another inbox before
+  // that inbox finished the current step. Wait until all siblings are either
+  // completed or intentionally canceled. Failed/pending/running siblings block
+  // advancement and keep the sequence fail-closed.
+  if (
+    await hasBlockingSiblingDispatches({
+      workspaceId,
+      enrollmentId,
+      stepId: currentStep.id,
+    })
+  ) {
+    return
+  }
+
   const [nextStep] = await db
     .select()
     .from(sequenceStepModel)
@@ -96,44 +120,36 @@ export async function advanceEnrollment(
     .limit(1)
 
   if (!nextStep) {
-    await db
-      .update(contactsOnSequenceModel)
-      .set({
-        status: "completed",
-        completedAt: sentAt,
-        currentStep: currentStep.order + 1,
-        lastStepId: currentStep.id,
-        nextStepId: null,
-        nextRunAt: null,
-        updatedAt: new Date(),
-      })
-      .where(
-        and(
-          eq(contactsOnSequenceModel.id, enrollmentId),
-          eq(contactsOnSequenceModel.workspaceId, workspaceId),
-        ),
-      )
+    await claimEnrollmentCompleted({
+      workspaceId,
+      enrollmentId,
+      currentStepId: currentStep.id,
+      currentStepOrder: currentStep.order,
+      sentAt,
+    })
     return
   }
 
   const dispatches = await db.transaction(async (tx) => {
     const nextRunAt = calculateNextRunAt(nextStep, sentAt)
 
-    await tx
-      .update(contactsOnSequenceModel)
-      .set({
-        currentStep: nextStep.order,
-        lastStepId: currentStep.id,
-        nextStepId: nextStep.id,
-        nextRunAt,
-        updatedAt: new Date(),
-      })
-      .where(
-        and(
-          eq(contactsOnSequenceModel.id, enrollmentId),
-          eq(contactsOnSequenceModel.workspaceId, workspaceId),
-        ),
-      )
+    const claimed = await claimEnrollmentNextStep({
+      client: tx,
+      workspaceId,
+      enrollmentId,
+      currentStepId: currentStep.id,
+      nextStepId: nextStep.id,
+      nextStepOrder: nextStep.order,
+      nextRunAt,
+    })
+
+    // Multiple sibling dispatches can observe the generation barrier as open
+    // at the same time. The conditional UPDATE inside claimEnrollmentNextStep
+    // is the atomic winner election; losers must not create duplicate next-step
+    // dispatches.
+    if (!claimed) {
+      return []
+    }
 
     const contactInboxes = await getContactInboxes(workspaceId, contactId)
     const nextDispatches: DispatchToSchedule[] = []

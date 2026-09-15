@@ -100,6 +100,7 @@ import {
   refreshExistingContactProfile,
 } from "./contact-profile-refresh"
 import { resolvePostbackButtonLabel, sanitizeFlowAction } from "./flow-action"
+import { stopSequencesOnReplyIfNeeded } from "./sequence-stop-on-reply"
 
 type ContactInboxTracking = ContactInboxTrackingData
 
@@ -346,6 +347,13 @@ export const receiveMessage = async (
         storageUrl,
         ...systemFieldUpdates,
       })
+
+    await stopSequencesOnReplyIfNeeded({
+    workspaceId: inbox.workspaceId,
+    contactId: contactInbox.contactId,
+    isNewMessage,
+    messageType: incomingMessage.messageType,
+  })
 
     // Best-effort backfill of a nameless existing contact's profile. No
     // isNewMessage/isNewContact gate; awaited before the flow-action enqueue

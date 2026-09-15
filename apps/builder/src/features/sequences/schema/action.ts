@@ -57,6 +57,7 @@ export const updateSequenceSchema = z
   .object({
     name: z.string().trim().min(1).max(255),
     active: z.boolean(),
+    stopOnReply: z.boolean(),
   })
   .partial()
 export type UpdateSequenceSchema = z.infer<typeof updateSequenceSchema>

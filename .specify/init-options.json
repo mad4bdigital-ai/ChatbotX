@@ -1,0 +1,7 @@
+{
+  "integration": "copilot",
+  "script": "sh",
+  "feature_numbering": "numeric",
+  "skills": true,
+  "project_type": "brownfield"
+}

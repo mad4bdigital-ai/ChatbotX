@@ -1,0 +1,30 @@
+openapi: 3.1.0
+info:
+  title: ChatbotX Conversion Delivery Admin API
+  version: 0.1.0
+paths:
+  /api/v1/conversions/{conversionEventId}/delivery:
+    get:
+      summary: Get provider delivery state and attempts
+      parameters:
+        - in: path
+          name: conversionEventId
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Delivery state }
+  /api/v1/conversions/{conversionEventId}/replay:
+    post:
+      summary: Replay a dead-lettered/permanent-failed conversion delivery
+      parameters:
+        - in: path
+          name: conversionEventId
+          required: true
+          schema: { type: string }
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string }
+      responses:
+        '202': { description: Replay queued }
+        '409': { description: Event not replayable or duplicate replay request }

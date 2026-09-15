@@ -20,6 +20,7 @@ export const sequenceModel = pgTable(
       onUpdate: "cascade",
     }),
     active: boolean().notNull().default(true),
+    stopOnReply: boolean().notNull().default(false),
     subscribers: integer().notNull().default(0),
     messages: integer().notNull().default(0),
     workspaceId: bigintAsString()

@@ -40,8 +40,12 @@ export function generateIdempotencyKey(
   enrollmentId: string,
   stepId: string,
   runAt: Date,
+  contactInboxId?: string,
 ): string {
-  return `${workspaceId}:${enrollmentId}:${stepId}:${runAt.toISOString()}`
+  const base = `${workspaceId}:${enrollmentId}:${stepId}`
+  return contactInboxId
+    ? `${base}:${contactInboxId}:${runAt.toISOString()}`
+    : `${base}:${runAt.toISOString()}`
 }
 export interface CreateDispatchParams {
   client?: DrizzleClient
@@ -69,11 +73,15 @@ export async function createDispatch(
   const bucket = calculateBucket(workspaceId, contactId)
   const runAtMs = String(runAt.getTime())
   const dispatchId = createId()
+  // One sequence step intentionally creates one dispatch per ContactInbox.
+  // The ContactInbox therefore belongs in the idempotency identity; omitting
+  // it makes the second inbox collide with the first on the DB unique index.
   const idempotencyKey = generateIdempotencyKey(
     workspaceId,
     enrollmentId,
     stepId,
     runAt,
+    contactInboxId,
   )
 
   const insertDispatch = async (tx: DrizzleClient) => {

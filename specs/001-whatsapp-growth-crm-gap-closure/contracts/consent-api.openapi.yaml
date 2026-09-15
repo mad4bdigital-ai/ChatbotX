@@ -1,0 +1,45 @@
+openapi: 3.1.0
+info:
+  title: ChatbotX Messaging Consent API
+  version: 0.1.0
+paths:
+  /api/v1/contacts/{contactId}/messaging-consents:
+    get:
+      summary: List current messaging consent states and audit links
+      parameters:
+        - in: path
+          name: contactId
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+    post:
+      summary: Grant or revoke a channel/purpose consent state
+      parameters:
+        - in: path
+          name: contactId
+          required: true
+          schema: { type: string }
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [channel, purpose, action, source, occurredAt]
+              properties:
+                channel: { type: string, enum: [whatsapp] }
+                purpose: { type: string, enum: [marketing, service, ads_audience] }
+                action: { type: string, enum: [grant, revoke] }
+                source: { type: string }
+                occurredAt: { type: string, format: date-time }
+                consentTextVersion: { type: [string, 'null'] }
+                externalReference: { type: [string, 'null'] }
+                evidence: { type: object, additionalProperties: true }
+      responses:
+        '200': { description: Applied or idempotently replayed }
+        '409': { description: Conflicting idempotency key }

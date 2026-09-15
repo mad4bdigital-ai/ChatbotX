@@ -1,0 +1,23 @@
+# Requirements Quality Checklist — Deep Audit v2
+
+- [x] Exact upstream base pinned: `3196f01dd2027279016fb180c48764e128669483`.
+- [x] Sequence scheduler recognized as an existing durable subsystem; no replacement engine specified.
+- [x] Existing 24-hour broadcast policy recognized and selected as extension seam.
+- [x] Existing CTWA referral/current materialized view preserved.
+- [x] Existing AdsConversionEvent and sendMetaCapiEvent pipelines remain separate.
+- [x] Existing Meta Custom Audience adapters recognized; no duplicate provider adapter specified.
+- [x] WhatsApp marketing consent remains distinct from Meta audience permission.
+- [x] WordPress/FluentCRM/WooCommerce remains optional and adapter-based.
+- [x] Native sales pipeline scope stays bounded to Pipeline/Stage/Deal/Activity.
+- [x] Community Edition / enterprise license boundary remains explicit.
+- [x] P0 WhatsApp webhook authenticity gap identified from exact handler configuration.
+- [x] P0 sequence per-inbox fan-out risk traced end-to-end from enrollment → dispatch → sendFlowDirect.
+- [x] P0 stop-on-reply absence checked against actual sequence-removal callers.
+- [x] P0 timezone/DST/fail-open window behavior identified from scheduler code.
+- [x] CAPI retry/recovery already present and removed from greenfield scope.
+- [x] Custom Audience add/bulk sync already present and removed from greenfield scope.
+- [ ] Before runtime patch: add characterization test that reproduces multi-inbox sequence behavior on base SHA.
+- [ ] Before runtime patch: add signature verification tests proving forged `sha256=...` POST is currently rejected after fix.
+- [ ] Before runtime patch: enumerate every MARKETING-template send entry point and prove policy coverage.
+- [ ] Before schema migration: define legacy `broadcastSubscribedAt` migration policy without fabricating consent evidence.
+- [ ] Before Meta API changes: validate provider API versions/scopes against current official Meta documentation.
