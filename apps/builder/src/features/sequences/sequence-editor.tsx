@@ -15,6 +15,7 @@ import {
   CardContent,
   CardHeader,
 } from "@chatbotx.io/ui/components/ui/card"
+import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
 import { Label } from "@chatbotx.io/ui/components/ui/label"
 import { PlusIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
@@ -22,6 +23,7 @@ import { useTranslations } from "next-intl"
 import { useState } from "react"
 import { toast } from "sonner"
 import { FlowStoreProvider } from "../flows/provider/flow-store-context"
+import { updateSequenceAction } from "./actions/update-sequence.action"
 import { upsertSequenceStepAction } from "./actions/upsert-sequence-step.action"
 import { SequenceStepCard } from "./components/sequence-step-card"
 
@@ -43,6 +45,23 @@ export function SequenceEditor({ sequence, workspaceId }: SequenceEditorProps) {
   const t = useTranslations()
   const router = useRouter()
   const [isAddingStep, setIsAddingStep] = useState(false)
+  const [isUpdatingStopOnReply, setIsUpdatingStopOnReply] = useState(false)
+
+  const handleStopOnReplyChange = async (checked: boolean) => {
+    setIsUpdatingStopOnReply(true)
+    try {
+      await updateSequenceAction(workspaceId, sequence.id, {
+        stopOnReply: checked,
+      })
+      toast.success(t("messages.savedSuccessfully"))
+      router.refresh()
+    } catch (error) {
+      console.error("Error updating stop-on-reply setting:", error)
+      toast.error(t("messages.unknownError"))
+    } finally {
+      setIsUpdatingStopOnReply(false)
+    }
+  }
 
   const handleAddStep = async () => {
     try {
@@ -97,7 +116,26 @@ export function SequenceEditor({ sequence, workspaceId }: SequenceEditorProps) {
         </Breadcrumb>
 
         <Card className="mx-auto max-w-6xl border-none py-1 shadow-none">
-          <CardHeader />
+          <CardHeader>
+            <div className="flex items-center justify-between gap-4 rounded-lg border p-4">
+              <div className="space-y-1">
+                <Label htmlFor="stop-on-reply">Stop sequence on reply</Label>
+                <p className="text-muted-foreground text-sm">
+                  Stop active enrollment and cancel pending sequence messages
+                  when this contact sends a new inbound message.
+                </p>
+              </div>
+              <Checkbox
+                aria-label="Stop sequence on reply"
+                checked={sequence.stopOnReply}
+                disabled={isUpdatingStopOnReply}
+                id="stop-on-reply"
+                onCheckedChange={(value) =>
+                  void handleStopOnReplyChange(Boolean(value))
+                }
+              />
+            </div>
+          </CardHeader>
 
           <CardContent>
             {sequence.steps.length > 0 && (

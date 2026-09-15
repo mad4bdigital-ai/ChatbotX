@@ -1,4 +1,4 @@
-import { contactSequenceService } from "@chatbotx.io/business"
+import { contactSequenceService } from "@chatbotx.io/business/contact-sequence"
 
 export const shouldStopSequenceOnReply = (params: {
   isNewMessage: boolean

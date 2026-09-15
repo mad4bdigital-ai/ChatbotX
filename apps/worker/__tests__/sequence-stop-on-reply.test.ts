@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const stopOnReply = vi.hoisted(() => vi.fn())
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@chatbotx.io/business/contact-sequence", () => ({
   contactSequenceService: { stopOnReply },
 }))
 
