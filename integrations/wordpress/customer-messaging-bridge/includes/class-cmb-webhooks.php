@@ -67,20 +67,47 @@ final class CMB_Webhooks {
         }
         $eventId = isset($payload['id']) && is_string($payload['id']) && strlen($payload['id']) <= 120
             ? $payload['id'] : '';
-        if ($eventId === '') {
+        if ($eventId === '' || !preg_match('/^[a-zA-Z0-9._:-]{1,120}$/D', $eventId)) {
             return new WP_Error('cmb_invalid_event_id', 'Event id required', ['status' => 422]);
         }
-        $dedup = 'cmb_rx_' . hash_hmac('sha256', $eventId, self::secret());
-        if (get_transient($dedup)) {
+        // A WordPress transient read-then-set is NOT atomic. Reserve a
+        // uniquely indexed wp_options option instead: concurrent requests
+        // cannot both claim the same workspace + event ID.
+        $dedup = 'cmb_rx_' . hash_hmac('sha256',
+            (string) $payload['workspaceId'] . ':' . $eventId, self::secret());
+        $expiry = time() + DAY_IN_SECONDS;
+        self::prune_expired_reservations();
+        if (!add_option($dedup, (string) $expiry, '', false)) {
             return rest_ensure_response(['accepted' => true, 'duplicate' => true]);
         }
         // Do not retain payload, sender, message, or customer contact details.
         $events = get_option(self::AUDIT, []);
         if (!is_array($events)) { $events = []; }
         $events[] = ['kind' => sanitize_key($payload['kind']), 'at' => gmdate('c')];
-        update_option(self::AUDIT, array_slice($events, -40), false);
-        set_transient($dedup, '1', DAY_IN_SECONDS);
+        if (!update_option(self::AUDIT, array_slice($events, -40), false)) {
+            delete_option($dedup); // Failed to persist the observation: retry permitted.
+            return new WP_Error('cmb_storage_unavailable', 'Temporary event storage failure', ['status' => 503]);
+        }
         return rest_ensure_response(['accepted' => true, 'duplicate' => false]);
+    }
+
+    public static function prune_expired_reservations(): void {
+        // WordPress Cron is disabled in ETG Lab. Prune up to 40 expired
+        // reservations opportunistically using delete_option, which keeps
+        // object-cache state coherent (unlike raw SQL DELETE).
+        global $wpdb;
+        if (!isset($wpdb) || !method_exists($wpdb, 'prepare')) { return; }
+        $prefix = $wpdb->esc_like('cmb_rx_') . '%';
+        $expired = $wpdb->get_col($wpdb->prepare(
+            "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s AND CAST(option_value AS UNSIGNED) < %d LIMIT 40",
+            $prefix, time()
+        ));
+        if (!is_array($expired)) { return; }
+        foreach ($expired as $optionName) {
+            if (is_string($optionName) && str_starts_with($optionName, 'cmb_rx_')) {
+                delete_option($optionName);
+            }
+        }
     }
 
     public static function status() {

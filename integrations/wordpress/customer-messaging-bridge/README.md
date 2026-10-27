@@ -1,6 +1,6 @@
 # ChatbotX Customer Messaging Bridge — ETG WooCommerce Lab
 
-Release: **0.2.0**, Lab only. Source: `feature/etg-woocommerce-lab-webchat-bridge` / PR #3.
+Release: **0.2.1**, Lab only. Source: `feature/etg-woocommerce-lab-webchat-bridge` / PR #3.
 
 The adapter is deliberately **not** an independent WhatsApp, Messenger,
 Instagram, SMTP or AI provider. ChatbotX owns channel OAuth credentials,
@@ -56,10 +56,10 @@ define('CMB_CHATBOTX_WORKSPACE_TOKEN', getenv('CMB_CHATBOTX_WORKSPACE_TOKEN'));
 ```
 
 Provision the actual environment variable using the authorized secret store
-and grant only the `inboxes`/channel scope. No token goes into
+and grant only the `inbox` scope (singular). No token goes into
 `wp_options`, HTML, or the WordPress editor.
 
-- Authenticated API: `GET https://chatbotx.mad4b.com/v1/inboxes`
+- Authenticated API: `GET https://chatbotx.mad4b.com/api/v1/inboxes`
 - All traffic requires TLS verification; host is hardcoded in the plugin.
 - WhatsApp Business, Messenger, Instagram and email OAuth/inboxes are
   connected and managed **inside ChatbotX** by a platform administrator.
@@ -75,7 +75,8 @@ Events captured when their module is enabled: `order.created`,
 The outbox is capped at 200 observations and contains only HMAC event
 fingerprints, event types, status labels and UTC timestamps. No names,
 emails, phone numbers, basket lines or order/customer IDs are stored.
-Repeated identical events are deduplicated; distinct status transitions
+Woo payment completion, failure, cancellation and individual refunds are also
+observed without customer/payment details. Repeated identical events are deduplicated; distinct status transitions
 are preserved. It does **not** provide a recoverable replication queue.
 
 Abandoned cart signals require both explicit opt-in to the module AND a
@@ -107,7 +108,9 @@ The client sends:
 - JSON body with `id`, `workspaceId`, `kind`
 
 Only known event kinds and the configured Workspace ID are accepted.
-The event ID is replay-guarded for 24 hours. Payloads are never retained
+The event ID is reserved atomically in WordPress options, with 24-hour
+expiry and bounded opportunistic cleanup (no dependence on WP-Cron).
+Payloads are never retained
 and the webhook **does not** mutate WooCommerce orders or customers.
 Read-only status is `GET /wp-json/cmb/v1/status`, restricted to
 WordPress administrators.

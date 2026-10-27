@@ -15,10 +15,21 @@ function sanitize_text_field($v) { return strip_tags(trim((string) $v)); }
 function sanitize_key($value) { return preg_replace('/[^a-z0-9_\-]/', '', strtolower((string) $value)); }
 function wp_salt($scheme = 'auth') { return 'standalone-test-salt-not-a-real-site-secret'; }
 function update_option($key, $value, $autoload = false) { $GLOBALS['cmb_test_options'][$key] = $value; return true; }
+function add_option($key, $value, $deprecated = '', $autoload = false) {
+    if (array_key_exists($key, $GLOBALS['cmb_test_options'])) { return false; }
+    $GLOBALS['cmb_test_options'][$key] = $value; return true;
+}
 function delete_option($key) { unset($GLOBALS['cmb_test_options'][$key]); return true; }
 function apply_filters($key, $value) { return $value; }
 function get_transient($key) { return $GLOBALS['cmb_transient'][$key] ?? false; }
 function set_transient($key, $value, $expiration) { $GLOBALS['cmb_transient'][$key] = $value; return true; }
+function wp_remote_get($url, $args = []) {
+    $GLOBALS['cmb_last_http_url'] = $url;
+    $GLOBALS['cmb_last_http_options'] = $args;
+    return $GLOBALS['cmb_next_http_result'] ?? ['response' => ['code' => 200], 'body' => '{"data": []}'];
+}
+function wp_remote_retrieve_response_code($value) { return (int) ($value['response']['code'] ?? 0); }
+function wp_remote_retrieve_body($value) { return $value['body'] ?? ''; }
 function rest_ensure_response($data) { return $data; }
 function current_user_can($cap) { return $cap === 'manage_options'; }
 function is_wp_error($value) { return $value instanceof WP_Error; }
@@ -74,19 +85,45 @@ $commerce = CMB_Commerce::sanitize(['orders' => '1', 'customers'=>'1', 'abandone
 assert_true($commerce['cart_idle_minutes'] === 15, 'cart throttle interval has a lower bound');
 assert_true($commerce['consent_required'] === '1', 'customer consent requirement cannot be disabled');
 $GLOBALS['cmb_test_options'][CMB_Commerce::OPTION] = $commerce;
+assert_true(CMB_Commerce::record('order.payment_complete', 'order-test-payment', ['status'=>'paid']), 'Woo payment completion observed');
+assert_true(CMB_Commerce::record('order.refunded', 'order-test-refund-1', ['status'=>'refunded']), 'partial refund observed distinctly');
+assert_true(CMB_Commerce::record('order.refunded', 'order-test-refund-2', ['status'=>'refunded']), 'multiple refunds observed distinctly');
+assert_true(CMB_Commerce::record('order.payment_failed', 'order-test-failed', ['status'=>'failed']), 'payment failure observed');
+assert_true(CMB_Commerce::record('order.cancelled', 'order-test-cancelled', ['status'=>'cancelled']), 'cancellation observed');
 assert_true(CMB_Commerce::record('order.created', 'order-test-100'), 'first order event captured');
 assert_true(!CMB_Commerce::record('order.created', 'order-test-100'), 'duplicate order event rejected');
 assert_true(CMB_Commerce::record('order.status_changed', 'order-test-100', ['status'=>'completed','revision'=>'processing-completed']), 'status change event captured');
 assert_true(CMB_Commerce::record('order.status_changed', 'order-test-100', ['status'=>'completed','revision'=>'pending-completed']), 'distinct transition to same final status retained');
 assert_true(!CMB_Commerce::record('unknown', 'order-test-100'), 'unrecognized event rejected');
 $items = get_option(CMB_Commerce::OUTBOX, []);
-assert_true(count($items) === 3, 'three unique local event records');
+assert_true(count($items) === 8, 'eight unique local event records');
 assert_true(strpos(json_encode($items), 'order-test-100') === false, 'raw order identifiers are not persisted');
 assert_true(strpos(json_encode($items), 'email') === false, 'no customer personal information in event records');
 for ($i=0; $i<220; $i++) {
     CMB_Commerce::record('order.created', 'test-' . $i);
 }
 assert_true(count(get_option(CMB_Commerce::OUTBOX, [])) === CMB_Commerce::MAX_EVENTS, 'event history remains bounded');
+// API contract: external origin is fixed, route includes /api/, and scope is
+// defined by the upstream ChatbotX API's singular `inbox` scope.
+define('CMB_CHATBOTX_WORKSPACE_TOKEN', 'cbx_ws_standalone_testing_nonsecret_000000');
+$GLOBALS['cmb_next_http_result'] = [
+    'response' => ['code' => 200],
+    'body' => '{"data":[{"id":"11755877814902375","channel":"webchat","name":"ETG","status":"connected"},{"id":"25","channel":"whatsapp","name":"Whatsapp","status":"disconnected"},{"id":"77","channel":"instagram","name":"IG","status":"connected"}],"pageCount":1}',
+];
+$channels = CMB_Channels::configured_inboxes(true);
+assert_true($channels['state'] === 'connected', 'authorized ChatbotX inbox response accepted');
+assert_true($GLOBALS['cmb_last_http_url'] === 'https://chatbotx.mad4b.com/api/v1/inboxes', 'authorized channel API endpoint uses /api/v1/');
+assert_true($GLOBALS['cmb_last_http_options']['headers']['Authorization'] === 'Bearer ' . CMB_CHATBOTX_WORKSPACE_TOKEN, 'API token passed only as bearer header');
+assert_true($GLOBALS['cmb_last_http_options']['redirection'] === 0 && $GLOBALS['cmb_last_http_options']['sslverify'] === true, 'API request disallows redirects and verifies TLS');
+assert_true(count($channels['inboxes']) === 3 && $channels['inboxes'][1]['status'] === 'disconnected', 'channel statuses preserved instead of treating every inbox as connected');
+assert_true(str_contains(file_get_contents(dirname(__DIR__) . '/README.md'), 'only the `inbox` scope'), 'README describes correct singular inbox scope');
+$GLOBALS['cmb_next_http_result'] = ['response' => ['code' => 401], 'body' => '{"code":"INVALID_CHATBOT_TOKEN"}'];
+$invalidTokenResult = CMB_Channels::configured_inboxes(true);
+assert_true($invalidTokenResult['state'] === 'http_error' && $invalidTokenResult['error'] === '401', 'unauthorized token rejected and status reported');
+$GLOBALS['cmb_next_http_result'] = ['response' => ['code' => 200], 'body' => '{"pageCount":1}'];
+assert_true(CMB_Channels::configured_inboxes(true)['state'] === 'invalid_response', 'invalid ChatbotX schema rejected');
+$GLOBALS['cmb_next_http_result'] = ['response' => ['code' => 200], 'body' => '{"data":[]}'];
+assert_true(CMB_Channels::configured_inboxes(true)['state'] === 'connected', 'empty inbox list accepted');
 assert_true(CMB_Webhooks::secret() === '', 'inbound receiver disabled by default');
 assert_true(!CMB_Webhooks::verify('{"kind":"message.received"}', (string) time(), 'sha256=' . str_repeat('a',64)), 'unconfigured webhook always denied');
 define('CMB_INBOUND_HMAC_SECRET', str_repeat('long-local-only-secret', 3));

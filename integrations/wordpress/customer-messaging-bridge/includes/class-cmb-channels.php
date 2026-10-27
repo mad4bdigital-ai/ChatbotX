@@ -32,11 +32,14 @@ final class CMB_Channels {
 
     public static function configured_inboxes(bool $force = false): array {
         if (!self::api_token()) { return ['state' => 'needs_token', 'inboxes' => [], 'error' => '']; }
+        // Cache must be credential-scoped: rotating a workspace token must
+        // never expose cached inboxes from a previous token/workspace.
+        $cacheKey = 'cmb_inboxes_' . substr(hash('sha256', self::api_token()), 0, 32);
         if (!$force && function_exists('get_transient')) {
-            $cached = get_transient('cmb_inboxes_v1');
+            $cached = get_transient($cacheKey);
             if (is_array($cached)) { return $cached; }
         }
-        $response = wp_remote_get(Customer_Messaging_Bridge::API_ORIGIN . '/v1/inboxes', [
+        $response = wp_remote_get(Customer_Messaging_Bridge::API_ORIGIN . '/api/v1/inboxes', [
             'timeout' => 9,
             'redirection' => 0,
             'sslverify' => true,
@@ -67,10 +70,11 @@ final class CMB_Channels {
                 'channel' => $channel,
                 'id' => sanitize_text_field((string) $item['id']),
                 'name' => sanitize_text_field((string) ($item['name'] ?? $channel)),
+                'status' => sanitize_key((string) ($item['status'] ?? 'unknown')),
             ];
         }
         $status = ['state' => 'connected', 'inboxes' => array_slice($result, 0, 100), 'error' => ''];
-        if (function_exists('set_transient')) { set_transient('cmb_inboxes_v1', $status, 120); }
+        if (function_exists('set_transient')) { set_transient($cacheKey, $status, 120); }
         return $status;
     }
 
@@ -84,8 +88,11 @@ final class CMB_Channels {
         echo '<table class="widefat striped"><thead><tr><th>Channel</th><th>Lab connection</th><th>Management</th></tr></thead><tbody>';
         foreach (self::CHANNELS as $key => $meta) {
             $matches = array_values(array_filter($s['inboxes'], static fn($r) => $r['channel'] === $key));
-            $connected = count($matches) > 0 || ($key === 'webchat' && Customer_Messaging_Bridge::ready());
-            $state = $connected ? 'Present' : ($key === 'webchat' ? 'Disabled' : 'Connect in ChatbotX');
+            $connected = count(array_filter($matches, static fn($r) => ($r['status'] ?? '') === 'connected')) > 0;
+            $state = ($key === 'webchat' && Customer_Messaging_Bridge::ready())
+                ? 'Webchat configured (round-trip unverified)'
+                : ($connected ? 'Provider connected (round-trip unverified)'
+                    : (count($matches) ? 'Inbox present — not connected' : 'Not connected'));
             echo '<tr><td>' . esc_html($meta['name']) . '</td><td>' . esc_html($state) .
                 '</td><td><a href="' . esc_url(Customer_Messaging_Bridge::API_ORIGIN) .
                 '" target="_blank" rel="noopener noreferrer">Open ChatbotX</a></td></tr>';

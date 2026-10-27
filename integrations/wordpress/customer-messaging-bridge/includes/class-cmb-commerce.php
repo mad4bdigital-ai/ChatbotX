@@ -23,6 +23,10 @@ final class CMB_Commerce {
         add_action('woocommerce_order_status_changed', [self::class, 'status_changed'], 20, 4);
         add_action('woocommerce_created_customer', [self::class, 'new_customer'], 20, 1);
         add_action('woocommerce_cart_updated', [self::class, 'cart_updated'], 50, 0);
+        add_action('woocommerce_payment_complete', [self::class, 'payment_complete'], 20, 1);
+        add_action('woocommerce_order_refunded', [self::class, 'refund_created'], 20, 2);
+        add_action('woocommerce_order_status_failed', [self::class, 'payment_failed'], 20, 1);
+        add_action('woocommerce_order_status_cancelled', [self::class, 'cancelled'], 20, 1);
         add_action('admin_post_cmb_commerce_save', [self::class, 'save']);
         add_action('admin_post_cmb_commerce_clear', [self::class, 'clear']);
     }
@@ -59,7 +63,9 @@ final class CMB_Commerce {
     public static function record(string $kind, string $source_id, array $meta = []): bool {
         $s = self::settings();
         if ($s['local_event_capture'] !== '1') { return false; }
-        if (!in_array($kind, ['order.created', 'order.status_changed', 'customer.created', 'cart.observed'], true)) { return false; }
+        if (!in_array($kind, ['order.created', 'order.status_changed', 'order.payment_complete',
+            'order.refunded', 'order.payment_failed', 'order.cancelled',
+            'customer.created', 'cart.observed'], true)) { return false; }
         if ((str_starts_with($kind, 'order.') && $s['orders'] !== '1') ||
             ($kind === 'customer.created' && $s['customers'] !== '1') ||
             ($kind === 'cart.observed' && ($s['abandoned_cart'] !== '1' || !self::consent_allowed()))) {
@@ -96,6 +102,26 @@ final class CMB_Commerce {
             'status' => (string) $new_status,
             'revision' => (string) $old_status . '-' . (string) $new_status,
         ]);
+    }
+
+    public static function payment_complete($order_id): void {
+        self::record('order.payment_complete', (string) $order_id, ['status' => 'paid']);
+    }
+
+    public static function refund_created($order_id, $refund_id): void {
+        // A refund can be partial: key the event by both order and refund IDs,
+        // never by the final Woo order status alone.
+        self::record('order.refunded', (string) $order_id . ':' . (string) $refund_id, [
+            'status' => 'refunded',
+        ]);
+    }
+
+    public static function payment_failed($order_id): void {
+        self::record('order.payment_failed', (string) $order_id, ['status' => 'failed']);
+    }
+
+    public static function cancelled($order_id): void {
+        self::record('order.cancelled', (string) $order_id, ['status' => 'cancelled']);
     }
 
     public static function new_customer($customer_id): void {
