@@ -46,6 +46,29 @@ describe("fetchAllCursorPages", () => {
     })
   })
 
+  test("ignores malformed data payloads and still follows a safe next cursor", async () => {
+    const get = vi
+      .fn()
+      .mockResolvedValueOnce({
+        data: null,
+        paging: {
+          cursors: { after: "next-cursor" },
+          next: "https://graph.example/page?after=next-cursor",
+        },
+      })
+      .mockResolvedValueOnce({ data: [{ id: "valid" }] })
+
+    const result = await fetchAllCursorPages({
+      endpoint: "v23.0/me/accounts",
+      fields: "id",
+      accessToken: "token",
+      get,
+    })
+
+    expect(result).toEqual([{ id: "valid" }])
+    expect(get).toHaveBeenCalledTimes(2)
+  })
+
   test("stops at maxPages even when Graph keeps returning cursors", async () => {
     const get = vi.fn().mockResolvedValue({
       data: [{ id: "page" }],

@@ -148,10 +148,12 @@ export async function fetchAllCursorPages<T>({
     }
 
     const response = await get(endpoint, { searchParams })
-    results.push(...response.data)
+    if (Array.isArray(response?.data)) {
+      results.push(...response.data)
+    }
     pageCount++
 
-    cursor = response.paging?.next ? response.paging.cursors?.after : undefined
+    cursor = response?.paging?.next ? response.paging.cursors?.after : undefined
     if (!cursor) {
       break
     }
