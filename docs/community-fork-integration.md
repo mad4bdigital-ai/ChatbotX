@@ -26,6 +26,13 @@ This is **incremental integration**, not the complete five-fork merge. The refer
 - This code does **not** add OAuth permissions or modify connected live accounts; older authorizations may lack analytics permission and return reduced data.
 - Added route tests verify the analytics scope, workspace boundary, and invalid-date-window rejection (7/7 passed). Existing Instagram/Messenger provider regression suites passed (720/720 tests), and Builder/Instagram/Messenger scoped TypeScript checks passed. Still draft pending GitHub CI and real-provider smoke tests.
 
+## Fifth integration slice — External Request JSON hygiene
+
+- **Fibrazo:** Ported selective unresolved-variable omission for JSON request body properties to both the Flow Builder test action and the actual Worker execution. The shared helper belongs to the existing business external-request module and carries no remote call or new secrets.
+- **Safer than fork code:** Only string values containing unresolved template tokens are omitted; resolved intentional empty strings, null, false and numeric zero are preserved. Object-valued entries in arrays are processed recursively, while the array's own positions remain stable. Malformed JSON is not silently converted into a different payload.
+- **Existing safeguards retained:** We did not port the fork's unrelated HTTP 4xx/5xx response behavior change, and the existing request authorization and upstream error normalization are untouched.
+- The focused helper, Worker interpolation and Builder preview suites passed 14/14 tests. Full CI and runtime smoke checks are still needed.
+
 ## Fork reconciliation ledger
 
 The machine-readable [community-fork-reconciliation.json](./community-fork-reconciliation.json) tracks all 407 fork-file-change occurrences. **Integrated means selected behavior was ported; it never promises that every upstream hunk was copied.** Pending and partially overlapping paths require separate semantic review. Existing public IG comment and flow APIs are intentionally not copied, since the current main implements more complete scoped interfaces. License bypasses and environment-specific deployment assets are excluded.

@@ -7,14 +7,14 @@
   "overall_status": {
     "pending_feature_integration": 71,
     "deferred_environment_specific": 45,
-    "pending_upstream_conflict": 80,
+    "pending_upstream_conflict": 77,
     "pending_semantic_conflict": 139,
     "deferred_delete": 5,
     "integrated_runtime": 15,
     "deferred_branding": 19,
-    "partial_overlap_review": 20,
+    "partial_overlap_review": 21,
     "superseded_by_current_main": 8,
-    "integrated_adapted": 3,
+    "integrated_adapted": 5,
     "excluded_security_or_license": 2
   },
   "by_fork": {
@@ -54,11 +54,13 @@
     },
     "fibrazo": {
       "deferred_environment_specific": 38,
-      "pending_upstream_conflict": 16,
+      "pending_upstream_conflict": 13,
       "pending_semantic_conflict": 35,
       "pending_feature_integration": 5,
+      "integrated_adapted": 2,
       "integrated_runtime": 1,
-      "excluded_security_or_license": 2
+      "excluded_security_or_license": 2,
+      "partial_overlap_review": 1
     }
   },
   "entry_status_warning": "Pending and partial path dispositions require human semantic verification. In integrated paths only selected behavior is guaranteed, not a full diff import.",
@@ -3263,9 +3265,9 @@
       "path": "apps/builder/src/features/flows/actions/test-external-request-action.ts",
       "fork_change": "modified",
       "base_comparison": "upstream-drift-conflict",
-      "disposition": "pending_upstream_conflict",
-      "reason": "main diverged; never overwrite current core code",
-      "confirmed_manual": false
+      "disposition": "integrated_adapted",
+      "reason": "Ported token-safe JSON unresolved-field omission in Builder test preview; preserves intentional blank JSON values unlike fork.",
+      "confirmed_manual": true
     },
     {
       "fork": "fibrazo",
@@ -3344,9 +3346,9 @@
       "path": "apps/worker/src/integration/handlers/tool-handler.ts",
       "fork_change": "modified",
       "base_comparison": "upstream-drift-conflict",
-      "disposition": "pending_upstream_conflict",
-      "reason": "main diverged; never overwrite current core code",
-      "confirmed_manual": false
+      "disposition": "integrated_adapted",
+      "reason": "Ported safe JSON omission after worker variable interpolation; preserve empty values and original error handling.",
+      "confirmed_manual": true
     },
     {
       "fork": "fibrazo",
@@ -3506,8 +3508,8 @@
       "path": "packages/business/src/external-request/service.ts",
       "fork_change": "modified",
       "base_comparison": "upstream-drift-conflict",
-      "disposition": "pending_upstream_conflict",
-      "reason": "main diverged; never overwrite current core code",
+      "disposition": "partial_overlap_review",
+      "reason": "Ported only fork JSON cleanup into separate pure helper; rejected unrelated change that removes HTTP >=400 response guard.",
       "confirmed_manual": false
     },
     {
