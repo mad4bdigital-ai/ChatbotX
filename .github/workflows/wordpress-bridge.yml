@@ -1,0 +1,30 @@
+name: WordPress Bridge QA
+
+on:
+  pull_request:
+    paths:
+      - 'integrations/wordpress/customer-messaging-bridge/**'
+      - '.github/workflows/wordpress-bridge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  adapter:
+    name: PHP adapter syntax and standalone tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - name: Lint plugin
+        run: php -l integrations/wordpress/customer-messaging-bridge/customer-messaging-bridge.php
+      - name: Lint smoke tests
+        run: php -l integrations/wordpress/customer-messaging-bridge/tests/standalone.php
+      - name: Run isolated adapter tests
+        run: php integrations/wordpress/customer-messaging-bridge/tests/standalone.php
