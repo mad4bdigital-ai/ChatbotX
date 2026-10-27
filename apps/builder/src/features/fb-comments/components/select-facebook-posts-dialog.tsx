@@ -209,6 +209,7 @@ export function SelectFacebookPostsDialog({
   const adsPosts = useFbCommentPostsStore((s) => s.adsPosts)
   const reelsPosts = useFbCommentPostsStore((s) => s.reelsPosts)
   const pages = useFbCommentPostsStore((s) => s.pages)
+  const fetchPosts = useFbCommentPostsStore((s) => s.fetchPosts)
 
   const [selectedIds, setSelectedIds] = useState<string[]>(value)
   const [selectedPageId, setSelectedPageId] = useState<string>(ALL_PAGES_VALUE)
@@ -218,6 +219,14 @@ export function SelectFacebookPostsDialog({
       setSelectedIds(value)
     }
   }, [open, value])
+
+  // Cached post choices are refreshed each time the selector is reopened.
+  // The store prevents a duplicate call if mount-time initialization is active.
+  useEffect(() => {
+    if (open) {
+      fetchPosts()
+    }
+  }, [open, fetchPosts])
 
   const filterByPage = (posts: FacebookPost[]) => {
     if (inboxId) {

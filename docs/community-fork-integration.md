@@ -33,6 +33,13 @@ This is **incremental integration**, not the complete five-fork merge. The refer
 - **Existing safeguards retained:** We did not port the fork's unrelated HTTP 4xx/5xx response behavior change, and the existing request authorization and upstream error normalization are untouched.
 - The focused helper, Worker interpolation and Builder preview suites passed 14/14 tests. Full CI and runtime smoke checks are still needed.
 
+## Sixth integration slice — Facebook comment post picker freshness
+
+- **alvanr:** The Facebook post picker now refreshes when reopened instead of reusing the provider's stale mount-time snapshot.
+- The adapted store shares the existing initializer and refresh logic, avoids simultaneous API calls when the dialog opens during provider initialization, and preserves the last successful list on provider errors.
+- No post selection is automatically changed. Workspace id remains required for the provider store. Three focused refresh/retry/concurrency tests passed.
+- No publishing, external write call, or provider-account mutation occurs during the tests.
+
 ## Fork reconciliation ledger
 
 The machine-readable [community-fork-reconciliation.json](./community-fork-reconciliation.json) tracks all 407 fork-file-change occurrences. **Integrated means selected behavior was ported; it never promises that every upstream hunk was copied.** Pending and partially overlapping paths require separate semantic review. Existing public IG comment and flow APIs are intentionally not copied, since the current main implements more complete scoped interfaces. License bypasses and environment-specific deployment assets are excluded.
