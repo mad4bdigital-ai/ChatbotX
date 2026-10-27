@@ -54,15 +54,24 @@ const salida = z.object({
 })
 
 const entrada = z.object({
-  days: z.coerce.number().int().min(1).max(90).default(7),
+  days: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .max(90)
+    .default(7)
+    .describe(
+      "Number of recent days to include in the report, from 1 to 90 (default 7).",
+    ),
 })
 
-const instagramOverviewWorkspaceTokenAPI = workspaceTokenAuthAPI
+const instagram = workspaceTokenAuthAPI
   .route({
     method: "GET",
     path: "/v1/social-stats/instagram",
-    summary:
-      "Recent Instagram engagement and account insights (up to 100 posts)",
+    summary: "Get Instagram account statistics",
+    description:
+      "Returns recent account engagement and available Instagram insights for the authenticated workspace. Media results cover at most 100 recent posts; some metrics require additional Meta permissions.",
     tags: ["Social Stats"],
   })
   .input(entrada)
@@ -73,11 +82,13 @@ const instagramOverviewWorkspaceTokenAPI = workspaceTokenAuthAPI
       await instagramOverview(context.workspace.id, input.days),
   )
 
-const facebookOverviewWorkspaceTokenAPI = workspaceTokenAuthAPI
+const facebook = workspaceTokenAuthAPI
   .route({
     method: "GET",
     path: "/v1/social-stats/facebook",
-    summary: "Recent Facebook page and post engagement (up to 100 posts)",
+    summary: "Get Facebook page statistics",
+    description:
+      "Returns connected Facebook page followers and available post engagement for the authenticated workspace. Media results cover at most 100 recent posts and require valid Meta credentials.",
     tags: ["Social Stats"],
   })
   .input(entrada)
@@ -88,11 +99,13 @@ const facebookOverviewWorkspaceTokenAPI = workspaceTokenAuthAPI
       await facebookOverview(context.workspace.id, input.days),
   )
 
-const tiktokOverviewWorkspaceTokenAPI = workspaceTokenAuthAPI
+const tiktok = workspaceTokenAuthAPI
   .route({
     method: "GET",
     path: "/v1/social-stats/tiktok",
-    summary: "Follower and engagement counters of the TikTok account",
+    summary: "Get TikTok account statistics",
+    description:
+      "Returns available TikTok account and recent video engagement for the authenticated workspace. Individual video metrics may be unavailable without the required TikTok scopes.",
     tags: ["Social Stats"],
   })
   .input(entrada)
@@ -104,7 +117,7 @@ const tiktokOverviewWorkspaceTokenAPI = workspaceTokenAuthAPI
   )
 
 export const socialStatsAPI = {
-  instagramOverviewWorkspaceTokenAPI,
-  facebookOverviewWorkspaceTokenAPI,
-  tiktokOverviewWorkspaceTokenAPI,
+  instagram,
+  facebook,
+  tiktok,
 }
