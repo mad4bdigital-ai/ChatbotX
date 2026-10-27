@@ -10,6 +10,8 @@ export const PUBLIC_ROUTES = [
   "/l",
   "/dynamic-images",
   "/go",
+  // Tap-to-dial page for callPhoneNumber buttons on Instagram.
+  "/call",
   "/media/attachment",
   "/media/avatar",
   "/minigames",

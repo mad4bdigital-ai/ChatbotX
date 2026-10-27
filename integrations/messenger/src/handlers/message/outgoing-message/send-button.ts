@@ -12,6 +12,11 @@ import { MAX_BUTTONS } from "../../../constants"
 import { logger } from "../../../lib/logger"
 import type { FacebookButton } from "../../../schema"
 
+const toDialablePhoneNumber = (phoneNumber: string): string => {
+  const trimmed = phoneNumber.trim()
+  return trimmed.startsWith("+") ? trimmed : `+${trimmed}`
+}
+
 export function getButtonTemplate(props: {
   flowId: string
   flowVersionId?: string
@@ -60,6 +65,13 @@ export function getButtonTemplate(props: {
         type: "web_url",
         title: button.label,
         url: appendCodeToMagicLink(button.beforeStep.url, buttonPayload),
+      }
+    case buttonTypes.enum.callPhoneNumber:
+      // Messenger dials the payload; it must be in "+<country><number>" form.
+      return {
+        type: "phone_number",
+        title: button.label,
+        payload: toDialablePhoneNumber(button.beforeStep.phoneNumber),
       }
     default: {
       return {

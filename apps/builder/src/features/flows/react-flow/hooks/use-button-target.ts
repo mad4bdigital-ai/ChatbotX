@@ -3,6 +3,8 @@
 import {
   type ButtonType,
   buttonTypes,
+  type CallPhoneNumberStepSchema,
+  callPhoneNumberStepDefaultFn,
   type FlowNode,
   nodeTypeSchema,
   type OpenMiniAppStepSchema,
@@ -25,6 +27,7 @@ import { useCallback } from "react"
 export type ButtonTargetBeforeStep =
   | StartAnotherNodeStepSchema
   | OpenWebsiteStepSchema
+  | CallPhoneNumberStepSchema
   | OpenMiniAppStepSchema
   | StartExternalFlowStepSchema
   | StartExternalNodeStepSchema
@@ -123,6 +126,9 @@ export function useCreateButtonTarget() {
           break
         case buttonTypes.enum.openWebsite:
           beforeStep = openWebsiteStepDefaultFn()
+          break
+        case buttonTypes.enum.callPhoneNumber:
+          beforeStep = callPhoneNumberStepDefaultFn()
           break
         case buttonTypes.enum.startExternalNode:
           beforeStep = startExternalNodeStepDefaultFn()

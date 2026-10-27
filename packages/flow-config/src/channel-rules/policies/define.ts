@@ -88,6 +88,7 @@ const stepExecutionKinds = {
   startExternalNode: "worker",
   openWebsite: "worker",
   openMiniApp: "worker",
+  callPhoneNumber: "worker",
   addNotes: "worker",
   subscribeBroadcast: "worker",
   unsubscribeBroadcast: "worker",
