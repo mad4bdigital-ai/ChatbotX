@@ -61,15 +61,15 @@ The machine-readable [community-fork-reconciliation.json](./community-fork-recon
 - **alvanr Telegram username:** upstream `IncomingContact` contract has no `username` field. Direct transplant fails TS2353. Needs a signed-off field mapping and schema change.
 - **alvanr Gemini fallback:** do not import unofficial model identifiers or broad provider-error fallbacks without upstream verification.
 - **alvanr manual inbox poll:** a per-workspace UI action must not enqueue an unscoped globally scheduled job without rate limiting and queue/tenant safety.
-- **chatplus:** forced rebranding to "ChatPLUS" is inapplicable; Full Russian/Uzbek user-interface localization remains deferred pending complete translation and locale-contract review.
+- **chatplus:** forced rebranding to "ChatPLUS" is inapplicable; Russian and Uzbek UI catalogs are now adapted with explicit English backfills, pending professional translation review. Other branded assets are excluded.
 - **novawebs:** Social Stats routes are now integrated with analytics-scoped Workspace Token APIs. Provider OAuth permission upgrades and real-account reauthorization remain deferred; added TikTok helper functions do not automatically grant new scopes.
 - **fibrazo:** production CI/deployment scripts and instance-specific Docker compose files are not portable. Do not overwrite current Coolify/VPS infrastructure.
 - **mu:** public call link accepts only validated phone numbers; it must not be treated as identity proof or contact consent.
 
 ## Source delta governance — automated check
 
-- Source fork changes are not blindly cherry-picked. Six risk decisions were explicitly recorded: reject the old Redis group-creation recovery because its start-from-latest cursor can lose queued messages; defer cross-automation keyword/catchall prioritization pending a policy with replay/idempotency tests; and defer Russian, Uzbek and Mongolian UI activation until those translation dictionaries match the current English source.
-- The ledger records all 407 source file-change occurrences, with path-level dispositions, manual-review markers, aggregate counts, and one reason per source. It now reports 37 specifically reviewed entries, which is not the same as 35 complete features.
+- Source fork changes are not blindly cherry-picked. Six risk decisions were explicitly recorded: reject the old Redis group-creation recovery because its start-from-latest cursor can lose queued messages; defer cross-automation keyword/catchall prioritization pending a policy with replay/idempotency tests; and enable Russian and Uzbek UI with English-source parity and explicit backfills, while Mongolian UI remains deferred because its fork catalog lacks 2,535 English keys.
+- The ledger records all 407 source file-change occurrences, with path-level dispositions, manual-review markers, aggregate counts, and one reason per source. It now reports 39 specifically reviewed entries, which is not the same as 35 complete features.
 - New read-only source-control gate: standalone Node checker in scripts/check-community-fork-reconciliation.mjs plus five unit tests in scripts/__tests__/. The dedicated workflow runs them on related PR changes, without secrets, repository write permissions, server access, or production deployment.
 
 ## Ninth integration slice — Automated Response keyword descriptions
@@ -82,6 +82,13 @@ The machine-readable [community-fork-reconciliation.json](./community-fork-recon
 
 - **alvanr:** Added AI Functions as a native tool card linking to the existing workspace-scoped AI Functions page. Uses the existing localization keys and the current Tools page's permission/visibility architecture; no Gemini fallback model, unofficial provider integration, or new credential handling.
 - Both Tools configuration and rendered navigation tests passed (29/29). Scoped Builder typecheck and full GitHub CI are required before merge.
+
+## Eleventh integration slice — Russian and Uzbek UI locales
+
+- ChatPlus: Ported Russian and Uzbek UI dictionaries using the current English catalog as the authoritative schema, without importing ChatPlus branding. Each new locale retains 6,333 fork translation values and falls back to 734 English messages added in newer upstream; one obsolete fork-only key was excluded.
+- Registered native language selector labels, left-to-right layout, region resolution (ru-RU, uz-UZ) and corresponding imports to the i18n registry. Contact-language classification remains separate from UI locale selection.
+- English fallback is explicitly visible for untranslated newer features; no claim of professionally reviewed full translation quality. A future translation review can replace English values without changing keys.
+- Builder i18n source parity check passed and 111 combined i18n tests passed, including ICU placeholders. Builder type-check and GitHub CI remain the gate for merging.
 
 ## Next slices
 

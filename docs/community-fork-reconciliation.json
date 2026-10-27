@@ -10,12 +10,12 @@
     "pending_upstream_conflict": 76,
     "pending_semantic_conflict": 140,
     "deferred_delete": 5,
-    "integrated_adapted": 12,
+    "integrated_adapted": 14,
     "integrated_runtime": 15,
-    "deferred_translation_parity": 3,
     "deferred_branding": 19,
     "partial_overlap_review": 21,
     "superseded_by_current_main": 8,
+    "deferred_translation_parity": 1,
     "excluded_security_or_license": 2
   },
   "by_fork": {
@@ -31,7 +31,7 @@
     "chatplus": {
       "pending_semantic_conflict": 30,
       "pending_feature_integration": 5,
-      "deferred_translation_parity": 2,
+      "integrated_adapted": 2,
       "deferred_branding": 9,
       "pending_upstream_conflict": 4,
       "partial_overlap_review": 1,
@@ -1343,9 +1343,9 @@
       "path": "apps/builder/messages/ru.json",
       "fork_change": "added",
       "base_comparison": "isolated-safe-3way",
-      "disposition": "deferred_translation_parity",
-      "reason": "Russian pack has 734 current English leaf keys missing; needs English-source parity and ICU validation before enabled UI locale.",
-      "confirmed_manual": false
+      "disposition": "integrated_adapted",
+      "reason": "Russian UI locale enabled with 6333 native translations preserved from ChatPlus; 734 new English source keys backfilled from English, one source-only key excluded. Full i18n checker and 111 locale tests passed; English remains key/ICU authority.",
+      "confirmed_manual": true
     },
     {
       "fork": "chatplus",
@@ -1370,9 +1370,9 @@
       "path": "apps/builder/messages/uz.json",
       "fork_change": "added",
       "base_comparison": "isolated-safe-3way",
-      "disposition": "deferred_translation_parity",
-      "reason": "Uzbek pack has 734 current English leaf keys missing; needs English-source parity and ICU validation before enabled UI locale.",
-      "confirmed_manual": false
+      "disposition": "integrated_adapted",
+      "reason": "Uzbek UI locale enabled with 6333 native translations preserved from ChatPlus; 734 new English source keys backfilled from English, one source-only key excluded. Full i18n checker and 111 locale tests passed; English remains key/ICU authority.",
+      "confirmed_manual": true
     },
     {
       "fork": "chatplus",
