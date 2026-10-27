@@ -2,13 +2,16 @@
 /**
  * Plugin Name: Customer Messaging Bridge
  * Description: Lab-safe Webchat and WooCommerce integration bridge for an external messaging platform.
- * Version: 0.1.0
+ * Version: 0.2.0
  * Requires PHP: 8.0
  * Requires at least: 6.2
  * Author: MAD4B Digital
  * Text Domain: customer-messaging-bridge
  */
 if (!defined('ABSPATH')) { exit; }
+require_once __DIR__ . '/includes/class-cmb-channels.php';
+require_once __DIR__ . '/includes/class-cmb-commerce.php';
+require_once __DIR__ . '/includes/class-cmb-webhooks.php';
 
 final class Customer_Messaging_Bridge {
     public const OPTION = 'cmb_settings_v1';
@@ -22,7 +25,11 @@ final class Customer_Messaging_Bridge {
         add_action('admin_post_cmb_test', [self::class, 'test']);
         add_action('wp_footer', [self::class, 'render_footer'], 99);
         add_shortcode('customer_messaging_webchat', [self::class, 'shortcode']);
-        add_action('woocommerce_order_status_changed', [self::class, 'order_changed'], 10, 4);
+        CMB_Commerce::boot();
+        CMB_Webhooks::boot();
+        add_action('cmb_admin_sections', [CMB_Channels::class, 'admin_panel'], 10);
+        add_action('cmb_admin_sections', [CMB_Commerce::class, 'admin_panel'], 20);
+        add_action('cmb_admin_sections', [CMB_Webhooks::class, 'admin_panel'], 30);
     }
 
     public static function settings(): array {
@@ -107,7 +114,7 @@ final class Customer_Messaging_Bridge {
         self::input_row('Webchat ID', 'webchat_id', $s['webchat_id']);
         self::input_row('Brand color (#RRGGBB)', 'brand_color', $s['brand_color']);
         self::check_row('Enable public Webchat widget', 'enabled', $s['enabled'] === '1');
-        self::check_row('WooCommerce event audit — local only, no outbound sync', 'woo_local_audit', $s['woo_local_audit'] === '1');
+        echo '<tr><th>Commerce integration</th><td>Configured in the WooCommerce panel below (no customer or order data leaves WordPress).</td></tr>';
         echo '</tbody></table>';
         submit_button('Save messaging settings');
         echo '</form><hr>';
@@ -122,6 +129,7 @@ final class Customer_Messaging_Bridge {
             '. Outbound order/CRM synchronization is intentionally not active.</p>';
         $events = get_option(self::AUDIT, []);
         echo '<p>Locally observed WooCommerce status events: ' . esc_html((string) count(is_array($events) ? $events : [])) . ' (up to 30 retained; no customer information).</p>';
+        do_action('cmb_admin_sections');
         echo '</div>';
     }
 

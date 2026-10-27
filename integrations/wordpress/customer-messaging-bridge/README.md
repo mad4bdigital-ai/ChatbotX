@@ -1,59 +1,135 @@
-# Customer Messaging Bridge — WordPress adapter
+# ChatbotX Customer Messaging Bridge — ETG WooCommerce Lab
 
-A minimal WordPress plugin integrating an existing ChatbotX Webchat channel
-with ETG WooCommerce Lab.
+Release: **0.2.0**, Lab only. Source: `feature/etg-woocommerce-lab-webchat-bridge` / PR #3.
 
-Status (2026-10-27): deployed and enabled on the ETG WooCommerce Lab site-copy.
-Tested with PHP lint, read-only WordPress checks and standalone unit checks.
-No changes to ETG production WordPress or the ChatbotX stable branch.
+The adapter is deliberately **not** an independent WhatsApp, Messenger,
+Instagram, SMTP or AI provider. ChatbotX owns channel OAuth credentials,
+team Inbox, automations, AI and contact conversations. WordPress provides
+the Webchat widget, scoped discovery, and safe WooCommerce event hooks.
 
-## Deployment
+## Modules / deployment state
 
-Install customer-messaging-bridge under wp-content/plugins/, activate it in
-WordPress and open Settings > Customer Messaging.
+| Module | Shipped in plugin | Operational state |
+|---|---|---|
+| Website Live Chat | official script singleton | enabled for ETG WooCommerce Lab |
+| WhatsApp Business | channel discovery/configuration | needs ChatbotX Meta OAuth/inbox |
+| Facebook Messenger | channel discovery/configuration | needs ChatbotX Meta OAuth/inbox |
+| Instagram DM | channel discovery/configuration | needs ChatbotX Meta OAuth/inbox |
+| Email / Shared Inbox | channel discovery/configuration | needs ChatbotX SMTP/inbox |
+| CRM / Contact Profiles | scoped API discovery, no writes | requires workspace API token |
+| WooCommerce Orders | anonymized local event outbox | order events enabled in Lab |
+| WooCommerce Customers | anonymized local event outbox | can be enabled by admin in Lab |
+| Abandoned Cart | consent-gated cart observation | disabled pending consent provider |
+| AI & Automations | signed inbound event adapter + admin management | provider rules/AI configured in ChatbotX, no outbound actions yet |
+| Human handoff | ChatbotX team inbox | provider teams/roles configured in ChatbotX |
 
-Configure a real workspace ID and Webchat ID returned by ChatbotX. The
-integration origin is hardcoded to https://chatbotx.mad4b.com rather than
-user-configurable to prevent an untrusted script source or SSRF.
+This is a **lab foundation**, not completed real-world provider onboarding or
+a paid-message campaign. It does not independently send emails, WhatsApp
+templates, cart reminders or customer data to ChatbotX.
 
-The deployed test fixture uses:
+## WordPress installation / rollback
 
-- Workspace: MAD4B Digital — 11755877814459770
-- Webchat: ETG WooCommerce Lab — 11755877814902375
-- WordPress local Lab: http://localhost:8091/
-- Allowed ChatbotX embedding hosts: localhost and
-  jdj8d534-8091.euw.devtunnels.ms (the latter is not guaranteed online)
+Copy directory to `wp-content/plugins/customer-messaging-bridge`,
+activate in WordPress, open **Settings → Customer Messaging**. Set Workspace
+ID and Webchat ID from ChatbotX, then enable the Webchat widget.
 
-The official remote widget script (/chat-widget/plugin.js) is loaded once in
-the WordPress footer with public workspace and Webchat IDs. The shortcode
-[customer_messaging_webchat] adds only an anchor and never duplicates the
-script bootstrap.
+- Lab Workspace: `11755877814459770` (MAD4B Digital)
+- Lab Webchat: `11755877814902375` (ETG WooCommerce Lab)
+- Local Lab origin: `http://localhost:8091/`
+- Allowed ChatbotX embed domains: `localhost`,
+  `jdj8d534-8091.euw.devtunnels.ms`.
+- ChatbotX application pinned to the stable source SHA
+  `8fb1a28c9c20fe1ae133d19be8e7467a423f0c06`.
 
-## Security and scope
+Existing 0.1.x WooCommerce local status audit is migrated into the
+new privacy-minimal event observation configuration on upgrade. The old
+audit option is preserved for reference.
 
-- WordPress settings writes and test actions require manage_options and
-  WordPress nonces.
-- API origin is fixed. Resource IDs must be digits. Color must be #RRGGBB.
-- No secrets enter HTML; the ChatbotX script is served with CORS headers.
-- No customer, order or payment details are transmitted by this plugin.
-- Maintain a concrete ChatbotX embedding-domain allowlist; an empty list in
-  the deployed application allows arbitrary embedding.
-- An optional WooCommerce order status-change log stores only transition
-  labels and UTC timestamps, capped at 30 local WordPress option rows.
-- WooCommerce to external CRM sync stays OFF. Implement only after reviewing
-  tenant-scoped authorization, consent/data minimization, idempotency, replay
-  and rate limit policy.
-- Plugin development does not change the pinned ChatbotX Production SHA.
+## ChatbotX API & channel discovery
 
-## Verification
+To enable **read-only** discovery of connected inboxes, create an appropriately
+scoped workspace API token in ChatbotX and put it in server-only
+`wp-config.php`, above the stop-editing comment:
 
-    php -l integrations/wordpress/customer-messaging-bridge/customer-messaging-bridge.php
-    php integrations/wordpress/customer-messaging-bridge/tests/standalone.php
+```php
+define('CMB_CHATBOTX_WORKSPACE_TOKEN', getenv('CMB_CHATBOTX_WORKSPACE_TOKEN'));
+```
 
-The homepage HTML should contain /chat-widget/plugin.js exactly once.
-A manual browser test must still verify: chat bubble click, iframe, guest
-conversation behavior, and console errors. HTML/API tests alone are not a
-complete end-to-end test.
+Provision the actual environment variable using the authorized secret store
+and grant only the `inboxes`/channel scope. No token goes into
+`wp_options`, HTML, or the WordPress editor.
 
-The WordPress Lab is on VPS loopback port 8091. Use an authorized SSH
-tunnel or live dev preview to browse it from another computer.
+- Authenticated API: `GET https://chatbotx.mad4b.com/v1/inboxes`
+- All traffic requires TLS verification; host is hardcoded in the plugin.
+- WhatsApp Business, Messenger, Instagram and email OAuth/inboxes are
+  connected and managed **inside ChatbotX** by a platform administrator.
+- Outbound customer/order sync is not performed by this release. In
+  particular `POST /v1/orders` creates native COD orders, **not** a safe
+  import of arbitrary WooCommerce orders, so the plugin does not misuse it.
+
+## Local WooCommerce events, consent and privacy
+
+Events captured when their module is enabled: `order.created`,
+`order.status_changed`, `customer.created`, `cart.observed`.
+
+The outbox is capped at 200 observations and contains only HMAC event
+fingerprints, event types, status labels and UTC timestamps. No names,
+emails, phone numbers, basket lines or order/customer IDs are stored.
+Repeated identical events are deduplicated; distinct status transitions
+are preserved. It does **not** provide a recoverable replication queue.
+
+Abandoned cart signals require both explicit opt-in to the module AND a
+verified consent integration that returns `true` for:
+
+```php
+add_filter('cmb_customer_marketing_consent', function ($default) {
+    // Only return true for the CURRENT visitor with verified opt-in.
+    return false;
+});
+```
+
+The default is false. A changed cart is an observed *candidate*, not a
+verified abandoned basket. No automated follow-ups are sent.
+
+## Optional inbound signed webhooks
+
+`POST /wp-json/cmb/v1/events` remains disabled unless a random secret of at
+least 32 bytes is defined in the WordPress server configuration:
+
+```php
+define('CMB_INBOUND_HMAC_SECRET', getenv('CMB_INBOUND_HMAC_SECRET'));
+```
+
+The client sends:
+
+- `X-CMB-Timestamp`: 10-digit Unix timestamp, ±5-minute acceptance
+- `X-CMB-Signature`: `sha256=HMAC_SHA256(secret, timestamp + "." + raw_body)`
+- JSON body with `id`, `workspaceId`, `kind`
+
+Only known event kinds and the configured Workspace ID are accepted.
+The event ID is replay-guarded for 24 hours. Payloads are never retained
+and the webhook **does not** mutate WooCommerce orders or customers.
+Read-only status is `GET /wp-json/cmb/v1/status`, restricted to
+WordPress administrators.
+
+To send actual provider callbacks into this receiver requires a separate
+authorized ChatbotX webhook sender with the same signature protocol;
+this release does not assert such a sender has been deployed.
+
+## Testing
+
+```bash
+php -l integrations/wordpress/customer-messaging-bridge/customer-messaging-bridge.php
+php integrations/wordpress/customer-messaging-bridge/tests/standalone.php
+```
+
+Standalone tests cover API token default-off, channel registry, resource
+validation, widget singleton, local WooCommerce event policies, privacy,
+idempotency, bounded retention, HMAC time window, signature tampering,
+tenant isolation and replay protection.
+
+The live Lab homepage contains the official widget script once, and the
+remote JS/CSS/iframe respond with HTTP 200. A full real-browser chat
+message round-trip, provider inbox OAuth, CRM writes, automation execution
+and consent flows are **separate release gates**. A local-only lab URL
+cannot substitute for browser e2e proof.
