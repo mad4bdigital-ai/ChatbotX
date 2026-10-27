@@ -1,0 +1,85 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and Push Builder
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: apps/builder/docker/Dockerfile
+          push: true
+          tags: ghcr.io/alvanr-git/chatbotx/chatbotx-builder:latest
+
+      - name: Build and Push Worker
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: apps/worker/docker/Dockerfile
+          push: true
+          tags: ghcr.io/alvanr-git/chatbotx/chatbotx-worker:latest
+
+      - name: Build and Push Realtime
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: apps/realtime/docker/Dockerfile
+          push: true
+          tags: ghcr.io/alvanr-git/chatbotx/chatbotx-realtime:latest
+
+      - name: Build and Push JavaScript Executor
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: apps/javascript-executor/docker/Dockerfile
+          push: true
+          tags: ghcr.io/alvanr-git/chatbotx/chatbotx-javascript-executor:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GCP VM via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.GCP_VM_IP }}
+          username: ${{ secrets.GCP_VM_USER }}
+          key: ${{ secrets.GCP_VM_SSH_KEY }}
+          script: |
+            cd /opt/chatbotx
+            git fetch origin main
+            git reset --hard origin/main
+            if [ ! -f .env ]; then
+              cp .env.example .env
+            else
+              sed -i 's/^NEXT_PUBLIC_EDITION=.*/NEXT_PUBLIC_EDITION=community/' .env
+            fi
+            sudo journalctl --vacuum-size=50M || true
+            sudo docker builder prune -af || true
+            sudo docker system prune -af || true
+            echo "${{ secrets.GITHUB_TOKEN }}" | sudo docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            sudo docker compose -f docker-compose.dev.yml pull
+            sudo docker compose -f docker-compose.dev.yml up -d --force-recreate
+            sleep 10
+            sudo docker compose -f docker-compose.dev.yml ps
+            sudo docker image prune -af

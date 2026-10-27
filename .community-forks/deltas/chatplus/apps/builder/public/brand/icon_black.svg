@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-labelledby="title">
+  <title id="title">ChatPLUS icon</title>
+  <defs>
+    <linearGradient id="chatplus-icon-black" x1="10" y1="8" x2="70" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d56bff"/>
+      <stop offset="0.52" stop-color="#8b3dff"/>
+      <stop offset="1" stop-color="#4f1fd1"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#chatplus-icon-black)" d="M18 6h44c7 0 12 5 12 12v37c0 7-5 12-12 12H39L23 76v-9h-5C11 67 6 62 6 55V18C6 11 11 6 18 6Z"/>
+  <path fill="#fff" d="M25 27h30c4 0 7 3 7 7v14c0 4-3 7-7 7H25c-4 0-7-3-7-7V34c0-4 3-7 7-7Zm5 10a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm20 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-17 9c2 3 4 4 7 4s5-1 7-4H33ZM38 21h4v7h-4zM36 18a4 4 0 1 1 8 0 4 4 0 0 1-8 0ZM58 10h3v9h-3zM55 13h9v3h-9z"/>
+</svg>

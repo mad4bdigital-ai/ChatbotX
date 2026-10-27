@@ -1,0 +1,3352 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-27",
+  "upstream": "ChatbotXIO/ChatbotX",
+  "target": "mad4bdigital-ai/ChatbotX",
+  "based_on_main": "1ad445ae91a104e9c978a909cc58eccb5ea344d0",
+  "branch": "integration/community-forks-2026-10-27",
+  "description": "Lossless per-fork changed-file collection, not an integrated executable fork merge.",
+  "aggregate": {
+    "forks": 5,
+    "changed_file_occurrences": 407,
+    "collected_file_blobs": 402,
+    "deletions": 5,
+    "distinct_paths": 305,
+    "overlapping_paths": 55
+  },
+  "forks": [
+    {
+      "id": "alvanr",
+      "repo": "alvanr-git/ChatbotX",
+      "branch": "main",
+      "tip": "7fb68e45aa9228aceb55658a2e6d1ba57ca44b7a",
+      "ahead_of_upstream": 115,
+      "behind_upstream": 43,
+      "changes": [
+        {
+          "path": ".agents/rules/graphify.md",
+          "status": "added",
+          "additions": 14,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/.agents/rules/graphify.md"
+        },
+        {
+          "path": ".agents/workflows/graphify.md",
+          "status": "added",
+          "additions": 10,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/.agents/workflows/graphify.md"
+        },
+        {
+          "path": ".cursor/mcp.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/.cursor/mcp.json"
+        },
+        {
+          "path": ".github/workflows/deploy.yml",
+          "status": "added",
+          "additions": 85,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/.github/workflows/deploy.yml"
+        },
+        {
+          "path": ".mcp.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/.mcp.json"
+        },
+        {
+          "path": "README.md",
+          "status": "modified",
+          "additions": 77,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/README.md"
+        },
+        {
+          "path": "apps/builder/__tests__/channel-route-guards.test.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/__tests__/channel-route-guards.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/channels-create-messenger-handoff.test.ts",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/__tests__/channels-create-messenger-handoff.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/channels-create-platform-owner.test.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/__tests__/channels-create-platform-owner.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/channels-create-visibility-guard.test.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/__tests__/channels-create-visibility-guard.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/check-inbox-action.test.ts",
+          "status": "added",
+          "additions": 62,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/__tests__/check-inbox-action.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/google-ads-connect-error-alert.test.tsx",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/__tests__/google-ads-connect-error-alert.test.tsx"
+        },
+        {
+          "path": "apps/builder/__tests__/leaderboards-admin-ui.test.tsx",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/__tests__/leaderboards-admin-ui.test.tsx"
+        },
+        {
+          "path": "apps/builder/__tests__/minigame-name-conflict-action.test.ts",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 156,
+          "source_blob_path": null
+        },
+        {
+          "path": "apps/builder/__tests__/minigame-player-settings-reset-policy.test.ts",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 72,
+          "source_blob_path": null
+        },
+        {
+          "path": "apps/builder/__tests__/minigame-share-url.test.ts",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 142,
+          "source_blob_path": null
+        },
+        {
+          "path": "apps/builder/__tests__/open-link-labels.test.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/__tests__/open-link-labels.test.ts"
+        },
+        {
+          "path": "apps/builder/docker/Dockerfile",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/docker/Dockerfile"
+        },
+        {
+          "path": "apps/builder/messages/ar.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/ar.json"
+        },
+        {
+          "path": "apps/builder/messages/az.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/az.json"
+        },
+        {
+          "path": "apps/builder/messages/da.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/da.json"
+        },
+        {
+          "path": "apps/builder/messages/de.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/de.json"
+        },
+        {
+          "path": "apps/builder/messages/en.json",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/en.json"
+        },
+        {
+          "path": "apps/builder/messages/es.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/es.json"
+        },
+        {
+          "path": "apps/builder/messages/fi.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/fi.json"
+        },
+        {
+          "path": "apps/builder/messages/fr.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/fr.json"
+        },
+        {
+          "path": "apps/builder/messages/he.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/he.json"
+        },
+        {
+          "path": "apps/builder/messages/id.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/id.json"
+        },
+        {
+          "path": "apps/builder/messages/it.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/it.json"
+        },
+        {
+          "path": "apps/builder/messages/ja.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/ja.json"
+        },
+        {
+          "path": "apps/builder/messages/nl.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/nl.json"
+        },
+        {
+          "path": "apps/builder/messages/pt-BR.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/pt-BR.json"
+        },
+        {
+          "path": "apps/builder/messages/pt-PT.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/pt-PT.json"
+        },
+        {
+          "path": "apps/builder/messages/ro.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/ro.json"
+        },
+        {
+          "path": "apps/builder/messages/sv.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/sv.json"
+        },
+        {
+          "path": "apps/builder/messages/tr.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/tr.json"
+        },
+        {
+          "path": "apps/builder/messages/vi.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/vi.json"
+        },
+        {
+          "path": "apps/builder/messages/zh-CN.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/zh-CN.json"
+        },
+        {
+          "path": "apps/builder/messages/zh-TW.json",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/messages/zh-TW.json"
+        },
+        {
+          "path": "apps/builder/next.config.ts",
+          "status": "modified",
+          "additions": 10,
+          "deletions": 7,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/next.config.ts"
+        },
+        {
+          "path": "apps/builder/package.json",
+          "status": "modified",
+          "additions": 6,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/package.json"
+        },
+        {
+          "path": "apps/builder/src/app/(no-sidebar)/channels/create/page.tsx",
+          "status": "modified",
+          "additions": 16,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/app/(no-sidebar)/channels/create/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/app/api/reflink-widget/[reflinkId]/route.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/app/api/reflink-widget/[reflinkId]/route.ts"
+        },
+        {
+          "path": "apps/builder/src/app/minigames/page.tsx",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 124,
+          "source_blob_path": null
+        },
+        {
+          "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/ig-comments/[id]/page.tsx",
+          "status": "renamed",
+          "additions": 0,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/app/space/[workspaceId]/(has-folder)/ig-comments/[id]/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/ig-comments/create/page.tsx",
+          "status": "renamed",
+          "additions": 0,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/app/space/[workspaceId]/(has-folder)/ig-comments/create/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/sequences/page.tsx",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/app/space/[workspaceId]/(has-folder)/sequences/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/triggers/page.tsx",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/app/space/[workspaceId]/(has-folder)/triggers/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/webhooks/page.tsx",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/app/space/[workspaceId]/(has-folder)/webhooks/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/app/space/[workspaceId]/contacts/page.tsx",
+          "status": "modified",
+          "additions": 8,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/app/space/[workspaceId]/contacts/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/ai-functions/actions/generate-ai-function-ai.action.ts",
+          "status": "added",
+          "additions": 82,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/ai-functions/actions/generate-ai-function-ai.action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/ai-functions/ai-functions-create.tsx",
+          "status": "modified",
+          "additions": 101,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/ai-functions/ai-functions-create.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/ai-functions/ai-functions-table-toolbar-actions.tsx",
+          "status": "modified",
+          "additions": 15,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/ai-functions/ai-functions-table-toolbar-actions.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/automated-response/automated-response-table.tsx",
+          "status": "modified",
+          "additions": 8,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/automated-response/automated-response-table.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/chat/store/chat-store.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/chat/store/chat-store.ts"
+        },
+        {
+          "path": "apps/builder/src/features/contact-inboxes/schema/resource.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/contact-inboxes/schema/resource.ts"
+        },
+        {
+          "path": "apps/builder/src/features/conversations/actions/check-inbox.action.ts",
+          "status": "added",
+          "additions": 31,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/conversations/actions/check-inbox.action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/conversations/conversation-item.tsx",
+          "status": "modified",
+          "additions": 11,
+          "deletions": 18,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/conversations/conversation-item.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/conversations/conversation-list.tsx",
+          "status": "modified",
+          "additions": 44,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/conversations/conversation-list.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/conversations/queries/build-conversation-where.ts",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/conversations/queries/build-conversation-where.ts"
+        },
+        {
+          "path": "apps/builder/src/features/conversations/schema/query.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/conversations/schema/query.ts"
+        },
+        {
+          "path": "apps/builder/src/features/fb-comments/components/select-facebook-posts-dialog.tsx",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/fb-comments/components/select-facebook-posts-dialog.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/fb-comments/provider/fb-comment-posts-store.ts",
+          "status": "modified",
+          "additions": 26,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/fb-comments/provider/fb-comment-posts-store.ts"
+        },
+        {
+          "path": "apps/builder/src/features/flows/actions/generate-flow-ai.action.ts",
+          "status": "added",
+          "additions": 193,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/flows/actions/generate-flow-ai.action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/flows/components/generate-flow-ai-dialog.tsx",
+          "status": "added",
+          "additions": 160,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/flows/components/generate-flow-ai-dialog.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/flows/flows-table.tsx",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/flows/flows-table.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/flows/react-flow/flow-edit-toolbar.tsx",
+          "status": "modified",
+          "additions": 15,
+          "deletions": 12,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/flows/react-flow/flow-edit-toolbar.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/ig-comments/api/private.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/ig-comments/api/private.ts"
+        },
+        {
+          "path": "apps/builder/src/features/ig-comments/lib/instagram-media.ts",
+          "status": "modified",
+          "additions": 39,
+          "deletions": 12,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/ig-comments/lib/instagram-media.ts"
+        },
+        {
+          "path": "apps/builder/src/features/ig-comments/provider/ig-comment-posts-store.ts",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/ig-comments/provider/ig-comment-posts-store.ts"
+        },
+        {
+          "path": "apps/builder/src/features/platform-credentials/instagram-facebook/instagram-facebook-settings.tsx",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/platform-credentials/instagram-facebook/instagram-facebook-settings.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/tools/tools-list.tsx",
+          "status": "modified",
+          "additions": 85,
+          "deletions": 38,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/tools/tools-list.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/workspace-members/actions/invite-workspace-member.action.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/workspace-members/actions/invite-workspace-member.action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/workspace-members/components/invite-workspace-member.tsx",
+          "status": "modified",
+          "additions": 27,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/workspace-members/components/invite-workspace-member.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/workspace-members/schema/mutation.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/workspace-members/schema/mutation.ts"
+        },
+        {
+          "path": "apps/builder/src/features/workspaces/components/workspaces-list.tsx",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 6,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/builder/src/features/workspaces/components/workspaces-list.tsx"
+        },
+        {
+          "path": "apps/javascript-executor/__tests__/server.test.ts",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/javascript-executor/__tests__/server.test.ts"
+        },
+        {
+          "path": "apps/mcp-server/README.md",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/mcp-server/README.md"
+        },
+        {
+          "path": "apps/mcp-server/package.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/mcp-server/package.json"
+        },
+        {
+          "path": "apps/worker/__tests__/docker-entrypoint.test.ts",
+          "status": "modified",
+          "additions": 43,
+          "deletions": 40,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/worker/__tests__/docker-entrypoint.test.ts"
+        },
+        {
+          "path": "apps/worker/src/integration/handlers/received-message.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/worker/src/integration/handlers/received-message.ts"
+        },
+        {
+          "path": "apps/worker/src/integration/handlers/ref.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 81,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/worker/src/integration/handlers/ref.ts"
+        },
+        {
+          "path": "apps/worker/src/integration/worker.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/worker/src/integration/worker.ts"
+        },
+        {
+          "path": "apps/worker/src/schedule/handlers/poll-instagram-comments.ts",
+          "status": "added",
+          "additions": 123,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/worker/src/schedule/handlers/poll-instagram-comments.ts"
+        },
+        {
+          "path": "apps/worker/src/schedule/handlers/register-schedules.ts",
+          "status": "modified",
+          "additions": 16,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/worker/src/schedule/handlers/register-schedules.ts"
+        },
+        {
+          "path": "apps/worker/src/schedule/worker.ts",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/apps/worker/src/schedule/worker.ts"
+        },
+        {
+          "path": "docker-compose.dev.yml",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 14,
+          "source_blob_path": ".community-forks/deltas/alvanr/docker-compose.dev.yml"
+        },
+        {
+          "path": "integrations/instagram-facebook/__tests__/scopes.test.ts",
+          "status": "added",
+          "additions": 38,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/integrations/instagram-facebook/__tests__/scopes.test.ts"
+        },
+        {
+          "path": "integrations/instagram-facebook/src/apis/auth.ts",
+          "status": "modified",
+          "additions": 77,
+          "deletions": 19,
+          "source_blob_path": ".community-forks/deltas/alvanr/integrations/instagram-facebook/src/apis/auth.ts"
+        },
+        {
+          "path": "integrations/messenger/src/apis/auth.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/integrations/messenger/src/apis/auth.ts"
+        },
+        {
+          "path": "integrations/meta-conversions/tsconfig.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/integrations/meta-conversions/tsconfig.json"
+        },
+        {
+          "path": "integrations/telegram/src/apis/user.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/integrations/telegram/src/apis/user.ts"
+        },
+        {
+          "path": "lefthook.yml",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/lefthook.yml"
+        },
+        {
+          "path": "package.json",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/package.json"
+        },
+        {
+          "path": "packages/ai/src/models/gemini.ts",
+          "status": "modified",
+          "additions": 54,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/ai/src/models/gemini.ts"
+        },
+        {
+          "path": "packages/auth/src/keys.ts",
+          "status": "modified",
+          "additions": 8,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/auth/src/keys.ts"
+        },
+        {
+          "path": "packages/auth/src/server.ts",
+          "status": "modified",
+          "additions": 36,
+          "deletions": 23,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/auth/src/server.ts"
+        },
+        {
+          "path": "packages/business/__tests__/invitation.service.test.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/business/__tests__/invitation.service.test.ts"
+        },
+        {
+          "path": "packages/business/__tests__/resolve-minigame-prize.test.ts",
+          "status": "removed",
+          "additions": 0,
+          "deletions": 169,
+          "source_blob_path": null
+        },
+        {
+          "path": "packages/business/__tests__/workspace.service.test.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 38,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/business/__tests__/workspace.service.test.ts"
+        },
+        {
+          "path": "packages/business/src/integration-context/keys.ts",
+          "status": "modified",
+          "additions": 8,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/business/src/integration-context/keys.ts"
+        },
+        {
+          "path": "packages/business/src/invitation/service.ts",
+          "status": "modified",
+          "additions": 37,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/business/src/invitation/service.ts"
+        },
+        {
+          "path": "packages/business/src/javascript-execution/keys.ts",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/business/src/javascript-execution/keys.ts"
+        },
+        {
+          "path": "packages/business/src/workspace/service.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 24,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/business/src/workspace/service.ts"
+        },
+        {
+          "path": "packages/database/drizzle/20260807103213_add_username_to_contact_inbox/migration.sql",
+          "status": "added",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/database/drizzle/20260807103213_add_username_to_contact_inbox/migration.sql"
+        },
+        {
+          "path": "packages/database/drizzle/20260807103213_add_username_to_contact_inbox/snapshot.json",
+          "status": "added",
+          "additions": 32823,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/database/drizzle/20260807103213_add_username_to_contact_inbox/snapshot.json"
+        },
+        {
+          "path": "packages/database/scripts/check-schema-drift.mjs",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/database/scripts/check-schema-drift.mjs"
+        },
+        {
+          "path": "packages/database/src/keys.ts",
+          "status": "modified",
+          "additions": 7,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/database/src/keys.ts"
+        },
+        {
+          "path": "packages/database/src/schema/auth-invitation.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/database/src/schema/auth-invitation.ts"
+        },
+        {
+          "path": "packages/database/src/schema/contact-inbox.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/database/src/schema/contact-inbox.ts"
+        },
+        {
+          "path": "packages/event-bus/src/event-bus.ts",
+          "status": "modified",
+          "additions": 17,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/event-bus/src/event-bus.ts"
+        },
+        {
+          "path": "packages/filesystem/src/keys.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/filesystem/src/keys.ts"
+        },
+        {
+          "path": "packages/mail/src/keys.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/mail/src/keys.ts"
+        },
+        {
+          "path": "packages/partysocket-config/src/keys.ts",
+          "status": "modified",
+          "additions": 8,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/partysocket-config/src/keys.ts"
+        },
+        {
+          "path": "packages/redis/src/keys.ts",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/redis/src/keys.ts"
+        },
+        {
+          "path": "packages/sdk/src/lib/shared/message.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/sdk/src/lib/shared/message.ts"
+        },
+        {
+          "path": "packages/utils/src/graph-pagination.ts",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/utils/src/graph-pagination.ts"
+        },
+        {
+          "path": "packages/worker-config/src/keys.ts",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/worker-config/src/keys.ts"
+        },
+        {
+          "path": "packages/worker-config/src/queues/schedule/index.ts",
+          "status": "modified",
+          "additions": 7,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/packages/worker-config/src/queues/schedule/index.ts"
+        },
+        {
+          "path": "pnpm-lock.yaml",
+          "status": "modified",
+          "additions": 24,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/alvanr/pnpm-lock.yaml"
+        },
+        {
+          "path": "scripts/sync-agent-instructions.mjs",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/alvanr/scripts/sync-agent-instructions.mjs"
+        }
+      ]
+    },
+    {
+      "id": "chatplus",
+      "repo": "khan-umirzakoff/ChatbotX-Fork-ChatPlus",
+      "branch": "chatplus",
+      "tip": "6372b9cea903b0f47c7f6e39b528d80d81531b3a",
+      "ahead_of_upstream": 31,
+      "behind_upstream": 29,
+      "changes": [
+        {
+          "path": "apps/builder/__tests__/i18n-messages.test.ts",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/__tests__/i18n-messages.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/webchat-page-guards.test.tsx",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/__tests__/webchat-page-guards.test.tsx"
+        },
+        {
+          "path": "apps/builder/docker/Dockerfile",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/docker/Dockerfile"
+        },
+        {
+          "path": "apps/builder/docker/rootfs/usr/local/bin/docker-entrypoint.sh",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/docker/rootfs/usr/local/bin/docker-entrypoint.sh"
+        },
+        {
+          "path": "apps/builder/messages/ar.json",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/ar.json"
+        },
+        {
+          "path": "apps/builder/messages/az.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/az.json"
+        },
+        {
+          "path": "apps/builder/messages/da.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/da.json"
+        },
+        {
+          "path": "apps/builder/messages/de.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/de.json"
+        },
+        {
+          "path": "apps/builder/messages/en.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/en.json"
+        },
+        {
+          "path": "apps/builder/messages/es.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/es.json"
+        },
+        {
+          "path": "apps/builder/messages/fi.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/fi.json"
+        },
+        {
+          "path": "apps/builder/messages/fr.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/fr.json"
+        },
+        {
+          "path": "apps/builder/messages/he.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/he.json"
+        },
+        {
+          "path": "apps/builder/messages/id.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/id.json"
+        },
+        {
+          "path": "apps/builder/messages/it.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/it.json"
+        },
+        {
+          "path": "apps/builder/messages/ja.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/ja.json"
+        },
+        {
+          "path": "apps/builder/messages/nl.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/nl.json"
+        },
+        {
+          "path": "apps/builder/messages/pt-BR.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/pt-BR.json"
+        },
+        {
+          "path": "apps/builder/messages/pt-PT.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/pt-PT.json"
+        },
+        {
+          "path": "apps/builder/messages/ro.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/ro.json"
+        },
+        {
+          "path": "apps/builder/messages/ru.json",
+          "status": "added",
+          "additions": 9056,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/ru.json"
+        },
+        {
+          "path": "apps/builder/messages/sv.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/sv.json"
+        },
+        {
+          "path": "apps/builder/messages/tr.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/tr.json"
+        },
+        {
+          "path": "apps/builder/messages/uz.json",
+          "status": "added",
+          "additions": 9056,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/uz.json"
+        },
+        {
+          "path": "apps/builder/messages/vi.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/vi.json"
+        },
+        {
+          "path": "apps/builder/messages/zh-CN.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/zh-CN.json"
+        },
+        {
+          "path": "apps/builder/messages/zh-TW.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/messages/zh-TW.json"
+        },
+        {
+          "path": "apps/builder/next.config.ts",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/next.config.ts"
+        },
+        {
+          "path": "apps/builder/package.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/package.json"
+        },
+        {
+          "path": "apps/builder/public/brand/favicon/favicon.svg",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/public/brand/favicon/favicon.svg"
+        },
+        {
+          "path": "apps/builder/public/brand/favicon/site.webmanifest",
+          "status": "modified",
+          "additions": 6,
+          "deletions": 12,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/public/brand/favicon/site.webmanifest"
+        },
+        {
+          "path": "apps/builder/public/brand/icon_black.svg",
+          "status": "modified",
+          "additions": 10,
+          "deletions": 15,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/public/brand/icon_black.svg"
+        },
+        {
+          "path": "apps/builder/public/brand/icon_white.svg",
+          "status": "modified",
+          "additions": 10,
+          "deletions": 15,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/public/brand/icon_white.svg"
+        },
+        {
+          "path": "apps/builder/public/brand/logo.svg",
+          "status": "modified",
+          "additions": 14,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/public/brand/logo.svg"
+        },
+        {
+          "path": "apps/builder/public/brand/logo_black.svg",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 24,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/public/brand/logo_black.svg"
+        },
+        {
+          "path": "apps/builder/public/brand/logo_white.svg",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 28,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/public/brand/logo_white.svg"
+        },
+        {
+          "path": "apps/builder/public/chat-widget/demo.html",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/public/chat-widget/demo.html"
+        },
+        {
+          "path": "apps/builder/public/chat-widget/plugin.css",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/public/chat-widget/plugin.css"
+        },
+        {
+          "path": "apps/builder/src/features/auth/sign-in.tsx",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/src/features/auth/sign-in.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/auth/sign-up.tsx",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/src/features/auth/sign-up.tsx"
+        },
+        {
+          "path": "apps/builder/src/i18n/config.ts",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/src/i18n/config.ts"
+        },
+        {
+          "path": "apps/builder/src/i18n/messages.ts",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/builder/src/i18n/messages.ts"
+        },
+        {
+          "path": "apps/realtime/docker/rootfs/usr/local/bin/docker-entrypoint.sh",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/realtime/docker/rootfs/usr/local/bin/docker-entrypoint.sh"
+        },
+        {
+          "path": "apps/worker/src/notification/lib/strings.ts",
+          "status": "modified",
+          "additions": 16,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/apps/worker/src/notification/lib/strings.ts"
+        },
+        {
+          "path": "packages/business/__tests__/integration-webchat-branding.test.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/packages/business/__tests__/integration-webchat-branding.test.ts"
+        },
+        {
+          "path": "packages/business/__tests__/integration-webchat-service.test.ts",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/chatplus/packages/business/__tests__/integration-webchat-service.test.ts"
+        },
+        {
+          "path": "packages/business/__tests__/tenant-settings-entitlement.test.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/packages/business/__tests__/tenant-settings-entitlement.test.ts"
+        },
+        {
+          "path": "packages/business/src/contact-locale/languages.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/packages/business/src/contact-locale/languages.ts"
+        },
+        {
+          "path": "packages/business/src/platform/branding.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/packages/business/src/platform/branding.ts"
+        },
+        {
+          "path": "packages/business/src/platform/settings.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/chatplus/packages/business/src/platform/settings.ts"
+        },
+        {
+          "path": "packages/database/scripts/backfill-contact-event-attributes.mjs",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/packages/database/scripts/backfill-contact-event-attributes.mjs"
+        },
+        {
+          "path": "packages/mail/src/emails/dynamic-template.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/packages/mail/src/emails/dynamic-template.ts"
+        },
+        {
+          "path": "packages/mail/src/preview.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/chatplus/packages/mail/src/preview.ts"
+        },
+        {
+          "path": "pnpm-lock.yaml",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/chatplus/pnpm-lock.yaml"
+        }
+      ]
+    },
+    {
+      "id": "novawebs",
+      "repo": "novawebsdenia-wq/chatbotx-novawebs",
+      "branch": "main",
+      "tip": "86efd089bdba68d6eeff737a4bd21a3583157527",
+      "ahead_of_upstream": 30,
+      "behind_upstream": 373,
+      "changes": [
+        {
+          "path": ".gitignore",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/.gitignore"
+        },
+        {
+          "path": "apps/builder/__tests__/ig-comments-workspace-token-api.test.ts",
+          "status": "added",
+          "additions": 96,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/__tests__/ig-comments-workspace-token-api.test.ts"
+        },
+        {
+          "path": "apps/builder/src/features/fb-comments/components/select-facebook-posts-dialog.tsx",
+          "status": "modified",
+          "additions": 11,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/fb-comments/components/select-facebook-posts-dialog.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/flows/actions/create-flow-action.ts",
+          "status": "modified",
+          "additions": 65,
+          "deletions": 52,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/flows/actions/create-flow-action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/flows/api/workspace-token.ts",
+          "status": "modified",
+          "additions": 126,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/flows/api/workspace-token.ts"
+        },
+        {
+          "path": "apps/builder/src/features/flows/queries/index.ts",
+          "status": "modified",
+          "additions": 119,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/flows/queries/index.ts"
+        },
+        {
+          "path": "apps/builder/src/features/ig-comments/api/index.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/ig-comments/api/index.ts"
+        },
+        {
+          "path": "apps/builder/src/features/ig-comments/api/workspace-token.ts",
+          "status": "added",
+          "additions": 169,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/ig-comments/api/workspace-token.ts"
+        },
+        {
+          "path": "apps/builder/src/features/ig-comments/components/select-instagram-posts-dialog.tsx",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/ig-comments/components/select-instagram-posts-dialog.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/ig-comments/queries/index.ts",
+          "status": "modified",
+          "additions": 15,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/ig-comments/queries/index.ts"
+        },
+        {
+          "path": "apps/builder/src/features/ig-comments/queries/instagram-media.ts",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/ig-comments/queries/instagram-media.ts"
+        },
+        {
+          "path": "apps/builder/src/features/ig-stories/components/select-instagram-stories-dialog.tsx",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/ig-stories/components/select-instagram-stories-dialog.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/platform-credentials/tiktok/update-tiktok-settings.action.ts",
+          "status": "modified",
+          "additions": 19,
+          "deletions": 5,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/platform-credentials/tiktok/update-tiktok-settings.action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/social-stats/api/index.ts",
+          "status": "added",
+          "additions": 105,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/social-stats/api/index.ts"
+        },
+        {
+          "path": "apps/builder/src/features/social-stats/queries/index.ts",
+          "status": "added",
+          "additions": 356,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/features/social-stats/queries/index.ts"
+        },
+        {
+          "path": "apps/builder/src/routers/index.ts",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/routers/index.ts"
+        },
+        {
+          "path": "apps/builder/src/routers/public.ts",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/builder/src/routers/public.ts"
+        },
+        {
+          "path": "apps/worker/__tests__/comment-automation.test.ts",
+          "status": "modified",
+          "additions": 60,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/worker/__tests__/comment-automation.test.ts"
+        },
+        {
+          "path": "apps/worker/src/integration/handlers/comment-automation/automation-matching.ts",
+          "status": "modified",
+          "additions": 7,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/worker/src/integration/handlers/comment-automation/automation-matching.ts"
+        },
+        {
+          "path": "apps/worker/src/integration/handlers/comment-automation/index.ts",
+          "status": "modified",
+          "additions": 28,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/apps/worker/src/integration/handlers/comment-automation/index.ts"
+        },
+        {
+          "path": "integrations/instagram/src/apis/account.ts",
+          "status": "added",
+          "additions": 182,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/integrations/instagram/src/apis/account.ts"
+        },
+        {
+          "path": "integrations/instagram/src/constants.ts",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/integrations/instagram/src/constants.ts"
+        },
+        {
+          "path": "integrations/instagram/src/index.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/integrations/instagram/src/index.ts"
+        },
+        {
+          "path": "integrations/messenger/src/apis/account.ts",
+          "status": "added",
+          "additions": 123,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/integrations/messenger/src/apis/account.ts"
+        },
+        {
+          "path": "integrations/messenger/src/apis/auth.ts",
+          "status": "modified",
+          "additions": 15,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/novawebs/integrations/messenger/src/apis/auth.ts"
+        },
+        {
+          "path": "integrations/messenger/src/index.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/integrations/messenger/src/index.ts"
+        },
+        {
+          "path": "integrations/tiktok/src/apis/auth.ts",
+          "status": "modified",
+          "additions": 27,
+          "deletions": 5,
+          "source_blob_path": ".community-forks/deltas/novawebs/integrations/tiktok/src/apis/auth.ts"
+        },
+        {
+          "path": "integrations/tiktok/src/apis/user.ts",
+          "status": "modified",
+          "additions": 39,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/integrations/tiktok/src/apis/user.ts"
+        },
+        {
+          "path": "integrations/tiktok/src/apis/video.ts",
+          "status": "added",
+          "additions": 53,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/integrations/tiktok/src/apis/video.ts"
+        },
+        {
+          "path": "integrations/tiktok/src/index.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/novawebs/integrations/tiktok/src/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "mu-chatbotx",
+      "repo": "Hitoshidattebayo/Mu---ChatbotX",
+      "branch": "main",
+      "tip": "f9eb1f4db479c5dce165286d083840345b7072c0",
+      "ahead_of_upstream": 26,
+      "behind_upstream": 151,
+      "changes": [
+        {
+          "path": ".env.example",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/.env.example"
+        },
+        {
+          "path": "apps/builder/__tests__/call-phone-number-button-visibility.test.ts",
+          "status": "added",
+          "additions": 34,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/call-phone-number-button-visibility.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/channel-connect-credential-consistency.test.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/channel-connect-credential-consistency.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/enabled-ui-locales.test.ts",
+          "status": "added",
+          "additions": 24,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/enabled-ui-locales.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/i18n-messages.test.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/i18n-messages.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/instagram-select-account-action.test.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/instagram-select-account-action.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/instagram-select-account-facebook-action.test.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/instagram-select-account-facebook-action.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/messenger-select-page-action.test.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/messenger-select-page-action.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/proxy-public-routes.test.ts",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/proxy-public-routes.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/resolve-connect-session.test.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/resolve-connect-session.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/update-instagram-action.test.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/update-instagram-action.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/update-messenger-action.test.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/update-messenger-action.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/webchat-page-guards.test.tsx",
+          "status": "modified",
+          "additions": 33,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/webchat-page-guards.test.tsx"
+        },
+        {
+          "path": "apps/builder/__tests__/webchats-public-api.test.ts",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/webchats-public-api.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/workspaces-list.community-zero.test.tsx",
+          "status": "modified",
+          "additions": 31,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/__tests__/workspaces-list.community-zero.test.tsx"
+        },
+        {
+          "path": "apps/builder/messages/ar.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/ar.json"
+        },
+        {
+          "path": "apps/builder/messages/az.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/az.json"
+        },
+        {
+          "path": "apps/builder/messages/da.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/da.json"
+        },
+        {
+          "path": "apps/builder/messages/de.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/de.json"
+        },
+        {
+          "path": "apps/builder/messages/en.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/en.json"
+        },
+        {
+          "path": "apps/builder/messages/es.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/es.json"
+        },
+        {
+          "path": "apps/builder/messages/fi.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/fi.json"
+        },
+        {
+          "path": "apps/builder/messages/fr.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/fr.json"
+        },
+        {
+          "path": "apps/builder/messages/he.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/he.json"
+        },
+        {
+          "path": "apps/builder/messages/id.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/id.json"
+        },
+        {
+          "path": "apps/builder/messages/it.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/it.json"
+        },
+        {
+          "path": "apps/builder/messages/ja.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/ja.json"
+        },
+        {
+          "path": "apps/builder/messages/mn.json",
+          "status": "added",
+          "additions": 6772,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/mn.json"
+        },
+        {
+          "path": "apps/builder/messages/nl.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/nl.json"
+        },
+        {
+          "path": "apps/builder/messages/pt-BR.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/pt-BR.json"
+        },
+        {
+          "path": "apps/builder/messages/pt-PT.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/pt-PT.json"
+        },
+        {
+          "path": "apps/builder/messages/ro.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/ro.json"
+        },
+        {
+          "path": "apps/builder/messages/sv.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/sv.json"
+        },
+        {
+          "path": "apps/builder/messages/tr.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/tr.json"
+        },
+        {
+          "path": "apps/builder/messages/vi.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/vi.json"
+        },
+        {
+          "path": "apps/builder/messages/zh-CN.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/zh-CN.json"
+        },
+        {
+          "path": "apps/builder/messages/zh-TW.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/messages/zh-TW.json"
+        },
+        {
+          "path": "apps/builder/public/brand/favicon/apple-touch-icon.png",
+          "status": "modified",
+          "additions": 0,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/public/brand/favicon/apple-touch-icon.png"
+        },
+        {
+          "path": "apps/builder/public/brand/favicon/favicon-96x96.png",
+          "status": "modified",
+          "additions": 0,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/public/brand/favicon/favicon-96x96.png"
+        },
+        {
+          "path": "apps/builder/public/brand/favicon/favicon.ico",
+          "status": "modified",
+          "additions": 0,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/public/brand/favicon/favicon.ico"
+        },
+        {
+          "path": "apps/builder/public/brand/favicon/favicon.svg",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/public/brand/favicon/favicon.svg"
+        },
+        {
+          "path": "apps/builder/public/brand/favicon/site.webmanifest",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/public/brand/favicon/site.webmanifest"
+        },
+        {
+          "path": "apps/builder/public/brand/favicon/web-app-manifest-192x192.png",
+          "status": "modified",
+          "additions": 0,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/public/brand/favicon/web-app-manifest-192x192.png"
+        },
+        {
+          "path": "apps/builder/public/brand/favicon/web-app-manifest-512x512.png",
+          "status": "modified",
+          "additions": 0,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/public/brand/favicon/web-app-manifest-512x512.png"
+        },
+        {
+          "path": "apps/builder/public/brand/icon_black.svg",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 17,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/public/brand/icon_black.svg"
+        },
+        {
+          "path": "apps/builder/public/brand/logo_black.svg",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 26,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/public/brand/logo_black.svg"
+        },
+        {
+          "path": "apps/builder/public/brand/logo_white.svg",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 30,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/public/brand/logo_white.svg"
+        },
+        {
+          "path": "apps/builder/src/app/(no-sidebar)/webchat/page.tsx",
+          "status": "modified",
+          "additions": 25,
+          "deletions": 11,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/app/(no-sidebar)/webchat/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/app/call/page.tsx",
+          "status": "added",
+          "additions": 65,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/app/call/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/components/app-sidebar.tsx",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/components/app-sidebar.tsx"
+        },
+        {
+          "path": "apps/builder/src/components/brand-icon.tsx",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/components/brand-icon.tsx"
+        },
+        {
+          "path": "apps/builder/src/components/lang-selector.tsx",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/components/lang-selector.tsx"
+        },
+        {
+          "path": "apps/builder/src/components/public-env-script.tsx",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/components/public-env-script.tsx"
+        },
+        {
+          "path": "apps/builder/src/env.ts",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/env.ts"
+        },
+        {
+          "path": "apps/builder/src/features/admin/components/admin-sidebar.tsx",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/admin/components/admin-sidebar.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/flows/react-flow/button-editor-dialog.tsx",
+          "status": "modified",
+          "additions": 25,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/flows/react-flow/button-editor-dialog.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/flows/react-flow/steps/button-config.ts",
+          "status": "modified",
+          "additions": 27,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/flows/react-flow/steps/button-config.ts"
+        },
+        {
+          "path": "apps/builder/src/features/flows/react-flow/steps/call-phone-number/editor.tsx",
+          "status": "added",
+          "additions": 28,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/flows/react-flow/steps/call-phone-number/editor.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/flows/react-flow/steps/call-phone-number/index.ts",
+          "status": "added",
+          "additions": 15,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/flows/react-flow/steps/call-phone-number/index.ts"
+        },
+        {
+          "path": "apps/builder/src/features/flows/react-flow/steps/call-phone-number/viewer.tsx",
+          "status": "added",
+          "additions": 18,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/flows/react-flow/steps/call-phone-number/viewer.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/flows/react-flow/steps/index.tsx",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/flows/react-flow/steps/index.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/flows/react-flow/steps/send-messenger-template-message/editor.tsx",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/flows/react-flow/steps/send-messenger-template-message/editor.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/integration-instagram/actions/connect-account-facebook.ts",
+          "status": "modified",
+          "additions": 17,
+          "deletions": 11,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/integration-instagram/actions/connect-account-facebook.ts"
+        },
+        {
+          "path": "apps/builder/src/features/integration-instagram/actions/connect-account.ts",
+          "status": "modified",
+          "additions": 13,
+          "deletions": 7,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/integration-instagram/actions/connect-account.ts"
+        },
+        {
+          "path": "apps/builder/src/features/integration-instagram/actions/update-instagram-action.ts",
+          "status": "modified",
+          "additions": 8,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/integration-instagram/actions/update-instagram-action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/integration-messenger/actions/connect-page.ts",
+          "status": "modified",
+          "additions": 17,
+          "deletions": 7,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/integration-messenger/actions/connect-page.ts"
+        },
+        {
+          "path": "apps/builder/src/features/integration-messenger/actions/update-messenger-action.ts",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 5,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/integration-messenger/actions/update-messenger-action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/integration-webchat/components/create-webchat-form.tsx",
+          "status": "modified",
+          "additions": 6,
+          "deletions": 8,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/integration-webchat/components/create-webchat-form.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/integration-webchat/components/persistent-menu-field.tsx",
+          "status": "modified",
+          "additions": 17,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/integration-webchat/components/persistent-menu-field.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/integration-webchat/lib/index.ts",
+          "status": "modified",
+          "additions": 31,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/integration-webchat/lib/index.ts"
+        },
+        {
+          "path": "apps/builder/src/features/user-persistent-menus/components/user-persistent-menu-form.tsx",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/user-persistent-menus/components/user-persistent-menu-form.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/workspaces/components/workspaces-list.tsx",
+          "status": "modified",
+          "additions": 11,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/features/workspaces/components/workspaces-list.tsx"
+        },
+        {
+          "path": "apps/builder/src/i18n/config.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/i18n/config.ts"
+        },
+        {
+          "path": "apps/builder/src/i18n/enabled-locales.ts",
+          "status": "added",
+          "additions": 30,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/i18n/enabled-locales.ts"
+        },
+        {
+          "path": "apps/builder/src/i18n/messages.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/i18n/messages.ts"
+        },
+        {
+          "path": "apps/builder/src/i18n/request.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/i18n/request.ts"
+        },
+        {
+          "path": "apps/builder/src/lib/public-routes.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/builder/src/lib/public-routes.ts"
+        },
+        {
+          "path": "apps/worker/__tests__/convert-buttons-call-phone.test.ts",
+          "status": "added",
+          "additions": 30,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/worker/__tests__/convert-buttons-call-phone.test.ts"
+        },
+        {
+          "path": "apps/worker/__tests__/send-flow-step.test.ts",
+          "status": "modified",
+          "additions": 52,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/worker/__tests__/send-flow-step.test.ts"
+        },
+        {
+          "path": "apps/worker/src/chat/handlers/send-flow-step.ts",
+          "status": "modified",
+          "additions": 40,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/worker/src/chat/handlers/send-flow-step.ts"
+        },
+        {
+          "path": "apps/worker/src/env.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/worker/src/env.ts"
+        },
+        {
+          "path": "apps/worker/src/integration/handlers/flow-utils.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/worker/src/integration/handlers/flow-utils.ts"
+        },
+        {
+          "path": "apps/worker/src/integration/handlers/messenger-user-menu.ts",
+          "status": "modified",
+          "additions": 14,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/worker/src/integration/handlers/messenger-user-menu.ts"
+        },
+        {
+          "path": "apps/worker/src/integration/handlers/step.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/worker/src/integration/handlers/step.ts"
+        },
+        {
+          "path": "apps/worker/src/notification/lib/strings.ts",
+          "status": "modified",
+          "additions": 8,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/apps/worker/src/notification/lib/strings.ts"
+        },
+        {
+          "path": "integrations/messenger/__tests__/call-phone-number-button.test.ts",
+          "status": "added",
+          "additions": 62,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/integrations/messenger/__tests__/call-phone-number-button.test.ts"
+        },
+        {
+          "path": "integrations/messenger/src/handlers/message/outgoing-message/send-button.ts",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/integrations/messenger/src/handlers/message/outgoing-message/send-button.ts"
+        },
+        {
+          "path": "packages/auth/__tests__/auth-id-generation.test.ts",
+          "status": "added",
+          "additions": 108,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/auth/__tests__/auth-id-generation.test.ts"
+        },
+        {
+          "path": "packages/auth/src/server.ts",
+          "status": "modified",
+          "additions": 7,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/auth/src/server.ts"
+        },
+        {
+          "path": "packages/business/__tests__/branding-menu.test.ts",
+          "status": "modified",
+          "additions": 31,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/__tests__/branding-menu.test.ts"
+        },
+        {
+          "path": "packages/business/__tests__/open-link-call.test.ts",
+          "status": "added",
+          "additions": 31,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/__tests__/open-link-call.test.ts"
+        },
+        {
+          "path": "packages/business/__tests__/tenant-settings-domain.test.ts",
+          "status": "modified",
+          "additions": 19,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/__tests__/tenant-settings-domain.test.ts"
+        },
+        {
+          "path": "packages/business/__tests__/workspace.service.test.ts",
+          "status": "modified",
+          "additions": 20,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/__tests__/workspace.service.test.ts"
+        },
+        {
+          "path": "packages/business/src/integration-context/keys.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/src/integration-context/keys.ts"
+        },
+        {
+          "path": "packages/business/src/keys.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/src/keys.ts"
+        },
+        {
+          "path": "packages/business/src/open-link/call.ts",
+          "status": "added",
+          "additions": 38,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/src/open-link/call.ts"
+        },
+        {
+          "path": "packages/business/src/open-link/index.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/src/open-link/index.ts"
+        },
+        {
+          "path": "packages/business/src/platform/branding.ts",
+          "status": "modified",
+          "additions": 15,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/src/platform/branding.ts"
+        },
+        {
+          "path": "packages/business/src/platform/settings.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/src/platform/settings.ts"
+        },
+        {
+          "path": "packages/business/src/workspace/index.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/src/workspace/index.ts"
+        },
+        {
+          "path": "packages/business/src/workspace/service.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/business/src/workspace/service.ts"
+        },
+        {
+          "path": "packages/flow-config/src/index.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/flow-config/src/index.ts"
+        },
+        {
+          "path": "packages/flow-config/src/steps/button.ts",
+          "status": "modified",
+          "additions": 17,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/flow-config/src/steps/button.ts"
+        },
+        {
+          "path": "packages/flow-config/src/steps/call-phone-number.ts",
+          "status": "added",
+          "additions": 25,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/flow-config/src/steps/call-phone-number.ts"
+        },
+        {
+          "path": "packages/flow-config/src/steps/step-action.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/mu-chatbotx/packages/flow-config/src/steps/step-action.ts"
+        }
+      ]
+    },
+    {
+      "id": "fibrazo",
+      "repo": "Fibrazo-SAS/ChatbotX",
+      "branch": "main",
+      "tip": "62413ef8126d9ea592aa8ec242c83d30c6baa174",
+      "ahead_of_upstream": 55,
+      "behind_upstream": 354,
+      "changes": [
+        {
+          "path": ".env.example",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/.env.example"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/.github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/deploy-devel.yml",
+          "status": "added",
+          "additions": 152,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/.github/workflows/deploy-devel.yml"
+        },
+        {
+          "path": ".github/workflows/deploy-production.yml",
+          "status": "added",
+          "additions": 158,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/.github/workflows/deploy-production.yml"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/fibrazo/.github/workflows/release.yml"
+        },
+        {
+          "path": ".gitignore",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/.gitignore"
+        },
+        {
+          "path": ".opencode/agents/raul.md",
+          "status": "added",
+          "additions": 236,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/.opencode/agents/raul.md"
+        },
+        {
+          "path": ".vscode/settings.json",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/.vscode/settings.json"
+        },
+        {
+          "path": "AGENTS.md",
+          "status": "modified",
+          "additions": 153,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/AGENTS.md"
+        },
+        {
+          "path": "FORK-CHANGES.md",
+          "status": "added",
+          "additions": 163,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/FORK-CHANGES.md"
+        },
+        {
+          "path": "apps/builder/__tests__/channel-route-guards.test.ts",
+          "status": "modified",
+          "additions": 22,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/__tests__/channel-route-guards.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/channels-create-messenger-handoff.test.ts",
+          "status": "modified",
+          "additions": 17,
+          "deletions": 9,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/__tests__/channels-create-messenger-handoff.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/channels-create-platform-owner.test.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/__tests__/channels-create-platform-owner.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/channels-create-visibility-guard.test.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/__tests__/channels-create-visibility-guard.test.ts"
+        },
+        {
+          "path": "apps/builder/__tests__/workspace-members-actions.test.ts",
+          "status": "modified",
+          "additions": 8,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/__tests__/workspace-members-actions.test.ts"
+        },
+        {
+          "path": "apps/builder/messages/ar.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/ar.json"
+        },
+        {
+          "path": "apps/builder/messages/da.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/da.json"
+        },
+        {
+          "path": "apps/builder/messages/de.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/de.json"
+        },
+        {
+          "path": "apps/builder/messages/en.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/en.json"
+        },
+        {
+          "path": "apps/builder/messages/es.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/es.json"
+        },
+        {
+          "path": "apps/builder/messages/fi.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/fi.json"
+        },
+        {
+          "path": "apps/builder/messages/fr.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/fr.json"
+        },
+        {
+          "path": "apps/builder/messages/he.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/he.json"
+        },
+        {
+          "path": "apps/builder/messages/id.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/id.json"
+        },
+        {
+          "path": "apps/builder/messages/it.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/it.json"
+        },
+        {
+          "path": "apps/builder/messages/ja.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/ja.json"
+        },
+        {
+          "path": "apps/builder/messages/nl.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/nl.json"
+        },
+        {
+          "path": "apps/builder/messages/pt-BR.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/pt-BR.json"
+        },
+        {
+          "path": "apps/builder/messages/pt-PT.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/pt-PT.json"
+        },
+        {
+          "path": "apps/builder/messages/ro.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/ro.json"
+        },
+        {
+          "path": "apps/builder/messages/sv.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/sv.json"
+        },
+        {
+          "path": "apps/builder/messages/tr.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/tr.json"
+        },
+        {
+          "path": "apps/builder/messages/vi.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/vi.json"
+        },
+        {
+          "path": "apps/builder/messages/zh-CN.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/zh-CN.json"
+        },
+        {
+          "path": "apps/builder/messages/zh-TW.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/messages/zh-TW.json"
+        },
+        {
+          "path": "apps/builder/next.config.ts",
+          "status": "modified",
+          "additions": 13,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/next.config.ts"
+        },
+        {
+          "path": "apps/builder/package.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/package.json"
+        },
+        {
+          "path": "apps/builder/scripts/build-builder.mjs",
+          "status": "added",
+          "additions": 34,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/scripts/build-builder.mjs"
+        },
+        {
+          "path": "apps/builder/scripts/clean-next-cache.mjs",
+          "status": "added",
+          "additions": 29,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/scripts/clean-next-cache.mjs"
+        },
+        {
+          "path": "apps/builder/src/app/(no-sidebar)/channels/create/page.tsx",
+          "status": "modified",
+          "additions": 19,
+          "deletions": 5,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/app/(no-sidebar)/channels/create/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/app/page.tsx",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/app/page.tsx"
+        },
+        {
+          "path": "apps/builder/src/components/app-sidebar.tsx",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/components/app-sidebar.tsx"
+        },
+        {
+          "path": "apps/builder/src/components/public-env-script.tsx",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/components/public-env-script.tsx"
+        },
+        {
+          "path": "apps/builder/src/components/workspace-switcher.tsx",
+          "status": "modified",
+          "additions": 21,
+          "deletions": 15,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/components/workspace-switcher.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/contacts/queries/public-find-contact.ts",
+          "status": "modified",
+          "additions": 20,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/features/contacts/queries/public-find-contact.ts"
+        },
+        {
+          "path": "apps/builder/src/features/flows/actions/test-external-request-action.ts",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/features/flows/actions/test-external-request-action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/flows/react-flow/steps/external-request/editor.tsx",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/features/flows/react-flow/steps/external-request/editor.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/workspace-members/actions/delete-workspace-member.action.ts",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/features/workspace-members/actions/delete-workspace-member.action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/workspace-members/actions/update-workspace-member.action.ts",
+          "status": "modified",
+          "additions": 22,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/features/workspace-members/actions/update-workspace-member.action.ts"
+        },
+        {
+          "path": "apps/builder/src/features/workspace-members/components/update-workspace-member.tsx",
+          "status": "modified",
+          "additions": 14,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/features/workspace-members/components/update-workspace-member.tsx"
+        },
+        {
+          "path": "apps/builder/src/features/workspace-members/schema/mutation.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/features/workspace-members/schema/mutation.ts"
+        },
+        {
+          "path": "apps/builder/src/features/workspace-members/schema/resource.ts",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/features/workspace-members/schema/resource.ts"
+        },
+        {
+          "path": "apps/builder/src/features/workspaces/components/workspaces-list.tsx",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/builder/src/features/workspaces/components/workspaces-list.tsx"
+        },
+        {
+          "path": "apps/worker/__tests__/external-request-handler.test.ts",
+          "status": "modified",
+          "additions": 34,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/worker/__tests__/external-request-handler.test.ts"
+        },
+        {
+          "path": "apps/worker/src/integration/handlers/tool-handler.ts",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/apps/worker/src/integration/handlers/tool-handler.ts"
+        },
+        {
+          "path": "docker-compose.apps.yml",
+          "status": "added",
+          "additions": 106,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/docker-compose.apps.yml"
+        },
+        {
+          "path": "docker-compose.dev.yml",
+          "status": "modified",
+          "additions": 12,
+          "deletions": 96,
+          "source_blob_path": ".community-forks/deltas/fibrazo/docker-compose.dev.yml"
+        },
+        {
+          "path": "docker-compose.prod.yml",
+          "status": "added",
+          "additions": 45,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/docker-compose.prod.yml"
+        },
+        {
+          "path": "docker-compose.yml",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 2,
+          "source_blob_path": ".community-forks/deltas/fibrazo/docker-compose.yml"
+        },
+        {
+          "path": "docs/demo-chatbotx.md",
+          "status": "added",
+          "additions": 225,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/docs/demo-chatbotx.md"
+        },
+        {
+          "path": "docs/levantar-chatbotx.md",
+          "status": "added",
+          "additions": 244,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/docs/levantar-chatbotx.md"
+        },
+        {
+          "path": "docs/presentacion-chatbotx.md",
+          "status": "added",
+          "additions": 246,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/docs/presentacion-chatbotx.md"
+        },
+        {
+          "path": "docs/requisitos-chatbotx-dev.md",
+          "status": "added",
+          "additions": 117,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/docs/requisitos-chatbotx-dev.md"
+        },
+        {
+          "path": "docs/requisitos-chatbotx-prod.md",
+          "status": "added",
+          "additions": 116,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/docs/requisitos-chatbotx-prod.md"
+        },
+        {
+          "path": "docs/requisitos-chatbotx.md",
+          "status": "added",
+          "additions": 433,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/docs/requisitos-chatbotx.md"
+        },
+        {
+          "path": "packages/auth/src/server.ts",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/auth/src/server.ts"
+        },
+        {
+          "path": "packages/business/__tests__/entitlements.test.ts",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 13,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/business/__tests__/entitlements.test.ts"
+        },
+        {
+          "path": "packages/business/__tests__/license.startup.test.ts",
+          "status": "modified",
+          "additions": 15,
+          "deletions": 20,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/business/__tests__/license.startup.test.ts"
+        },
+        {
+          "path": "packages/business/__tests__/workspace.service.test.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/business/__tests__/workspace.service.test.ts"
+        },
+        {
+          "path": "packages/business/src/contact/service.ts",
+          "status": "modified",
+          "additions": 15,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/business/src/contact/service.ts"
+        },
+        {
+          "path": "packages/business/src/enterprise/license/startup.ts",
+          "status": "modified",
+          "additions": 7,
+          "deletions": 5,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/business/src/enterprise/license/startup.ts"
+        },
+        {
+          "path": "packages/business/src/errors.ts",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/business/src/errors.ts"
+        },
+        {
+          "path": "packages/business/src/external-request/service.ts",
+          "status": "modified",
+          "additions": 38,
+          "deletions": 4,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/business/src/external-request/service.ts"
+        },
+        {
+          "path": "packages/business/src/user/entitlements.ts",
+          "status": "modified",
+          "additions": 8,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/business/src/user/entitlements.ts"
+        },
+        {
+          "path": "packages/business/src/workspace/__tests__/service.test.ts",
+          "status": "modified",
+          "additions": 32,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/business/src/workspace/__tests__/service.test.ts"
+        },
+        {
+          "path": "packages/business/src/workspace/service.ts",
+          "status": "modified",
+          "additions": 17,
+          "deletions": 1,
+          "source_blob_path": ".community-forks/deltas/fibrazo/packages/business/src/workspace/service.ts"
+        },
+        {
+          "path": "pnpm-workspace.yaml",
+          "status": "modified",
+          "additions": 6,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/pnpm-workspace.yaml"
+        },
+        {
+          "path": "scripts/deployment/deploy.sh",
+          "status": "added",
+          "additions": 38,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/scripts/deployment/deploy.sh"
+        },
+        {
+          "path": "scripts/deployment/maintenance-off.sh",
+          "status": "added",
+          "additions": 17,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/scripts/deployment/maintenance-off.sh"
+        },
+        {
+          "path": "scripts/deployment/maintenance-on.sh",
+          "status": "added",
+          "additions": 17,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/scripts/deployment/maintenance-on.sh"
+        },
+        {
+          "path": "scripts/deployment/run-smoke-tests.sh",
+          "status": "added",
+          "additions": 28,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/scripts/deployment/run-smoke-tests.sh"
+        },
+        {
+          "path": "scripts/deployment/upgrade.sh",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 3,
+          "source_blob_path": ".community-forks/deltas/fibrazo/scripts/deployment/upgrade.sh"
+        },
+        {
+          "path": "scripts/start.sh",
+          "status": "added",
+          "additions": 119,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/scripts/start.sh"
+        },
+        {
+          "path": "spec/README.md",
+          "status": "added",
+          "additions": 32,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/spec/README.md"
+        },
+        {
+          "path": "spec/context/.template",
+          "status": "added",
+          "additions": 33,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/spec/context/.template"
+        },
+        {
+          "path": "spec/feature/.template",
+          "status": "added",
+          "additions": 34,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/spec/feature/.template"
+        },
+        {
+          "path": "spec/plan/.template",
+          "status": "added",
+          "additions": 26,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/spec/plan/.template"
+        },
+        {
+          "path": "spec/task/.template",
+          "status": "added",
+          "additions": 24,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/spec/task/.template"
+        },
+        {
+          "path": "versiones/PR2-fibrazo-sourceid-license/plan.md",
+          "status": "added",
+          "additions": 15,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/versiones/PR2-fibrazo-sourceid-license/plan.md"
+        },
+        {
+          "path": "versiones/PR2-fibrazo-sourceid-license/resumen.md",
+          "status": "added",
+          "additions": 29,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/versiones/PR2-fibrazo-sourceid-license/resumen.md"
+        },
+        {
+          "path": "versiones/PR3-workspace-members-role/plan.md",
+          "status": "added",
+          "additions": 14,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/versiones/PR3-workspace-members-role/plan.md"
+        },
+        {
+          "path": "versiones/PR3-workspace-members-role/resumen.md",
+          "status": "added",
+          "additions": 21,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/versiones/PR3-workspace-members-role/resumen.md"
+        },
+        {
+          "path": "versiones/PR4-workspace-create-gate/plan.md",
+          "status": "added",
+          "additions": 18,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/versiones/PR4-workspace-create-gate/plan.md"
+        },
+        {
+          "path": "versiones/PR4-workspace-create-gate/resumen.md",
+          "status": "added",
+          "additions": 41,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/versiones/PR4-workspace-create-gate/resumen.md"
+        },
+        {
+          "path": "versiones/PR6-workspace-switcher-gate/plan.md",
+          "status": "added",
+          "additions": 20,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/versiones/PR6-workspace-switcher-gate/plan.md"
+        },
+        {
+          "path": "versiones/PR6-workspace-switcher-gate/resumen.md",
+          "status": "added",
+          "additions": 28,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/versiones/PR6-workspace-switcher-gate/resumen.md"
+        },
+        {
+          "path": "versiones/README.md",
+          "status": "added",
+          "additions": 20,
+          "deletions": 0,
+          "source_blob_path": ".community-forks/deltas/fibrazo/versiones/README.md"
+        }
+      ]
+    }
+  ],
+  "overlap_paths": [
+    {
+      "path": "apps/builder/__tests__/channel-route-guards.test.ts",
+      "owners": [
+        "alvanr",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/__tests__/channels-create-messenger-handoff.test.ts",
+      "owners": [
+        "alvanr",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/__tests__/channels-create-platform-owner.test.ts",
+      "owners": [
+        "alvanr",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/__tests__/channels-create-visibility-guard.test.ts",
+      "owners": [
+        "alvanr",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/docker/Dockerfile",
+      "owners": [
+        "alvanr",
+        "chatplus"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/ar.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/az.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/da.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/de.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/en.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/es.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/fi.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/fr.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/he.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/id.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/it.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/ja.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/nl.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/pt-BR.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/pt-PT.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/ro.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/sv.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/tr.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/vi.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/zh-CN.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/messages/zh-TW.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/next.config.ts",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/package.json",
+      "owners": [
+        "alvanr",
+        "chatplus",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/src/app/(no-sidebar)/channels/create/page.tsx",
+      "owners": [
+        "alvanr",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/src/features/fb-comments/components/select-facebook-posts-dialog.tsx",
+      "owners": [
+        "alvanr",
+        "novawebs"
+      ]
+    },
+    {
+      "path": "apps/builder/src/features/workspace-members/schema/mutation.ts",
+      "owners": [
+        "alvanr",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/src/features/workspaces/components/workspaces-list.tsx",
+      "owners": [
+        "alvanr",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "docker-compose.dev.yml",
+      "owners": [
+        "alvanr",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "integrations/messenger/src/apis/auth.ts",
+      "owners": [
+        "alvanr",
+        "novawebs"
+      ]
+    },
+    {
+      "path": "packages/auth/src/server.ts",
+      "owners": [
+        "alvanr",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "packages/business/__tests__/workspace.service.test.ts",
+      "owners": [
+        "alvanr",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "packages/business/src/integration-context/keys.ts",
+      "owners": [
+        "alvanr",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "packages/business/src/workspace/service.ts",
+      "owners": [
+        "alvanr",
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "owners": [
+        "alvanr",
+        "chatplus"
+      ]
+    },
+    {
+      "path": "apps/builder/__tests__/i18n-messages.test.ts",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "apps/builder/__tests__/webchat-page-guards.test.tsx",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "apps/builder/public/brand/favicon/favicon.svg",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "apps/builder/public/brand/favicon/site.webmanifest",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "apps/builder/public/brand/icon_black.svg",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "apps/builder/public/brand/logo_black.svg",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "apps/builder/public/brand/logo_white.svg",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "apps/builder/src/i18n/config.ts",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "apps/builder/src/i18n/messages.ts",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "apps/worker/src/notification/lib/strings.ts",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "packages/business/src/platform/branding.ts",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": "packages/business/src/platform/settings.ts",
+      "owners": [
+        "chatplus",
+        "mu-chatbotx"
+      ]
+    },
+    {
+      "path": ".gitignore",
+      "owners": [
+        "novawebs",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": ".env.example",
+      "owners": [
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/src/components/app-sidebar.tsx",
+      "owners": [
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    },
+    {
+      "path": "apps/builder/src/components/public-env-script.tsx",
+      "owners": [
+        "mu-chatbotx",
+        "fibrazo"
+      ]
+    }
+  ]
+}

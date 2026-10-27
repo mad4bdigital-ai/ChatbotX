@@ -1,0 +1,23 @@
+# ChatbotX — override DEV (diferencias respecto al stack común)
+#
+# Uso:
+#   docker compose -f docker-compose.yml -f docker-compose.apps.yml -f docker-compose.dev.yml up -d
+#
+# Este archivo solo declara lo que CAMBIA en dev respecto al stack base:
+# - seed de datos demo al arrancar
+# - log level debug
+
+services:
+  builder:
+    environment:
+      - RUN_DB_MIGRATE=true
+      - RUN_DB_SEED=true
+      - LOG_LEVEL=debug
+
+  worker:
+    environment:
+      - LOG_LEVEL=debug
+
+  realtime:
+    environment:
+      - LOG_LEVEL=debug

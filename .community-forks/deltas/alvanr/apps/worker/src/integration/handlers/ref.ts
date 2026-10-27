@@ -1,0 +1,338 @@
+import { decodeRef, encodeRef, type RefConfig } from "@chatbotx.io/business"
+import {
+  leaderboardScoringService,
+  leaderboardService,
+} from "@chatbotx.io/business/leaderboard"
+import {
+  isMinigameWithinPlayWindow,
+  minigameContactService,
+  minigameService,
+} from "@chatbotx.io/business/minigame"
+import { canShareMinigame } from "@chatbotx.io/business/utils"
+import { findOrFail } from "@chatbotx.io/database/client"
+import type { ChannelType } from "@chatbotx.io/database/partials"
+import {
+  flowModel,
+  flowVersionModel,
+  reflinkModel,
+} from "@chatbotx.io/database/schema"
+import type {
+  ContactInboxModel,
+  ConversationModel,
+} from "@chatbotx.io/database/types"
+import { emit } from "@chatbotx.io/event-bus"
+import {
+  emitContactReferredANewContact,
+  emitContactReferredExistingContact,
+} from "@chatbotx.io/events"
+import { webhookChannelOrigin } from "@chatbotx.io/events/context"
+import { flowEventTypeSchema } from "@chatbotx.io/flow-config"
+import {
+  IntegrationJobAction,
+  type IntegrationJobRunRef,
+  integrationQueue,
+} from "@chatbotx.io/worker-config"
+import { detectConversationAndContactInbox } from "../../lib/db"
+import { logger } from "../../lib/logger"
+import { saveResultToCustomField } from "../utils/contact"
+
+export async function runRef(data: IntegrationJobRunRef["data"]) {
+  const { conversationId, contactInboxId, ref, messageId, isNewContact } = data
+  const { conversation, contactInbox } =
+    await detectConversationAndContactInbox({
+      conversationId,
+      contactInboxId,
+    })
+
+  const refData = decodeRef(ref)
+  if (!refData) {
+    return
+  }
+
+  const startTime = Date.now()
+  const emitSuccess = () => {
+    if (!messageId) {
+      return
+    }
+    emit("analytics:dashboard", {
+      eventType: "message:bot_received",
+      workspaceId: conversation.workspaceId,
+      conversationId: conversation.id,
+      messageId,
+      occurredAt: new Date(),
+      hasResponse: true,
+      responseType: "flow",
+      routeType: "flow",
+      result: "success",
+      aiProvider: "none",
+      metadata: {
+        latency: Date.now() - startTime,
+        triggerContext: {
+          triggerSource: "worker",
+          triggerHandler: "runRef",
+          triggerType: "contact_ref",
+        },
+      },
+    })
+  }
+  const emitFallback = () => {
+    if (!messageId) {
+      return
+    }
+    emit("analytics:dashboard", {
+      eventType: "message:bot_received",
+      workspaceId: conversation.workspaceId,
+      conversationId: conversation.id,
+      messageId,
+      occurredAt: new Date(),
+      hasResponse: false,
+      responseType: "flow",
+      routeType: "flow",
+      result: "fallback",
+      aiProvider: "none",
+      metadata: {
+        latency: Date.now() - startTime,
+        fallbackReason: "handler_error_to_fallback",
+        triggerContext: {
+          triggerSource: "worker",
+          triggerHandler: "runRef",
+          triggerType: "contact_ref_failed",
+        },
+      },
+    })
+  }
+
+  try {
+    if (refData.type === "draft") {
+      logger.debug(`Draft ref: ${ref}`)
+      const { flowId } = refData
+      if (!flowId) {
+        logger.warn(`Invalid draft ref: ${ref}`)
+        return
+      }
+
+      const flowVersion = await findOrFail({
+        table: flowVersionModel,
+        where: { flowId, isDraft: true },
+        message: "Flow version not found",
+      })
+
+      await integrationQueue.add(IntegrationJobAction.sendFlow, {
+        type: IntegrationJobAction.sendFlow,
+        data: {
+          conversationId: conversation,
+          contactInboxId: contactInbox,
+          flowId: flowVersion.flowId,
+          flowVersionId: flowVersion.id,
+          origin: webhookChannelOrigin(),
+        },
+      })
+      emitSuccess()
+      return
+    }
+
+    if (refData.type === "flow") {
+      logger.debug(`Start flow ref: ${ref}`)
+      const { flowId, nodeId } = refData
+      if (!flowId) {
+        logger.warn(`Invalid flow ref: ${ref}`)
+        return
+      }
+
+      const flow = await findOrFail({
+        table: flowModel,
+        where: { id: flowId, workspaceId: conversation.workspaceId },
+        message: "Flow not found",
+      })
+
+      await integrationQueue.add(IntegrationJobAction.sendFlow, {
+        type: IntegrationJobAction.sendFlow,
+        data: {
+          conversationId: conversation,
+          contactInboxId: contactInbox,
+          flowId: flow.id,
+          nodeId,
+          origin: webhookChannelOrigin(),
+        },
+      })
+      emitSuccess()
+      return
+    }
+
+    if (refData.type === "minigame-share") {
+      logger.warn(`Minigame share ref received: ${ref}`)
+      return
+    }
+
+    if (refData.type === "leaderboard") {
+      const dispatched = await handleLeaderboardRef({
+        conversation,
+        contactInbox,
+        refData,
+      })
+      if (dispatched) {
+        emitSuccess()
+      }
+      return
+    }
+
+    // Trigger reflink
+    await handleReflink({
+      conversation,
+      contactInbox,
+      refData,
+      isNewContact,
+    })
+    emitSuccess()
+  } catch (error) {
+    emitFallback()
+    throw error
+  }
+}
+
+/**
+ * A friend (B) arrived through a player's (A) leaderboard referral link:
+ * B joins the leaderboard and A is credited when B is new to it (see
+ * `leaderboardScoringService.creditReferral` for the guards — the ref is
+ * unsigned). B then gets the leaderboard's welcome flow, if one is set.
+ * Returns whether a flow was dispatched.
+ */
+async function handleLeaderboardRef(props: {
+  conversation: ConversationModel
+  contactInbox: ContactInboxModel
+  refData: Extract<RefConfig, { type: "leaderboard" }>
+}): Promise<boolean> {
+  const { conversation, contactInbox, refData } = props
+  // `findUnscoped` + explicit workspace check: a stale or crafted link must
+  // neither throw (retry loop) nor reach another workspace's leaderboard.
+  // A crafted ref can carry an id outside the bigint range; treat it as
+  // unknown instead of letting the job throw and retry forever.
+  const leaderboard = await leaderboardService
+    .findUnscoped(refData.leaderboardId)
+    .catch(() => null)
+  if (!leaderboard || leaderboard.workspaceId !== conversation.workspaceId) {
+    logger.warn(`Leaderboard ref: ${refData.leaderboardId} not in workspace`)
+    return false
+  }
+  // The ref is unsigned. Only credit arrivals on a shareable channel (not
+  // webchat, whose anonymous visitors are free to mint) and, for channel
+  // leaderboards, on the leaderboard's own host inbox.
+  if (
+    !canShareMinigame(contactInbox.channel as ChannelType) ||
+    (leaderboard.inboxId && leaderboard.inboxId !== contactInbox.inboxId)
+  ) {
+    logger.warn(
+      { leaderboardId: leaderboard.id, channel: contactInbox.channel },
+      "Leaderboard ref: arrival channel cannot earn referral credit",
+    )
+    return false
+  }
+
+  try {
+    await leaderboardScoringService.creditReferral({
+      workspaceId: conversation.workspaceId,
+      leaderboardId: leaderboard.id,
+      inviteeContactId: conversation.contactId,
+      referrerContactId: refData.contactId,
+    })
+  } catch (error) {
+    // Not rethrown: the welcome flow must still go out. The credit is not
+    // lost — the friend's next arrival through the link retries it.
+    logger.warn(
+      { err: error, leaderboardId: leaderboard.id },
+      "Failed to credit leaderboard referral",
+    )
+  }
+
+  if (!leaderboard.referralWelcomeFlowId) {
+    return false
+  }
+  try {
+    const welcomeFlow = await findOrFail({
+      table: flowModel,
+      where: {
+        id: leaderboard.referralWelcomeFlowId,
+        workspaceId: conversation.workspaceId,
+      },
+      message: "Flow not found",
+    })
+    await integrationQueue.add(IntegrationJobAction.sendFlow, {
+      type: IntegrationJobAction.sendFlow,
+      data: {
+        conversationId: conversation,
+        contactInboxId: contactInbox,
+        flowId: welcomeFlow.id,
+        origin: webhookChannelOrigin(),
+      },
+    })
+    return true
+  } catch (error) {
+    logger.warn(error, "Leaderboard ref: welcome flow unavailable")
+    return false
+  }
+}
+
+async function handleReflink(props: {
+  conversation: ConversationModel
+  contactInbox: ContactInboxModel
+  refData: Extract<RefConfig, { type: "reflink" | "qr-code" }>
+  isNewContact?: boolean
+}) {
+  const { conversation, contactInbox, isNewContact } = props
+  const refData = props.refData
+
+  const reflink = await findOrFail({
+    table: reflinkModel,
+    where: {
+      name: encodeRef(refData),
+      workspaceId: conversation.workspaceId,
+    },
+    message: "Reflink not found",
+  })
+
+  await emit(flowEventTypeSchema.enum["flow:ref"], {
+    context: {
+      workspaceId: conversation.workspaceId,
+      contactId: conversation.contactId,
+      conversationId: conversation.id,
+      channel: contactInbox.channel,
+      contactInboxId: contactInbox.id,
+    },
+    action: {
+      refId: reflink.id,
+      refType: "entryPoint",
+    },
+    occurredAt: new Date(),
+  })
+
+  await integrationQueue.add(IntegrationJobAction.sendFlow, {
+    type: IntegrationJobAction.sendFlow,
+    data: {
+      conversationId: conversation,
+      contactInboxId: contactInbox,
+      flowId: reflink.flowId,
+      origin: webhookChannelOrigin(),
+    },
+  })
+
+  const emitReferral = isNewContact
+    ? emitContactReferredANewContact
+    : emitContactReferredExistingContact
+  await emitReferral(
+    conversation.workspaceId,
+    conversation.contactId,
+    refData.name,
+    reflink.id,
+    contactInbox.id,
+  )
+
+  if (reflink.customFieldId) {
+    await saveResultToCustomField({
+      contactId: conversation.contactId,
+      customFieldId: reflink.customFieldId,
+      fullText: refData.name,
+      workspaceId: conversation.workspaceId,
+      contactInboxId: contactInbox.id,
+    })
+  }
+}

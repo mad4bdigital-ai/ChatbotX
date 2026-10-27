@@ -1,0 +1,16 @@
+packages:
+  - apps/*
+  - packages/*
+  - integrations/*
+
+onlyBuiltDependencies:
+  - core-js-pure
+  - esbuild
+  - isolated-vm
+  - lefthook
+  - '@parcel/watcher'
+  - '@swc/core'
+  - msgpackr-extract
+  - msw
+  - sharp
+  - workerd

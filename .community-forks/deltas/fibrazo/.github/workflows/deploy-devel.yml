@@ -1,0 +1,152 @@
+# Deploy devel — ChatbotX (patrón sysbrazo)
+#
+# Corre en push a main (después de merge de PR).
+# Enforce PR-only merges via branch protection on main (no direct pushes).
+#
+# workflow_dispatch (manual):
+#   maintenance_on  — maintenance sin deploy
+#   maintenance_off — restaura tráfico si deploy/smoke falló
+#
+# Los scripts viven en el repo (scripts/deployment/*.sh) y corren desde el
+# runner, igual que sysbrazo (deploy-v3.sh). Las credenciales de AWS las
+# tiene la instancia EC2 (IAM role). El runner se autentica con SSH_PRIVATE_KEY.
+
+name: Deploy Devel
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      job:
+        description: Manual maintenance action
+        type: choice
+        required: true
+        options:
+          - maintenance_on
+          - maintenance_off
+
+concurrency:
+  group: chatbotx-devel-v2
+  cancel-in-progress: true
+
+env:
+  ENV: devel
+  WORKSPACE: /var/www/chatbotx-dev
+  SERVER: ip-10-6-3-11.us-west-2.compute.internal
+  SSH_USER: sysbrazo
+  SECRET_NAME: dev/chatbotx/all-secret
+  COMPOSE_FILES: "-f docker-compose.yml -f docker-compose.apps.yml -f docker-compose.dev.yml"
+  HUSKY: "0"
+
+jobs:
+  maintenance_on:
+    name: Maintenance on
+    if: |
+      always() &&
+      (
+        (github.event_name == 'push') ||
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'maintenance_on')
+      )
+    runs-on: [self-hosted, chatbotx]
+    timeout-minutes: 15
+    environment:
+      name: devel
+      url: https://dev-chatbotx.fibrazo.com.co/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Init SSH
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+      - name: Load SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Enable maintenance
+        run: |
+          chmod +x ./scripts/deployment/maintenance-on.sh
+          ./scripts/deployment/maintenance-on.sh
+
+  deploy:
+    name: Deploy + smoke
+    needs: [maintenance_on]
+    if: |
+      always() &&
+      github.event_name == 'push' &&
+      needs.maintenance_on.result == 'success'
+    runs-on: [self-hosted, chatbotx]
+    timeout-minutes: 60
+    environment:
+      name: devel
+      url: https://dev-chatbotx.fibrazo.com.co/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Init SSH
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+      - name: Load SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy
+        run: |
+          chmod +x ./scripts/deployment/deploy.sh
+          ./scripts/deployment/deploy.sh
+
+      - name: Smoke tests
+        run: |
+          chmod +x ./scripts/deployment/run-smoke-tests.sh
+          ./scripts/deployment/run-smoke-tests.sh
+
+  maintenance_off:
+    name: Maintenance off
+    needs: [deploy]
+    if: |
+      always() &&
+      (
+        (github.event_name == 'push' && needs.deploy.result == 'success') ||
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'maintenance_off')
+      )
+    runs-on: [self-hosted, chatbotx]
+    timeout-minutes: 15
+    environment:
+      name: devel
+      url: https://dev-chatbotx.fibrazo.com.co/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Init SSH
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+      - name: Load SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Disable maintenance
+        run: |
+          chmod +x ./scripts/deployment/maintenance-off.sh
+          ./scripts/deployment/maintenance-off.sh

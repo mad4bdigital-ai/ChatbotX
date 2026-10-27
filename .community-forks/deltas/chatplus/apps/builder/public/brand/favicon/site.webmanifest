@@ -1,0 +1,15 @@
+{
+  "name": "ChatPLUS",
+  "short_name": "ChatPLUS",
+  "icons": [
+    {
+      "src": "/brand/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
