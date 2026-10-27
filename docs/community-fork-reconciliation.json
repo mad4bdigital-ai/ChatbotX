@@ -5,12 +5,12 @@
   "pr": 2,
   "total_occurrences": 407,
   "overall_status": {
-    "pending_feature_integration": 63,
+    "pending_feature_integration": 62,
     "deferred_environment_specific": 45,
     "pending_upstream_conflict": 76,
     "pending_semantic_conflict": 140,
     "deferred_delete": 5,
-    "integrated_adapted": 10,
+    "integrated_adapted": 11,
     "integrated_runtime": 15,
     "deferred_translation_parity": 3,
     "deferred_branding": 19,
@@ -20,12 +20,12 @@
   },
   "by_fork": {
     "alvanr": {
-      "pending_feature_integration": 43,
+      "pending_feature_integration": 42,
       "deferred_environment_specific": 5,
       "pending_upstream_conflict": 27,
       "pending_semantic_conflict": 36,
       "deferred_delete": 5,
-      "integrated_adapted": 4,
+      "integrated_adapted": 5,
       "integrated_runtime": 1
     },
     "chatplus": {
@@ -551,9 +551,9 @@
       "path": "apps/builder/src/features/automated-response/automated-response-table.tsx",
       "fork_change": "modified",
       "base_comparison": "isolated-safe-3way",
-      "disposition": "pending_feature_integration",
-      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
-      "confirmed_manual": false
+      "disposition": "integrated_adapted",
+      "reason": "Ported translated, type-selective inbound-contact vs outbound-page keyword automation description to existing card without changing behavior.",
+      "confirmed_manual": true
     },
     {
       "fork": "alvanr",
