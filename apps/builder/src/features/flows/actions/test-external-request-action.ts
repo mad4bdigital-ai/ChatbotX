@@ -1,6 +1,9 @@
 "use server"
 
-import { externalRequestService } from "@chatbotx.io/business"
+import {
+  externalRequestService,
+  stripUnresolvedJsonValues,
+} from "@chatbotx.io/business"
 import { ChatbotXException } from "@chatbotx.io/business/errors"
 import { externalRequestFieldsSchema } from "@chatbotx.io/flow-config"
 import { getTranslations } from "next-intl/server"
@@ -25,7 +28,19 @@ export const testExternalRequestAction = workspaceActionClient
       const t = await getTranslations("flows.externalRequest.errors")
 
       try {
-        const result = await externalRequestService.execute(parsedInput, {
+        const request =
+          parsedInput.body?.bodyType === "json"
+            ? {
+                ...parsedInput,
+                body: {
+                  ...parsedInput.body,
+                  jsonBody: stripUnresolvedJsonValues(
+                    parsedInput.body.jsonBody,
+                  ),
+                },
+              }
+            : parsedInput
+        const result = await externalRequestService.execute(request, {
           workspaceId,
         })
 

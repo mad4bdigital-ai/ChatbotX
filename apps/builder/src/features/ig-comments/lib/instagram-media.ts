@@ -19,6 +19,7 @@ export type InstagramAutomationMedia = {
   created_time: string
   permalink_url?: string
   media_product_type?: string
+  media_type?: string
   accountId: string
   /** The account's inbox id — what an automation's `inboxId` scope stores. */
   inboxId: string
@@ -65,6 +66,7 @@ async function collectInstagramMedia(
         created_time: item.timestamp,
         permalink_url: item.permalink,
         media_product_type: item.media_product_type,
+        media_type: item.media_type,
         accountId: integration.igId,
         inboxId: integration.inboxId,
       }))

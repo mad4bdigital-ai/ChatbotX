@@ -5,11 +5,13 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 const mocks = vi.hoisted(() => ({
   execute: vi.fn(),
   executeAndMap: vi.fn(),
+  stripUnresolved: vi.fn((json: string) => json),
   logStepProviderError: vi.fn(async () => undefined),
   setValues: vi.fn(async () => undefined),
 }))
 
 vi.mock("@chatbotx.io/business", () => ({
+  stripUnresolvedJsonValues: mocks.stripUnresolved,
   externalRequestService: {
     execute: mocks.execute,
     executeAndMap: mocks.executeAndMap,
@@ -210,6 +212,7 @@ describe("externalRequest step handler", () => {
       jsonBody: '{"name":"O\\"Brien"}',
     })
     expect(() => JSON.parse(call.input.body.jsonBody)).not.toThrow()
+    expect(mocks.stripUnresolved).toHaveBeenCalledWith(call.input.body.jsonBody)
     expect(contactVariableService.getAll).toHaveBeenCalledWith({
       contactId: "contact-1",
       contactInbox: expect.objectContaining({ id: "contact-inbox-1" }),

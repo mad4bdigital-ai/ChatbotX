@@ -9,8 +9,9 @@ type ActionHandler = (args: {
   parsedInput: Record<string, unknown>
 }) => Promise<unknown>
 
-const { executeMock } = vi.hoisted(() => ({
+const { executeMock, stripUnresolvedMock } = vi.hoisted(() => ({
   executeMock: vi.fn(),
+  stripUnresolvedMock: vi.fn((json: string) => json),
 }))
 
 vi.mock("@/lib/safe-action", () => {
@@ -23,6 +24,7 @@ vi.mock("@/lib/safe-action", () => {
 
 vi.mock("@chatbotx.io/business", () => ({
   externalRequestService: { execute: executeMock },
+  stripUnresolvedJsonValues: stripUnresolvedMock,
 }))
 
 vi.mock("@chatbotx.io/flow-config", () => ({
@@ -65,6 +67,22 @@ describe("testExternalRequestAction", () => {
       httpStatusCode: 400,
       message: "translated:requestFailed",
     })
+  })
+
+  test("sanitizes JSON bodies before sending the test request", async () => {
+    executeMock.mockResolvedValue({
+      statusCode: 200,
+      durationMs: 1,
+      responseBody: "{}",
+    })
+    await runAction()
+    expect(stripUnresolvedMock).toHaveBeenCalledWith('{"key":"value"}')
+    expect(executeMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        body: { bodyType: "json", jsonBody: '{"key":"value"}' },
+      }),
+      { workspaceId: "workspace-1" },
+    )
   })
 
   test("preserves expected client-safe external request errors", async () => {

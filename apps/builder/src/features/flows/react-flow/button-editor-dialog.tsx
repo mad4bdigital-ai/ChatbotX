@@ -48,7 +48,10 @@ import {
 import { sendMessageEditorMenusWithButton } from "./nodes/send-message/menu"
 import type { MenuItem } from "./nodes/types"
 import { allSteps, DynamicStepEditor } from "./steps"
-import { allButtonsConfig } from "./steps/button-config"
+import {
+  allButtonsConfig,
+  canOfferCallPhoneNumberButton,
+} from "./steps/button-config"
 import { SpreadsheetDialogProvider } from "./steps/spreadsheet/components/spreadsheet-dialog-context"
 import { useStepStore } from "./stores/step-store-provider"
 
@@ -256,6 +259,19 @@ export function ButtonEditorDialog() {
     return isQuickReply ? limits.quickReplyLabel : limits.buttonLabel
   }, [activeNode, isQuickReply])
 
+  const hiddenButtonTypes = useMemo(() => {
+    const hidden = [...(buttonEditorConfig?.hiddenButtonTypes ?? [])]
+    if (
+      !canOfferCallPhoneNumberButton({
+        channel: resolveNodeChannel(activeNode),
+        isQuickReply: Boolean(isQuickReply),
+      })
+    ) {
+      hidden.push(buttonTypes.enum.callPhoneNumber)
+    }
+    return hidden
+  }, [activeNode, isQuickReply, buttonEditorConfig?.hiddenButtonTypes])
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: wip
   useEffect(() => {
     if (buttonPath && openButtonEditorDialog && buttonInitialData) {
@@ -443,9 +459,7 @@ export function ButtonEditorDialog() {
                 </div>
               ) : (
                 <AllButtonOptions
-                  hiddenButtonTypes={
-                    buttonEditorConfig?.hiddenButtonTypes ?? undefined
-                  }
+                  hiddenButtonTypes={hiddenButtonTypes}
                   onChooseButton={onChooseButton}
                 />
               )}

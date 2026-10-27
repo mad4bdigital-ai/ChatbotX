@@ -31,19 +31,19 @@ export type FbCommentPostsState = {
 
 export type FbCommentPostsActions = {
   initialize: () => Promise<void>
+  fetchPosts: () => Promise<void>
 }
 
 export type FbCommentPostsStore = FbCommentPostsState & FbCommentPostsActions
 
 export const createFbCommentPostsStore = (
-  props: Partial<FbCommentPostsState>,
+  props: Partial<FbCommentPostsState> & { workspaceId: string },
 ) =>
   createStore<FbCommentPostsStore>((set, get) => ({
     loading: false,
     error: null,
     initialized: false,
 
-    workspaceId: "",
     publishedPosts: [],
     adsPosts: [],
     reelsPosts: [],
@@ -51,14 +51,21 @@ export const createFbCommentPostsStore = (
     ...props,
 
     initialize: async () => {
-      const { initialized } = get()
-      if (initialized) {
+      if (get().initialized || get().loading) {
         return
       }
+      await get().fetchPosts()
+    },
 
+    fetchPosts: async () => {
+      // The provider initializes on mount and the dialog refreshes on open.
+      // Avoid two simultaneous Graph calls when the dialog opens immediately.
+      if (get().loading) {
+        return
+      }
+      const { workspaceId } = get()
       set({ loading: true, error: null })
       try {
-        const { workspaceId } = get()
         const { published, ads, reels, pages } =
           await client.fbCommentsAPI.facebookPostsAPI({ workspaceId })
         set({

@@ -18,7 +18,11 @@ import {
   resolveTenantSettings,
 } from "@chatbotx.io/business"
 import { logProviderErrorForChannel } from "@chatbotx.io/business/error-log"
-import { wrapOpenLinkUrl } from "@chatbotx.io/business/open-link"
+import {
+  buildCallLinkUrl,
+  toDialablePhoneNumber,
+  wrapOpenLinkUrl,
+} from "@chatbotx.io/business/open-link"
 import { getPublicFileUrl } from "@chatbotx.io/business/utils"
 import {
   channelTypes,
@@ -44,6 +48,7 @@ import {
   channelDeliverableStepTypes,
   encodeButtonPayload,
   extractMetadata,
+  getButtonPhoneNumber,
   getChannelFlowPolicy,
   isBulkOutboundMetadata,
   isProactiveOutboundMetadata,
@@ -206,6 +211,18 @@ export const convertButtonsToTemplate = (props: {
       }
     }
 
+    // Recorded as a `tel:` link so the inbox shows what the contact can dial.
+    const phoneNumber = getButtonPhoneNumber(button)
+    if (phoneNumber) {
+      return {
+        id: button.id,
+        label: button.label,
+        buttonType: "url",
+        url: `tel:${toDialablePhoneNumber(phoneNumber)}`,
+        postback: buttonPayload,
+      }
+    }
+
     return {
       id: button.id,
       buttonType: "postback",
@@ -341,6 +358,28 @@ const wrapOpenLinkButtonIfNeeded = (props: {
   button: ButtonStepProps
 }): ButtonStepProps => {
   const { button } = props
+  if (
+    button.buttonType === buttonTypes.enum.callPhoneNumber &&
+    props.channel === channelTypes.enum.instagram
+  ) {
+    // Instagram has no dial button (web_url/postback only), so the contact is
+    // sent to the `/call` page, which opens the dialer from a tap.
+    return {
+      id: button.id,
+      label: button.label,
+      buttonType: buttonTypes.enum.openWebsite,
+      beforeStep: {
+        id: button.beforeStep.id,
+        stepType: stepTypes.enum.openWebsite,
+        url: buildCallLinkUrl({
+          appUrl: props.appUrl,
+          phoneNumber: button.beforeStep.phoneNumber,
+        }),
+        browserSize: 100,
+      },
+      steps: button.steps,
+    }
+  }
   if (button.buttonType !== buttonTypes.enum.openWebsite) {
     return button
   }

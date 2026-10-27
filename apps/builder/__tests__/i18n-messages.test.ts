@@ -37,7 +37,7 @@ const icuHeaderPattern =
   /\{([A-Za-z][\w.-]*),\s*(plural|select|selectordinal)\s*,/g
 const icuCategoryPattern = /^\s*(=?[\w-]+)\s*\{/
 const zeroWidthPattern = /\u200b|\u200c|\u200d|\ufeff/
-const completeCatalogLocales = ["az", "en", "vi"] as const
+const completeCatalogLocales = ["az", "en", "ru", "uz", "vi"] as const
 const cjkCatalogLocales = ["zh-TW", "zh-CN"].filter((locale) =>
   isLocale(locale),
 )
@@ -225,6 +225,8 @@ describe("locale resolution", () => {
   test.each([
     ["pt", "pt-BR"],
     ["en-US", "en"],
+    ["ru-RU", "ru"],
+    ["uz-UZ", "uz"],
     ["zh-Hant", "zh-TW"],
     ["zh-hant", "zh-TW"],
     ["ZH-HANT", "zh-TW"],

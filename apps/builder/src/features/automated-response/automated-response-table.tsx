@@ -12,6 +12,7 @@ import { Button } from "@chatbotx.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "@chatbotx.io/ui/components/ui/card"
@@ -310,6 +311,13 @@ export function AutomatedResponsesTable(props: AutomatedResponseTableProps) {
         <CardTitle className="font-bold text-xl">
           {t("keywords.title")}
         </CardTitle>
+        <CardDescription>
+          {t(
+            props.type === "inbound"
+              ? "keywords.descriptions.contact"
+              : "keywords.descriptions.page",
+          )}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <FolderBarSlot />

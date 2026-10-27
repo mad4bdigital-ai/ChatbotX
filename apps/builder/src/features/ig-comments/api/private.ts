@@ -117,6 +117,7 @@ export const igCommentsPrivateAPI = {
             created_time: z.string(),
             permalink_url: z.string().optional(),
             media_product_type: z.string().optional(),
+            media_type: z.string().optional(),
             accountId: z.string(),
             inboxId: postAccountInboxIdSchema,
           }),

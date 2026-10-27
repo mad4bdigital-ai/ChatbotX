@@ -16,6 +16,7 @@ describe("contact locale helpers", () => {
     expect(normalizeLocale("VI_vn")).toBe("vi_VN")
     expect(normalizeLocale("vi")).toBe("vi")
     expect(languageFromLocale("zh-CN")).toBe("zh")
+    expect(languageFromLocale("uz_UZ")).toBe("uz")
   })
 
   test("derives timezones only for curated single-zone locale regions", () => {

@@ -491,6 +491,8 @@ export const flowStepHandlers: Record<
   [stepTypes.enum.notifyAgent]: undefined,
   [stepTypes.enum.openWebsite]: undefined,
   [stepTypes.enum.openMiniApp]: undefined,
+  // Button-only beforeStep: Messenger dials it client-side, nothing to execute.
+  [stepTypes.enum.callPhoneNumber]: undefined,
   [stepTypes.enum.aiAnalyzeImage]: handleAIAnalyzeImage,
   [stepTypes.enum.aiDeleteMessageHistory]: handleAIDeleteMessageHistory,
   [stepTypes.enum.aiEditImage]: (props) =>

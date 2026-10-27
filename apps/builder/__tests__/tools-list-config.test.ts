@@ -210,3 +210,20 @@ describe("TOOLS_CONFIG — leaderboards entry", () => {
     expect(entry && "permission" in entry).toBe(false)
   })
 })
+
+describe("TOOLS_CONFIG — community AI Functions discovery", () => {
+  test("links to the existing AI Functions workspace page", () => {
+    const entry = TOOLS_CONFIG.find((item) => item.id === "ai-functions")
+    expect(entry).toBeDefined()
+    expect(entry?.labelKey).toBe("aiFunctions.title")
+    expect(entry?.descriptionKey).toBe("aiFunctions.description")
+    expect(entry?.getLink?.("workspace-123")).toBe(
+      "/space/workspace-123/ai-functions",
+    )
+  })
+
+  test("does not add a new unreviewed permission bypass", () => {
+    const entry = TOOLS_CONFIG.find((item) => item.id === "ai-functions")
+    expect(entry && "permission" in entry).toBe(false)
+  })
+})

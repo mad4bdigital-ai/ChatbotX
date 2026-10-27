@@ -7,7 +7,12 @@ export {
   sendPrivateReply,
   sendPrivateReplyMessage,
 } from "./apis/message"
-export { findTiktokVideo } from "./apis/video"
+export { getUserStats, type TiktokUserStats } from "./apis/user"
+export {
+  findTiktokVideo,
+  listVideos,
+  type TiktokOwnedVideo,
+} from "./apis/video"
 export {
   subscribeTiktokWebhooks,
   subscribeWebhook,

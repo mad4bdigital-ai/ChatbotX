@@ -2973,6 +2973,21 @@ exports[`public API spec — operation naming guard > operation list (operationI
     "path": "/v1/smtp-integrations/{id}",
   },
   {
+    "method": "GET",
+    "operationId": "socialStats.facebook",
+    "path": "/v1/social-stats/facebook",
+  },
+  {
+    "method": "GET",
+    "operationId": "socialStats.instagram",
+    "path": "/v1/social-stats/instagram",
+  },
+  {
+    "method": "GET",
+    "operationId": "socialStats.tiktok",
+    "path": "/v1/social-stats/tiktok",
+  },
+  {
     "method": "POST",
     "operationId": "spreadsheets.create",
     "path": "/v1/spreadsheets",

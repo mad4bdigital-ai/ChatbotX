@@ -3,6 +3,7 @@ import { z } from "zod"
 import { countMessageCharacters } from "../channel-rules/characters"
 import { actionSteps } from "../shared"
 import { flowValidationCodes } from "../validation-codes"
+import { callPhoneNumberStepSchema } from "./call-phone-number"
 import { openMiniAppStepSchema } from "./open-mini-app"
 import { openWebsiteStepSchema } from "./open-website"
 import { startAnotherNodeStepSchema } from "./start-another-node"
@@ -18,6 +19,9 @@ export const buttonTypes = z.enum([
   "startAnotherNode",
   "whatsappOptionList",
   "openMiniApp",
+  // Dials a number. Only Messenger has a native button for it, so the builder
+  // offers it on Messenger nodes only; other channels fall back to a postback.
+  "callPhoneNumber",
 ])
 export type ButtonType = z.infer<typeof buttonTypes>
 
@@ -71,6 +75,11 @@ export const buttonStepSchema = z
       z.object({
         buttonType: z.literal(buttonTypes.enum.whatsappOptionList),
         beforeStep: z.null(),
+        steps: z.array(z.union(actionSteps)),
+      }),
+      z.object({
+        buttonType: z.literal(buttonTypes.enum.callPhoneNumber),
+        beforeStep: callPhoneNumberStepSchema,
         steps: z.array(z.union(actionSteps)),
       }),
       z.object({
@@ -138,6 +147,14 @@ export const refineNoOpenMiniAppButtons = (
     }
   }
 }
+
+/** The number a `callPhoneNumber` button dials, or `undefined` otherwise. */
+export const getButtonPhoneNumber = (
+  button: ButtonStepProps,
+): string | undefined =>
+  button.buttonType === buttonTypes.enum.callPhoneNumber
+    ? button.beforeStep.phoneNumber
+    : undefined
 
 export const buttonStepDefaultFn = (
   props?: Pick<ButtonStepProps, "label">,

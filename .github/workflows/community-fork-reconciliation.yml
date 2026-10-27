@@ -1,0 +1,29 @@
+name: Community Fork Reconciliation
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/community-fork-reconciliation.yml"
+      - "docs/community-fork-reconciliation.json"
+      - "docs/community-fork-integration.md"
+      - "scripts/check-community-fork-reconciliation.mjs"
+      - "scripts/__tests__/community-fork-reconciliation.test.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-fork-ledger:
+    name: Fork provenance and disposition consistency
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Verify source provenance and all 407 reconciled file changes
+        run: node scripts/check-community-fork-reconciliation.mjs
+      - name: Run negative and positive ledger validation tests
+        run: node --test scripts/__tests__/community-fork-reconciliation.test.mjs
