@@ -133,6 +133,24 @@ validation, widget singleton, local WooCommerce event policies, privacy,
 idempotency, bounded retention, HMAC time window, signature tampering,
 tenant isolation and replay protection.
 
+Browser-based smoke QA is versioned at
+`tests/browser-e2e.py` and requires an installed Playwright Python package
+and Chromium browser. It uses a fresh, uncredentialed browser context and
+checks real Desktop (1365 × 900) and Mobile (390 × 844) widget loading:
+
+```bash
+CMB_E2E_LAB_URL=http://localhost:8091/ python3   integrations/wordpress/customer-messaging-bridge/tests/browser-e2e.py
+```
+
+A real synthetic guest-message test was completed from Chromium on
+2026-10-27: the message appeared in the chat interface, the input cleared,
+and the ChatbotX database recorded **one** message in Workspace
+11755877814459770 / Inbox 11755877814902375. To repeat a real send in
+the Lab only, set `CMB_E2E_SEND_TEST_MESSAGE=1` explicitly.
+
+The script does not authenticate an agent or send an agent reply. Live
+browser handoff and agent-response testing remain independent gates.
+
 The live Lab homepage contains the official widget script once, and the
 remote JS/CSS/iframe respond with HTTP 200. A full real-browser chat
 message round-trip, provider inbox OAuth, CRM writes, automation execution
