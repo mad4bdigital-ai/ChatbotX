@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Customer Messaging Bridge
  * Description: Lab-safe Webchat and WooCommerce integration bridge for an external messaging platform.
- * Version: 0.2.2
+ * Version: 0.2.3
  * Requires PHP: 8.0
  * Requires at least: 6.2
  * Author: MAD4B Digital
@@ -20,6 +20,9 @@ final class Customer_Messaging_Bridge {
     private static bool $rendered = false;
 
     public static function boot(): void {
+        // Expose metadata to the WordPress Settings Registry for passive
+        // Control Plane inventory; REST serialization remains OFF.
+        add_action('admin_init', [self::class, 'register_settings_metadata']);
         add_action('admin_menu', [self::class, 'admin_menu']);
         add_action('admin_post_cmb_save', [self::class, 'save']);
         add_action('admin_post_cmb_test', [self::class, 'test']);
@@ -90,6 +93,27 @@ final class Customer_Messaging_Bridge {
         // bootstrap when Elementor/templates include the shortcode.
         if (!self::ready()) { return ''; }
         return '<span class="cmb-webchat-anchor" data-cmb-webchat="enabled" hidden></span>';
+    }
+
+    public static function register_settings_metadata(): void {
+        register_setting('cmb_review', self::OPTION, [
+            'type' => 'object',
+            'show_in_rest' => false,
+            'sanitize_callback' => static function ($v) {
+                return self::sanitize(is_array($v) ? $v : []);
+            },
+            'default' => [],
+            'description' => 'Lab ChatbotX bridge non-secret connection preferences.',
+        ]);
+        register_setting('cmb_review', CMB_Commerce::OPTION, [
+            'type' => 'object',
+            'show_in_rest' => false,
+            'sanitize_callback' => static function ($v) {
+                return CMB_Commerce::sanitize(is_array($v) ? $v : []);
+            },
+            'default' => [],
+            'description' => 'Lab-only privacy-minimal WooCommerce event observation settings.',
+        ]);
     }
 
     public static function admin_menu(): void {

@@ -1,6 +1,6 @@
 # ChatbotX Customer Messaging Bridge — ETG WooCommerce Lab
 
-Release: **0.2.2**, Lab only. Source: `feature/etg-woocommerce-lab-webchat-bridge` / PR #3.
+Release: **0.2.3**, Lab only. Source: `feature/etg-woocommerce-lab-webchat-bridge` / PR #3.
 
 The adapter is deliberately **not** an independent WhatsApp, Messenger,
 Instagram, SMTP or AI provider. ChatbotX owns channel OAuth credentials,
@@ -156,3 +156,14 @@ remote JS/CSS/iframe respond with HTTP 200. A full real-browser chat
 message round-trip, provider inbox OAuth, CRM writes, automation execution
 and consent flows are **separate release gates**. A local-only lab URL
 cannot substitute for browser e2e proof.
+
+## MAD4B Control Plane provider integration (Lab v0.2.3)
+
+The companion MAD4B SCP bundled adapter registers three **read-only**
+abilities: `mad4b/chatbotx-provider-snapshot`,
+`mad4b/chatbotx-channels-read`, and `mad4b/chatbotx-remote-health`.
+The Control Plane source-review policy must approve the exact bundled class;
+third-party adapters cannot self-enroll. WordPress settings are registered
+for passive discovery but **not** exposed through REST and no arbitrary write
+operations are granted through MCP. Live Webchat and WooCommerce writes stay
+under WordPress' original authorization and consent constraints.
