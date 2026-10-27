@@ -69,7 +69,7 @@ The machine-readable [community-fork-reconciliation.json](./community-fork-recon
 ## Source delta governance — automated check
 
 - Source fork changes are not blindly cherry-picked. Six risk decisions were explicitly recorded: reject the old Redis group-creation recovery because its start-from-latest cursor can lose queued messages; defer cross-automation keyword/catchall prioritization pending a policy with replay/idempotency tests; and defer Russian, Uzbek and Mongolian UI activation until those translation dictionaries match the current English source.
-- The ledger records all 407 source file-change occurrences, with path-level dispositions, manual-review markers, aggregate counts, and one reason per source. It now reports 36 specifically reviewed entries, which is not the same as 35 complete features.
+- The ledger records all 407 source file-change occurrences, with path-level dispositions, manual-review markers, aggregate counts, and one reason per source. It now reports 37 specifically reviewed entries, which is not the same as 35 complete features.
 - New read-only source-control gate: standalone Node checker in scripts/check-community-fork-reconciliation.mjs plus five unit tests in scripts/__tests__/. The dedicated workflow runs them on related PR changes, without secrets, repository write permissions, server access, or production deployment.
 
 ## Ninth integration slice — Automated Response keyword descriptions
@@ -77,6 +77,11 @@ The machine-readable [community-fork-reconciliation.json](./community-fork-recon
 - alvanr: Ported existing translated descriptions to inbound (contact message) and outbound (Page reply) keyword automation cards. No change to automated response dispatch, authorization, or rule configuration.
 - Both translation keys already exist in every enabled locale, so this adds no new untranslated messages.
 - Existing keyword automation tests passed 18 of 18, and the scoped Builder TypeScript check passed.
+
+## Tenth integration slice — AI Functions discoverability
+
+- **alvanr:** Added AI Functions as a native tool card linking to the existing workspace-scoped AI Functions page. Uses the existing localization keys and the current Tools page's permission/visibility architecture; no Gemini fallback model, unofficial provider integration, or new credential handling.
+- Both Tools configuration and rendered navigation tests passed (29/29). Scoped Builder typecheck and full GitHub CI are required before merge.
 
 ## Next slices
 

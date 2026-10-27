@@ -23,6 +23,7 @@ import {
   MapIcon,
   MegaphoneIcon,
   QrCodeIcon,
+  SparklesIcon,
   TicketPercentIcon,
   TrophyIcon,
   UserCheck2Icon,
@@ -41,6 +42,13 @@ import {
 
 // Exported for tests (`__tests__/tools-list-config.test.ts`) only.
 export const TOOLS_CONFIG = [
+  {
+    id: "ai-functions",
+    labelKey: "aiFunctions.title",
+    descriptionKey: "aiFunctions.description",
+    icon: SparklesIcon,
+    getLink: (id: string) => `/space/${id}/ai-functions`,
+  },
   {
     id: "facebook-comment",
     labelKey: "facebookCommentAutomation.title",

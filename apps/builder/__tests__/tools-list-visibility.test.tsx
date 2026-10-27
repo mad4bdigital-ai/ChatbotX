@@ -90,6 +90,20 @@ describe("ToolsList — permission gating for the click-to-message-ads card", ()
     expect(container.textContent).toContain("facebookLeadAdsAutomation.title")
   })
 
+  test("AI Functions card opens its existing workspace page", () => {
+    act(() => {
+      root.render(<ToolsList permissions={fullPermissions} />)
+    })
+    const card = container.querySelector<HTMLElement>(
+      '[aria-label="aiFunctions.title"]',
+    )
+    expect(card).not.toBeNull()
+    act(() => {
+      card?.dispatchEvent(new MouseEvent("click", { bubbles: true }))
+    })
+    expect(navigation.push).toHaveBeenCalledWith("/space/ws1/ai-functions")
+  })
+
   test("clicking the click-to-message-ads card pushes the tool's workspace path", () => {
     act(() => {
       root.render(<ToolsList permissions={fullPermissions} />)
