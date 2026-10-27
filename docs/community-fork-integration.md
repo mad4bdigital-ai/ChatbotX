@@ -17,6 +17,19 @@ This is **incremental integration**, not the complete five-fork merge. The refer
 
 | khan-umirzakoff/ChatbotX-Fork-ChatPlus (6372b9cea903b0f47c7f6e39b528d80d81531b3a) | Uzbek contact-language support for live profiles and historical backfill with translation labels; no forced rebrand | Contact-locale and backfill parity tests; scoped TS |
 
+## Fourth integration slice — Workspace Token social statistics
+
+- **novawebs:** Instagram, Facebook and TikTok account/page analytics from connected integration credentials, exposed as three GET routes under /v1/social-stats.
+- This adaptation uses the current analytics-scoped token middleware rather than the fork's old token middleware, and selects the workspace solely from the verified token context.
+- Query periods are limited to 1–90 days. Instagram and Facebook media snapshots are limited to the newest 100 posts returned by the provider API; these are not exhaustive lifetime totals.
+- Per-media Instagram insights calls use bounded batches of at most five concurrent calls. Insights requiring ungranted OAuth scopes are reported unavailable rather than claiming their availability.
+- This code does **not** add OAuth permissions or modify connected live accounts; older authorizations may lack analytics permission and return reduced data.
+- Added route tests verify the analytics scope, workspace boundary, and invalid-date-window rejection (7/7 passed). Existing Instagram/Messenger provider regression suites passed (720/720 tests), and Builder/Instagram/Messenger scoped TypeScript checks passed. Still draft pending GitHub CI and real-provider smoke tests.
+
+## Fork reconciliation ledger
+
+The machine-readable [community-fork-reconciliation.json](./community-fork-reconciliation.json) tracks all 407 fork-file-change occurrences. **Integrated means selected behavior was ported; it never promises that every upstream hunk was copied.** Pending and partially overlapping paths require separate semantic review. Existing public IG comment and flow APIs are intentionally not copied, since the current main implements more complete scoped interfaces. License bypasses and environment-specific deployment assets are excluded.
+
 ## Deliberately not ported / safety notes
 
 - **alvanr Telegram username:** upstream `IncomingContact` contract has no `username` field. Direct transplant fails TS2353. Needs a signed-off field mapping and schema change.
@@ -34,5 +47,7 @@ This is **incremental integration**, not the complete five-fork merge. The refer
 3. Classify all other changes from the five forks as duplicate, superseded, compatible, needs-adaptation, or incompatible, with per-path evidence in the source archive.
 4. Add tests for external API failures, authorization, and rate limits; rerun repo-wide checks and a deployment rehearsal on a non-production endpoint.
 5. Review PR #1 on its own merits, especially WhatsApp send authorization, stop-on-reply lifecycle, and CI failures.
+
+**Explicit rejection:** Fibrazo changes that bypass enterprise-license verification are not integrated.
 
 **Release rule:** no merge into main, no production deployment, and no silent "ours/theirs" preference. Draft PR only until full CI and safety gates pass.

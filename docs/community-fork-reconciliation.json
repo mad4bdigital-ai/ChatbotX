@@ -1,0 +1,3730 @@
+{
+  "schema_version": 1,
+  "scope": "GitHub source fork delta occurrences, NOT one-to-one features",
+  "base_sha": "1ad445ae91a104e9c978a909cc58eccb5ea344d0",
+  "pr": 2,
+  "total_occurrences": 407,
+  "overall_status": {
+    "pending_feature_integration": 71,
+    "deferred_environment_specific": 45,
+    "pending_upstream_conflict": 80,
+    "pending_semantic_conflict": 139,
+    "deferred_delete": 5,
+    "integrated_runtime": 15,
+    "deferred_branding": 19,
+    "partial_overlap_review": 20,
+    "superseded_by_current_main": 8,
+    "integrated_adapted": 3,
+    "excluded_security_or_license": 2
+  },
+  "by_fork": {
+    "alvanr": {
+      "pending_feature_integration": 47,
+      "deferred_environment_specific": 5,
+      "pending_upstream_conflict": 26,
+      "pending_semantic_conflict": 37,
+      "deferred_delete": 5,
+      "integrated_runtime": 1
+    },
+    "chatplus": {
+      "pending_semantic_conflict": 30,
+      "pending_feature_integration": 7,
+      "deferred_branding": 9,
+      "pending_upstream_conflict": 4,
+      "partial_overlap_review": 1,
+      "integrated_runtime": 2,
+      "deferred_environment_specific": 1
+    },
+    "novawebs": {
+      "pending_semantic_conflict": 3,
+      "superseded_by_current_main": 8,
+      "pending_upstream_conflict": 10,
+      "integrated_runtime": 4,
+      "partial_overlap_review": 2,
+      "integrated_adapted": 3
+    },
+    "mu-chatbotx": {
+      "deferred_environment_specific": 1,
+      "integrated_runtime": 7,
+      "pending_upstream_conflict": 24,
+      "pending_feature_integration": 12,
+      "pending_semantic_conflict": 34,
+      "deferred_branding": 10,
+      "partial_overlap_review": 17
+    },
+    "fibrazo": {
+      "deferred_environment_specific": 38,
+      "pending_upstream_conflict": 16,
+      "pending_semantic_conflict": 35,
+      "pending_feature_integration": 5,
+      "integrated_runtime": 1,
+      "excluded_security_or_license": 2
+    }
+  },
+  "entry_status_warning": "Pending and partial path dispositions require human semantic verification. In integrated paths only selected behavior is guaranteed, not a full diff import.",
+  "entries": [
+    {
+      "fork": "alvanr",
+      "path": ".agents/rules/graphify.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": ".agents/workflows/graphify.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": ".cursor/mcp.json",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": ".github/workflows/deploy.yml",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": ".mcp.json",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "README.md",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/channel-route-guards.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/channels-create-messenger-handoff.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/channels-create-platform-owner.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/channels-create-visibility-guard.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/check-inbox-action.test.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/google-ads-connect-error-alert.test.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/leaderboards-admin-ui.test.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/minigame-name-conflict-action.test.ts",
+      "fork_change": "removed",
+      "base_comparison": "deletion-requires-review",
+      "disposition": "deferred_delete",
+      "reason": "fork deletion intent preserved; never remove main functionality without review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/minigame-player-settings-reset-policy.test.ts",
+      "fork_change": "removed",
+      "base_comparison": "deletion-requires-review",
+      "disposition": "deferred_delete",
+      "reason": "fork deletion intent preserved; never remove main functionality without review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/minigame-share-url.test.ts",
+      "fork_change": "removed",
+      "base_comparison": "deletion-requires-review",
+      "disposition": "deferred_delete",
+      "reason": "fork deletion intent preserved; never remove main functionality without review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/open-link-labels.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/docker/Dockerfile",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/ar.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/az.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/da.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/de.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/en.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/es.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/fi.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/fr.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/he.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/id.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/it.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/ja.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/nl.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/pt-BR.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/pt-PT.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/ro.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/sv.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/tr.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/vi.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/zh-CN.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/zh-TW.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/next.config.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/package.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/(no-sidebar)/channels/create/page.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/api/reflink-widget/[reflinkId]/route.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/minigames/page.tsx",
+      "fork_change": "removed",
+      "base_comparison": "deletion-requires-review",
+      "disposition": "deferred_delete",
+      "reason": "fork deletion intent preserved; never remove main functionality without review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/ig-comments/[id]/page.tsx",
+      "fork_change": "renamed",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/ig-comments/create/page.tsx",
+      "fork_change": "renamed",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/sequences/page.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/triggers/page.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/webhooks/page.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/contacts/page.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ai-functions/actions/generate-ai-function-ai.action.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ai-functions/ai-functions-create.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ai-functions/ai-functions-table-toolbar-actions.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/automated-response/automated-response-table.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/chat/store/chat-store.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/contact-inboxes/schema/resource.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/conversations/actions/check-inbox.action.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/conversations/conversation-item.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/conversations/conversation-list.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/conversations/queries/build-conversation-where.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/conversations/schema/query.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/fb-comments/components/select-facebook-posts-dialog.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/fb-comments/provider/fb-comment-posts-store.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/flows/actions/generate-flow-ai.action.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/flows/components/generate-flow-ai-dialog.tsx",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/flows/flows-table.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/flows/react-flow/flow-edit-toolbar.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ig-comments/api/private.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ig-comments/lib/instagram-media.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ig-comments/provider/ig-comment-posts-store.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/platform-credentials/instagram-facebook/instagram-facebook-settings.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/tools/tools-list.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/workspace-members/actions/invite-workspace-member.action.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/workspace-members/components/invite-workspace-member.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/workspace-members/schema/mutation.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/workspaces/components/workspaces-list.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/javascript-executor/__tests__/server.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/mcp-server/README.md",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/mcp-server/package.json",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/__tests__/docker-entrypoint.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/integration/handlers/received-message.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/integration/handlers/ref.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/integration/worker.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/schedule/handlers/poll-instagram-comments.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/schedule/handlers/register-schedules.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/schedule/worker.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "docker-compose.dev.yml",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "integrations/instagram-facebook/__tests__/scopes.test.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "integrations/instagram-facebook/src/apis/auth.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "integrations/messenger/src/apis/auth.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "integrations/meta-conversions/tsconfig.json",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "integrations/telegram/src/apis/user.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "lefthook.yml",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "package.json",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/ai/src/models/gemini.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/auth/src/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/auth/src/server.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/__tests__/invitation.service.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/__tests__/resolve-minigame-prize.test.ts",
+      "fork_change": "removed",
+      "base_comparison": "deletion-requires-review",
+      "disposition": "deferred_delete",
+      "reason": "fork deletion intent preserved; never remove main functionality without review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/__tests__/workspace.service.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/src/integration-context/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/src/invitation/service.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/src/javascript-execution/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/src/workspace/service.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/drizzle/20260807103213_add_username_to_contact_inbox/migration.sql",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/drizzle/20260807103213_add_username_to_contact_inbox/snapshot.json",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/scripts/check-schema-drift.mjs",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/src/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/src/schema/auth-invitation.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/src/schema/contact-inbox.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/event-bus/src/event-bus.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/filesystem/src/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/mail/src/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/partysocket-config/src/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/redis/src/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/sdk/src/lib/shared/message.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/utils/src/graph-pagination.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "cursor pagination hardening and tests",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/worker-config/src/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/worker-config/src/queues/schedule/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "pnpm-lock.yaml",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "alvanr",
+      "path": "scripts/sync-agent-instructions.mjs",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/__tests__/i18n-messages.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/__tests__/webchat-page-guards.test.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/docker/Dockerfile",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/docker/rootfs/usr/local/bin/docker-entrypoint.sh",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/ar.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/az.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/da.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/de.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/en.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/es.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/fi.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/fr.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/he.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/id.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/it.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/ja.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/nl.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/pt-BR.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/pt-PT.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/ro.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/ru.json",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/sv.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/tr.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/uz.json",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/vi.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/zh-CN.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/zh-TW.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/next.config.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/package.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/favicon/favicon.svg",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/favicon/site.webmanifest",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/icon_black.svg",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/icon_white.svg",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/logo.svg",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/logo_black.svg",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/logo_white.svg",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/chat-widget/demo.html",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/chat-widget/plugin.css",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/src/features/auth/sign-in.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/src/features/auth/sign-up.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/src/i18n/config.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/src/i18n/messages.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/realtime/docker/rootfs/usr/local/bin/docker-entrypoint.sh",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/worker/src/notification/lib/strings.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/__tests__/integration-webchat-branding.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/__tests__/integration-webchat-service.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/__tests__/tenant-settings-entitlement.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/src/contact-locale/languages.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "Uzbek language parity",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/src/platform/branding.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/src/platform/settings.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/database/scripts/backfill-contact-event-attributes.mjs",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "Uzbek language parity",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/mail/src/emails/dynamic-template.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/mail/src/preview.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "chatplus",
+      "path": "pnpm-lock.yaml",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": ".gitignore",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/__tests__/ig-comments-workspace-token-api.test.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "superseded_by_current_main",
+      "reason": "current public contract has separate tests and stronger authorization",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/fb-comments/components/select-facebook-posts-dialog.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/flows/actions/create-flow-action.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "superseded_by_current_main",
+      "reason": "current flow resource API implements create natively",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/flows/api/workspace-token.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "superseded_by_current_main",
+      "reason": "current flows public router exposes listing, create, draft, publish, import, get",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/flows/queries/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "superseded_by_current_main",
+      "reason": "current flow API reads versions/nodes and funnels",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-comments/api/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "superseded_by_current_main",
+      "reason": "current scoped automation-token route exists",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-comments/api/workspace-token.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "superseded_by_current_main",
+      "reason": "current automation-scoped GET,POST,PATCH,DELETE and media API already exists",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-comments/components/select-instagram-posts-dialog.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-comments/queries/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "superseded_by_current_main",
+      "reason": "current commentAutomationService handles workspace-scoped listing",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-comments/queries/instagram-media.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-stories/components/select-instagram-stories-dialog.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/platform-credentials/tiktok/update-tiktok-settings.action.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/social-stats/api/index.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with scoped analytics token and type checks",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/social-stats/queries/index.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with scoped analytics token and type checks",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/routers/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/routers/public.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "superseded_by_current_main",
+      "reason": "current publicRouter already mounts current flows and IG comments; new social stats mounted separately",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/worker/__tests__/comment-automation.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/worker/src/integration/handlers/comment-automation/automation-matching.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/worker/src/integration/handlers/comment-automation/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/instagram/src/apis/account.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with scoped analytics token and type checks",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/instagram/src/constants.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/instagram/src/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/messenger/src/apis/account.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with scoped analytics token and type checks",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/messenger/src/apis/auth.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/messenger/src/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/tiktok/src/apis/auth.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/tiktok/src/apis/user.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_adapted",
+      "reason": "ported without replacing existing Business TikTok APIs",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/tiktok/src/apis/video.ts",
+      "fork_change": "added",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "integrated_adapted",
+      "reason": "ported without replacing existing Business TikTok APIs",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/tiktok/src/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "integrated_adapted",
+      "reason": "ported without replacing existing Business TikTok APIs",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": ".env.example",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/call-phone-number-button-visibility.test.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with current flow routing and tests",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/channel-connect-credential-consistency.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/enabled-ui-locales.test.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/i18n-messages.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/instagram-select-account-action.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/instagram-select-account-facebook-action.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/messenger-select-page-action.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/proxy-public-routes.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/resolve-connect-session.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/update-instagram-action.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/update-messenger-action.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/webchat-page-guards.test.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/webchats-public-api.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/workspaces-list.community-zero.test.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/ar.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/az.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/da.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/de.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/en.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/es.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/fi.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/fr.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/he.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/id.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/it.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/ja.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/mn.json",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/nl.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/pt-BR.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/pt-PT.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/ro.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/sv.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/tr.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/vi.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/zh-CN.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/zh-TW.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/apple-touch-icon.png",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/favicon-96x96.png",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/favicon.ico",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/favicon.svg",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/site.webmanifest",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/web-app-manifest-192x192.png",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/web-app-manifest-512x512.png",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/icon_black.svg",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/logo_black.svg",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/logo_white.svg",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_branding",
+      "reason": "brand assets or hardcoded identity not automatically portable",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/app/(no-sidebar)/webchat/page.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/app/call/page.tsx",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/components/app-sidebar.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/components/brand-icon.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/components/lang-selector.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/components/public-env-script.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/env.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/admin/components/admin-sidebar.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/button-editor-dialog.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/button-config.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/call-phone-number/editor.tsx",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with current flow routing and tests",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/call-phone-number/index.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with current flow routing and tests",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/call-phone-number/viewer.tsx",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with current flow routing and tests",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/index.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/send-messenger-template-message/editor.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-instagram/actions/connect-account-facebook.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-instagram/actions/connect-account.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-instagram/actions/update-instagram-action.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-messenger/actions/connect-page.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-messenger/actions/update-messenger-action.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-webchat/components/create-webchat-form.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-webchat/components/persistent-menu-field.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-webchat/lib/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/user-persistent-menus/components/user-persistent-menu-form.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/workspaces/components/workspaces-list.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/i18n/config.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/i18n/enabled-locales.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/i18n/messages.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/i18n/request.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/lib/public-routes.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/__tests__/convert-buttons-call-phone.test.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with current flow routing and tests",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/__tests__/send-flow-step.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/chat/handlers/send-flow-step.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/env.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/integration/handlers/flow-utils.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/integration/handlers/messenger-user-menu.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/integration/handlers/step.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/notification/lib/strings.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "integrations/messenger/__tests__/call-phone-number-button.test.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with current flow routing and tests",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "integrations/messenger/src/handlers/message/outgoing-message/send-button.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/auth/__tests__/auth-id-generation.test.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/auth/src/server.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/__tests__/branding-menu.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/__tests__/open-link-call.test.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/__tests__/tenant-settings-domain.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/__tests__/workspace.service.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/integration-context/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/keys.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/open-link/call.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/open-link/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/platform/branding.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/platform/settings.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/workspace/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/workspace/service.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/flow-config/src/index.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/flow-config/src/steps/button.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/flow-config/src/steps/call-phone-number.ts",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "ported with current flow routing and tests",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/flow-config/src/steps/step-action.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "partial_overlap_review",
+      "reason": "path modified in integration branch; not all fork changes are assumed preserved",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".env.example",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".github/workflows/ci.yml",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".github/workflows/deploy-devel.yml",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".github/workflows/deploy-production.yml",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".github/workflows/release.yml",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".gitignore",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".opencode/agents/raul.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".vscode/settings.json",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "AGENTS.md",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "FORK-CHANGES.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/__tests__/channel-route-guards.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/__tests__/channels-create-messenger-handoff.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/__tests__/channels-create-platform-owner.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/__tests__/channels-create-visibility-guard.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/__tests__/workspace-members-actions.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/ar.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/da.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/de.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/en.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/es.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/fi.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/fr.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/he.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/id.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/it.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/ja.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/nl.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/pt-BR.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/pt-PT.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/ro.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/sv.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/tr.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/vi.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/zh-CN.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/zh-TW.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/next.config.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/package.json",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/scripts/build-builder.mjs",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/scripts/clean-next-cache.mjs",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/app/(no-sidebar)/channels/create/page.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/app/page.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/components/app-sidebar.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/components/public-env-script.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/components/workspace-switcher.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/contacts/queries/public-find-contact.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/flows/actions/test-external-request-action.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/flows/react-flow/steps/external-request/editor.tsx",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspace-members/actions/delete-workspace-member.action.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspace-members/actions/update-workspace-member.action.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspace-members/components/update-workspace-member.tsx",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspace-members/schema/mutation.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspace-members/schema/resource.ts",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "integrated_runtime",
+      "reason": "workspace member role in resource",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspaces/components/workspaces-list.tsx",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/worker/__tests__/external-request-handler.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/worker/src/integration/handlers/tool-handler.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docker-compose.apps.yml",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docker-compose.dev.yml",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docker-compose.prod.yml",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docker-compose.yml",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/demo-chatbotx.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/levantar-chatbotx.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/presentacion-chatbotx.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/requisitos-chatbotx-dev.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/requisitos-chatbotx-prod.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/requisitos-chatbotx.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/auth/src/server.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/__tests__/entitlements.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/__tests__/license.startup.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/__tests__/workspace.service.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/contact/service.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/enterprise/license/startup.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "excluded_security_or_license",
+      "reason": "enterprise license behavior must remain governed by upstream; no bypass",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/errors.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/external-request/service.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/user/entitlements.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "excluded_security_or_license",
+      "reason": "unlicensed enterprise unlock changes license enforcement; prohibited to port",
+      "confirmed_manual": true
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/workspace/__tests__/service.test.ts",
+      "fork_change": "modified",
+      "base_comparison": "upstream-drift-conflict",
+      "disposition": "pending_upstream_conflict",
+      "reason": "main diverged; never overwrite current core code",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/workspace/service.ts",
+      "fork_change": "modified",
+      "base_comparison": "overlapping-forks",
+      "disposition": "pending_semantic_conflict",
+      "reason": "multiple forks changed this path; requires three-way semantic merge",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "pnpm-workspace.yaml",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "pending_feature_integration",
+      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/deployment/deploy.sh",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/deployment/maintenance-off.sh",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/deployment/maintenance-on.sh",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/deployment/run-smoke-tests.sh",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/deployment/upgrade.sh",
+      "fork_change": "modified",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/start.sh",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "spec/README.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "spec/context/.template",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "spec/feature/.template",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "spec/plan/.template",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "spec/task/.template",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR2-fibrazo-sourceid-license/plan.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR2-fibrazo-sourceid-license/resumen.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR3-workspace-members-role/plan.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR3-workspace-members-role/resumen.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR4-workspace-create-gate/plan.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR4-workspace-create-gate/resumen.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR6-workspace-switcher-gate/plan.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR6-workspace-switcher-gate/resumen.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/README.md",
+      "fork_change": "added",
+      "base_comparison": "isolated-safe-3way",
+      "disposition": "deferred_environment_specific",
+      "reason": "requires independent infrastructure/governance review",
+      "confirmed_manual": false
+    }
+  ]
+}
