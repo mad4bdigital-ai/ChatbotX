@@ -40,6 +40,13 @@ This is **incremental integration**, not the complete five-fork merge. The refer
 - No post selection is automatically changed. Workspace id remains required for the provider store. Three focused refresh/retry/concurrency tests passed.
 - No publishing, external write call, or provider-account mutation occurs during the tests.
 
+## Seventh integration slice — Instagram media categorization
+
+- **alvanr:** Preserve the provider media_type in the Instagram comment automation media response and classify REELS and CLIPS consistently in the post picker.
+- **Semantic adaptation:** Graph may label ordinary feed videos as media_type VIDEO. The current core deliberately leaves FEED videos in the published tab even when VIDEO; media_type fallback is used only when media_product_type is absent. This prevents incorrectly hiding Feed media during automation setup.
+- The existing account/Workspace scoping and Instagram login/Facebook variant APIs are unchanged; we intentionally did not import automatic cross-variant fallback because it requires channel authorization and ID-scoping review.
+- Seven focused existing/new Instagram picker tests passed locally. Needs Builder typecheck and full GitHub CI.
+
 ## Fork reconciliation ledger
 
 The machine-readable [community-fork-reconciliation.json](./community-fork-reconciliation.json) tracks all 407 fork-file-change occurrences. **Integrated means selected behavior was ported; it never promises that every upstream hunk was copied.** Pending and partially overlapping paths require separate semantic review. Existing public IG comment and flow APIs are intentionally not copied, since the current main implements more complete scoped interfaces. License bypasses and environment-specific deployment assets are excluded.

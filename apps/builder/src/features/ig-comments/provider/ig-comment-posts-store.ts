@@ -9,6 +9,7 @@ export type InstagramPost = {
   created_time: string
   permalink_url?: string
   media_product_type?: string
+  media_type?: string
   accountId: string
   inboxId: string
 }
@@ -18,13 +19,20 @@ export type InstagramAccount = {
   name: string
 }
 
+// Product type takes precedence: ordinary feed videos remain feed posts.
+// Some Graph responses omit product type for videos, so classify such media
+// as reels instead of hiding them from both picker tabs.
+export const isInstagramReel = (post: InstagramPost): boolean => {
+  const product = post.media_product_type?.toUpperCase()
+  if (product === "REELS" || product === "CLIPS") {
+    return true
+  }
+  return !product && post.media_type?.toUpperCase() === "VIDEO"
+}
+
 export const splitInstagramMediaPosts = (posts: InstagramPost[]) => ({
-  published: posts.filter(
-    (post) => post.media_product_type?.toUpperCase() !== "REELS",
-  ),
-  reels: posts.filter(
-    (post) => post.media_product_type?.toUpperCase() === "REELS",
-  ),
+  published: posts.filter((post) => !isInstagramReel(post)),
+  reels: posts.filter(isInstagramReel),
 })
 
 export type IgCommentPostsState = {
