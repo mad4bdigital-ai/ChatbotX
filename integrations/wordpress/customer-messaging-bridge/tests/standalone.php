@@ -26,7 +26,11 @@ function set_transient($key, $value, $expiration) { $GLOBALS['cmb_transient'][$k
 function wp_remote_get($url, $args = []) {
     $GLOBALS['cmb_last_http_url'] = $url;
     $GLOBALS['cmb_last_http_options'] = $args;
-    return $GLOBALS['cmb_next_http_result'] ?? ['response' => ['code' => 200], 'body' => '{"data": []}'];
+    $query = parse_url($url, PHP_URL_QUERY) ?: '';
+    parse_str($query, $params);
+    $page = (int) ($params['page'] ?? 1);
+    if (isset($GLOBALS['cmb_http_pages'][$page])) { return $GLOBALS['cmb_http_pages'][$page]; }
+    return $GLOBALS['cmb_next_http_result'] ?? ['response' => ['code' => 200], 'body' => '{"data": [], "pageCount": 1}'];
 }
 function wp_remote_retrieve_response_code($value) { return (int) ($value['response']['code'] ?? 0); }
 function wp_remote_retrieve_body($value) { return $value['body'] ?? ''; }
@@ -112,7 +116,7 @@ $GLOBALS['cmb_next_http_result'] = [
 ];
 $channels = CMB_Channels::configured_inboxes(true);
 assert_true($channels['state'] === 'connected', 'authorized ChatbotX inbox response accepted');
-assert_true($GLOBALS['cmb_last_http_url'] === 'https://chatbotx.mad4b.com/api/v1/inboxes', 'authorized channel API endpoint uses /api/v1/');
+assert_true($GLOBALS['cmb_last_http_url'] === 'https://chatbotx.mad4b.com/api/v1/inboxes?page=1&perPage=50', 'authorized channel API endpoint uses canonical paginated route');
 assert_true($GLOBALS['cmb_last_http_options']['headers']['Authorization'] === 'Bearer ' . CMB_CHATBOTX_WORKSPACE_TOKEN, 'API token passed only as bearer header');
 assert_true($GLOBALS['cmb_last_http_options']['redirection'] === 0 && $GLOBALS['cmb_last_http_options']['sslverify'] === true, 'API request disallows redirects and verifies TLS');
 assert_true(count($channels['inboxes']) === 3 && $channels['inboxes'][1]['status'] === 'disconnected', 'channel statuses preserved instead of treating every inbox as connected');
@@ -124,6 +128,17 @@ $GLOBALS['cmb_next_http_result'] = ['response' => ['code' => 200], 'body' => '{"
 assert_true(CMB_Channels::configured_inboxes(true)['state'] === 'invalid_response', 'invalid ChatbotX schema rejected');
 $GLOBALS['cmb_next_http_result'] = ['response' => ['code' => 200], 'body' => '{"data":[]}'];
 assert_true(CMB_Channels::configured_inboxes(true)['state'] === 'connected', 'empty inbox list accepted');
+$GLOBALS['cmb_http_pages'] = [
+    1 => ['response' => ['code' => 200], 'body' => '{"pageCount":2,"data":[{"id":"10","channel":"webchat","status":"connected"}]}'],
+    2 => ['response' => ['code' => 200], 'body' => '{"pageCount":2,"data":[{"id":"11","channel":"whatsapp","status":"connected"}]}'],
+];
+$paged = CMB_Channels::configured_inboxes(true);
+assert_true($paged['state'] === 'connected' && count($paged['inboxes']) === 2, 'all inbox pages are collected');
+assert_true(str_contains($GLOBALS['cmb_last_http_url'], 'page=2&perPage=50'), 'second authorized API page requested');
+$GLOBALS['cmb_http_pages'][1] = ['response' => ['code' => 200], 'body' => '{"pageCount":11,"data":[]}'];
+assert_true(CMB_Channels::configured_inboxes(true)['state'] === 'invalid_pagination', 'more than ten pages fails closed instead of silently truncating');
+unset($GLOBALS['cmb_http_pages']);
+
 assert_true(CMB_Webhooks::secret() === '', 'inbound receiver disabled by default');
 assert_true(!CMB_Webhooks::verify('{"kind":"message.received"}', (string) time(), 'sha256=' . str_repeat('a',64)), 'unconfigured webhook always denied');
 define('CMB_INBOUND_HMAC_SECRET', str_repeat('long-local-only-secret', 3));

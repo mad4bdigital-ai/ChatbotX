@@ -31,49 +31,60 @@ final class CMB_Channels {
     }
 
     public static function configured_inboxes(bool $force = false): array {
-        if (!self::api_token()) { return ['state' => 'needs_token', 'inboxes' => [], 'error' => '']; }
-        // Cache must be credential-scoped: rotating a workspace token must
-        // never expose cached inboxes from a previous token/workspace.
-        $cacheKey = 'cmb_inboxes_' . substr(hash('sha256', self::api_token()), 0, 32);
+        $token = self::api_token();
+        if ($token === '') { return ['state' => 'needs_token', 'inboxes' => [], 'error' => '']; }
+        $cacheKey = 'cmb_inboxes_' . substr(hash('sha256', $token), 0, 32);
         if (!$force && function_exists('get_transient')) {
             $cached = get_transient($cacheKey);
             if (is_array($cached)) { return $cached; }
         }
-        $response = wp_remote_get(Customer_Messaging_Bridge::API_ORIGIN . '/api/v1/inboxes', [
-            'timeout' => 9,
-            'redirection' => 0,
-            'sslverify' => true,
-            'headers' => [
-                'Authorization' => 'Bearer ' . self::api_token(),
-                'Accept' => 'application/json',
-            ],
-        ]);
-        if (is_wp_error($response)) {
-            return ['state' => 'connection_error', 'inboxes' => [], 'error' => sanitize_text_field($response->get_error_code())];
+        $inboxes = [];
+        $totalPages = 1;
+        // The upstream inbox API caps page size at 50. A single request
+        // would silently hide connected providers after the first page.
+        // Upper bound protects the settings page from runaway HTTP loops.
+        for ($page = 1; $page <= 10; $page++) {
+            $response = wp_remote_get(Customer_Messaging_Bridge::API_ORIGIN .
+                '/api/v1/inboxes?page=' . $page . '&perPage=50', [
+                'timeout' => 8,
+                'redirection' => 0,
+                'sslverify' => true,
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $token,
+                    'Accept' => 'application/json',
+                ],
+            ]);
+            if (is_wp_error($response)) {
+                return ['state' => 'connection_error', 'inboxes' => [],
+                    'error' => sanitize_text_field($response->get_error_code())];
+            }
+            $code = (int) wp_remote_retrieve_response_code($response);
+            if ($code !== 200) {
+                return ['state' => 'http_error', 'inboxes' => [], 'error' => (string) $code];
+            }
+            $decoded = json_decode((string) wp_remote_retrieve_body($response), true);
+            if (!is_array($decoded) || !isset($decoded['data']) || !is_array($decoded['data']) ||
+                (!empty($decoded['data']) && array_keys($decoded['data']) !== range(0, count($decoded['data']) - 1))) {
+                return ['state' => 'invalid_response', 'inboxes' => [], 'error' => ''];
+            }
+            $totalPages = $decoded['pageCount'] ?? 1;
+            if (!is_int($totalPages) || $totalPages < 1 || $totalPages > 10 || $totalPages < $page) {
+                return ['state' => 'invalid_pagination', 'inboxes' => [], 'error' => ''];
+            }
+            foreach ($decoded['data'] as $item) {
+                if (!is_array($item) || !isset($item['channel'], $item['id'])) { continue; }
+                $channel = sanitize_key((string) $item['channel']);
+                if (!isset(self::CHANNELS[$channel])) { continue; }
+                $inboxes[] = [
+                    'channel' => $channel,
+                    'id' => sanitize_text_field((string) $item['id']),
+                    'name' => sanitize_text_field((string) ($item['name'] ?? $channel)),
+                    'status' => sanitize_key((string) ($item['status'] ?? 'unknown')),
+                ];
+            }
+            if ($page >= $totalPages) { break; }
         }
-        $code = (int) wp_remote_retrieve_response_code($response);
-        if ($code !== 200) {
-            return ['state' => 'http_error', 'inboxes' => [], 'error' => (string) $code];
-        }
-        $decoded = json_decode((string) wp_remote_retrieve_body($response), true);
-        $items = $decoded['data'] ?? $decoded['items'] ?? $decoded;
-        if (isset($items['data'])) { $items = $items['data']; }
-        if (!is_array($items) || ($items !== [] && array_keys($items) !== range(0, count($items) - 1))) {
-            return ['state' => 'invalid_response', 'inboxes' => [], 'error' => ''];
-        }
-        $result = [];
-        foreach ($items as $item) {
-            if (!is_array($item) || !isset($item['channel'], $item['id'])) { continue; }
-            $channel = sanitize_key((string) $item['channel']);
-            if (!isset(self::CHANNELS[$channel])) { continue; }
-            $result[] = [
-                'channel' => $channel,
-                'id' => sanitize_text_field((string) $item['id']),
-                'name' => sanitize_text_field((string) ($item['name'] ?? $channel)),
-                'status' => sanitize_key((string) ($item['status'] ?? 'unknown')),
-            ];
-        }
-        $status = ['state' => 'connected', 'inboxes' => array_slice($result, 0, 100), 'error' => ''];
+        $status = ['state' => 'connected', 'inboxes' => $inboxes, 'error' => ''];
         if (function_exists('set_transient')) { set_transient($cacheKey, $status, 120); }
         return $status;
     }

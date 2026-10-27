@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Customer Messaging Bridge
  * Description: Lab-safe Webchat and WooCommerce integration bridge for an external messaging platform.
- * Version: 0.2.1
+ * Version: 0.2.2
  * Requires PHP: 8.0
  * Requires at least: 6.2
  * Author: MAD4B Digital
@@ -128,7 +128,7 @@ final class Customer_Messaging_Bridge {
         echo '<p>WooCommerce: ' . esc_html(class_exists('WooCommerce') ? 'Detected' : 'Not detected') .
             '. Outbound order/CRM synchronization is intentionally not active.</p>';
         $events = get_option(self::AUDIT, []);
-        echo '<p>Locally observed WooCommerce status events: ' . esc_html((string) count(is_array($events) ? $events : [])) . ' (up to 30 retained; no customer information).</p>';
+        echo '<p>Archived v0.1 WooCommerce status observations: ' . esc_html((string) count(is_array($events) ? $events : [])) . ' (up to 30 retained; no customer information).</p>';
         do_action('cmb_admin_sections');
         echo '</div>';
     }
@@ -167,20 +167,6 @@ final class Customer_Messaging_Bridge {
         exit;
     }
 
-    public static function order_changed($order_id, $old_status, $new_status, $order = null): void {
-        if (self::settings()['woo_local_audit'] !== '1' || !function_exists('wc_get_order')) { return; }
-        $o = $order instanceof WC_Order ? $order : wc_get_order($order_id);
-        if (!$o) { return; }
-        $entries = get_option(self::AUDIT, []);
-        if (!is_array($entries)) { $entries = []; }
-        // Intentionally excludes PII, prices, customer IDs and credentials.
-        $entries[] = [
-            'kind' => 'woocommerce.order.status_changed',
-            'old' => sanitize_key((string) $old_status),
-            'new' => sanitize_key((string) $new_status),
-            'observed_at' => gmdate('c'),
-        ];
-        update_option(self::AUDIT, array_slice($entries, -30), false);
-    }
+
 }
 Customer_Messaging_Bridge::boot();

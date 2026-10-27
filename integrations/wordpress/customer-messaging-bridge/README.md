@@ -1,6 +1,6 @@
 # ChatbotX Customer Messaging Bridge — ETG WooCommerce Lab
 
-Release: **0.2.1**, Lab only. Source: `feature/etg-woocommerce-lab-webchat-bridge` / PR #3.
+Release: **0.2.2**, Lab only. Source: `feature/etg-woocommerce-lab-webchat-bridge` / PR #3.
 
 The adapter is deliberately **not** an independent WhatsApp, Messenger,
 Instagram, SMTP or AI provider. ChatbotX owns channel OAuth credentials,
@@ -61,6 +61,8 @@ and grant only the `inbox` scope (singular). No token goes into
 
 - Authenticated API: `GET https://chatbotx.mad4b.com/api/v1/inboxes`
 - All traffic requires TLS verification; host is hardcoded in the plugin.
+Inbox discovery uses paginated GET requests (up to 10 pages × 50 inboxes)
+and fails closed when the response is incomplete or malformed.
 - WhatsApp Business, Messenger, Instagram and email OAuth/inboxes are
   connected and managed **inside ChatbotX** by a platform administrator.
 - Outbound customer/order sync is not performed by this release. In
