@@ -47,6 +47,11 @@ This is **incremental integration**, not the complete five-fork merge. The refer
 - The existing account/Workspace scoping and Instagram login/Facebook variant APIs are unchanged; we intentionally did not import automatic cross-variant fallback because it requires channel authorization and ID-scoping review.
 - Seven focused existing/new Instagram picker tests passed locally. Needs Builder typecheck and full GitHub CI.
 
+## Eighth integration slice — External Request dialog trigger semantics
+
+- Fibrazo: Ported nativeButton=false to the Flow Builder External Request dialog trigger because its rendered element is already a div containing a Button. This aligns it with other dialog triggers in current main and avoids a native-button wrapper around custom markup.
+- Four existing callApi registration tests pass when run from the Builder package directory. Builder type checks and GitHub CI are required before merge.
+
 ## Fork reconciliation ledger
 
 The machine-readable [community-fork-reconciliation.json](./community-fork-reconciliation.json) tracks all 407 fork-file-change occurrences. **Integrated means selected behavior was ported; it never promises that every upstream hunk was copied.** Pending and partially overlapping paths require separate semantic review. Existing public IG comment and flow APIs are intentionally not copied, since the current main implements more complete scoped interfaces. License bypasses and environment-specific deployment assets are excluded.

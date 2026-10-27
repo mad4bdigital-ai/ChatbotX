@@ -5,12 +5,12 @@
   "pr": 2,
   "total_occurrences": 407,
   "overall_status": {
-    "pending_feature_integration": 68,
+    "pending_feature_integration": 67,
     "deferred_environment_specific": 45,
     "pending_upstream_conflict": 77,
     "pending_semantic_conflict": 138,
     "deferred_delete": 5,
-    "integrated_adapted": 9,
+    "integrated_adapted": 10,
     "integrated_runtime": 15,
     "deferred_branding": 19,
     "partial_overlap_review": 21,
@@ -57,8 +57,8 @@
       "deferred_environment_specific": 38,
       "pending_upstream_conflict": 13,
       "pending_semantic_conflict": 35,
-      "pending_feature_integration": 5,
-      "integrated_adapted": 2,
+      "pending_feature_integration": 4,
+      "integrated_adapted": 3,
       "integrated_runtime": 1,
       "excluded_security_or_license": 2,
       "partial_overlap_review": 1
@@ -3275,9 +3275,9 @@
       "path": "apps/builder/src/features/flows/react-flow/steps/external-request/editor.tsx",
       "fork_change": "modified",
       "base_comparison": "isolated-safe-3way",
-      "disposition": "pending_feature_integration",
-      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
-      "confirmed_manual": false
+      "disposition": "integrated_adapted",
+      "reason": "Ported nativeButton=false for custom DialogTrigger div wrapper. Current UI primitive supports prop; existing callApi step registration suite 4/4.",
+      "confirmed_manual": true
     },
     {
       "fork": "fibrazo",
