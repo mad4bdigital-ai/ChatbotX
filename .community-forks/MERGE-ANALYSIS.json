@@ -1,0 +1,3674 @@
+{
+  "base_main_sha": "1ad445ae91a104e9c978a909cc58eccb5ea344d0",
+  "summary": {
+    "isolated-safe-3way": 140,
+    "upstream-drift-conflict": 105,
+    "overlapping-forks": 157,
+    "deletion-requires-review": 5
+  },
+  "entries": [
+    {
+      "fork": "alvanr",
+      "path": ".agents/rules/graphify.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "0fc786414721fec529f16793ee45c8eab64fdebc",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": ".agents/workflows/graphify.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "6befaedf32d2e61502bbb8ca08d1a74c172653a1",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": ".cursor/mcp.json",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "0ca12d6abf750cb31b6305c441b757da55b81916",
+      "main_blob": "53da2d8e33b140a038bdd752652b7e65d0f6eaf0",
+      "base_blob": "53da2d8e33b140a038bdd752652b7e65d0f6eaf0"
+    },
+    {
+      "fork": "alvanr",
+      "path": ".github/workflows/deploy.yml",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "9f368570b394162d86997247ee1688561266b0e3",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": ".mcp.json",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "0ca12d6abf750cb31b6305c441b757da55b81916",
+      "main_blob": "53da2d8e33b140a038bdd752652b7e65d0f6eaf0",
+      "base_blob": "53da2d8e33b140a038bdd752652b7e65d0f6eaf0"
+    },
+    {
+      "fork": "alvanr",
+      "path": "README.md",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "9a31d928aaeef55ceda54fd491e1e973a3b5235d",
+      "main_blob": "c0e56adf738cc2a98930d7f90a5b9707b7ac8d4b",
+      "base_blob": "5c6f9bc52fc1f63de28ce6f153521117608370a9"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/channel-route-guards.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "3e7444389e3c9acbe14515d66204c788dbfc6af7",
+      "main_blob": "cf7d0da7b9f63451e3d26be842794c180e85aa75",
+      "base_blob": "cf7d0da7b9f63451e3d26be842794c180e85aa75"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/channels-create-messenger-handoff.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "23083f44f2863c489bebfff467bb111a6f88aee0",
+      "main_blob": "db7168f0da37c90017eb2a04a00dfbc7263292d9",
+      "base_blob": "db7168f0da37c90017eb2a04a00dfbc7263292d9"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/channels-create-platform-owner.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "64c90790e2a2e1c354422a2fee8c563432185bcc",
+      "main_blob": "99970a40684441fddcdca5b1793717d677238d78",
+      "base_blob": "99970a40684441fddcdca5b1793717d677238d78"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/channels-create-visibility-guard.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "2bcf510a261d8e5cf7845bf1eb8f28d9747fe413",
+      "main_blob": "f27a39d77d65576ec000a6374b1f3367faacd3fd",
+      "base_blob": "f27a39d77d65576ec000a6374b1f3367faacd3fd"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/check-inbox-action.test.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "43d59f5b2dbdb21f3eca989147ee3a2e28af561a",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/google-ads-connect-error-alert.test.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "8c595411ebdac62d23584191ebb88dc824fad1de",
+      "main_blob": "e4336448500519dd39c1a2843916476ee2101ff1",
+      "base_blob": "e4336448500519dd39c1a2843916476ee2101ff1"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/leaderboards-admin-ui.test.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "258b7f08e4a046fb5f650b276ae8b857d3e26c55",
+      "main_blob": "971d66e35760685e6ad3fcd74293c9ac83468158",
+      "base_blob": "971d66e35760685e6ad3fcd74293c9ac83468158"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/minigame-name-conflict-action.test.ts",
+      "status": "removed",
+      "category": "deletion-requires-review",
+      "source_blob": null,
+      "main_blob": "03764c7d69f2290c6dbee72358eeb904ea21dae3",
+      "base_blob": "03764c7d69f2290c6dbee72358eeb904ea21dae3"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/minigame-player-settings-reset-policy.test.ts",
+      "status": "removed",
+      "category": "deletion-requires-review",
+      "source_blob": null,
+      "main_blob": "e0b4ad5fa556c0e560ca827ff4e984d9d18a66b2",
+      "base_blob": "e0b4ad5fa556c0e560ca827ff4e984d9d18a66b2"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/minigame-share-url.test.ts",
+      "status": "removed",
+      "category": "deletion-requires-review",
+      "source_blob": null,
+      "main_blob": "d0924ef713edcdbfea69b82c6e4919470edea21f",
+      "base_blob": "d0924ef713edcdbfea69b82c6e4919470edea21f"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/__tests__/open-link-labels.test.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "0c40fbf6c16768a2c5fef850c698a70d164b2df6",
+      "main_blob": "3b73be315856c9c1d00cb6a89701a38f457f57a6",
+      "base_blob": "3b73be315856c9c1d00cb6a89701a38f457f57a6"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/docker/Dockerfile",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "036def0a0b2a40b47a9f2933e06edc41927f5b89",
+      "main_blob": "09f18831d2efcb5f1d89725056be3df425694e02",
+      "base_blob": "0b150a4d0799014f2ed6a8b95da5aab27a22a345"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/ar.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "1147235e44e66577bd77c03dd7d41b4ad9fa381d",
+      "main_blob": "df521e198aae03715974d87f18e3cd2df5efc26d",
+      "base_blob": "a61854ee847677b64eba2e44548bfeff2e01e56d"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/az.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "5fb9af326394f29a639c0400777681ce6581075a",
+      "main_blob": "0ad37b04befe4f4625ae7add7358b838a637e8e3",
+      "base_blob": "3159ede78aee5f9994e38ef5eb27b11bc917bcbe"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/da.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "aef1589ee341fdfe2323095046b8a433a3576148",
+      "main_blob": "d81e274717d2fe7938c166bd4568ad2a7f51e3ab",
+      "base_blob": "b6eb01446fdc11f575898b2bbb1384b16e4c0b37"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/de.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "a2caec96f70a3c15e7129a55b2e18d88d9573b33",
+      "main_blob": "2b356ec5723a313f0613a7b13141aebb1a1c511a",
+      "base_blob": "368234a7a04856533048e64571106702cd694f72"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/en.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "1951b8f9069c9e128cd5239a94ac9281260bb617",
+      "main_blob": "55e10619cd2ee763fd92ba0b88a554fc7444d006",
+      "base_blob": "afda6ce42288002bd1a6e7baa257b231d295a7a4"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/es.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "0aac942d776e8f430845d089e4fec6e034055438",
+      "main_blob": "e8532fe8aeacb4393a5ae056b96389504c812578",
+      "base_blob": "ac8baef50fb6ca538c109334fc8651a00b346ddd"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/fi.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "607fe5a5cb6e2ff19a03d0a666d1b551d7e00c61",
+      "main_blob": "cd215634828494f7bdac363a9c3b975620ed4389",
+      "base_blob": "c78c213f8caa4fe238fe983d5794c752296b7d54"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/fr.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "6663e5e1e574b46742ec6db20262928b80b09ba9",
+      "main_blob": "0e793969846c4ca70dafe5e7df9fc4587a5e7a33",
+      "base_blob": "cd1089af7d66996b44183b01cec831dbb87fd94c"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/he.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "d5fadbada47442ad1b35124e866d5fe31ddcc0fc",
+      "main_blob": "d2b3a0cb2a3d20640eca4791ba42aafe50a4b591",
+      "base_blob": "b6ce17615e653c702062c8e0ac1a139abf9a7e72"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/id.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "5e9ee0d6f95ccba4f55d167f40884a42463ce134",
+      "main_blob": "d73effd5bb54f2abcdce0fb8cdafcf0465fe3e4e",
+      "base_blob": "67a4a7e73872732d398daf30bb4002f0255805ea"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/it.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "c46042318aebbfac0340590c2ce6f0906e919658",
+      "main_blob": "932b763cd9d83d73977c770532c15003827cb642",
+      "base_blob": "2d7eeb79f6a877bb87b19d8602bfefda2acbf7ee"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/ja.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "f1c5a69b23c1fd083dd9441da444330cbc8b874b",
+      "main_blob": "40ec71b219e5cfc849320d924ac472d86607b53a",
+      "base_blob": "559e3ce039fb9bec39a68a55bc81ba96deb5389f"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/nl.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "30692fc03fd1038b6646d3d5e96796263e6f6512",
+      "main_blob": "e160d21453171f30adb48ac908369f0654d967eb",
+      "base_blob": "9fe36ef8828ab54a23fd1f6a5fdc7aec2df18ce7"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/pt-BR.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "45ad4acba05a3ccddf9cc2bb78a83738a88ad499",
+      "main_blob": "e1b81dfc0cc30e81b42aff9c6d0b674f440b37dc",
+      "base_blob": "d749be0affdc150f89c8eb0deda6f4aed2322565"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/pt-PT.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "9a5dd4b8df63b7572d6183317f96093a5c509c3f",
+      "main_blob": "f5fc7962298263deb03db9ae8fe4ce811cc45ca6",
+      "base_blob": "f91fdceccb9d3ea278eab5897ccbfcfde7361ed6"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/ro.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "0c5e0f98e7651896abe4a10c32540f6408c2a9ba",
+      "main_blob": "37e1b4a22c43ca9e7f3cfcdbb40834820ae5f548",
+      "base_blob": "5c7caee6e3e8d8095cc95d65b7a920c62adf0a52"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/sv.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "9f4cd044091b7ca7c1376215a311343d08403ef3",
+      "main_blob": "99cec9119cb0917db73142794f7f5b169e8a888b",
+      "base_blob": "873688deaef34ddc95d0664b447c4c2b0808539b"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/tr.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "f848ab29e83cdf346f9c165925c96bbf03bd2883",
+      "main_blob": "cfa08335380e282d0c472b51da75f0055420beb9",
+      "base_blob": "493297fbb2c2670f59b9af21bd05da187c4aba98"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/vi.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "9c169d372bae6b0e4bc0670d2aafb88bbcac3458",
+      "main_blob": "e82862fee141e45f4986600cf5833104aa220e4a",
+      "base_blob": "65d6910d35acb31161faae6733aad619c6c581e9"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/zh-CN.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "38440fcdc2f1c27a079e2cc0f373e8ac7c6f1f73",
+      "main_blob": "9b5b73461b6fba10bbbed9ec3c0495c6d2ee77d8",
+      "base_blob": "76460bdb3262ee042b0b738c7e2e5aa1589298fe"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/messages/zh-TW.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "aeb8ab6dc9945106f08d6e0d61b97e5117916618",
+      "main_blob": "517aaacf0b83e865a2ff5fe372a40fc917235ccf",
+      "base_blob": "c71454fae77a80b9106a2e41902ad65cf551fbae"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/next.config.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "7d6b4b3b4c258801145199efefee710ff809a810",
+      "main_blob": "05d40260f5580f5b32ecf3b9b0d068c965e0b8b1",
+      "base_blob": "d9f3820627dafe2a26cdc5b2105a23c73af5bc21"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/package.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "6cef56f4afedf5756c122ab9752c31cf95476948",
+      "main_blob": "f372bbb3147098d2d657660247e3c0332522aeae",
+      "base_blob": "969cf794b5fa6cd8e7e23baa7f6e9ceba66016cd"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/(no-sidebar)/channels/create/page.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "55adc4dbf2e2e55c386d17c53acf2532309bd989",
+      "main_blob": "0a230cb63ca42a026524a4ddf0935b402986569b",
+      "base_blob": "0a230cb63ca42a026524a4ddf0935b402986569b"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/api/reflink-widget/[reflinkId]/route.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "e38ff01d6d7139833c0595bf5265d0ba386a539b",
+      "main_blob": "6c6dd886b077f0e14ca3c7c6cb9c8d44cbe2b72b",
+      "base_blob": "6c6dd886b077f0e14ca3c7c6cb9c8d44cbe2b72b"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/minigames/page.tsx",
+      "status": "removed",
+      "category": "deletion-requires-review",
+      "source_blob": null,
+      "main_blob": "0bc711e6e43d196624bf0c4bc1d144fd75c2dfa8",
+      "base_blob": "0bc711e6e43d196624bf0c4bc1d144fd75c2dfa8"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/ig-comments/[id]/page.tsx",
+      "status": "renamed",
+      "category": "isolated-safe-3way",
+      "source_blob": "fe9dc7eef045950306212bae3f7859cd5d533e94",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/ig-comments/create/page.tsx",
+      "status": "renamed",
+      "category": "isolated-safe-3way",
+      "source_blob": "8ed8c9089fa31854f2eaffce09a227cb4158a3a6",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/sequences/page.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "c04d21760dccf5bd0699839ee57e65bcae544551",
+      "main_blob": "93454db0efedcde4d842cce0cee03b92c6d47735",
+      "base_blob": "93454db0efedcde4d842cce0cee03b92c6d47735"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/triggers/page.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "b3f5d5bf83d9131ded79308f806e46757d58bb0d",
+      "main_blob": "2accda1719d0ab271e8f5146fdd92a7639a3d12d",
+      "base_blob": "2accda1719d0ab271e8f5146fdd92a7639a3d12d"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/(has-folder)/webhooks/page.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "33b6551079869224f7738ec5af28b516cbf39251",
+      "main_blob": "14faaa30f254fd5a62d5eb0f2faf3fc1114cd657",
+      "base_blob": "14faaa30f254fd5a62d5eb0f2faf3fc1114cd657"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/app/space/[workspaceId]/contacts/page.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "c4212985c4e0237287a2bccc8776b1acf8dabb32",
+      "main_blob": "0c46ffab848d3453e012d792184a4aac87adcee9",
+      "base_blob": "0c46ffab848d3453e012d792184a4aac87adcee9"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ai-functions/actions/generate-ai-function-ai.action.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "335ea18852df22d287b7ae45554c7bdb309a3418",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ai-functions/ai-functions-create.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "03129164ccd3a4dd3f3247cd78be8ad9e21900e8",
+      "main_blob": "525bd2cf875a5b05ad61db8a6473e3717522ec32",
+      "base_blob": "525bd2cf875a5b05ad61db8a6473e3717522ec32"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ai-functions/ai-functions-table-toolbar-actions.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "ab9b58e8a9b4eb9bafd7bcf85b4928455846bf85",
+      "main_blob": "a1b7562fa81956000c22c5ce94c387247ddf2d9f",
+      "base_blob": "a1b7562fa81956000c22c5ce94c387247ddf2d9f"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/automated-response/automated-response-table.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "78c6b49075454fddc1a5c9b7d4b5dbb3de5351da",
+      "main_blob": "4118f181f5e3ae9d4026c63ffe7592f5f2c9a1f4",
+      "base_blob": "4118f181f5e3ae9d4026c63ffe7592f5f2c9a1f4"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/chat/store/chat-store.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "6555b6d4f32d8fa7549d2df0661da10d956c7be6",
+      "main_blob": "5d8a3a80801ba691d0835d62dcfcfef9c5194d9c",
+      "base_blob": "60c0cb6dbbbd43c139c34a3d499106fc4f754c60"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/contact-inboxes/schema/resource.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "4819a9588423ec1f67909f7da581d4e101f1d2d4",
+      "main_blob": "eaa462f350160f3efb3b6a1039e856f251bc38a4",
+      "base_blob": "eaa462f350160f3efb3b6a1039e856f251bc38a4"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/conversations/actions/check-inbox.action.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "7d4ddaf6720cd39cab4f96a2c7aae0534d6a94e1",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/conversations/conversation-item.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "8fc470f529cdf11ccc5cc6836e3b5d341ad252b3",
+      "main_blob": "8ff1c6d5be52ef6b7bf1c9876c61b7ed5ecfc09e",
+      "base_blob": "3498638d8d22e1e50a868e3e1d2b3c1444dff9c8"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/conversations/conversation-list.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "11c4c231fc2513b98076459b27c086872ab70fde",
+      "main_blob": "5778153a24ae5f9b1d6be9a9b5d920d5b25eeccf",
+      "base_blob": "5778153a24ae5f9b1d6be9a9b5d920d5b25eeccf"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/conversations/queries/build-conversation-where.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "1bf501fcc27c7b8e2adcb034734ff9ff09afdfa3",
+      "main_blob": "31e64dc5837ea213103a0b71309fb8c7f5b76daf",
+      "base_blob": "6e20be6180047255ca5dea7df1288199cc95879b"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/conversations/schema/query.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "aa3934e073928cff491435a88eb2e5b449be7dab",
+      "main_blob": "46d24611c4f52367e34ab7b931d77d0da135eac6",
+      "base_blob": "3da3e5364fc7eaccabfaa3069d56c22f6515d958"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/fb-comments/components/select-facebook-posts-dialog.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "92029499e4e1333fbf954f40fd0bd85dc2febd67",
+      "main_blob": "9ef408ff3539309f9ea0dc401ebe77ac05cdecd4",
+      "base_blob": "9ef408ff3539309f9ea0dc401ebe77ac05cdecd4"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/fb-comments/provider/fb-comment-posts-store.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "6b96c31750057a2a28fd9e930955ce68aedcbfbe",
+      "main_blob": "169eeec68df1bd4ac0c0b09224fb2ab635ab3897",
+      "base_blob": "169eeec68df1bd4ac0c0b09224fb2ab635ab3897"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/flows/actions/generate-flow-ai.action.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "e12694d23162e0e79c88af933b49a770560904a5",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/flows/components/generate-flow-ai-dialog.tsx",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "a79aa53ab888ffb7c2e41ebb2b871a342d3b41d0",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/flows/flows-table.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "4a5856f56ffa81b333afbb4f2b7847592ad34c4d",
+      "main_blob": "aa221e52f3c23147282467e6262900d0c8dac7e5",
+      "base_blob": "aa221e52f3c23147282467e6262900d0c8dac7e5"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/flows/react-flow/flow-edit-toolbar.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "375b43ed018e3a460e761ff8bba1334456175dfb",
+      "main_blob": "bdd4dd7fd2ee32d35e6b8611568137f3d8817d19",
+      "base_blob": "bdd4dd7fd2ee32d35e6b8611568137f3d8817d19"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ig-comments/api/private.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "23c797192fd9f2e34142a7b71bb5fb732a8a000c",
+      "main_blob": "975a3ccb98dbb1e33d2bf059cc3a23cd51473362",
+      "base_blob": "975a3ccb98dbb1e33d2bf059cc3a23cd51473362"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ig-comments/lib/instagram-media.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "69014c8827b67692e1d2f38d7f1080354843493c",
+      "main_blob": "6aa9b852c39f535bfaffcfcb80580cd92914d161",
+      "base_blob": "6aa9b852c39f535bfaffcfcb80580cd92914d161"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/ig-comments/provider/ig-comment-posts-store.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "a03d284edd3b04d600ea8384397806a93d73f305",
+      "main_blob": "4121e323e950144d9bab2bb2e07732ebe71eca9d",
+      "base_blob": "4121e323e950144d9bab2bb2e07732ebe71eca9d"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/platform-credentials/instagram-facebook/instagram-facebook-settings.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "9b8f76eb931a8f7f68a37f432127ca3b5e9c7307",
+      "main_blob": "f0c5a9930a2f817c0a14c1f31bfe1a99c6bd2b57",
+      "base_blob": "f0c5a9930a2f817c0a14c1f31bfe1a99c6bd2b57"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/tools/tools-list.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "5a374847cb340ca22f080924f875e1ac7812cb84",
+      "main_blob": "f1b4742e30d525b82ec728ed7d80f289ba79b0ea",
+      "base_blob": "f1b4742e30d525b82ec728ed7d80f289ba79b0ea"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/workspace-members/actions/invite-workspace-member.action.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "ae95da6dd72613086dca6d317c27122cec027ee8",
+      "main_blob": "a21f4ce5b2e020b89625f531e9f914f2920fe20c",
+      "base_blob": "a21f4ce5b2e020b89625f531e9f914f2920fe20c"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/workspace-members/components/invite-workspace-member.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "f219a3552072ec2ad94522c1d65c3079ee4027b4",
+      "main_blob": "034e8eb3f01937020af96db573f138c563cd67ca",
+      "base_blob": "92cae1e0f65d23928b38404a4297875fff0a1135"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/workspace-members/schema/mutation.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "6d3151f5d167368f3fb2393fc84a51be9127c94f",
+      "main_blob": "93d4f791b13a00b4c61d590fef22a7dc44a0d738",
+      "base_blob": "291e5a2b1ad7e2d4caa0602286525c3f1c6744f8"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/builder/src/features/workspaces/components/workspaces-list.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "001698bcaa75e2eb83fa47dc96941277c9174605",
+      "main_blob": "5c13b93f9ae1000265a3363ce7ec107d1afc9b80",
+      "base_blob": "5c13b93f9ae1000265a3363ce7ec107d1afc9b80"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/javascript-executor/__tests__/server.test.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "1d93a707207167a46ec07fc8e27c61ba3d1e08e0",
+      "main_blob": "db9505fb71ae1a7e10f95e582bbb59407341326e",
+      "base_blob": "db9505fb71ae1a7e10f95e582bbb59407341326e"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/mcp-server/README.md",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "e31d259bfea04d85cbfc24b4cd74fa89fd690890",
+      "main_blob": "fce55a4b089c6fb22dc021e002ee6b383ae1fee4",
+      "base_blob": "619f1f712293029d21cc59279f7089dc13adaad3"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/mcp-server/package.json",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "73cb9cca96917d3908975f688dc31a6c3fbd0064",
+      "main_blob": "f659c0450c24adff4a7f43786c5d9c963b1edfab",
+      "base_blob": "e15cc31c7fdeced74bb4d6fac0890d3c733c1f4a"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/__tests__/docker-entrypoint.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "55fd1e5852082fb6e7ccabdb643d4fe7724a2514",
+      "main_blob": "ed3ef5fed08f1b7ce8b0942ed5c902064b551866",
+      "base_blob": "c94584e0b684774eab635b6733d5944b63286899"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/integration/handlers/received-message.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "54f1ecce48f3c2459cea2c8a3afebca64e2a1f5c",
+      "main_blob": "1729ed9ff39a7f03056f6bd8fe5206473d784958",
+      "base_blob": "5073990d0c76682e2822cdb3c89267c3865f2b6f"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/integration/handlers/ref.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "12908220f636db93dcd6bfb5d38e29774c5ad460",
+      "main_blob": "74cc14a07f310ee233d97e3006c9e5f4ec60e4ac",
+      "base_blob": "a7d50641d9d3aaeba681fb7f0be329d9c40adcfd"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/integration/worker.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "184fb4cc71cbf77e6269644e4438c3dc56933ce4",
+      "main_blob": "9254a6790975d38dfb5959011537d3d35b615026",
+      "base_blob": "4a78e64b9c6175c3957724c03c3d13e64089b61a"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/schedule/handlers/poll-instagram-comments.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "3880d974b9df6261e90226886c30796312dfcbd8",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/schedule/handlers/register-schedules.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "8c7e0ee40b66d8c85c9229e7528a129d16f3e6f7",
+      "main_blob": "4b0578503ee69dd95bd16ea838ee682c295b8d2f",
+      "base_blob": "f65e068f4864c301e518aff5eb2343a471458eda"
+    },
+    {
+      "fork": "alvanr",
+      "path": "apps/worker/src/schedule/worker.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "533fc005421f3b475cde72e8bd73a03566eabf34",
+      "main_blob": "e45b3c3f1f720b737ebe3fe450f5468ab4afc64b",
+      "base_blob": "dc680530f9c0996836097fd76d035394072de9ea"
+    },
+    {
+      "fork": "alvanr",
+      "path": "docker-compose.dev.yml",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "f6c6b410948c422ef33a89c64ef07f764427acba",
+      "main_blob": "d5a081c3236e8f139e6334478c398670590555d7",
+      "base_blob": "acfc3cc2c6f43661b0ac6886e91b0a52371b845f"
+    },
+    {
+      "fork": "alvanr",
+      "path": "integrations/instagram-facebook/__tests__/scopes.test.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "6ab5788f19dd37d863911266ce318067c3efa9a6",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "integrations/instagram-facebook/src/apis/auth.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "7db820230f08fd0d30fda94e3987900adeb39dcd",
+      "main_blob": "774ac1cbe374ad9c8b0332702db00691a825bf1c",
+      "base_blob": "774ac1cbe374ad9c8b0332702db00691a825bf1c"
+    },
+    {
+      "fork": "alvanr",
+      "path": "integrations/messenger/src/apis/auth.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "fe048e294355494c2e5be6aed24f5258d3ae7351",
+      "main_blob": "b53835f2b84793b7db72241561d910ac216ac5b8",
+      "base_blob": "b53835f2b84793b7db72241561d910ac216ac5b8"
+    },
+    {
+      "fork": "alvanr",
+      "path": "integrations/meta-conversions/tsconfig.json",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "c00c1313b9ac9b9ecf3ad7dfa9ec81270c97e55e",
+      "main_blob": "55da6aff32f7b7b838e98339064b741f4a73f3fa",
+      "base_blob": "55da6aff32f7b7b838e98339064b741f4a73f3fa"
+    },
+    {
+      "fork": "alvanr",
+      "path": "integrations/telegram/src/apis/user.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "bc3de9ecda35ebb304065cd4516fe770bee4be48",
+      "main_blob": "7c97f4e71f07baaac1e69627cd9baf95cc4e1650",
+      "base_blob": "7c97f4e71f07baaac1e69627cd9baf95cc4e1650"
+    },
+    {
+      "fork": "alvanr",
+      "path": "lefthook.yml",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "69742a101d223bd55e8eaf785db766992f4c72f5",
+      "main_blob": "9b18b5132cb962e6fb35c4dc1571c12ec0f85216",
+      "base_blob": "a558a49d4f62f7fc9b0cd658766f140ef95465b2"
+    },
+    {
+      "fork": "alvanr",
+      "path": "package.json",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "de8795729689c3179c53ce7db9b81b2a76374f01",
+      "main_blob": "9dab0b4a33b4aa3c3d7b3de3a5810c2321b11d22",
+      "base_blob": "9a120e02c11298f0c656712f1fc6f5bbbbb34f80"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/ai/src/models/gemini.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "3283a7224674985dd83c333d43427a1b42b0d60b",
+      "main_blob": "3ae93ac0fe02dc2903789160fef5062889398008",
+      "base_blob": "3ae93ac0fe02dc2903789160fef5062889398008"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/auth/src/keys.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "c52240d7e985a67ecac66abda31ab23ee5202d5f",
+      "main_blob": "8d91143b11a0382747cbfd9f8de7a7352eeef9e7",
+      "base_blob": "d79b0f4a85cc8833a2def9ff872b68eb664b1eef"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/auth/src/server.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "90d95d41517d3f82947dbf40bfb4f4d78cddcce1",
+      "main_blob": "850d217cc19783de7636d8bf547f79bfeb71dc9b",
+      "base_blob": "552325cee610fc3a94b6fa954486e3fd35b86320"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/__tests__/invitation.service.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "7f186a3f0858d9f9d9315787a775e869a0e152b2",
+      "main_blob": "eda5c0022e95b2186702e9dca00eea5b121808a0",
+      "base_blob": "0ea6c0e76f27e1d1fe267699c59588396a3ea479"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/__tests__/resolve-minigame-prize.test.ts",
+      "status": "removed",
+      "category": "deletion-requires-review",
+      "source_blob": null,
+      "main_blob": "f1369c7a6319b849146135114c014cd61c49d960",
+      "base_blob": "f1369c7a6319b849146135114c014cd61c49d960"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/__tests__/workspace.service.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "ccbd765cd5d525de14a2ce069053d0284f599d73",
+      "main_blob": "3f37296b8d28ba66672509047a7423674a3962ae",
+      "base_blob": "b1aca3eb36ed4dadf0f6ebc86419cd02bc48f28c"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/src/integration-context/keys.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "a2fec0ac114665d27814d881f557dae437e63e4c",
+      "main_blob": "29a6c1f9f504609fb1fa5bf3fb7cfbdfeb84ee61",
+      "base_blob": "d6145d8f22d7e94f62441da8011064685a7c50a9"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/src/invitation/service.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "b127f5d4e17d624c2bdca483c03b1e129d7da56b",
+      "main_blob": "dc69bf8700fd2bce6794dfde2d8fd071200ababc",
+      "base_blob": "0bba4531a9fff8f32077da04213c554a41003670"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/src/javascript-execution/keys.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "5f184b8de352360ceca903e0df0953d830217466",
+      "main_blob": "2a3029a959c1605f6d267d8617d22d35a701bcfd",
+      "base_blob": "2a3029a959c1605f6d267d8617d22d35a701bcfd"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/business/src/workspace/service.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "5a5d9a27d7cb927f76642107ce7486563502997f",
+      "main_blob": "8a2281bc9ed5b60f2f7f89e8db04ac8f0776244b",
+      "base_blob": "5b6842e00c3396f9b48faae67841e06f3ab313ed"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/drizzle/20260807103213_add_username_to_contact_inbox/migration.sql",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "cd861d10d650f3700ee32b9214e57f79caa9e407",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/drizzle/20260807103213_add_username_to_contact_inbox/snapshot.json",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "a2d42c8c77dbf99859a4dd44b82953d998e57fc7",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/scripts/check-schema-drift.mjs",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "7bfb433a134862eb16fd586663a27b36e3298455",
+      "main_blob": "d695c2804ac0eca036ec272a45d3cd26839639af",
+      "base_blob": "9d5e8aea7199fadcb8d254492e89e438d3a7f74a"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/src/keys.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "5dd4239b1695bf4212951fbd30b36e2d41ea6c19",
+      "main_blob": "49ceb04d183fe62b4081c3c5bd5d45824d3a4267",
+      "base_blob": "35c63f36f81001e0614861997396d863e994dc76"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/src/schema/auth-invitation.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "0b931f9b3965c8dc2400ea1fee0be1e81e1d786c",
+      "main_blob": "06baa35bddb0e8fb143e58ab473b31281a62c9af",
+      "base_blob": "06baa35bddb0e8fb143e58ab473b31281a62c9af"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/database/src/schema/contact-inbox.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "1213404d5c30396448da7d5762f8604dcdc9ba57",
+      "main_blob": "ed2c9e2eeb9ae190f0da11ed0a1c177b678c74f5",
+      "base_blob": "35c9f4daf3b96daf3cbc0863ef06d35b3d5b05da"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/event-bus/src/event-bus.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "dd76ce3f7fe23141de6d15cf7db1f383450ab9c2",
+      "main_blob": "26588f35b2e69e61d8659026e284d258a7b8ae59",
+      "base_blob": "26588f35b2e69e61d8659026e284d258a7b8ae59"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/filesystem/src/keys.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "ec7bcb928ffe7bd281a4260c07c74ad4d2b7fadf",
+      "main_blob": "35537272b7783042b1353d2c9129dd556d156ba3",
+      "base_blob": "35537272b7783042b1353d2c9129dd556d156ba3"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/mail/src/keys.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "f8b02a52d0d0e85cd35763b5ee353fd6c7d3d6ea",
+      "main_blob": "3e45df8abe94be142ba9c6582b73b7ff06cd5306",
+      "base_blob": "3507d0b204eebdb8f37647744343b2ab5fe9388d"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/partysocket-config/src/keys.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "a663c4c7fc22ae5d2941434de2e1448becb24c50",
+      "main_blob": null,
+      "base_blob": "c5e801354061a36b9f5f03b6a8d99dfcad2f3c3a"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/redis/src/keys.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "680556d9925ff8c4263dab32ee418f5f018328d9",
+      "main_blob": "668e1dd8564a013f37529d41121e17b591908f57",
+      "base_blob": "668e1dd8564a013f37529d41121e17b591908f57"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/sdk/src/lib/shared/message.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "b8e497b1246b044c07e21bb0c7db21ca7a128c2b",
+      "main_blob": "94d9e63eae2b218635bb12ec627b5d188ba79bfb",
+      "base_blob": "09a53415cff5d4b4da493a08541a8a92e0c5552d"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/utils/src/graph-pagination.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "9f2ff08558b897339b2e856bf1cbedb5a68e1910",
+      "main_blob": "7e498ccfd5f3895e9e54baf02cec97ac86c13768",
+      "base_blob": "7e498ccfd5f3895e9e54baf02cec97ac86c13768"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/worker-config/src/keys.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "3ae4b7b1a7986fd8e9c2bda40377d5e5e6b5804c",
+      "main_blob": "d516d6aff4cbc18d021147fb7a099a00f7ac18b4",
+      "base_blob": "d516d6aff4cbc18d021147fb7a099a00f7ac18b4"
+    },
+    {
+      "fork": "alvanr",
+      "path": "packages/worker-config/src/queues/schedule/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "e411228d462bfa0e37dc52f28347bb3a9ad6bd0f",
+      "main_blob": "71884354e323e32fbbfe06080cc4791fa3dec83a",
+      "base_blob": "62b76b07c0688045d6a00db5164ef3377831bcec"
+    },
+    {
+      "fork": "alvanr",
+      "path": "pnpm-lock.yaml",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "cbf11902e2718c8a80770efac89167aba375e6c9",
+      "main_blob": "e4f6913ee98dc28c213ea7085c9fae7a469eb44c",
+      "base_blob": "44a22c9698e9ceaadd93003f0312514429e2b839"
+    },
+    {
+      "fork": "alvanr",
+      "path": "scripts/sync-agent-instructions.mjs",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "307f2faef6d5a53e3833863b4c0cf41e517078d9",
+      "main_blob": "1c31465677fca0bb9f778138cb3cef871fb557fb",
+      "base_blob": "1c31465677fca0bb9f778138cb3cef871fb557fb"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/__tests__/i18n-messages.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "0b64981e2834465a8ec8609807f05f4800faa4f6",
+      "main_blob": "f9d5ea01d5358335d0a8e40fad19cef997ce2659",
+      "base_blob": "f9d5ea01d5358335d0a8e40fad19cef997ce2659"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/__tests__/webchat-page-guards.test.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "77fd3e447e845742851265bbff8b0ddb776536f4",
+      "main_blob": "74e6911e4c8860db3ba84641cc781e67e43cc9b3",
+      "base_blob": "74e6911e4c8860db3ba84641cc781e67e43cc9b3"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/docker/Dockerfile",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "e33373588d4ce7a97e50a48b5ac39d637098d321",
+      "main_blob": "09f18831d2efcb5f1d89725056be3df425694e02",
+      "base_blob": "0b150a4d0799014f2ed6a8b95da5aab27a22a345"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/docker/rootfs/usr/local/bin/docker-entrypoint.sh",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "dff17d207e32b1afb69ea4116ec9e10490dc8150",
+      "main_blob": "ef239f4afe38e4cde16fb4986869bafbc38bc0f0",
+      "base_blob": "ef239f4afe38e4cde16fb4986869bafbc38bc0f0"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/ar.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "35ed33d0a3955340951ac52c738dc49d29a2a7d6",
+      "main_blob": "df521e198aae03715974d87f18e3cd2df5efc26d",
+      "base_blob": "1769cb9a87d78e5b5c02954db945c788dcfc3ee7"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/az.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "86a0abe9a863316558c873d7d8246d2038aadc34",
+      "main_blob": "0ad37b04befe4f4625ae7add7358b838a637e8e3",
+      "base_blob": "b8279269c652467982f6167892b9ebebcfbe569c"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/da.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "3baa2fb0926f7cc6b55e9bdaa1dbb24854f4ce90",
+      "main_blob": "d81e274717d2fe7938c166bd4568ad2a7f51e3ab",
+      "base_blob": "f8ac8c35c635eca4eec154bda78a957da97c3341"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/de.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "45636f054616d667ae7f9bdd618e3a89b84eef2c",
+      "main_blob": "2b356ec5723a313f0613a7b13141aebb1a1c511a",
+      "base_blob": "6ea2c8c520fa926aeec2a5005b16e460826e7fce"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/en.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "01a5306efb636a08aa555c5b4c111f60de3f87e9",
+      "main_blob": "55e10619cd2ee763fd92ba0b88a554fc7444d006",
+      "base_blob": "24d3d4d546210afc095d63778b6d4fb7cb190aa0"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/es.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "5ff4e1db0c520e9d04b0e0b2164909e46db26773",
+      "main_blob": "e8532fe8aeacb4393a5ae056b96389504c812578",
+      "base_blob": "0cc78c2340d9169fdca062cc5945386222e1f0f1"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/fi.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "d5e4dba3551011c87f9faadd04cdfe2869397d2d",
+      "main_blob": "cd215634828494f7bdac363a9c3b975620ed4389",
+      "base_blob": "213dfc2112cafbe5f14dd4daec13d5524381d580"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/fr.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "1af42c1d0ea12398170b1532052e79aa0b146637",
+      "main_blob": "0e793969846c4ca70dafe5e7df9fc4587a5e7a33",
+      "base_blob": "2223192890bcba8bba2ea19b97371571674a301f"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/he.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "1f96883f3ffbbcca337d79dd9c4b565907ded598",
+      "main_blob": "d2b3a0cb2a3d20640eca4791ba42aafe50a4b591",
+      "base_blob": "25d51ba5e4c9235a13f10e432306e16bae43a020"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/id.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "a3fc5dca1b65daa943fcd5cc5a6e6c26750f9801",
+      "main_blob": "d73effd5bb54f2abcdce0fb8cdafcf0465fe3e4e",
+      "base_blob": "80c9c431bc5f222e837dccfe58dd286e0a352b46"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/it.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "96cec86f8576f9f553abce1827af5f910aa8edb9",
+      "main_blob": "932b763cd9d83d73977c770532c15003827cb642",
+      "base_blob": "bce8048a9ca79893e909c9dcffbc1948874b5fed"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/ja.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "096a76458c728393cc1d6404e7b31bcf14e3b497",
+      "main_blob": "40ec71b219e5cfc849320d924ac472d86607b53a",
+      "base_blob": "6657ac3bbe71008fbd1d320e8ea0dd82a1e22dff"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/nl.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "a644f0470487d2527e7aba36a794e18675808e3c",
+      "main_blob": "e160d21453171f30adb48ac908369f0654d967eb",
+      "base_blob": "9bfa587f7c5ac3491db818c6264acbce9ef92383"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/pt-BR.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "2e8c9fe4c2ec0ae373c156711f0f69a84ac263f0",
+      "main_blob": "e1b81dfc0cc30e81b42aff9c6d0b674f440b37dc",
+      "base_blob": "36399de5c0a4cfdd20c2a1cd2a0915b257af7d23"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/pt-PT.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "32404c249e0fb23689bcf1b21bb8c52e350f0e72",
+      "main_blob": "f5fc7962298263deb03db9ae8fe4ce811cc45ca6",
+      "base_blob": "7b7c9dd5feb78fc6efdf94fd74d40ed3815396bc"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/ro.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "aca45b56f5abae862e4cb5027335bdb64bb3551b",
+      "main_blob": "37e1b4a22c43ca9e7f3cfcdbb40834820ae5f548",
+      "base_blob": "f3ac25f61d6382af4e98593063bd9c9b74636c5f"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/ru.json",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "f2a5139ed6114606a1600b1c2b3282d84392b36f",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/sv.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "f027498bf59e2cade5f3b9674db8892dfad14cdd",
+      "main_blob": "99cec9119cb0917db73142794f7f5b169e8a888b",
+      "base_blob": "fdb42dbdd2252f17c941905773700d97f4941a15"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/tr.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "d6c73f65e1f4e9fff03071201de22e71ce787614",
+      "main_blob": "cfa08335380e282d0c472b51da75f0055420beb9",
+      "base_blob": "50c28c1b252d7d43e28238370f966f6d70ff4e09"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/uz.json",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "d6c28c7cd9ee1f24752fc8a499299411f5d4fa8e",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/vi.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "b28c9dcb508cc9c0bec8a8de27bbd23c795b6c82",
+      "main_blob": "e82862fee141e45f4986600cf5833104aa220e4a",
+      "base_blob": "55b888cc48b562d0b7f40187050792cebb33f046"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/zh-CN.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "8d892663609d269119826f1092f9e271f183fa93",
+      "main_blob": "9b5b73461b6fba10bbbed9ec3c0495c6d2ee77d8",
+      "base_blob": "75dae1010ed01218836de16df28df143a734a271"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/messages/zh-TW.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "f0ba12665592d7b32e72c5ed0c78ab6094669a57",
+      "main_blob": "517aaacf0b83e865a2ff5fe372a40fc917235ccf",
+      "base_blob": "711d4bcc51e0853526f7f9d40b682b06a117afc8"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/next.config.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "5123dbf0887edb8b74ed5a1496d1ac5be380c679",
+      "main_blob": "05d40260f5580f5b32ecf3b9b0d068c965e0b8b1",
+      "base_blob": "d9f3820627dafe2a26cdc5b2105a23c73af5bc21"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/package.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "cad9eefd65740374a9f220d0ad689479ee59bb88",
+      "main_blob": "f372bbb3147098d2d657660247e3c0332522aeae",
+      "base_blob": "96b28baa91f4d8a829ddfa517405a3ac191002ff"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/favicon/favicon.svg",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "583f3b07369479d927fe9bbd48987d7422891acb",
+      "main_blob": "6d1ab815be7b0205c93425fefd54d268bd8fcd04",
+      "base_blob": "6d1ab815be7b0205c93425fefd54d268bd8fcd04"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/favicon/site.webmanifest",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "5c8521eed8dc2c38d5db0cf8a24312f957df99ad",
+      "main_blob": "f6f92784eaaec5da5334c9c1c96890d2662605a1",
+      "base_blob": "f6f92784eaaec5da5334c9c1c96890d2662605a1"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/icon_black.svg",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "f8d549f8cf2a9469f5aac3a60dcda639b2cad794",
+      "main_blob": "b569e96542fea9aa216489b702d6b2ff6f2fe253",
+      "base_blob": "b569e96542fea9aa216489b702d6b2ff6f2fe253"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/icon_white.svg",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "9277ebe6a32206e09a69673f638c12ff0c8c2179",
+      "main_blob": "a61b8740c1a1a9ebd1f82e286f0daa19bbee9cb0",
+      "base_blob": "a61b8740c1a1a9ebd1f82e286f0daa19bbee9cb0"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/logo.svg",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "9f6fdbd1f3b78cf6f61b317ba1035ce2585cc416",
+      "main_blob": "2ec473116af5043a84c59dfb1d1daad4fef42d00",
+      "base_blob": "2ec473116af5043a84c59dfb1d1daad4fef42d00"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/logo_black.svg",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "4706e71248d7c35d04d643231b3984f73eff044e",
+      "main_blob": "cdec131c713b8c17644e483d8fc4224ef4cf91ee",
+      "base_blob": "cdec131c713b8c17644e483d8fc4224ef4cf91ee"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/brand/logo_white.svg",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "daed8224e9619e02a4ade6c811ce3c1b0c5b44e4",
+      "main_blob": "978dc8b137b95494a53f46ae075a81fac6d0d753",
+      "base_blob": "978dc8b137b95494a53f46ae075a81fac6d0d753"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/chat-widget/demo.html",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "de1ed1f0a69fa4a8b3d20ae095e99dc8aed18fdc",
+      "main_blob": "82fd548aa2fc1d821ce80cebbf690a39d70cb0aa",
+      "base_blob": "82fd548aa2fc1d821ce80cebbf690a39d70cb0aa"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/public/chat-widget/plugin.css",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "122ac36bbb8b051f8124a0a4547f7e25340feba0",
+      "main_blob": "628a69d5139ebf14b4414864c3bf8ab742dc7e35",
+      "base_blob": "628a69d5139ebf14b4414864c3bf8ab742dc7e35"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/src/features/auth/sign-in.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "7449c5af57c02a46efb118b8c27827d2062c99f7",
+      "main_blob": "894a3398276584600c3093f4553fb154782717e2",
+      "base_blob": "3475c04beb828e8a614bdbb1b4b2997bf63c6f44"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/src/features/auth/sign-up.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "b4d4d69c4878d32294ff771154b1394fe742f190",
+      "main_blob": "920ee3b57310f7e0e510dce5ca03f99c54091daf",
+      "base_blob": "60d03639b3e1816920ab7ae2312c67a26352c78a"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/src/i18n/config.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "9b48d24ae876e29f681d629870145a8e325eb259",
+      "main_blob": "f403d12a73d6b6e0d0af565cca164ef337b2c38b",
+      "base_blob": "f403d12a73d6b6e0d0af565cca164ef337b2c38b"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/builder/src/i18n/messages.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "04ec34f048a37622c753728b0755311e35419ea2",
+      "main_blob": "d0bf343512508343481fb05522ec02b6ac40756d",
+      "base_blob": "d0bf343512508343481fb05522ec02b6ac40756d"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/realtime/docker/rootfs/usr/local/bin/docker-entrypoint.sh",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "15bcb26201a25c8c0c8f2e2d0d37a17e98415876",
+      "main_blob": "a0c8883f98e6aae373731153055b846d7ec65636",
+      "base_blob": "ea4dbc194c5400aa23eaace890b0b5bb69d1598b"
+    },
+    {
+      "fork": "chatplus",
+      "path": "apps/worker/src/notification/lib/strings.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "bf273c784480d52e56842f7ba2e72a2aa39d2a0a",
+      "main_blob": "e0170b170d7f67552bb4774d3528fe8748324845",
+      "base_blob": "788b1d2910b13b6a82c3bf77c1891e7d89fcf534"
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/__tests__/integration-webchat-branding.test.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "76fc34113daabc9836f88d74205cab09be05df3c",
+      "main_blob": "ea058faaee9dd64c06c2a48792a79c4054a4e7bc",
+      "base_blob": "ea058faaee9dd64c06c2a48792a79c4054a4e7bc"
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/__tests__/integration-webchat-service.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "3e564cd0a0e035d8813286256089f1dde8b6492c",
+      "main_blob": "3e1d662e182292c3c454d087e64562db5a0b66d0",
+      "base_blob": "8a8204d25b9bbad72bb5cc3f924de4ef41e81740"
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/__tests__/tenant-settings-entitlement.test.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "f3758f4fe35c39323fdd858c8df3ae069f09c6d3",
+      "main_blob": "7f9beceb4f0bfc14bb015127f74e28877a7805a1",
+      "base_blob": "7f9beceb4f0bfc14bb015127f74e28877a7805a1"
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/src/contact-locale/languages.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "74afde287bd7e68245ec44768788fd62a75b6d1b",
+      "main_blob": "45c05af7edcdbf6c085a919d477ba4d6333f4236",
+      "base_blob": "45c05af7edcdbf6c085a919d477ba4d6333f4236"
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/src/platform/branding.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "f6df4446aa7ddc9620432beb940500ba48a3afda",
+      "main_blob": "c9952ef8bf27381833865e06aeee115c75d47a6c",
+      "base_blob": "c9952ef8bf27381833865e06aeee115c75d47a6c"
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/business/src/platform/settings.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "b341b47690d6ce1983b19dac627851eaf8cfbef9",
+      "main_blob": "90643379cfeb4e8d30dfcd2797b8b6d670ead734",
+      "base_blob": "53d38e2da3050b84169f69903ed9ec4d207b53f5"
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/database/scripts/backfill-contact-event-attributes.mjs",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "912fe457a68f1c242c2e0cc25b36eaa1a0360146",
+      "main_blob": "bcf26303cd06664bdb57702cd7ecfcc4f889eb2e",
+      "base_blob": "bcf26303cd06664bdb57702cd7ecfcc4f889eb2e"
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/mail/src/emails/dynamic-template.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "5d168d551fd0c8ed2f1cd3329097d115c8d7b5b2",
+      "main_blob": "a3f75dd3b5c0dbb2e7e5dd4d798bf0a56dfaff72",
+      "base_blob": "a3f75dd3b5c0dbb2e7e5dd4d798bf0a56dfaff72"
+    },
+    {
+      "fork": "chatplus",
+      "path": "packages/mail/src/preview.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "5f44e0007396f2a113c263e605d88b76f91ad9d7",
+      "main_blob": "2880d3933d4a2726ab94ee04d66f5227b37607bb",
+      "base_blob": "2880d3933d4a2726ab94ee04d66f5227b37607bb"
+    },
+    {
+      "fork": "chatplus",
+      "path": "pnpm-lock.yaml",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "f20f21e0c2c54d9b53dee3c66c364e9d284403e5",
+      "main_blob": "e4f6913ee98dc28c213ea7085c9fae7a469eb44c",
+      "base_blob": "cb68c2ea118b76eca2c9193354be06caa04a3dc0"
+    },
+    {
+      "fork": "novawebs",
+      "path": ".gitignore",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "06b6109674d162c8bacf2aff9a28d20f8ec4b23f",
+      "main_blob": "667098bf2dbc5e11603658b45a04e9cf3b72d56d",
+      "base_blob": "dc7d0699a0be50c536fb0f607f755e070a9cfc9d"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/__tests__/ig-comments-workspace-token-api.test.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "40dd127e49c9005591a68ae07769f42c773574e5",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/fb-comments/components/select-facebook-posts-dialog.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "3e02bcc7c0cb0fe3bf9f13f54e9f41ca019b1aec",
+      "main_blob": "9ef408ff3539309f9ea0dc401ebe77ac05cdecd4",
+      "base_blob": "e0634632348b1fe937d02beda31ebea90a0ff1a9"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/flows/actions/create-flow-action.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "e23e9d97980fda8c6e931c2307f158e32002b831",
+      "main_blob": "9e6aeba77beaa96eed9d9de5a01ecadba94f4f9c",
+      "base_blob": "655f00c4d7b84692aa88ef57617f82c9d4886c05"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/flows/api/workspace-token.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "b6b39cb025c97f5a6f8295428f8f4936266e12bc",
+      "main_blob": null,
+      "base_blob": "2ce0012f78961aeafdc81c6f5c20f4dbbc2d9149"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/flows/queries/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "6ae94c6943e430940aa4286cf11bdbc8ba59d208",
+      "main_blob": "697e93934bb7b4f3064763b7884ee3d265314e81",
+      "base_blob": "322827a1fa4d343b3e2dbbc558688c39aef5271a"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-comments/api/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "076ca16949750472729958162557251ff288a124",
+      "main_blob": "8be783e0974ec05de19fe773ebd4ed727703d919",
+      "base_blob": "43daa252a681749fd21556fac65f2b8886ee93bd"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-comments/api/workspace-token.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "bbc744fa3aab51d3e8bfbdab6a7cc63388d38271",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-comments/components/select-instagram-posts-dialog.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "b6094996b90a4fb8e777c6ad13137c9b4fb45a5a",
+      "main_blob": "21176854baf72a458e556141ad493f4cd1c921c3",
+      "base_blob": "a84c1c8946566849dd35eed480742aae1f9450c5"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-comments/queries/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "389038e3f9c036b2710262c3ea0073cf0db6d8e1",
+      "main_blob": "2d0ab0e388a0acc7b29d4fc63df6293bd8765609",
+      "base_blob": "e256c720ebd691bd744ec48c0282ea25ada80e58"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-comments/queries/instagram-media.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "8b05140d0c5e8f1289e952bf2d5fb8efe1ec0bfc",
+      "main_blob": null,
+      "base_blob": "19310e1badb1e8c1de826efd9b2a71dae3e710ea"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/ig-stories/components/select-instagram-stories-dialog.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "a236c0311e048e6b8d769f2b2f6ff99b758a7db1",
+      "main_blob": "ebb29d2d4b07e0207a9db3e72229645b725dc082",
+      "base_blob": "047e07a46bb83ee641305f979cf3ba162d1bbfc1"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/platform-credentials/tiktok/update-tiktok-settings.action.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "77fb81878df384f04713bf1b1ab8cc2ffefb0994",
+      "main_blob": "d7a2c9636f39f37ff9db322ffa65ec81abc8a403",
+      "base_blob": "49cded296ab3f3afe304357143122bd54eb179a6"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/social-stats/api/index.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "6dfb49e7028b12bd0101a05b96d62b12608b377b",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/features/social-stats/queries/index.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "1b6ccdfaba07ffd4b25ad3f5edd91736eb66d29a",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/routers/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "40397f62f3761cc35df65ba93ebbb5d5c135f601",
+      "main_blob": "20cda9d22d601568f8dae3a9d6486a4f0d39388a",
+      "base_blob": "8c8d66ebcab3ab6b968ba981975b64fdbf2ef60d"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/builder/src/routers/public.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "4691854036a1e5bd4158b18d1f74ec021492ed22",
+      "main_blob": "51d0c35d7184d567fae23370e922a71070c46a1e",
+      "base_blob": "e866978bcceff26b8d073216d1f80e40bd7fe0bc"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/worker/__tests__/comment-automation.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "6af9c881a4b364615cffbd20b904b8dc26e97f4e",
+      "main_blob": "6b2eb9709dce6489f2b4eab6350539a815f54a04",
+      "base_blob": "587d174f731c464e5bb7f7e4a4588aec4bd76ce5"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/worker/src/integration/handlers/comment-automation/automation-matching.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "28bc0f24f580a76ede31f13d642c7cdfb34ca5c1",
+      "main_blob": "96a967f786e6609cc140e40393ac1f990eb133ae",
+      "base_blob": "1447f7dc3b063593713d2956349fc5aa52e8e409"
+    },
+    {
+      "fork": "novawebs",
+      "path": "apps/worker/src/integration/handlers/comment-automation/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "f994d3aa9a34c21a6de9890e0b085797e77287cf",
+      "main_blob": "78c068e8d79f5ebb66afd94c105632370615a71f",
+      "base_blob": "75ea3ee9e57599a4a85c95178175257c16b0b480"
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/instagram/src/apis/account.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "30d30956ee0addc17b86a453d6ddf827a5de7808",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/instagram/src/constants.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "27f034f706448aa9edad35167a5f32d99599f132",
+      "main_blob": "a121d92e4dd6a4d9c87aa9b0c47a52fa7d5aa5a6",
+      "base_blob": "ddcd740d09a47bd0ba1b303d89686af82df41af7"
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/instagram/src/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "57b2fd03d37b8ec5448ac3f4cfe468b98c3121d6",
+      "main_blob": "6236b4006f2bc58f8aa4668fb298a78244ae7463",
+      "base_blob": "8926072eb9b12dfbcc349a3aa70c13d259da203a"
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/messenger/src/apis/account.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "69b3f9b7df751b934ce3965ed53c1b824f3cdef6",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/messenger/src/apis/auth.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "b664bb15d09fb304aa9c78ab966482f18b3a7a63",
+      "main_blob": "b53835f2b84793b7db72241561d910ac216ac5b8",
+      "base_blob": "0eddf45d0acc627abb806aa308c6eaa306edcca9"
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/messenger/src/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "35c427a2be5bfffef70c82c0af5c6e7a142692b8",
+      "main_blob": "0c4213910d12b10dcf2181b285af1ea85f10ac12",
+      "base_blob": "cfb739b40763f9761ad52416e745ee48b723f62f"
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/tiktok/src/apis/auth.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "63cd1c4378423379152357eaf74ec2073d2dfe4d",
+      "main_blob": "f6bda06505dfa047f64d83574d0155e8390dd937",
+      "base_blob": "3450fd2037970844ea4673204e66a185b8b8bcae"
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/tiktok/src/apis/user.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "4cfb292eca0a6b56960b1fa26eddafeb4c2b705f",
+      "main_blob": "168213d8ef8755bd363e6102c2ecd815c8879e18",
+      "base_blob": "168213d8ef8755bd363e6102c2ecd815c8879e18"
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/tiktok/src/apis/video.ts",
+      "status": "added",
+      "category": "upstream-drift-conflict",
+      "source_blob": "f81147d8fd91ea5a9a3d8f91e8b1a68361a38a41",
+      "main_blob": "648a737d37d77c33554010c3a611e0c1daed66f2",
+      "base_blob": null
+    },
+    {
+      "fork": "novawebs",
+      "path": "integrations/tiktok/src/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "0321ff6c69a877dd282b3880f1491c62a6bc26cd",
+      "main_blob": "14dda3ad825582880029ae5228e6348434fde3ed",
+      "base_blob": "247559ac3e4c4b0a8f46cc7aebe6dcd8589e2b9a"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": ".env.example",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "8587ad8312b4aab555058f3d132b35974b59481a",
+      "main_blob": "cbc6e2b265ca456a3f0e7433788fed51490f0d08",
+      "base_blob": "970d4b637c886279dea8d42ef184120e89c72dd7"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/call-phone-number-button-visibility.test.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "41bc34b24e29ec97ef431108ff837677f06a7d05",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/channel-connect-credential-consistency.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "361bbc4d95241dca28f0f978a109299db3d1637a",
+      "main_blob": "99877f74eee06554120562c43303d1013c43d41d",
+      "base_blob": "478d356b078662bb06cc2a7be50f738ae494a742"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/enabled-ui-locales.test.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "88fce3c8d18b358aab3216f82f78eb6954bb0014",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/i18n-messages.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "7de4ca78ada6ccc58811f9491ca855fa5fa60a1c",
+      "main_blob": "f9d5ea01d5358335d0a8e40fad19cef997ce2659",
+      "base_blob": "f9d5ea01d5358335d0a8e40fad19cef997ce2659"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/instagram-select-account-action.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "8a4c9ecd750af3f1716594bff94a2267497e1fcc",
+      "main_blob": "1c7b1ba0d55f869aa9f042dfcf912bfa506fb3a7",
+      "base_blob": "197db079b6fc7943f8cd637de6c94bc401566eec"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/instagram-select-account-facebook-action.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "4f5fff3e72a113b476d4ba4abbb0b6ddf4a53a0a",
+      "main_blob": "663ef563d82baabea0b329ca45737d623c3aca7c",
+      "base_blob": "f099ab75d5a800b41122e735a77d271ec04c8a2a"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/messenger-select-page-action.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "833afceaa93622273d4b75be95bb63b99fe1dc36",
+      "main_blob": "69c0c86647aff3fc3a39adfe6b2a22e90368605a",
+      "base_blob": "e93b33898a6d4a07880cd15eefa646edc6858559"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/proxy-public-routes.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "bf0e3015c1ed9d75d3a48703b59b8acfbc511b52",
+      "main_blob": "eca0a9bf166e82c109d767fa5dacf7b738a788f0",
+      "base_blob": "e2da7fedc9e0643be615684a75e4f4022db10cbc"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/resolve-connect-session.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "ac54076c2fa98a2a7153e66f4411090e2dce3c9c",
+      "main_blob": "b82006715b9405877a33353e091d0e9928e5e1a5",
+      "base_blob": "cfd4fe7995221cea02d1ff8ecbefc0ccaa6356c2"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/update-instagram-action.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "987f6c85195793d1fe2a0b3e8f83dfab5f41b910",
+      "main_blob": "f00375132dd81b7d6bc6d221ca3098c22d2a4f1e",
+      "base_blob": "f7b619877a70109b32e35d113931478774ce7c8b"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/update-messenger-action.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "bea6eeb035c5c6f76020d9594d8c06b181448d75",
+      "main_blob": "1ec039e029b0d74e669a0756bf4929a0fff5e7b1",
+      "base_blob": "40a35ab98ae65aad589ec0e8c9dba14ca4224d98"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/webchat-page-guards.test.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "1a3be09564c7b5009f1c15b3e99d7a80a2f30e1b",
+      "main_blob": "74e6911e4c8860db3ba84641cc781e67e43cc9b3",
+      "base_blob": "74e6911e4c8860db3ba84641cc781e67e43cc9b3"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/webchats-public-api.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "bc7229bbb73b0e7c7d78d947651eca2a11bbd6f1",
+      "main_blob": "2744e40477ff5ed871191db3b8ed4614ba98db79",
+      "base_blob": "37de3f34246ef6e777724295bfa03df9025995d7"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/__tests__/workspaces-list.community-zero.test.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "2a184330b0d73645c0700f562d9047de32c4a6ff",
+      "main_blob": "7057b7f997e1fb9475dd905defbd11cae5d7cb70",
+      "base_blob": "af644174796510bb2ed9cf873cb2b90c7e8dfc72"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/ar.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "4216e730dbace6257729787bd78d50542bd36814",
+      "main_blob": "df521e198aae03715974d87f18e3cd2df5efc26d",
+      "base_blob": "5c7154571e041e1e22a772b1d9dbe01807088f21"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/az.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "0120525b26495a447a0b359cda886780d0da3805",
+      "main_blob": "0ad37b04befe4f4625ae7add7358b838a637e8e3",
+      "base_blob": "fa6e425234f6e8a63eba93b16a07be3751be958b"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/da.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "5f9780574df44256a9e994409658739a09e17906",
+      "main_blob": "d81e274717d2fe7938c166bd4568ad2a7f51e3ab",
+      "base_blob": "95905574e5c67fbdbf2901f851bb0c049319d78e"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/de.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "9cf799eb719ef0f74e10fdde8dcb60e72777a399",
+      "main_blob": "2b356ec5723a313f0613a7b13141aebb1a1c511a",
+      "base_blob": "eee29a1510c792d2ba25efb7fdd7c3a2eb4a39de"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/en.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "dc29804d3ec070d2a253303001f4ff92ab269426",
+      "main_blob": "55e10619cd2ee763fd92ba0b88a554fc7444d006",
+      "base_blob": "95e62e9db80f992077468c8fa031d5219c66c5ae"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/es.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "5cc0b82dd6bd010152cd73d2ef0a1781e15657e3",
+      "main_blob": "e8532fe8aeacb4393a5ae056b96389504c812578",
+      "base_blob": "703214d3b1bb538cc50d854fbbede6862687ad19"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/fi.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "082e6803e123a1bc7ff160b0a4618f154c58cf32",
+      "main_blob": "cd215634828494f7bdac363a9c3b975620ed4389",
+      "base_blob": "f74e89fc9afde2abb6914ce503cce75d28517854"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/fr.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "bc22cddbcf6f33db72749ca42533d4ae1f887c9c",
+      "main_blob": "0e793969846c4ca70dafe5e7df9fc4587a5e7a33",
+      "base_blob": "eeb8dcd0c6ba91de382507e535e67f31472c5f44"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/he.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "c9f89f6c9659940ed6b0ffe70971f2f249979552",
+      "main_blob": "d2b3a0cb2a3d20640eca4791ba42aafe50a4b591",
+      "base_blob": "1a935e7c04a7dfcc48f6167a06d87f16fa59f318"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/id.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "5d47a5f93097d8051b0e21d842c7d53bb532d7d5",
+      "main_blob": "d73effd5bb54f2abcdce0fb8cdafcf0465fe3e4e",
+      "base_blob": "aac24d119fa31589c5eac15359d68f108f7c6001"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/it.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "88356e8cfc7173d28f23f1251ad05fc0e7c63285",
+      "main_blob": "932b763cd9d83d73977c770532c15003827cb642",
+      "base_blob": "0ca734c98809d39c80a2d53b5257729eabb88f79"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/ja.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "efff7dcd2d6923772d1acc92d15d97908400676b",
+      "main_blob": "40ec71b219e5cfc849320d924ac472d86607b53a",
+      "base_blob": "5afd8cda400e076972f685991a06b030bca21406"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/mn.json",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "06340fafafd877aff06a1fa9f9f7904c28988067",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/nl.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "db1c9613459b94a9b115bf4487cbc66462576594",
+      "main_blob": "e160d21453171f30adb48ac908369f0654d967eb",
+      "base_blob": "26cc3a79037e897071a771f9cff8acc8c9b10877"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/pt-BR.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "b6b39a269c9b7da36c70e34c8036bb5bc5d33bb3",
+      "main_blob": "e1b81dfc0cc30e81b42aff9c6d0b674f440b37dc",
+      "base_blob": "6379697045d4a3930166c52eee4a6995bf52d36c"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/pt-PT.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "a668da25bb31c0b1f4a8a916e043f7fbe99cfdfb",
+      "main_blob": "f5fc7962298263deb03db9ae8fe4ce811cc45ca6",
+      "base_blob": "ba4c5d7ec4d81a51ebe2625dc05e0e91b93f83a2"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/ro.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "14dfc5d53a1f9229a62312cab6c8dcc8f98687c8",
+      "main_blob": "37e1b4a22c43ca9e7f3cfcdbb40834820ae5f548",
+      "base_blob": "7006ade6eb86a7b13a0a7eeda079db085e159e57"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/sv.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "162b92abf380b9dabe611c1053b923d85f49b9ca",
+      "main_blob": "99cec9119cb0917db73142794f7f5b169e8a888b",
+      "base_blob": "92829942e331353b9ad4da3a36f771bb42be64f7"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/tr.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "dc02a8e8cf081956e18194b748d9e497e5a9ae12",
+      "main_blob": "cfa08335380e282d0c472b51da75f0055420beb9",
+      "base_blob": "86936c83c9df960f618b4771f3ccfcc8681a40d7"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/vi.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "5212f6b07ad400b6c313ecc8c5805dde21dfd93d",
+      "main_blob": "e82862fee141e45f4986600cf5833104aa220e4a",
+      "base_blob": "514491c99849823efcc15ba2355183139b3247c5"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/zh-CN.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "220ea1412267a93edb89be84705aac1d02f328d7",
+      "main_blob": "9b5b73461b6fba10bbbed9ec3c0495c6d2ee77d8",
+      "base_blob": "fe458de5dff0a904dd8a9aa9c56b0005cd1ec7c7"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/messages/zh-TW.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "0cd27367b0814a4a01a9348338d0e67328b24b8e",
+      "main_blob": "517aaacf0b83e865a2ff5fe372a40fc917235ccf",
+      "base_blob": "85838e75da6e89f99e79d7d82ff62e3588a8ee74"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/apple-touch-icon.png",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "3d1ceed393001e95d553c1469504c5d4f2625ca9",
+      "main_blob": "05145841d27a55cd7b0f3d3be5c3d4dd42f1c009",
+      "base_blob": "05145841d27a55cd7b0f3d3be5c3d4dd42f1c009"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/favicon-96x96.png",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "1b2d3aa7b511249774bd6d88a75c59dd8f9569b8",
+      "main_blob": "8a6755b0ec46326ea40d24490fb7a8f7ad7b95d3",
+      "base_blob": "8a6755b0ec46326ea40d24490fb7a8f7ad7b95d3"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/favicon.ico",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "d32f285945d1a3b9c0ecba0d23a6594a84c22b70",
+      "main_blob": "291e76ac10e9dc26e3a638110bd218d764e451dc",
+      "base_blob": "291e76ac10e9dc26e3a638110bd218d764e451dc"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/favicon.svg",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "39ce1c31cfa554595a5374fff70a0a52d62da2b7",
+      "main_blob": "6d1ab815be7b0205c93425fefd54d268bd8fcd04",
+      "base_blob": "6d1ab815be7b0205c93425fefd54d268bd8fcd04"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/site.webmanifest",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "3c8397a574d835fae683a01659e804d9b7add4a2",
+      "main_blob": "f6f92784eaaec5da5334c9c1c96890d2662605a1",
+      "base_blob": "f6f92784eaaec5da5334c9c1c96890d2662605a1"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/web-app-manifest-192x192.png",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "dc53b7bd9dda58ffd2b8641d3dc90a9074ea6340",
+      "main_blob": "20d0d48e933f7192b1deafe9a0bc61f5b0fad3e5",
+      "base_blob": "20d0d48e933f7192b1deafe9a0bc61f5b0fad3e5"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/favicon/web-app-manifest-512x512.png",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "c95320b87e446cb41884aeed3b0ee2840dd1bdb7",
+      "main_blob": "0f6138fe4c927d14e3827a8c8b0ecc3568b9e560",
+      "base_blob": "0f6138fe4c927d14e3827a8c8b0ecc3568b9e560"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/icon_black.svg",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "39ce1c31cfa554595a5374fff70a0a52d62da2b7",
+      "main_blob": "b569e96542fea9aa216489b702d6b2ff6f2fe253",
+      "base_blob": "b569e96542fea9aa216489b702d6b2ff6f2fe253"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/logo_black.svg",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "2ccda63086fd41b4a44eb7798520de1ed51a55a5",
+      "main_blob": "cdec131c713b8c17644e483d8fc4224ef4cf91ee",
+      "base_blob": "cdec131c713b8c17644e483d8fc4224ef4cf91ee"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/public/brand/logo_white.svg",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "9b955cf9c70ca7f91fede077293566a343991e1f",
+      "main_blob": "978dc8b137b95494a53f46ae075a81fac6d0d753",
+      "base_blob": "978dc8b137b95494a53f46ae075a81fac6d0d753"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/app/(no-sidebar)/webchat/page.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "eac7350d5163832f33bee7650932662b7b551ecf",
+      "main_blob": "9679532b9f5d6f62d12a9c422e54b0c9bc4f9e83",
+      "base_blob": "6adfa55e22accf69e36881ab8fbfbfcf4e166337"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/app/call/page.tsx",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "8369a38f08e9bd5ad71c0caec006b3e2efcf7a25",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/components/app-sidebar.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "deea174aa8c2a42d371e8183b469fe8cceaede11",
+      "main_blob": "44d340264f3027aebfe8c2dd6fafe2bf9fe7d297",
+      "base_blob": "44d340264f3027aebfe8c2dd6fafe2bf9fe7d297"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/components/brand-icon.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "f8c7fad43e811a6b4b5ed8c314f939ec0197362b",
+      "main_blob": "91f39892456e0e59b6418f6f6f66a6d296086437",
+      "base_blob": "91f39892456e0e59b6418f6f6f66a6d296086437"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/components/lang-selector.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "ebabdd8e4711488619d387e547c1f50cf61a18ec",
+      "main_blob": "842866d6276c0f0027b46b5b63ce8fc1a22b2ac0",
+      "base_blob": "842866d6276c0f0027b46b5b63ce8fc1a22b2ac0"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/components/public-env-script.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "2f9ff4087c9f341de951496bbdf7900f7064cd9e",
+      "main_blob": "2730458e383b539a3016f7338bd37b2163c61ad3",
+      "base_blob": "2730458e383b539a3016f7338bd37b2163c61ad3"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/env.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "cf15b28883997129fdb62464af9cd3c5ede76476",
+      "main_blob": "a4e720be5aafe5f6780342cfe777ac5513573e6a",
+      "base_blob": "84190039d5d3eada52e36384426f64d9a0d71181"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/admin/components/admin-sidebar.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "8794346c2ee0373080e8026654bf493195d3414b",
+      "main_blob": "6438243dae7e6242c9cd69bebd0bb664898f3b32",
+      "base_blob": "ff4a6b756148a426a0049bbfec9c6bbfe597b1b0"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/button-editor-dialog.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "8606ac1105154d2958025e225da402fd007f89df",
+      "main_blob": "22fcbb7af38da98d14304078b55de40560579852",
+      "base_blob": "99c6641663ff9104102dd79107590fe58375568e"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/button-config.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "c61aebeebcd4c3402677f7d7c7698deb61280298",
+      "main_blob": "3c89c7a2643903b286d5669d77b654970fb00670",
+      "base_blob": "b3d955a07b2292a198507baaca544647870a5bb7"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/call-phone-number/editor.tsx",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "ff284a02a7f3dd947a0e0000eae1b77144d3a199",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/call-phone-number/index.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "f74fa75a8d9f695ae1ef31833f4edcb4c6b336db",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/call-phone-number/viewer.tsx",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "16b21c678e662cb90623b532bcb197b90890f2a6",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/index.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "25a3e75c37c0de70285a758833e3bef7e46a61f3",
+      "main_blob": "9c492055e6a5eb30c30a6fe5ab830a803a2534e2",
+      "base_blob": "f2ee205bfbc64d6050b4cc32e8e2b4a4ac9e5fc1"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/flows/react-flow/steps/send-messenger-template-message/editor.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "6253e6a194ebb0ddeea5eac4e84982023a7af593",
+      "main_blob": "af976cdfcbfabfb123ecfdc578f5f7a8b4ceea03",
+      "base_blob": "f7477e7399ee4a68880bfc9ba2efb1f5e4092715"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-instagram/actions/connect-account-facebook.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "8d34ea3c32973a772fbe46b5daf9659495dc489e",
+      "main_blob": "fbd1b1649b3f3455a39675a8ac08de7c05b3e06e",
+      "base_blob": "2c798601a57fa7781a39bc092ba7e1f6ea5d9d36"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-instagram/actions/connect-account.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "2825d4f3dd55364b8049879243a6bc853dc47bfa",
+      "main_blob": "60c15555670fdf894bf11ef71a49edb16ac33325",
+      "base_blob": "56250d6dfe718ff958efb165d75763c649f2e889"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-instagram/actions/update-instagram-action.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "6f2786a42c2bec05aff2025e7f268d6f4a6eca02",
+      "main_blob": "9c0b5d5e45bcde77cdfe9bb0afa13fe7958aba56",
+      "base_blob": "4bb31da14f762cc9febe71b834444d7eca89b41c"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-messenger/actions/connect-page.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "f408a382240d777f06515d1ba26b374be9027677",
+      "main_blob": "0fc202e9cbeccc41e1a27ead0fd341b7713869c4",
+      "base_blob": "256c105f2f565d1b11452d70fa3f1ca2c0bd3c04"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-messenger/actions/update-messenger-action.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "2d7fafcc1985ccc2f0d81f3afa365c06382be3fe",
+      "main_blob": "c9ed4c4edab3cfc35803ed0fc8433d1364bd83f2",
+      "base_blob": "66a0f7884798d31ef9f5e5fe0887db5c2d0b79f9"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-webchat/components/create-webchat-form.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "561c107cd5b65aecf48b0d5ee5ab15fa2242dfc8",
+      "main_blob": "c503f5b04f77a90e78e6592c182ac43baf751777",
+      "base_blob": "c503f5b04f77a90e78e6592c182ac43baf751777"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-webchat/components/persistent-menu-field.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "976a58e73242e6c7df6ca902291a0726bc15930a",
+      "main_blob": "8757943808f22095be5a7b0c1e1d98e7b9a56e30",
+      "base_blob": "8757943808f22095be5a7b0c1e1d98e7b9a56e30"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/integration-webchat/lib/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "b1b09eaa7547373fccbb3b88b3266e8228e5a7ff",
+      "main_blob": "32197b6323a0d81ed5583452e7449cdf33faf415",
+      "base_blob": "102da72abfd7e37cf36442f14e9987479d0a69a1"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/user-persistent-menus/components/user-persistent-menu-form.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "3323206d7dd7d7f6b6196a664299f98f7eab7503",
+      "main_blob": "e6db1dec33aade543a0e33dd2691d335d3487468",
+      "base_blob": "e6db1dec33aade543a0e33dd2691d335d3487468"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/features/workspaces/components/workspaces-list.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "be8d34e58a97d323127d9f5f97f3108ee32793d8",
+      "main_blob": "5c13b93f9ae1000265a3363ce7ec107d1afc9b80",
+      "base_blob": "6358c8385be4ec36a7d6b68e2620c23ca525ed65"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/i18n/config.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "2aaab0ceac12b1256f5a3dcabd155743ba7074d9",
+      "main_blob": "f403d12a73d6b6e0d0af565cca164ef337b2c38b",
+      "base_blob": "f403d12a73d6b6e0d0af565cca164ef337b2c38b"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/i18n/enabled-locales.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "c067152f22f1fcbd59be629d04b0fb0fc01079d1",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/i18n/messages.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "a5e801c6b51db5247f0af4041280057b0eeae734",
+      "main_blob": "d0bf343512508343481fb05522ec02b6ac40756d",
+      "base_blob": "d0bf343512508343481fb05522ec02b6ac40756d"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/i18n/request.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "0aae42faa2ba3ca81b5732308bfce949f4209f2a",
+      "main_blob": "af5fd8b8eaa55f80f35327df2ec6892a65815278",
+      "base_blob": "05571853c4eae3d6365c18d99e067272251bdd55"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/builder/src/lib/public-routes.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "3cbbed435ad8944e34561fa6f4f2100fcb6c708f",
+      "main_blob": "efa8b844e2909dd6e8c95639e3c1f2988ee7ebaf",
+      "base_blob": "6a7afb15056aa79052edcfdb0343a60686c228de"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/__tests__/convert-buttons-call-phone.test.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "bbe328b1de4977d490b76bda332f1917aaeacfb0",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/__tests__/send-flow-step.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "41df2aae67593cf66a6e3382b7c089bae227fae7",
+      "main_blob": "8d245a7fed3d6c70a6f0bf513b242aa9ae5675be",
+      "base_blob": "2eff889bedd6b5bd343c8e06dec17e9f890ff722"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/chat/handlers/send-flow-step.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "a49310eacddc61d06644eb2c65a8ecdacd1d8a01",
+      "main_blob": "63e32ff597340c774ed16dd96797a30f4d716b20",
+      "base_blob": "cabf14e90dce117f4479df40606846bdefa15c83"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/env.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "8ddbac9f7cb0313823ae6a6c5021509a7e4f921f",
+      "main_blob": "d04d2bf6d1cd4036013dbfa6a9aae7495eadefed",
+      "base_blob": "205ed4b5a3ea7efe8f3b1788ec7605504feb5906"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/integration/handlers/flow-utils.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "ba116eaf66eb983680e8cf57ea230b1da143b7ad",
+      "main_blob": "2c58b8e037da57d4880478b03b0e714791e09262",
+      "base_blob": "2c766aa81f978fc51b3d709d312cceb2015275c5"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/integration/handlers/messenger-user-menu.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "b2694417103e0af8d0c458839fe887b9f92852bb",
+      "main_blob": "115f7f9ebbd09579b4b7191fc3537bfc60a2386e",
+      "base_blob": "115f7f9ebbd09579b4b7191fc3537bfc60a2386e"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/integration/handlers/step.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "7f108f0e795a36c68e0a20fa97af289e8d7e045e",
+      "main_blob": "8e8fe6318c05523dcf9ade241d430518f89ce11f",
+      "base_blob": "bd881f09e69dd15e9439de15b639a6eda747662a"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "apps/worker/src/notification/lib/strings.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "ca006fd6f036889ddea5755a508b4342f9b327c6",
+      "main_blob": "e0170b170d7f67552bb4774d3528fe8748324845",
+      "base_blob": "788b1d2910b13b6a82c3bf77c1891e7d89fcf534"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "integrations/messenger/__tests__/call-phone-number-button.test.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "b0b621b84f04714271ca989140c7d03feff98f36",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "integrations/messenger/src/handlers/message/outgoing-message/send-button.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "10dfd85f4968e84be4af52f260f2f2f2d92c06f1",
+      "main_blob": "5ea6aec8ab8ed0b5968266ebdee9f133d1176580",
+      "base_blob": "5ea6aec8ab8ed0b5968266ebdee9f133d1176580"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/auth/__tests__/auth-id-generation.test.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "e9534b5ed4a5b4022f66818743e56cecc3937d79",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/auth/src/server.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "66b4edfac3c05bd39f8b610ce6d8ac80eb436205",
+      "main_blob": "850d217cc19783de7636d8bf547f79bfeb71dc9b",
+      "base_blob": "0ca690626912171e6cfc907c068da3d65c5b2790"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/__tests__/branding-menu.test.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "0e6e728ca284b0722fa27fce4b6006bee61dbe0a",
+      "main_blob": "19d822a6bacf9fce0120254b5c2457e29728f13b",
+      "base_blob": "19d822a6bacf9fce0120254b5c2457e29728f13b"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/__tests__/open-link-call.test.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "e37877f86ab11a56a888296a3c4ebdc3a664f55e",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/__tests__/tenant-settings-domain.test.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "eddb3680f5f71f4c3083b35ac6cf9d672f92801a",
+      "main_blob": "3dc0c684042e6a8f3aa8fcefa071585e0bbc108c",
+      "base_blob": "3dc0c684042e6a8f3aa8fcefa071585e0bbc108c"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/__tests__/workspace.service.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "fa809fe50fc12dacb7ddd824f8b54fd40500f859",
+      "main_blob": "3f37296b8d28ba66672509047a7423674a3962ae",
+      "base_blob": "1442d86cc0c7c92d178dbb74d13ee032f183113a"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/integration-context/keys.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "81a9f456ee49792aa5cd8d9eb66bc75c2ee04285",
+      "main_blob": "29a6c1f9f504609fb1fa5bf3fb7cfbdfeb84ee61",
+      "base_blob": "d6145d8f22d7e94f62441da8011064685a7c50a9"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/keys.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "01388798b56d2dc757f370c4c76ee97c7e85f338",
+      "main_blob": "01f54673a51fb96f4b3de1424e976d788bcc8626",
+      "base_blob": "9b1df4bd302500ce486bef0b18bceecb862f4c6c"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/open-link/call.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "0f57ad444afc0e510cf547ef0cf7b8b774bd0435",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/open-link/index.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "6c4c7b01656038535aefd2a1689a142f814b01c8",
+      "main_blob": "c1a243ae43207160049a29a244cde63a27b34341",
+      "base_blob": "c1a243ae43207160049a29a244cde63a27b34341"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/platform/branding.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "b7e03d95092da5da4e4732787d7eb205a183eebc",
+      "main_blob": "c9952ef8bf27381833865e06aeee115c75d47a6c",
+      "base_blob": "c9952ef8bf27381833865e06aeee115c75d47a6c"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/platform/settings.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "3a9086a8d7ee1295678b3c09f971c24d605c3ecf",
+      "main_blob": "90643379cfeb4e8d30dfcd2797b8b6d670ead734",
+      "base_blob": "56c0194ebfa1521030cadce1a83326198749b63d"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/workspace/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "55bf66db61666a2356b241123bcda8ff66631049",
+      "main_blob": "501030de4a80d825ac09445d2d93cc22df36d7ae",
+      "base_blob": "9376fea807351d842fc34a799c2d4714bf3370b7"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/business/src/workspace/service.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "d4fb68302f7cad2d4514313951429924d1511c36",
+      "main_blob": "8a2281bc9ed5b60f2f7f89e8db04ac8f0776244b",
+      "base_blob": "1c73f8493fcbbdb06eb20d0f013d224bc3f78293"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/flow-config/src/index.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "843e0a459a30f78050adf31c8c90dc3f44869014",
+      "main_blob": "11c3d6be6c695104797ea788451e4bd4a97311eb",
+      "base_blob": "26af8cc129d2ec5f3842941fa145d2cc06aa7aa9"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/flow-config/src/steps/button.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "e7db696d6bfb5f95b197657aacbd37014f6ea81e",
+      "main_blob": "24e301fcd1b8d4235f80c38895635757992821f8",
+      "base_blob": "2dacc181b4208948c5d4f1a961d07199c14814e4"
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/flow-config/src/steps/call-phone-number.ts",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "b0bea352b51781737dba9ac26933ea9ad6d4b4cc",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "mu-chatbotx",
+      "path": "packages/flow-config/src/steps/step-action.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "87d0e233dcd047b0113d64ac39e9d010e346713d",
+      "main_blob": "6f56f9e1cd59415241868fddc655c97bb989a06d",
+      "base_blob": "92275f24656e0c36960e31abba3d8203d311d242"
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".env.example",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "e30797c77f554b2e0eee2f8125af9c1afae37e69",
+      "main_blob": "cbc6e2b265ca456a3f0e7433788fed51490f0d08",
+      "base_blob": "deef8197708e50501898876f8bb0a6d9235ed929"
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".github/workflows/ci.yml",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "a296df94d4c4e3d1efd3daa0cacd1c0781156b87",
+      "main_blob": "ed34fee7c34e760a81153f43f866a565d2c3f3ec",
+      "base_blob": "f23acd77bebc6479458360fa914d5fac4bdd9a0e"
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".github/workflows/deploy-devel.yml",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "5d2f34141b0480da97539981218fc02f51741b47",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".github/workflows/deploy-production.yml",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "351f423957e219e12b20a45b1c5de3ff1898996b",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".github/workflows/release.yml",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "f2aa4b93f6fc479d3a8691383e20e6222dff2eed",
+      "main_blob": "2bd486206e533b985ce4576e01a28774db61b1ee",
+      "base_blob": "4ae28c917e981873266b04a3818b29f3e30d29fa"
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".gitignore",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "c49a0208e6c936a62ec4144e6e7a47ee6b59fc05",
+      "main_blob": "667098bf2dbc5e11603658b45a04e9cf3b72d56d",
+      "base_blob": "dc7d0699a0be50c536fb0f607f755e070a9cfc9d"
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".opencode/agents/raul.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "418960747abe03b7aa0c1af654c159f6e2eac60a",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": ".vscode/settings.json",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "8feee5613f1945f631581d0df94a148c45465a6f",
+      "main_blob": "b2cf2def41e4873a7f37312ea0ffb4a8ae803f2b",
+      "base_blob": "b2cf2def41e4873a7f37312ea0ffb4a8ae803f2b"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "AGENTS.md",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "2fa23a90ecaa05e4fd54e3c11477051664ca699b",
+      "main_blob": "e1da47ce30b041f206fd29e1821f5e89eadb88d1",
+      "base_blob": "6e694c3a033c467acdb7cfefae32d6e7ed6d8c06"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "FORK-CHANGES.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "70c24e47075f213aa1bb1b7529dbbb6b8a3723fe",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/__tests__/channel-route-guards.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "4b2954d6999812e20b69ce450b02c061de1f3ed0",
+      "main_blob": "cf7d0da7b9f63451e3d26be842794c180e85aa75",
+      "base_blob": "97426b87e474f89a8d05c1ccd93bcb8dbea20279"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/__tests__/channels-create-messenger-handoff.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "72c075ef0297ed3208160ec5ead603e835b6114c",
+      "main_blob": "db7168f0da37c90017eb2a04a00dfbc7263292d9",
+      "base_blob": "ecc5d5fb5d5850e7d515424fa0f17fcb9e5fa982"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/__tests__/channels-create-platform-owner.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "971e937dea50d2988c106d761dd7bef329583b6e",
+      "main_blob": "99970a40684441fddcdca5b1793717d677238d78",
+      "base_blob": "c70eef029b5e103f55e7ddf66eae377cd98511e2"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/__tests__/channels-create-visibility-guard.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "6d2c8706c4abd4ee5559c7b531f8d88bbc41fd38",
+      "main_blob": "f27a39d77d65576ec000a6374b1f3367faacd3fd",
+      "base_blob": "a53a57a5d89cec610983ca5139d936d014128809"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/__tests__/workspace-members-actions.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "33c1da42cf3e14efd54d24ea70f42bb56ae28284",
+      "main_blob": "64b1d66b3073efe6632375f6942deec7d60e41ce",
+      "base_blob": "ea18d3c46d7c64eb4d677ac74f40b568e47d2242"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/ar.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "e34db829e3929eb68c99e7392debe52261d11179",
+      "main_blob": "df521e198aae03715974d87f18e3cd2df5efc26d",
+      "base_blob": "9b4863f1736e92481071eb0cb26893f85d900c41"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/da.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "171270596a0c609b23e14e3203994c4bab8e1f7d",
+      "main_blob": "d81e274717d2fe7938c166bd4568ad2a7f51e3ab",
+      "base_blob": "654c1eb958dc751f28fc5e32ba3239c40d5758f5"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/de.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "053d46934188d602bdb41486a0dcbc3aa0d89e18",
+      "main_blob": "2b356ec5723a313f0613a7b13141aebb1a1c511a",
+      "base_blob": "3d4e12a93ff3713da184c63f0ff5cc9e11d8e4b5"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/en.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "1aab7945595984e13a5b59fdd6e8ef109e0f7865",
+      "main_blob": "55e10619cd2ee763fd92ba0b88a554fc7444d006",
+      "base_blob": "22783ad1baed53a75d369bcaca9d02f2b53183f1"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/es.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "bc3d58c70d4b7c978321da8b6be70c7013d11f29",
+      "main_blob": "e8532fe8aeacb4393a5ae056b96389504c812578",
+      "base_blob": "5f19ad290870ab20511229e0b0d4eb14570a0ccb"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/fi.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "b00074ffdfe99d4b02f10cc6eab7db49eb9893a9",
+      "main_blob": "cd215634828494f7bdac363a9c3b975620ed4389",
+      "base_blob": "06a4c7b747a26eded70ec8dcf03b24de1e1391ef"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/fr.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "1ab6be0d9efdd2c1908ac7f831a7fa4e51ca9561",
+      "main_blob": "0e793969846c4ca70dafe5e7df9fc4587a5e7a33",
+      "base_blob": "729ed3672d93e3ea7d95d047ff9f8c40b5a99370"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/he.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "8fd69b4d8c67bb37a3d77419a595eaaf5436efe9",
+      "main_blob": "d2b3a0cb2a3d20640eca4791ba42aafe50a4b591",
+      "base_blob": "2fc10243ce0b7d83e48b4d098ff41d49c1ec236e"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/id.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "35bca7146dd06b07d4576d71c46bb4c1ddaf506b",
+      "main_blob": "d73effd5bb54f2abcdce0fb8cdafcf0465fe3e4e",
+      "base_blob": "4c9ad49149264c406d200c6882e9c1355d9b4e43"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/it.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "f04ab744e36abc10802bced8edff6d3e240bff72",
+      "main_blob": "932b763cd9d83d73977c770532c15003827cb642",
+      "base_blob": "c0adb66ea63bc6925a6a461fb2ad9d09e83991c4"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/ja.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "3a839333ea238d499ff52d669a9f49a9e394ad6c",
+      "main_blob": "40ec71b219e5cfc849320d924ac472d86607b53a",
+      "base_blob": "f0ba0f3c06cb2b8ba38b5d87d94b43f4d017f400"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/nl.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "a79c194fa05c2fb5c3442933abb8f1de6f01cd69",
+      "main_blob": "e160d21453171f30adb48ac908369f0654d967eb",
+      "base_blob": "a8ff74ca9703a3452e0706464c8055c704c1217f"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/pt-BR.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "d1dbd6b12a5314729309c785b17af1a2163a1d73",
+      "main_blob": "e1b81dfc0cc30e81b42aff9c6d0b674f440b37dc",
+      "base_blob": "af7d43ecf32f929b2ddb73e5ce83cd5bed3be64c"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/pt-PT.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "c8c338f6c33f6b9fe3e26fef3fddff94edef6aec",
+      "main_blob": "f5fc7962298263deb03db9ae8fe4ce811cc45ca6",
+      "base_blob": "94dfa206476901e30f724b963b7a16a64f6c94af"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/ro.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "40e90a8d08dcf10f72e007b7a741ff2200ec7c58",
+      "main_blob": "37e1b4a22c43ca9e7f3cfcdbb40834820ae5f548",
+      "base_blob": "a1ce7302e1f68ae5a78498aa9d98f29408b7b58c"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/sv.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "eb570eaa3924fbdfde16318cb530a86d9df2522a",
+      "main_blob": "99cec9119cb0917db73142794f7f5b169e8a888b",
+      "base_blob": "3d51c27ad225cb95815d7d7cf6b4cfb6932ea27e"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/tr.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "21a85f82c0741f4098b493c1fc8f830d5d03f352",
+      "main_blob": "cfa08335380e282d0c472b51da75f0055420beb9",
+      "base_blob": "675c0ca1c4a446af54eaead328b9d2f5aba7f87d"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/vi.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "93ea22f5f275941b631f9ce207a9a687b6962e53",
+      "main_blob": "e82862fee141e45f4986600cf5833104aa220e4a",
+      "base_blob": "4409389b4936a019e91aad0fa9c011195b8f20bc"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/zh-CN.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "84e3550399a81aec4e76d5aa519955f2d9f5a1c0",
+      "main_blob": "9b5b73461b6fba10bbbed9ec3c0495c6d2ee77d8",
+      "base_blob": "0e900862dae901163133b6db1a03a3d4af7d79c0"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/messages/zh-TW.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "f2bacf14a3ae13d7ba847ba77b6b5adeba3a39ca",
+      "main_blob": "517aaacf0b83e865a2ff5fe372a40fc917235ccf",
+      "base_blob": "90a0129a47195ef39635fd0405b3b2e00a9e6faf"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/next.config.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "8a732328f21d30e05f877674119caccbc7717cb9",
+      "main_blob": "05d40260f5580f5b32ecf3b9b0d068c965e0b8b1",
+      "base_blob": "7b74e2d0efa4fe3a9637a4466c08ae55c0c2589a"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/package.json",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "e0c260523e940d349d1a0348a28b67d50efc172c",
+      "main_blob": "f372bbb3147098d2d657660247e3c0332522aeae",
+      "base_blob": "145318299227e0b386fd1e7c4e21c7fe61c2288c"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/scripts/build-builder.mjs",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "643ba4e22c3f6688580a2c0f3f6ca297877a2672",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/scripts/clean-next-cache.mjs",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "a7c1d4ca663c617a5b7a784e4b2b5357bc7a3039",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/app/(no-sidebar)/channels/create/page.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "bd1567c891e5fe8235f7fe38b622fa31929c2488",
+      "main_blob": "0a230cb63ca42a026524a4ddf0935b402986569b",
+      "base_blob": "97dc89843246e1d09703c14111d3ae5a29494a43"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/app/page.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "409375dba3ba09812288523d58bcbdcd0d86fb77",
+      "main_blob": "92d79038c068a11a6c1050f044e04b33b68e7dc7",
+      "base_blob": "e3b72722f5cdbd4ebd7ef0060ecd0cac815fcdd6"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/components/app-sidebar.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "c5ea40cbde77299bed63b3064263f85929f5211b",
+      "main_blob": "44d340264f3027aebfe8c2dd6fafe2bf9fe7d297",
+      "base_blob": "7ddd0f58e97e86886c922870efca85d3896a63d2"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/components/public-env-script.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "a0501ae98a31daae43efe5d760e319083a36ef3c",
+      "main_blob": "2730458e383b539a3016f7338bd37b2163c61ad3",
+      "base_blob": "963747dfb8b808d8e03e164a352363b587114426"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/components/workspace-switcher.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "7ace77d3dfdb39938f20fc7b432340b4e2ad5e77",
+      "main_blob": "478b259a7ac849e47a4592240ec714ea64d15386",
+      "base_blob": "478b259a7ac849e47a4592240ec714ea64d15386"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/contacts/queries/public-find-contact.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "178447b0ae11262f354593c86620af7c242de0ec",
+      "main_blob": null,
+      "base_blob": "535c23628e15d7f534e6cb63190b9a77359ae21c"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/flows/actions/test-external-request-action.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "4d07e9160d7251fdae109b7342b721f116349574",
+      "main_blob": "61df309a138cb2f97c194bb8d5c191ab45cd7bc9",
+      "base_blob": "2f3dce082aad9af74f30e2bd300066d7916d7d89"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/flows/react-flow/steps/external-request/editor.tsx",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "1b3868ce430fb4341606ec61cea7c0ef0bbb6375",
+      "main_blob": "f252c9cadf802fcd86f4c916c40a09a6f8810e2a",
+      "base_blob": "f252c9cadf802fcd86f4c916c40a09a6f8810e2a"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspace-members/actions/delete-workspace-member.action.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "4329592324f0e1f397aae4a1e8737cbd891c9dad",
+      "main_blob": "d499d4e2047f666ea9e6d0498f31c39b0d52640b",
+      "base_blob": "76a7adb6ef11565bbbedc5d187b25ee6913fcc7f"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspace-members/actions/update-workspace-member.action.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "4e0504efe9a12d33b9911c4f1261dee6280ce15c",
+      "main_blob": "7bc1952b2c18f34266b540a967a59b89ccd4a8a5",
+      "base_blob": "d02af2c7bef1e81f5071d4c1a6414c9b118c6bd5"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspace-members/components/update-workspace-member.tsx",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "6f6e369270a963a769df4f2d9a2520a6c65802f4",
+      "main_blob": "5bf2a37b2f73e61b257f907c6b89ec979e70909f",
+      "base_blob": "0fed78b06dca9df36ac7c695c1848004e484ba1a"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspace-members/schema/mutation.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "ebe0c372386970a2d064e3d8edc1b129e9615c05",
+      "main_blob": "93d4f791b13a00b4c61d590fef22a7dc44a0d738",
+      "base_blob": "291e5a2b1ad7e2d4caa0602286525c3f1c6744f8"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspace-members/schema/resource.ts",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "b8b068c9b5d9993e14d47450b345435dd8af1188",
+      "main_blob": "f2743511d16f5d3c5a726034c6d10455c77b8fd4",
+      "base_blob": "f2743511d16f5d3c5a726034c6d10455c77b8fd4"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/builder/src/features/workspaces/components/workspaces-list.tsx",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "ae97de5b227bcd75d804c7a3ec043232da8dbc7b",
+      "main_blob": "5c13b93f9ae1000265a3363ce7ec107d1afc9b80",
+      "base_blob": "334fd87ff1520c1cbe032a93c6ee9e4c2e8b752c"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/worker/__tests__/external-request-handler.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "34339742013094b1e69d4f10d12db3c7cc91d3c9",
+      "main_blob": "1fa39c8f2a93a19dcca73a6e32ec394f04169f47",
+      "base_blob": "1e1591e10806919648e29677459f1f2a7ac900d7"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "apps/worker/src/integration/handlers/tool-handler.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "9d71904962c421aa6be18141d7adce5ea67459c3",
+      "main_blob": "3bd03bc8058af959510d901789e7de6fb5a06162",
+      "base_blob": "c8da7e9ccab2a4f8318ff5735ce0a02cb95dcf8d"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docker-compose.apps.yml",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "802cbe498d24034930c86dbf8317fe8c89b55beb",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docker-compose.dev.yml",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "c4940f87320835d8082a396190dfc023e4927b62",
+      "main_blob": "d5a081c3236e8f139e6334478c398670590555d7",
+      "base_blob": "f5948b2a7fd5fa5daecddb7a44bc99f3124019ca"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docker-compose.prod.yml",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "f6ae174e8f4ab5b592d3a39d8a86166c4e8eeabd",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docker-compose.yml",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "550b378bf6bc562b8628dfd32aa793aa4032e5ae",
+      "main_blob": "f49fe9e0c1943f8c2347462f8ed4dff9feab5c6d",
+      "base_blob": "f49fe9e0c1943f8c2347462f8ed4dff9feab5c6d"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/demo-chatbotx.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "3b5974e2ec04fe6897aeea758eb6a1e1b85f0622",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/levantar-chatbotx.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "1acd3727a9d984e9192475896633db56b557db00",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/presentacion-chatbotx.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "d445a7f47145e69c880944b13ddd22d8ecf0695c",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/requisitos-chatbotx-dev.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "f12f177fd77840045e5b72fdc66b7ecc3cf0c814",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/requisitos-chatbotx-prod.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "af87524e7618ca1c5ee50d372041bcdd16beb768",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "docs/requisitos-chatbotx.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "b117af31b5e61313319279a690cb1ba494d6a2d2",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/auth/src/server.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "4161249dba4ba9e2c16032517136bfef4d891f12",
+      "main_blob": "850d217cc19783de7636d8bf547f79bfeb71dc9b",
+      "base_blob": "0ca690626912171e6cfc907c068da3d65c5b2790"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/__tests__/entitlements.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "24a378e369db863046ec1472582a584818518700",
+      "main_blob": "f6cd81142b3f27d0bc2970ec04c49396d3c77c65",
+      "base_blob": "0b42a0239acd85b54eb45810c93db2c46fb21adc"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/__tests__/license.startup.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "4b12b427b9c64c953636c92af86dd3a80a39ed4c",
+      "main_blob": "f4be3283a282c8957665dd46bd145dfd3cdc415b",
+      "base_blob": "e3840afd1d2eef831aed6be7d8d7ae31b893ff0f"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/__tests__/workspace.service.test.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "8af0eae710d4ac8e295eaef5901dcb19e11eed96",
+      "main_blob": "3f37296b8d28ba66672509047a7423674a3962ae",
+      "base_blob": "17114451409e5b839aeeefda89f6f2ee2459f633"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/contact/service.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "0d086c99434580340f7d2c5717a336d1742b0619",
+      "main_blob": "bea34623a8434fbe1157697c52fb83a518bfa256",
+      "base_blob": "3866356b8022ee357bb3f576906b968fac015e56"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/enterprise/license/startup.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "2068d80c0f89affebdc1bce1dd1f5be66b7a3f59",
+      "main_blob": "3747d310ce4b03412196dd4b2e352737c2058ea7",
+      "base_blob": "64c9c7866b00c8ed65c0499e1aa67c28b8e15328"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/errors.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "a9be0d8d5de0598362947557c73efe559a42ee3b",
+      "main_blob": "98d6d28b20c68820cee4cd3447e2d663901ad37d",
+      "base_blob": "5f8bfff326e01f1b0e5a7d2e6d18acfc4ab1efe8"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/external-request/service.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "ef1d7844ea982e55c79ca841f6bec2fa5a2521bd",
+      "main_blob": "6c1b8eca84c649738c1dd03eb3b4d3f79e68e556",
+      "base_blob": "781eb141d3b28b6e9a904d42553d0f37fb6fd439"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/user/entitlements.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "1ae9350ee62e9d0da1f3d7882592cb9cc02f51cb",
+      "main_blob": "56faaacd214662b2be3beef5d1e3308c6417f4f0",
+      "base_blob": "9c167a00ccd5185b741baadc626f3c3d8f8d9032"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/workspace/__tests__/service.test.ts",
+      "status": "modified",
+      "category": "upstream-drift-conflict",
+      "source_blob": "d65a833e27b25441f811a14a9121feb3b4289afd",
+      "main_blob": "5f7f4f1f92702dbb9a42dc10011402e1df269748",
+      "base_blob": "f81c7cd0b17eed00472d9e80b6e3bdf51899cf3a"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "packages/business/src/workspace/service.ts",
+      "status": "modified",
+      "category": "overlapping-forks",
+      "source_blob": "0cd75c2547e50295dfabf2c95698ea09e98a6fdc",
+      "main_blob": "8a2281bc9ed5b60f2f7f89e8db04ac8f0776244b",
+      "base_blob": "383b579aacec446f199577804dff07cd6232cecd"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "pnpm-workspace.yaml",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "1990f2b51788fec0a75ca44c6f4beaec0b7f98f2",
+      "main_blob": "ac0e0aa3d5704e9e73c866423bc0ce0a78e0a96e",
+      "base_blob": "ac0e0aa3d5704e9e73c866423bc0ce0a78e0a96e"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/deployment/deploy.sh",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "e900c7cf8b5bbc630c0f1c3fa0c13a3bacb019bc",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/deployment/maintenance-off.sh",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "1764260b48c5de0276c923d81d6b7e2a607001c9",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/deployment/maintenance-on.sh",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "5ab0139b1b25e86a4f07d7cea5b618e2ec14ff14",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/deployment/run-smoke-tests.sh",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "dff04b7f2decd9a50ed4d6bee72f8f708ae17362",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/deployment/upgrade.sh",
+      "status": "modified",
+      "category": "isolated-safe-3way",
+      "source_blob": "9c00e3d8d718d7068793856516038cdd062e130f",
+      "main_blob": "59b30a91bbf039e40ea1c2c75d9424cf6d1e9573",
+      "base_blob": "59b30a91bbf039e40ea1c2c75d9424cf6d1e9573"
+    },
+    {
+      "fork": "fibrazo",
+      "path": "scripts/start.sh",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "d7f666095a7190b07a6e6aa409ccf5b0cc55947b",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "spec/README.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "2b3f6e4971239f79d1395e7cde8f95991051fea9",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "spec/context/.template",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "d022ef56ee6cc77708d43e2a579cfcbcf369931d",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "spec/feature/.template",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "927d03a1463afd81bfaa9a77a88df14ad716951f",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "spec/plan/.template",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "5242dfdda52268958c107d90b71fdaf9aad6114e",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "spec/task/.template",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "44c2d7adfd63009825fef816aa71e64636c3f5d8",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR2-fibrazo-sourceid-license/plan.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "238997453810fac559ea16b32298149dd70faf3b",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR2-fibrazo-sourceid-license/resumen.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "010402a9735d3549a7c7d598bbbfad3adb30d2bf",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR3-workspace-members-role/plan.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "45ac5ca2257b0dade65f48a4db07d996d9d049df",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR3-workspace-members-role/resumen.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "257b8e9d554e02d87e6e91febd70bafe74508292",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR4-workspace-create-gate/plan.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "d3698aa5e149d95f474c3a4af36b6826e166f0c8",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR4-workspace-create-gate/resumen.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "be6d597d1876fe0de264166b03f9693568c3b2ae",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR6-workspace-switcher-gate/plan.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "ab1e6090d29ac42cbb91a6209b117fedfe19dff8",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/PR6-workspace-switcher-gate/resumen.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "77a31ce3d9dfe9f8195ee2f95999752d4b0dfc30",
+      "main_blob": null,
+      "base_blob": null
+    },
+    {
+      "fork": "fibrazo",
+      "path": "versiones/README.md",
+      "status": "added",
+      "category": "isolated-safe-3way",
+      "source_blob": "6d5529cb03ac7b1c9dcf4194320d31dba5ed7c8b",
+      "main_blob": null,
+      "base_blob": null
+    }
+  ]
+}
