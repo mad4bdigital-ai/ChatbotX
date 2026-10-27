@@ -66,6 +66,12 @@ The machine-readable [community-fork-reconciliation.json](./community-fork-recon
 - **fibrazo:** production CI/deployment scripts and instance-specific Docker compose files are not portable. Do not overwrite current Coolify/VPS infrastructure.
 - **mu:** public call link accepts only validated phone numbers; it must not be treated as identity proof or contact consent.
 
+## Source delta governance — automated check
+
+- Source fork changes are not blindly cherry-picked. Six risk decisions were explicitly recorded: reject the old Redis group-creation recovery because its start-from-latest cursor can lose queued messages; defer cross-automation keyword/catchall prioritization pending a policy with replay/idempotency tests; and defer Russian, Uzbek and Mongolian UI activation until those translation dictionaries match the current English source.
+- The ledger records all 407 source file-change occurrences, with path-level dispositions, manual-review markers, aggregate counts, and one reason per source. It reports 35 specifically reviewed entries, which is not the same as 35 complete features.
+- New read-only source-control gate: standalone Node checker in scripts/check-community-fork-reconciliation.mjs plus five unit tests in scripts/__tests__/. The dedicated workflow runs them on related PR changes, without secrets, repository write permissions, server access, or production deployment.
+
 ## Next slices
 
 1. WordPress / WooCommerce / FluentCRM adapter separately from ChatbotX core, using contract-first APIs.

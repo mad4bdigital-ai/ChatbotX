@@ -5,13 +5,14 @@
   "pr": 2,
   "total_occurrences": 407,
   "overall_status": {
-    "pending_feature_integration": 67,
+    "pending_feature_integration": 63,
     "deferred_environment_specific": 45,
-    "pending_upstream_conflict": 77,
-    "pending_semantic_conflict": 138,
+    "pending_upstream_conflict": 76,
+    "pending_semantic_conflict": 140,
     "deferred_delete": 5,
     "integrated_adapted": 10,
     "integrated_runtime": 15,
+    "deferred_translation_parity": 3,
     "deferred_branding": 19,
     "partial_overlap_review": 21,
     "superseded_by_current_main": 8,
@@ -19,9 +20,9 @@
   },
   "by_fork": {
     "alvanr": {
-      "pending_feature_integration": 44,
+      "pending_feature_integration": 43,
       "deferred_environment_specific": 5,
-      "pending_upstream_conflict": 26,
+      "pending_upstream_conflict": 27,
       "pending_semantic_conflict": 36,
       "deferred_delete": 5,
       "integrated_adapted": 4,
@@ -29,7 +30,8 @@
     },
     "chatplus": {
       "pending_semantic_conflict": 30,
-      "pending_feature_integration": 7,
+      "pending_feature_integration": 5,
+      "deferred_translation_parity": 2,
       "deferred_branding": 9,
       "pending_upstream_conflict": 4,
       "partial_overlap_review": 1,
@@ -37,9 +39,9 @@
       "deferred_environment_specific": 1
     },
     "novawebs": {
-      "pending_semantic_conflict": 3,
+      "pending_semantic_conflict": 5,
       "superseded_by_current_main": 8,
-      "pending_upstream_conflict": 10,
+      "pending_upstream_conflict": 8,
       "integrated_runtime": 4,
       "partial_overlap_review": 2,
       "integrated_adapted": 3
@@ -48,8 +50,9 @@
       "deferred_environment_specific": 1,
       "integrated_runtime": 7,
       "pending_upstream_conflict": 24,
-      "pending_feature_integration": 12,
+      "pending_feature_integration": 11,
       "pending_semantic_conflict": 34,
+      "deferred_translation_parity": 1,
       "deferred_branding": 10,
       "partial_overlap_review": 17
     },
@@ -1061,8 +1064,8 @@
       "path": "packages/event-bus/src/event-bus.ts",
       "fork_change": "modified",
       "base_comparison": "isolated-safe-3way",
-      "disposition": "pending_feature_integration",
-      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "disposition": "pending_upstream_conflict",
+      "reason": "Fork consumer-group recovery uses Redis XGROUP CREATE with $ and silently catches errors; that can drop queued events and conceal Redis outages. Must rework with replay/watermark policy before importing.",
       "confirmed_manual": false
     },
     {
@@ -1340,8 +1343,8 @@
       "path": "apps/builder/messages/ru.json",
       "fork_change": "added",
       "base_comparison": "isolated-safe-3way",
-      "disposition": "pending_feature_integration",
-      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "disposition": "deferred_translation_parity",
+      "reason": "Russian pack has 734 current English leaf keys missing; needs English-source parity and ICU validation before enabled UI locale.",
       "confirmed_manual": false
     },
     {
@@ -1367,8 +1370,8 @@
       "path": "apps/builder/messages/uz.json",
       "fork_change": "added",
       "base_comparison": "isolated-safe-3way",
-      "disposition": "pending_feature_integration",
-      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "disposition": "deferred_translation_parity",
+      "reason": "Uzbek pack has 734 current English leaf keys missing; needs English-source parity and ICU validation before enabled UI locale.",
       "confirmed_manual": false
     },
     {
@@ -1808,8 +1811,8 @@
       "path": "apps/worker/src/integration/handlers/comment-automation/automation-matching.ts",
       "fork_change": "modified",
       "base_comparison": "upstream-drift-conflict",
-      "disposition": "pending_upstream_conflict",
-      "reason": "main diverged; never overwrite current core code",
+      "disposition": "pending_semantic_conflict",
+      "reason": "Related isCatchAll helper is safe in isolation but not shipped until the comment precedence policy has an opt-in specification and tests.",
       "confirmed_manual": false
     },
     {
@@ -1817,8 +1820,8 @@
       "path": "apps/worker/src/integration/handlers/comment-automation/index.ts",
       "fork_change": "modified",
       "base_comparison": "upstream-drift-conflict",
-      "disposition": "pending_upstream_conflict",
-      "reason": "main diverged; never overwrite current core code",
+      "disposition": "pending_semantic_conflict",
+      "reason": "Fork keyword-over-catchall priority changes user-visible public/DM replies; current main adds replay-only filtering, per-comment private reply budgets and tag tracking. Needs explicitly selected policy and end-to-end dedup tests.",
       "confirmed_manual": false
     },
     {
@@ -2159,8 +2162,8 @@
       "path": "apps/builder/messages/mn.json",
       "fork_change": "added",
       "base_comparison": "isolated-safe-3way",
-      "disposition": "pending_feature_integration",
-      "reason": "file is candidate only; review dependencies, purpose, tests and licenses",
+      "disposition": "deferred_translation_parity",
+      "reason": "Mongolian pack has 2535 current English leaf keys missing; needs source parity and translation review before enabled UI locale.",
       "confirmed_manual": false
     },
     {
