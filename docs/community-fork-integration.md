@@ -15,12 +15,14 @@ This is **incremental integration**, not the complete five-fork merge. The refer
 | novawebsdenia-wq/chatbotx-novawebs (`86efd089bdba68d6eeff737a4bd21a3583157527`) | TikTok user stats API and owned-video list support without overwriting existing TikTok Business Comment Automation API or its schema | TikTok types; broader integration tests remain |
 | Fibrazo-SAS/ChatbotX (`62413ef8126d9ea592aa8ec242c83d30c6baa174`) | Explicit workspace-member role in validated resource schema | Builder types under validation |
 
+| khan-umirzakoff/ChatbotX-Fork-ChatPlus (6372b9cea903b0f47c7f6e39b528d80d81531b3a) | Uzbek contact-language support for live profiles and historical backfill with translation labels; no forced rebrand | Contact-locale and backfill parity tests; scoped TS |
+
 ## Deliberately not ported / safety notes
 
 - **alvanr Telegram username:** upstream `IncomingContact` contract has no `username` field. Direct transplant fails TS2353. Needs a signed-off field mapping and schema change.
 - **alvanr Gemini fallback:** do not import unofficial model identifiers or broad provider-error fallbacks without upstream verification.
 - **alvanr manual inbox poll:** a per-workspace UI action must not enqueue an unscoped globally scheduled job without rate limiting and queue/tenant safety.
-- **chatplus:** forced rebranding to "ChatPLUS" is inapplicable; Russian/Uzbek locale capabilities require source-of-truth locale/translation contract review.
+- **chatplus:** forced rebranding to "ChatPLUS" is inapplicable; Full Russian/Uzbek user-interface localization remains deferred pending complete translation and locale-contract review.
 - **novawebs:** Social Stats routes and all OAuth scope requirements have not been integrated or activated. Added TikTok helper functions alone do not grant TikTok scopes.
 - **fibrazo:** production CI/deployment scripts and instance-specific Docker compose files are not portable. Do not overwrite current Coolify/VPS infrastructure.
 - **mu:** public call link accepts only validated phone numbers; it must not be treated as identity proof or contact consent.

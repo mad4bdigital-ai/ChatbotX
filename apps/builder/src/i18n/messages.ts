@@ -32,10 +32,12 @@ const callPhoneLabels: Record<string, string> = {
   "pt-PT": "Ligar para um número",
 }
 
-// Keep locale JSON payloads unchanged: this single feature label is added at
-// the message registry boundary for every enabled locale. Missing translations
-// use the English source until native copy is provided by translators.
-const withCallPhoneLabel = <T extends { flows: { actions: object } }>(
+// Keep locale JSON payloads unchanged: import small community feature labels
+// at the registry boundary for every enabled locale. Missing native translations
+// use English until translators supply localized copy.
+const withCommunityLabels = <
+  T extends { flows: { actions: object }; condition: { languages: object } },
+>(
   messages: T,
   locale: Locale,
 ) => ({
@@ -47,28 +49,35 @@ const withCallPhoneLabel = <T extends { flows: { actions: object } }>(
       callPhoneNumber: callPhoneLabels[locale] ?? callPhoneLabels.en,
     },
   },
+  condition: {
+    ...messages.condition,
+    languages: {
+      ...messages.condition.languages,
+      uz: locale === "ar" ? "الأوزبكية" : "Uzbek",
+    },
+  },
 })
 
 export const messagesByLocale: Record<Locale, Record<string, unknown>> = {
-  ar: withCallPhoneLabel(ar, "ar"),
-  az: withCallPhoneLabel(az, "az"),
-  da: withCallPhoneLabel(da, "da"),
-  de: withCallPhoneLabel(de, "de"),
-  en: withCallPhoneLabel(en, "en"),
-  es: withCallPhoneLabel(es, "es"),
-  fi: withCallPhoneLabel(fi, "fi"),
-  fr: withCallPhoneLabel(fr, "fr"),
-  he: withCallPhoneLabel(he, "he"),
-  id: withCallPhoneLabel(id, "id"),
-  it: withCallPhoneLabel(it, "it"),
-  ja: withCallPhoneLabel(ja, "ja"),
-  nl: withCallPhoneLabel(nl, "nl"),
-  "pt-BR": withCallPhoneLabel(ptBR, "pt-BR"),
-  "pt-PT": withCallPhoneLabel(ptPT, "pt-PT"),
-  ro: withCallPhoneLabel(ro, "ro"),
-  sv: withCallPhoneLabel(sv, "sv"),
-  tr: withCallPhoneLabel(tr, "tr"),
-  vi: withCallPhoneLabel(vi, "vi"),
-  "zh-CN": withCallPhoneLabel(zhCN, "zh-CN"),
-  "zh-TW": withCallPhoneLabel(zhTW, "zh-TW"),
+  ar: withCommunityLabels(ar, "ar"),
+  az: withCommunityLabels(az, "az"),
+  da: withCommunityLabels(da, "da"),
+  de: withCommunityLabels(de, "de"),
+  en: withCommunityLabels(en, "en"),
+  es: withCommunityLabels(es, "es"),
+  fi: withCommunityLabels(fi, "fi"),
+  fr: withCommunityLabels(fr, "fr"),
+  he: withCommunityLabels(he, "he"),
+  id: withCommunityLabels(id, "id"),
+  it: withCommunityLabels(it, "it"),
+  ja: withCommunityLabels(ja, "ja"),
+  nl: withCommunityLabels(nl, "nl"),
+  "pt-BR": withCommunityLabels(ptBR, "pt-BR"),
+  "pt-PT": withCommunityLabels(ptPT, "pt-PT"),
+  ro: withCommunityLabels(ro, "ro"),
+  sv: withCommunityLabels(sv, "sv"),
+  tr: withCommunityLabels(tr, "tr"),
+  vi: withCommunityLabels(vi, "vi"),
+  "zh-CN": withCommunityLabels(zhCN, "zh-CN"),
+  "zh-TW": withCommunityLabels(zhTW, "zh-TW"),
 }
