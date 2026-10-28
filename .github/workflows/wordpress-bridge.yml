@@ -28,5 +28,7 @@ jobs:
         run: php -l integrations/wordpress/customer-messaging-bridge/tests/standalone.php
       - name: Run isolated adapter tests
         run: php integrations/wordpress/customer-messaging-bridge/tests/standalone.php
+      - name: Isolated shared pricing orchestrator gateway contracts
+        run: php integrations/wordpress/customer-messaging-bridge/tests/provider-gateway.php
       - name: Validate isolated browser QA script syntax
         run: python3 -m py_compile integrations/wordpress/customer-messaging-bridge/tests/browser-e2e.py
